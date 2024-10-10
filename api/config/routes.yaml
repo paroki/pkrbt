@@ -3,3 +3,6 @@ controllers:
     path: ../src/Controller/
     namespace: Paroki\Controller
   type: attribute
+
+api_login_check:
+  path: /auth/login-check

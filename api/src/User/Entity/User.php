@@ -5,6 +5,7 @@ namespace Paroki\User\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Paroki\User\Repository\UserRepository;
+use Paroki\User\UserConstants;
 use Symfony\Bridge\Doctrine\Types\UuidType;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -30,7 +31,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
   private string $email;
 
   #[ORM\Column(type: 'json')]
-  private array $roles = [];
+  private array $roles = [UserConstants::ROLE_USER];
 
   #[ORM\Column(type: 'string', nullable: true)]
   private ?string $password = null;
@@ -84,10 +85,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
   /**
-    * The public representation of the user (e.g. a username, an email address, etc.)
-    *
-    * @see UserInterface
-    */
+   * The public representation of the user (e.g. a username, an email address, etc.)
+   *
+   * @see UserInterface
+   */
   public function getUserIdentifier(): string
   {
     return (string) $this->email;
@@ -103,7 +104,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
   public function getRoles(): array
   {
     $roles = $this->roles;
-    $roles[] = 'ROLE_USER';
+    $roles[] = UserConstants::ROLE_USER;
 
     return array_unique($this->roles);
   }
@@ -123,8 +124,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     return $this->password;
   }
 
-  public function eraseCredentials(): void
-  {
-
-  }
+  public function eraseCredentials(): void {}
 }

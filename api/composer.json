@@ -64,7 +64,8 @@
   "scripts": {
     "auto-scripts": {
       "cache:clear": "symfony-cmd",
-      "assets:install %PUBLIC_DIR%": "symfony-cmd"
+      "assets:install %PUBLIC_DIR%": "symfony-cmd",
+      "lexik:jwt:generate-keypair --skip-if-exists": "symfony-cmd"
     },
     "post-install-cmd": [
       "@auto-scripts"
