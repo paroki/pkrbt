@@ -22,7 +22,7 @@ class UserTest extends ApiTestCase
     $response = static::createClient()->request('POST', '/auth/login-check', [
       'headers' => ['Content-Type' => 'application/json'],
       'json' => [
-        'username' => 'test@example.com',
+        'email' => 'test@example.com',
         'password' => 'testing'
       ]
     ]);
@@ -44,7 +44,7 @@ class UserTest extends ApiTestCase
     $response = $client->request('POST', '/auth/login-check', [
       'headers' => ['Content-Type' => 'application/json'],
       'json' => [
-        'username' => 'test@example.com',
+        'email' => 'test@example.com',
         'password' => 'testing'
       ]
     ]);

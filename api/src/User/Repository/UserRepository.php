@@ -10,8 +10,12 @@ class UserRepository extends ServiceEntityRepository
 {
   public function __construct(
     ManagerRegistry $manager
-  )
-  {
+  ) {
     parent::__construct($manager, User::class);
+  }
+
+  public function create(): User
+  {
+    return new User();
   }
 }

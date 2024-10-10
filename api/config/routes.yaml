@@ -6,3 +6,9 @@ controllers:
 
 api_login_check:
   path: /auth/login-check
+
+google:
+  resource:
+    path: ../src/Bridge/Google/Controller/
+    namespace: Paroki\Bridge\Google\Controller
+  type: attribute

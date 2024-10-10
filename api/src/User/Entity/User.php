@@ -36,6 +36,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
   #[ORM\Column(type: 'string', nullable: true)]
   private ?string $password = null;
 
+  #[ORM\Column(type: 'string', nullable: true)]
+  private ?string $avatar = null;
+
   public function getId(): int
   {
     return $this->id;
@@ -83,6 +86,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     return $this->email;
   }
 
+  public function setAvatar(string $avatar): self
+  {
+    $this->avatar = $avatar;
+
+    return $this;
+  }
+
+  public function getAvatar(): ?string
+  {
+    return $this->avatar;
+  }
 
   /**
    * The public representation of the user (e.g. a username, an email address, etc.)
