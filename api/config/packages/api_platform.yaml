@@ -1,0 +1,9 @@
+api_platform:
+  title: Paroki Kristus Raja Barong Tongkok API
+  version: 1.0.0
+  defaults:
+    stateless: true
+    cache_headers:
+      vary: ["Content-Type", "Authorization", "Origin"]
+  resource_class_directories:
+    - "%kernel.project_dir%/src/User/Entity"

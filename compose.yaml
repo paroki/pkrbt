@@ -1,0 +1,27 @@
+services:
+  cms-dev:
+    container_name: pkrbt-cms-dev
+    image: pkrbt-cms-dev:latest
+    build:
+      context: .
+      dockerfile: ./apps/cms/Dockerfile
+    env_file: .env
+    environment:
+      NODE_ENV: production
+    ports:
+      - 1338:1337
+    volumes:
+      - ./vars/cms-public:/cms/public:rw
+
+  db:
+    container_name: pkrbt-db
+    image: postgres:${POSTGRES_VERSION:-16}-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-app}
+      # You should definitely change the password in production
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+      POSTGRES_USER: ${POSTGRES_USER:-app}
+    volumes:
+      - database_data:/var/lib/postgresql/data:rw
+    ports:
+      - 5432:5432
