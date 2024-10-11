@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -6,6 +7,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { signIn } from "next-auth/react";
 
 export default function LoginForm() {
   return (
@@ -18,7 +20,11 @@ export default function LoginForm() {
       </CardHeader>
       <CardContent>
         <div className="grid gap-4">
-          <Button variant="outline" className="w-full">
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={() => signIn("google", { redirectTo: "/" })}
+          >
             Google
           </Button>
           <Button variant="outline" className="w-full">
