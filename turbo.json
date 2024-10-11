@@ -18,6 +18,10 @@
       "cache": false,
       "persistent": true
     },
+    "pwa": {
+      "cache": false,
+      "persistent": true
+    },
     "lint": {
       "dependsOn": ["^lint"]
     },

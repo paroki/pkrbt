@@ -12,7 +12,8 @@
     "e2e": "turbo run e2e",
     "start": "turbo run start",
     "seed:dev": "turbo run seed:dev",
-    "generate:types": "turbo run generate:types"
+    "generate:types": "turbo run generate:types",
+    "pwa": "turbo run pwa"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
