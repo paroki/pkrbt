@@ -7,8 +7,8 @@ controllers:
 api_login_check:
   path: /auth/login-check
 
-google:
+user:
   resource:
-    path: ../src/Bridge/Google/Controller/
-    namespace: Paroki\Bridge\Google\Controller
+    path: ../src/User/Controller/
+    namespace: Paroki\User\Controller
   type: attribute

@@ -46,6 +46,7 @@ security:
   access_control:
     - { path: ^/connect, roles: PUBLIC_ACCESS }
     - { path: ^/auth, roles: PUBLIC_ACCESS }
+    - { path: ^/docs, roles: PUBLIC_ACCESS }
     - { path: ^/, roles: ROLE_USER }
 
 when@test:

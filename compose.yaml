@@ -1,17 +1,45 @@
 services:
-  cms-dev:
-    container_name: pkrbt-cms-dev
-    image: pkrbt-cms-dev:latest
-    build:
-      context: .
-      dockerfile: ./apps/cms/Dockerfile
-    env_file: .env
+  api:
+    container_name: pkrbt-api
+    image: pkrbt-api:latest
+    depends_on:
+      - db
     environment:
-      NODE_ENV: production
-    ports:
-      - 1338:1337
+      PWA_UPSTREAM: pwa:3000
+      SERVER_NAME: ${SERVER_NAME:-localhost}, php:80
+      #SERVER_NAME: localhost:80
+      MERCURE_PUBLISHER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
+      MERCURE_SUBSCRIBER_JWT_KEY: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
+      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
+      TRUSTED_HOSTS: ${TRUSTED_HOSTS:-^${SERVER_NAME:-example\.com|localhost}|php$$}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-pkrbt}:${POSTGRES_PASSWORD:-pkrbt}@db:5432/${POSTGRES_DB:-pkrbt}?serverVersion=${POSTGRES_VERSION:-16}&charset=${POSTGRES_CHARSET:-utf8}
+      MERCURE_URL: ${CADDY_MERCURE_URL:-http://php/.well-known/mercure}
+      MERCURE_PUBLIC_URL: ${CADDY_MERCURE_PUBLIC_URL:-https://${SERVER_NAME:-localhost}/.well-known/mercure}
+      MERCURE_JWT_SECRET: ${CADDY_MERCURE_JWT_SECRET:-!ChangeThisMercureHubJWTSecretKey!}
     volumes:
-      - ./vars/cms-public:/cms/public:rw
+      - ./vars/api/data:/data
+      - ./vars/api/config:/config
+    ports:
+      # HTTP
+      - target: 80
+        published: ${HTTP_PORT:-80}
+        protocol: tcp
+      # HTTPS
+      - target: 443
+        published: ${HTTPS_PORT:-443}
+        protocol: tcp
+      # HTTP/3
+      - target: 443
+        published: ${HTTP3_PORT:-443}
+        protocol: udp
+  pwa:
+    container_name: pkrbt-pwa
+    image: pkrbt-pwa:latest
+    environment:
+      NEXT_PUBLIC_API: http://api
+      AUTH_SECRET: ${AUTH_SECRET}
+      AUTH_GOOGLE_ID: ${AUTH_GOOGLE_ID}
+      AUTH_GOOGLE_SECRET: ${AUTH_GOOGLE_SECRET}
 
   db:
     container_name: pkrbt-db
@@ -19,9 +47,7 @@ services:
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-pkrbt}
       # You should definitely change the password in production
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pkrbt}
       POSTGRES_USER: ${POSTGRES_USER:-pkrbt}
     volumes:
       - ./vars/postgres:/var/lib/postgresql/data:rw
-    ports:
-      - 5432:5432

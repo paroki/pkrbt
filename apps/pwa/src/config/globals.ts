@@ -1,0 +1,1 @@
+export const API_ENTRYPOINT = process.env.NEXT_PUBLIC_API_ENTRYPOINT;

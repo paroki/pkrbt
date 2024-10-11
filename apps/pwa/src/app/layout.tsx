@@ -26,7 +26,6 @@ export default async function RootLayout({
   children,
 }: Readonly<PropsWithChildren>) {
   const session = await auth();
-
   return (
     <html lang="en">
       <body

@@ -15,4 +15,5 @@ return [
     DAMA\DoctrineTestBundle\DAMADoctrineTestBundle::class => ['test' => true],
     Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
     KnpU\OAuth2ClientBundle\KnpUOAuth2ClientBundle::class => ['all' => true],
+    Gesdinet\JWTRefreshTokenBundle\GesdinetJWTRefreshTokenBundle::class => ['all' => true],
 ];

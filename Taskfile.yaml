@@ -1,0 +1,22 @@
+version: "3"
+
+vars:
+  compose: docker compose -f compose.yaml -f compose.dev.yaml
+
+tasks:
+  build:
+    cmds:
+      - "{{.compose}} build --no-cache"
+
+  start:
+    cmds:
+      - "{{.compose}} start api db"
+
+  stop:
+    cmd: "{{.compose}} stop"
+
+  up:
+    cmd: "{{.compose}} up api db -d"
+
+  rm:
+    cmd: "{{.compose}} rm"

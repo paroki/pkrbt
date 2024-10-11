@@ -17,12 +17,10 @@ use Symfony\Component\Uid\Uuid;
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
   #[ORM\Id]
-  #[ORM\GeneratedValue(strategy: 'AUTO')]
-  #[ORM\Column(type: 'integer', unique: true)]
-  private int $id;
-
+  #[ORM\GeneratedValue(strategy: 'CUSTOM')]
+  #[ORM\CustomIdGenerator('doctrine.uuid_generator')]
   #[ORM\Column(type: UuidType::NAME, unique: true)]
-  private ?Uuid $uuid;
+  private ?Uuid $id;
 
   #[ORM\Column(type: 'string')]
   private string $name;
@@ -39,21 +37,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
   #[ORM\Column(type: 'string', nullable: true)]
   private ?string $avatar = null;
 
-  public function getId(): int
+  #[ORM\Column(type: 'string', nullable: true)]
+  private ?string $googleId = null;
+
+  #[ORM\Column(type: 'boolean')]
+  private bool $registered = false;
+
+  public function getId(): string
   {
     return $this->id;
   }
 
-  public function setUuid(Uuid $uuid): self
+  public function isRegistered(): bool
   {
-    $this->uuid = $uuid;
+    return $this->registered;
+  }
+
+  public function setRegistered(bool $value): self
+  {
+    $this->registered = $value;
 
     return $this;
   }
 
-  public function getUuid(): ?Uuid
+  public function setGoogleId(string $id): self
   {
-    return $this->uuid;
+    $this->googleId = $id;
+
+    return $this;
+  }
+
+  public function getGoogleId(): ?string
+  {
+    return $this->googleId;
   }
 
   public function setName(string $name): self
