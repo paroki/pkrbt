@@ -35,7 +35,7 @@
     "node": "20.x"
   },
   "dependencies": {
-    "eslint": "8"
+    "eslint": "9"
   },
   "release": {
     "branches": [
