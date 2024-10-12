@@ -1,0 +1,149 @@
+name: Build Image
+
+on:
+  workflow_call:
+    inputs:
+      ref_name:
+        description: ref name
+        default: ${{ github.ref_name }}
+        type: string
+        required: false
+      name:
+        type: string
+        description: The build name
+        required: true
+      prefix:
+        type: string
+        description: GitHub package name
+        required: true
+      context:
+        type: string
+        required: false
+        default: .
+        description: Build Context
+      dockerfile:
+        type: string
+        required: true
+        description: Dockerfile to build
+      target:
+        type: string
+        required: true
+        description: Build target
+      goss_file:
+        type: string
+        required: false
+        default: "no-goss"
+        description: Goss File Path
+jobs:
+  build:
+    name: Build ${{ inputs.name }})
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup workflow vars
+        id: vars
+        shell: bash
+        run: |
+          date_version=$(date +'%Y%m%d%H%M%S')
+          tag_version="${{ inputs.ref_name }}-${date_version}"
+          tags="${{ inputs.prefix }}:${tag_version},${{ inputs.prefix }}:${{ inputs.ref_name}}"
+
+          ref="${{ inputs.ref_name }}"
+          if [[ $ref == v* ]]; then
+            tag_version="${{ inputs.ref_name }}"
+            tags="${{ inputs.prefix }}:${{ inputs.ref_name }}"
+
+            if [[ $ref != *"beta"* ]]; then
+              tags="${tags},${{ inputs.prefix }}:latest"
+            fi
+          fi
+
+          echo "tags=${tags}" >> $GITHUB_OUTPUT
+          echo "tag_version=${tag_version}" >> $GITHUB_OUTPUT
+          echo "build_date=$(date --rfc-3339=seconds --utc)" >> $GITHUB_OUTPUT
+
+      - name: Setup GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Setup Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Setup Goss
+        uses: e1himself/goss-installation-action@v1
+        if: inputs.goss_file != 'no-goss'
+        with:
+          version: latest
+
+      - name: Build container testing image
+        uses: docker/build-push-action@v6
+        if: inputs.goss_file != 'no-goss'
+        with:
+          context: ${{ inputs.context }}
+          file: ${{ inputs.dockerfile }}
+          target: ${{ inputs.target }}
+          platforms: linux/amd64
+          load: true
+          push: false
+          tags: ${{ inputs.prefix }}:testingz
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Run Goss tests
+        if: inputs.goss_file != 'no-goss'
+        id: dgoss
+        shell: bash
+        env:
+          CONTAINER_RUNTIME: docker
+          GOSS_FILE: ${{ inputs.goss_file }}
+          GOSS_OPTS: --retry-timeout 60s --sleep 2s --color --format documentation
+          GOSS_SLEEP: 2
+          GOSS_FILES_STRATEGY: cp
+          CONTAINER_LOG_OUTPUT: goss_container_log_output
+          # strapi env
+          HOST: 0.0.0.0
+          PORT: 1337
+          APP_KEYS: 41z2RxrFkHi8Qxm1/YpmiQ==,fsd8wobPwiJQ97Wi/+rdjw==,BGrQV/svxzNSvMV8jBModA==,U7ymepiS5g76LODr5qDNzw==
+          API_TOKEN_SALT: zjz5n+m079IMT6tEjWRXgw==
+          ADMIN_JWT_SECRET: rnBPrWHGsyIHMVAuNfGz9Q==
+          TRANSFER_TOKEN_SALT: ijtk5icKghyHlCq9g9F9xg==
+          DATABASE_CLIENT: sqlite
+          DATABASE_SSL: false
+          DATABASE_FILENAME: .tmp/data.db
+          JWT_SECRET: hUqUmXCxnu59VBrUqXfhQQ==
+        run: dgoss run ${{ inputs.prefix }}:testingz
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          labels: |
+            maintainer="PKRBT Developers"
+            org.opencontainers.image.author="PKRBT Developers"
+            org.opencontainers.image.version=${{ steps.vars.outputs.tag_version }}
+          annotations: |
+            org.opencontainers.image.author="PKRBT Developers"
+            org.opencontainers.image.version=${{ steps.vars.outputs.tag_version }}
+
+      - name: Build and push container image
+        uses: docker/build-push-action@v6
+        with:
+          context: ${{ inputs.context }}
+          file: ${{ inputs.dockerfile }}
+          target: ${{ inputs.target }}
+          platforms: linux/amd64
+          tags: ${{ steps.vars.outputs.tags }}
+          push: true
+          labels: ${{ steps.meta.outputs.labels }}
+          annotations: ${{ steps.meta.outputs.annotations }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

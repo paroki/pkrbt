@@ -19,6 +19,43 @@ env:
   STRAPI_URL: http://localhost:1337
 
 jobs:
+  changes:
+    name: Gather changes
+    runs-on: ubuntu-latest
+    outputs:
+      api: ${{ steps.vars.outputs.api }}
+      cms: ${{ steps.vars.outputs.cms }}
+      pwa: ${{ steps.vars.outputs.pwa }}
+      web: ${{ steps.vars.outputs.web }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            api:
+              - ".github/workflows/**"
+              - "api/**"
+            pwa:
+              - ".github/workflows/**"
+              - "apps/pwa/**"
+            cms:
+              - ".github/workflows/**"
+              - "apps/cms/**"
+            web:
+              - ".github/workflows/**"
+              - "apps/cms/**"
+
+      - name: generate outputs
+        id: vars
+        run: |
+          echo "api=${{ steps.changes.outputs.api }}" >> "$GITHUB_OUTPUT";
+          echo "cms=${{ steps.changes.outputs.cms }}" >> "$GITHUB_OUTPUT";
+          echo "pwa=${{ steps.changes.outputs.pwa }}" >> "$GITHUB_OUTPUT";
+          echo "web=${{ steps.changes.outputs.web }}" >> "$GITHUB_OUTPUT";
+
   testing:
     name: Testing
     uses: paroki/pkrbt/.github/workflows/testing.yml@next
@@ -26,10 +63,15 @@ jobs:
 
   image:
     name: Image
-    needs: ["testing"]
+    needs: ["changes", "testing"]
     if: github.event_name != 'pull_request'
     uses: paroki/pkrbt/.github/workflows/image.yml@next
     secrets: inherit
+    with:
+      #api: ${{ needs.changes.outputs.api }}
+      cms: ${{ needs.changes.outputs.cms }}
+      #pwa: ${{ needs.changes.outputs.pwa }}
+      #web: ${{ needs.changes.outputs.web }}
 
   sync:
     name: Synchronize
