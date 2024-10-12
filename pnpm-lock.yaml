@@ -46,8 +46,8 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1(ukjd5ah2khvxulzjvn65auur6u)
       '@strapi/plugin-users-permissions':
-        specifier: 5.0.3
-        version: 5.0.3(edsxcc373tleunv52tbpbiatzi)
+        specifier: 5.0.6
+        version: 5.0.6(edsxcc373tleunv52tbpbiatzi)
       '@strapi/provider-upload-cloudinary':
         specifier: ^5.0.1
         version: 5.0.2
@@ -3237,9 +3237,9 @@ packages:
       react-router-dom: ^6.0.0
       styled-components: ^6.0.0
 
-  '@strapi/plugin-users-permissions@5.0.3':
-    resolution: {integrity: sha512-nl6OFMT0ZXlDa2y6Oq4O21IF4YHeeFNU3b+GybJLqpZm507cnnIiLAuJa3uof9eEqbXNFtVyQYZ9fX3He/gxQg==}
-    engines: {node: '>=18.0.0 <=20.x.x', npm: '>=6.0.0'}
+  '@strapi/plugin-users-permissions@5.0.6':
+    resolution: {integrity: sha512-fpQdsobp8Y3LfXImgLVBxZt9Sbe9dh8cT1SbsBotqwgWB2PXaILe3E0XMNTvovMn+f4P9nLvIfZ+BIdQvwJO4A==}
+    engines: {node: '>=18.0.0 <=22.x.x', npm: '>=6.0.0'}
     peerDependencies:
       '@strapi/strapi': ^5.0.0 || ^5.0.0-beta || ^5.0.0-alpha || ^5.0.0-rc
       react: ^17.0.0 || ^18.0.0
@@ -3318,10 +3318,6 @@ packages:
 
   '@strapi/utils@5.0.2':
     resolution: {integrity: sha512-d/lObwgAgUbkcTBvSi/9tksX6hbwB2yhgelZvho1kt3zGcfYDPW5Ga40la+a9B1UbJOE2J7sBMmAs0zfChjm2A==}
-    engines: {node: '>=18.0.0 <=20.x.x', npm: '>=6.0.0'}
-
-  '@strapi/utils@5.0.3':
-    resolution: {integrity: sha512-cG5H6xEAbqJWjnM7EQAebxcaGo0JkxUoj5LeAw457OsMpFojW6OTIEA5mfF8Gx5PxLWe5VbM9JKUTayJYsVCbQ==}
     engines: {node: '>=18.0.0 <=20.x.x', npm: '>=6.0.0'}
 
   '@strapi/utils@5.0.6':
@@ -14367,12 +14363,12 @@ snapshots:
       - tedious
       - typescript
 
-  '@strapi/plugin-users-permissions@5.0.3(edsxcc373tleunv52tbpbiatzi)':
+  '@strapi/plugin-users-permissions@5.0.6(edsxcc373tleunv52tbpbiatzi)':
     dependencies:
       '@strapi/design-system': 2.0.0-rc.11(@babel/runtime@7.25.6)(@codemirror/autocomplete@6.18.1(@codemirror/language@6.10.3)(@codemirror/state@6.4.1)(@codemirror/view@6.33.0)(@lezer/common@1.2.1))(@codemirror/language@6.10.3)(@codemirror/lint@6.8.1)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.33.0)(@strapi/icons@2.0.0-rc.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1)))(@types/react-dom@18.3.0)(@types/react@18.3.8)(codemirror@6.0.1(@lezer/common@1.2.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@strapi/icons': 2.0.0-rc.11(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))
       '@strapi/strapi': 5.0.6(@babel/runtime@7.25.6)(@codemirror/autocomplete@6.18.1(@codemirror/language@6.10.3)(@codemirror/state@6.4.1)(@codemirror/view@6.33.0)(@lezer/common@1.2.1))(@codemirror/language@6.10.3)(@codemirror/lint@6.8.1)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.33.0)(@swc/helpers@0.5.5)(@types/hoist-non-react-statics@3.3.5)(@types/node@20.16.5)(@types/react-dom@18.3.0)(@types/react@18.3.8)(better-sqlite3@9.4.3)(codemirror@6.0.1(@lezer/common@1.2.1))(encoding@0.1.13)(koa@2.15.2)(pg@8.13.0)(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.26.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@4.2.1)(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(terser@5.33.0)(type-fest@4.26.1)
-      '@strapi/utils': 5.0.3
+      '@strapi/utils': 5.0.6
       bcryptjs: 2.4.3
       formik: 2.4.5(react@18.3.1)
       grant-koa: 5.4.8(koa@2.15.2)
@@ -14780,19 +14776,6 @@ snapshots:
       zod: 3.23.8
 
   '@strapi/utils@5.0.2':
-    dependencies:
-      '@sindresorhus/slugify': 1.1.0
-      date-fns: 2.30.0
-      execa: 5.1.1
-      http-errors: 2.0.0
-      lodash: 4.17.21
-      node-machine-id: 1.1.12
-      p-map: 4.0.0
-      preferred-pm: 3.1.2
-      yup: 0.32.9
-      zod: 3.23.8
-
-  '@strapi/utils@5.0.3':
     dependencies:
       '@sindresorhus/slugify': 1.1.0
       date-fns: 2.30.0
