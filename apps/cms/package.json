@@ -15,7 +15,7 @@
     "coverage": "vitest --coverage"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.0.3",
+    "@strapi/plugin-cloud": "5.0.6",
     "@strapi/plugin-documentation": "^5.0.1",
     "@strapi/plugin-users-permissions": "5.0.3",
     "@strapi/provider-upload-cloudinary": "^5.0.1",
