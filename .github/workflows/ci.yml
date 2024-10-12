@@ -75,14 +75,14 @@ jobs:
 
   sync:
     name: Synchronize
-    needs: ["image"]
+    needs: ["testing"]
     if: github.event_name != 'pull_request'
     uses: paroki/pkrbt/.github/workflows/sync.yml@next
     secrets: inherit
 
   deploy:
     name: Deploy
-    needs: ["image"]
+    needs: ["testing"]
     if: github.event_name != 'pull_request'
     uses: paroki/pkrbt/.github/workflows/deploy.yml@next
     secrets: inherit
