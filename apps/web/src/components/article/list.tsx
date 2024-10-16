@@ -67,7 +67,7 @@ export default function ArticleList({ articles, pageMeta }: ArticleElProps) {
   return (
     <Container>
       <div className="max-w-screen-lg mx-auto">
-        <h2 className="uppercase tracking-widest font-bold">Warta Gereja</h2>
+        <h2 className="uppercase tracking-widest font-bold">Warta Paroki</h2>
         <p>
           {pageMeta.search ? (
             <>

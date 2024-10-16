@@ -19,7 +19,7 @@ export function Navigation() {
       path: "/",
     },
     {
-      name: "Warta Gereja",
+      name: "Warta Paroki",
       path: "/berita",
     },
     {
