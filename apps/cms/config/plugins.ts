@@ -9,7 +9,7 @@ export default ({ env }) => ({
   upload: {
     config: (() => {
       if ("production" != process.env.NODE_ENV) {
-        // return {};
+        return {};
       }
 
       return {
