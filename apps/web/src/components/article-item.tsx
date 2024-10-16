@@ -22,6 +22,9 @@ export function ArticleItem({ article }: { article: Article }) {
             <div className="absolute w-full h-full bg-primary-400 opacity-0 group-hover:opacity-50 top-0 flex justify-center items-center transition-all">
               <EyeIcon className="text-white w-9 h-9" />
             </div>
+            <div className="absolute top-2 right-2 p-1 tracking-wider bg-slate-950 opacity-50 uppercase text-white rounded text-xs">
+              <p>{article.category ? article.category.name : "Warta Gereja"}</p>
+            </div>
             <Image
               width={200}
               height={140}

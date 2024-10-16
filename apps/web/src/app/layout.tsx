@@ -8,11 +8,11 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import { GOOGLE_ANALYTICS_ID } from "@/utils/config";
 
 export const metadata: Metadata = {
-  title: "Paroki Kristus Raja Barong Tongkok",
-  description: "Portal Paroki Kristus Raja Barong Tongkok",
+  title: "Paroki Kristus Raja Barong Tongkok | PKRBT",
+  description: "Website Paroki Kristus Raja Barong Tongkok",
   openGraph: {
-    title: "Paroki Kristus Raja Barong Tongkok",
-    description: "Portal informasi digital Paroki Kristus Raja Barong Tongkok.",
+    title: "Paroki Kristus Raja Barong Tongkok | PKRBT",
+    description: "Website Paroki Kristus Raja Barong Tongkok",
   },
 };
 
@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={montserrat.className}>
+    <html lang="en" className={`${montserrat.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>

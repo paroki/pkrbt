@@ -1,9 +1,20 @@
 import Container from "@/components/ui/container";
+import { generateMeta } from "@/utils/meta";
 import { addPrefix } from "@/utils/prefix";
 import api from "@/utils/strapi";
+import { Metadata } from "next";
 import Image from "next/image";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMeta({
+    title: "Dewan Pastoral Paroki",
+    description:
+      "Dewan Pastoral Paroki Paroki Kristus Raja Barong Tongkok, Keuskupan Agung Samarinda",
+    type: "article",
+  });
+}
 
 export default async function Page() {
   const { items } = await api.dpp.search({
@@ -14,12 +25,17 @@ export default async function Page() {
   return (
     <Container>
       <div className="max-w-screen-lg mx-auto">
-        <div className="w-full pb-8">
+        <div className="flex flex-col w-full pb-8 text-center">
           <span className="block font-bold lg:text-xl p-0 m-0 tracking-widest text-primary-600">
             PERIODE 2024-2027
           </span>
           <span className="font-extrabold md:text-4xl p-0 m-0 uppercase">
-            Dewan Pastoral Paroki - Harian
+            Dewan Pastoral Paroki
+          </span>
+        </div>
+        <div className="flex flex-col w-full pb-8 text-center underline">
+          <span className="font-extrabold md:text-3xl p-0 m-0 uppercase">
+            Pengurus Harian
           </span>
         </div>
         <div className="grid gap-12 items-start sm:grid-cols-2 md:grid-cols-3">

@@ -14,7 +14,7 @@ export type MetaImage = {
 export type ParokiMeta = {
   title: string;
   description: string;
-  image: MetaImage;
+  image?: MetaImage;
   type: OpenGraphType;
 };
 
@@ -38,11 +38,18 @@ export function generateMeta({
       height: image.height,
       alt: image.alternativeText,
     });
+  } else {
+    images.push({
+      url: `${origin}/logo.png`,
+      width: 512,
+      heigth: 512,
+      alt: "PKRBT Logo",
+    });
   }
 
   const metadata: Metadata = {
     metadataBase: new URL(origin),
-    title: `PKRBT - ${title}`,
+    title: `${title} | PKRBT`,
     description,
     openGraph: {
       title,
@@ -52,7 +59,7 @@ export function generateMeta({
       url,
       countryName: "indonesia",
       locale: "id",
-      siteName: "PKRBT",
+      siteName: "pkrbt",
     },
     twitter: {
       images,
