@@ -31,11 +31,12 @@ export interface MarriagesProps {
   locale?: null;
 }
 
-export async function getMarriages(limit: number = 4) {
+export async function getMarriages(limit: number = 99) {
   const data = await api.fetch.GET('/an-marriages', {
     params: {
       query: {
-        'pagination[limit]': limit
+        'pagination[limit]': limit,
+        sort: 'startAt:desc'
       }
     }
   });
