@@ -12,10 +12,14 @@ interface ContainerHeaderType {
 }
 
 const Header = ({ children }: ContainerHeaderType) => {
-  return <h4 className="my-2 border-y border-gray-200 text-base py-4 w-full text-center">{children}</h4>;
+  return (
+    <h4 className="my-2 border-y border-gray-200 text-base py-4 w-full text-center">
+      {children}
+    </h4>
+  );
 };
 
-export default function MisaSchedule() {
+export default function MassSchedule() {
   return (
     <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-base leading-9">
       <div className="misa-group">
@@ -25,10 +29,10 @@ export default function MisaSchedule() {
       </div>
       <div className="misa-group">
         <Header>Misa Harian</Header>
-        <Day day="Senin" time="06:00" />
-        <Day day="Selasa" time="06:00" />
+        <Day day="Senin" time="05:30" />
+        <Day day="Selasa" time="05:30" />
         <Day day="Rabu" time="18:00" />
-        <Day day="Kamis" time="06:00" />
+        <Day day="Kamis" time="05:30" />
         <Day day="Jumat" time="18:00" />
       </div>
       <div className="misa-group">

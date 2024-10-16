@@ -21,10 +21,9 @@ export default ({ env }) => ({
         },
         breakpoints: {},
         actionOptions: {
-          upload: {
+          uploadStream: {
             timeout: 60000,
           },
-          uploadStream: {},
           delete: {},
         },
       };

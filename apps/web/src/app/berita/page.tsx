@@ -1,5 +1,7 @@
-import api from '@/utils/strapi';
-import ArticleList from '../../components/article/list';
+import api from "@/utils/strapi";
+import ArticleList from "../../components/article/list";
+import { Metadata } from "next";
+import { generateMeta } from "@/utils/meta";
 
 type SearchParams = {
   search?: string;
@@ -17,29 +19,37 @@ type Props = {
 };
 
 // TODO: find a way to remove the line below
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(): Promise<Metadata> {
+  return generateMeta({
+    title: "Kumpulan Berita dan Artikel | PKRBT",
+    description: "Kumpulan artikel Paroki Kristus Raja Barong Tongkok",
+    type: "article",
+  });
+}
 
 export default async function Page({ searchParams }: Props) {
   const withDefaults = {
     page: searchParams.page ?? 1,
     limit: 9,
-    sort: ['publishedAt:desc'],
+    sort: ["publishedAt:desc"],
     filters: {
       $or: [
         {
           title: {
-            $containsi: searchParams.search ?? ''
-          }
+            $containsi: searchParams.search ?? "",
+          },
         },
         {
           category: {
             name: {
-              $containsi: searchParams.search ?? ''
-            }
-          }
-        }
-      ]
-    }
+              $containsi: searchParams.search ?? "",
+            },
+          },
+        },
+      ],
+    },
   };
 
   const { items, meta } = await api.article.search(withDefaults);
@@ -47,7 +57,7 @@ export default async function Page({ searchParams }: Props) {
   const pageMeta = {
     size: meta.pagination.pageCount ?? 0,
     page: withDefaults.page,
-    search: searchParams.search
+    search: searchParams.search,
   };
 
   return (

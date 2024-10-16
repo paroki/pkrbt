@@ -89,7 +89,7 @@ export default async function Page({ params }: Props) {
       <div className="max-w-screen-lg mx-auto">
         <div className="flex items-center gap-3">
           <p className="text-primary-600 font-bold tracking-widest uppercase">
-            {article.category?.name}
+            {article.category ? article.category.name : "Warta Gereja"}
           </p>
         </div>
         <h1 className="font-bold md:text-5xl leading-normal my-6">

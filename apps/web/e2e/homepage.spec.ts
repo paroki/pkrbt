@@ -18,5 +18,7 @@ test("clicking more articles on homepage", async ({ page }) => {
   // Clicking more articles
   await page.getByRole("link", { name: "Selengkapnya" }).first().click();
 
-  await expect(page.getByRole("heading", { name: "Berita" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Warta Paroki" }),
+  ).toBeVisible();
 });

@@ -61,7 +61,7 @@ jobs:
 
   deploy:
     name: Deploy
-    # if: github.event_name != 'pull_request'
+    if: github.event_name != 'pull_request'
     needs: ["changes", "e2e"]
     uses: paroki/pkrbt/.github/workflows/deploy.yml@next
     secrets: inherit

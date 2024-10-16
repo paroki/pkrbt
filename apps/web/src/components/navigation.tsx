@@ -6,8 +6,6 @@ import { usePathname } from "next/navigation";
 import { LucideChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 
-import logo from "@/assets/logo.png";
-
 export function Navigation() {
   interface MenuItems {
     name: string;
@@ -21,7 +19,7 @@ export function Navigation() {
       path: "/",
     },
     {
-      name: "Berita",
+      name: "Warta Paroki",
       path: "/berita",
     },
     {
@@ -68,7 +66,7 @@ export function Navigation() {
       <nav className="flex max-w-screen-lg mx-auto ">
         <div>
           <Link href="/" className="flex items-center gap-4 p-4">
-            <Image src={logo} width="50" height="50" alt="logo"></Image>
+            <Image src="/logo.png" width="50" height="50" alt="logo"></Image>
             <h1 className="pt-3 text-xl ">PKRBT</h1>
           </Link>
         </div>

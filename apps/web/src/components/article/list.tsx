@@ -23,7 +23,7 @@ export const ListView = ({ article }: { article: Article }) => {
   return (
     <Box
       maxWidth="240px"
-      className="rounded overflow-hidden group transition-all hover:scale-[1.01]"
+      className="overflow-hidden group transition-all hover:scale-[1.01]"
     >
       <Card size="2" className="relative">
         <Inset clip="padding-box" side="top" pb="current">
@@ -33,20 +33,21 @@ export const ListView = ({ article }: { article: Article }) => {
                 ? addPrefix(article.metaImage.url)
                 : "/static/noimg.jpg"
             }
+            className="rounded-md"
             alt="Bold typography"
-            width="200"
-            height="140"
+            width={article.metaImage?.width ?? 605}
+            height={article.metaImage?.height ?? 334}
+            sizes="100vw"
             style={{
               display: "block",
               objectFit: "cover",
-              width: "100%",
-              height: 140,
               backgroundColor: "var(--gray-5)",
+              height: "200px",
             }}
           />
         </Inset>
-        <div className="absolute top-2 right-2 bg-primary-500 p-1 tracking-wider uppercase text-white rounded text-xs">
-          <p>{article.category?.name}</p>
+        <div className="absolute top-2 right-2 bg-slate-950 opacity-50 p-1 tracking-wider uppercase text-white rounded text-xs">
+          <p>{article.category ? article.category.name : "Warta Gereja"}</p>
         </div>
         <div>
           <h3 className="text-base mb-2 group-hover:text-primary-600">
@@ -66,7 +67,7 @@ export default function ArticleList({ articles, pageMeta }: ArticleElProps) {
   return (
     <Container>
       <div className="max-w-screen-lg mx-auto">
-        <h2 className="uppercase tracking-widest font-bold">Berita</h2>
+        <h2 className="uppercase tracking-widest font-bold">Warta Paroki</h2>
         <p>
           {pageMeta.search ? (
             <>
