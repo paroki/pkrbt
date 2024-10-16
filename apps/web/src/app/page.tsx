@@ -2,7 +2,7 @@ import Container from "@/components/ui/container";
 import Jumbotron from "@/app/homepage/jumbotron";
 import ContainerHeader from "@/components/container-header";
 import MainNews from "@/components/main-news";
-import MisaSchedule from "@/components/schedule";
+import MassSchedule from "@/components/schedule";
 import Announcement from "@/components/announcement";
 import Sacraments from "@/components/sacraments";
 import Rings from "@/components/icons/rings";
@@ -52,7 +52,7 @@ export default async function Home() {
           <Container className="bg-white">
             <div className="max-w-screen-lg mx-auto">
               <ContainerHeader>Jadwal Misa</ContainerHeader>
-              <MisaSchedule />
+              <MassSchedule />
             </div>
           </Container>
           <Container className="bg-gray-50">

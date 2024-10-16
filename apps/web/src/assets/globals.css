@@ -86,21 +86,21 @@ h4 {
 
 /* markdown section */
 .markdown h1 {
-  @apply text-4xl;
+  @apply text-4xl pb-4;
 }
 
 .markdown h2 {
-  @apply text-3xl;
+  @apply text-3xl pb-4;
 }
 
 .markdown h3 {
-  @apply text-2xl;
+  @apply text-2xl pb-4;
 }
 
 .markdown h4 {
-  @apply text-lg;
+  @apply text-lg pb-4;
 }
 
 .markdown p {
-  @apply pb-2;
+  @apply pb-4 leading-normal lg:leading-relaxed;
 }

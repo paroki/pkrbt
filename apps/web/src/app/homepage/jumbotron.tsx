@@ -32,17 +32,17 @@ function HomepageSlider({ images }: { images: Images }) {
             <CarouselItem key={index}>
               <Image
                 priority
-                className="rounded w-full md:w-auto"
                 width={item.width}
                 height={item.height}
+                className="rounded-md w-full"
                 alt={item.alternativeText ?? "homepage"}
                 src={addPrefix(item?.url ?? "")}
+                sizes="100vw"
                 style={{
                   display: "block",
                   objectFit: "cover",
-                  width: "100%",
-                  height: 300,
                   backgroundColor: "var(--gray-5)",
+                  height: 300,
                 }}
               />
             </CarouselItem>
