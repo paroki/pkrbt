@@ -41,8 +41,8 @@ export function generateMeta({
   } else {
     images.push({
       url: `${origin}/logo.png`,
-      width: 512,
-      heigth: 512,
+      width: 64,
+      heigth: 64,
       alt: "PKRBT Logo",
     });
   }
