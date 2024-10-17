@@ -1,0 +1,64 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      ref_name:
+        type: string
+        default: ${{ github.ref_name }}
+        description: GitHub refname
+      environment:
+        type: string
+        default: "development"
+        description: GitHub Environment
+
+jobs:
+  cms:
+    name: CMS
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Environment
+        shell: bash
+        run: |
+          echo "ADMIN_JWT_SECRET=${{ secrets.CMS_ADMIN_JWT_SECRET }}" >> $GITHUB_ENV
+          echo "API_TOKEN_SALT=${{ secrets.CMS_API_TOKEN_SALT }}" >> $GITHUB_ENV
+          echo "APP_KEYS=${{ secrets.CMS_APP_KEYS }}" >> $GITHUB_ENV
+          echo "CLOUDINARY_KEY=${{ secrets.CMS_CLOUDINARY_KEY }}" >> $GITHUB_ENV
+          echo "CLOUDINARY_NAME=${{ secrets.CMS_CLOUDINARY_NAME }}" >> $GITHUB_ENV
+          echo "CLOUDINARY_SECRET=${{ secrets.CMS_CLOUDINARY_SECRET }}" >> $GITHUB_ENV
+          echo "DATABASE_HOST=${{ secrets.DATABASE_HOST }}" >> $GITHUB_ENV
+          echo "DATABASE_NAME=${{ secrets.DATABASE_NAME }}" >> $GITHUB_ENV
+          echo "DATABASE_PASSWORD=${{ secrets.DATABASE_PASSWORD }}" >> $GITHUB_ENV
+          echo "DATABASE_PORT=${{ secrets.DATABASE_PORT }}" >> $GITHUB_ENV
+          echo "DATABASE_SSL=${{ secrets.DATABASE_SSL }}" >> $GITHUB_ENV
+          echo "DATABASE_USERNAME=${{ secrets.DATABASE_USERNAME }}" >> $GITHUB_ENV
+          echo "HOST=${{ secrets.CMS_HOST }}" >> $GITHUB_ENV
+          echo "JWT_SECRET=${{ secrets.CMS_JWT_SECRET }}" >> $GITHUB_ENV
+          echo "PORT=${{ secrets.CMS_PORT }}" >> $GITHUB_ENV
+          echo "TRANSFER_TOKEN_SALT=${{ secrets.CMS_TRANSFER_TOKEN_SALT }}" >> $GITHUB_ENV
+          echo "URL=${{ secrets.CMS_URL }}" >> $GITHUB_ENV
+          echo "NODE_ENV=production" >> $GITHUB_ENV
+          echo "SMTP_HOST=${{ secrets.SMTP_HOST }}" >> $GITHUB_ENV
+          echo "SMTP_PASSWORD=${{ secrets.SMTP_PASSWORD }}" >> $GITHUB_ENV
+          echo "SMTP_PORT=${{ secrets.SMTP_PORT }}" >> $GITHUB_ENV
+          echo "SMTP_USERNAME=${{ secrets.SMTP_USERNAME }}" >> $GITHUB_ENV
+
+      - name: Setup GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
+        uses: ./.github/actions/build-image
+        with:
+          prefix: ghcr.io/paroki/pkrbt-cms
+          dockerfile: apps/cms/Dockerfile
+          target: prod
+          goss_file: docker/goss-cms.yaml
+          ref_name: ${{ inputs.ref_name }}

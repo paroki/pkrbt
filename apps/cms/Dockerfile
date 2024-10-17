@@ -2,8 +2,10 @@
 
 FROM node:20-alpine AS base
 
-ENV PNPM_HOME "/pnpm"
-ENV PATH "$PNPM_HOME:$PATH"
+ENV NODE_ENV="production"
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+
 RUN apk update && apk add --no-cache \
   libc6-compat \
   build-base \
@@ -41,7 +43,7 @@ RUN turbo prune --docker @pkrbt/cms
 RUN pnpm deploy --filter=cms /prod/cms
 
 WORKDIR /prod/cms
-# RUN pnpm build
+RUN pnpm build
 
 FROM base AS prod
 
@@ -52,4 +54,4 @@ WORKDIR /cms
 EXPOSE 1337
 VOLUME [ "/cms/public" ]
 
-ENTRYPOINT [ "docker-entrypoint" ]
+CMD [ "pnpm", "start" ]

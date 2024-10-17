@@ -7,9 +7,9 @@ import { Strapi } from "@pkrbt/openapi";
 // );
 // invariant(process.env.STRAPI_TOKEN, "Missing STRAPI_TOKEN environment var");
 
-export const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL;
+export const STRAPI_URL = process.env["NEXT_PUBLIC_STRAPI_URL"];
 
-const accessToken = process.env.STRAPI_TOKEN ?? "token";
+const accessToken = process.env["STRAPI_TOKEN"] ?? "token";
 
 const api = new Strapi({
   baseUrl: `${STRAPI_URL}`,

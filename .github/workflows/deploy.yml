@@ -3,18 +3,14 @@ name: Deploy
 on:
   workflow_call:
     inputs:
-      web:
-        type: string
-        description: Deploy website
-        required: true
-      pwa:
-        type: string
-        description: Deploy website
-        required: true
-      production:
+      environment:
         type: string
         description: Production release
-        default: "false"
+        default: "development"
+      ref_name:
+        type: string
+        description: Version to deploy
+        default: ${{ github.ref_name }}
 
 permissions:
   contents: read
@@ -27,14 +23,15 @@ env:
   TURBO_TEAM: ${{ secrets.VERCEL_TEAM }}
   TURBO_REMOTE_ONLY: true
   VERCEL_ORG_ID: ${{ secrets.VERCEL_USER_ID }}
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
 jobs:
   web:
     name: Website
-    if: inputs.web == 'true'
     runs-on: ubuntu-latest
     env:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_WEB_ID }}
+    environment: ${{ inputs.environment }}
     steps:
       - name: setup vars
         id: vars
@@ -42,18 +39,19 @@ jobs:
         run: |
           vercel_deploy="vercel deploy --prebuilt"
           vercel_build="vercel build"
-          vercel_env="preview"
-          production="${{ inputs.production }}"
-
-          if [[ $production == "true" ]]; then
+          vercel_env="development"
+          env="${{ inputs.environment }}"
+          if [[ $env == "production" ]]; then
             vercel_deploy="vercel deploy --prod --prebuilt"
             vercel_build="vercel build --prod"
             vercel_env="production"
           fi
 
-          echo "vercel_deploy=${vercel_deploy}" >> "$GITHUB_OUTPUT"
-          echo "vercel_build=${vercel_build}" >> "$GITHUB_OUTPUT"
-          echo "vercel_env=${vercel_env}" >> "$GITHUB_OUTPUT"
+          echo "vercel_deploy=${vercel_deploy}" >> $GITHUB_OUTPUT
+          echo "vercel_build=${vercel_build}" >> $GITHUB_OUTPUT
+          echo "vercel_env=${vercel_env}" >> $GITHUB_OUTPUT
+          echo "NEXT_PUBLIC_STRAPI_URL=${{ secrets.CMS_URL }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_VERSION=${{ inputs.ref_name }}" >> $GITHUB_ENV
 
       - name: Checkout code
         uses: actions/checkout@v4

@@ -33,6 +33,10 @@ on:
         required: false
         default: "no-goss"
         description: Goss File Path
+      env_vars:
+        type: string
+        description: Environment variables
+        required: true
 
 jobs:
   build:

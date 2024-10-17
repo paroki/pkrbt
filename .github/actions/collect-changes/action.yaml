@@ -26,6 +26,9 @@ outputs:
   build_api:
     description: Build API
     value: ${{ steps.filter.outputs.build_api }}
+  environment:
+    description: Environment
+    value: ${{ steps.vars.outputs.environment }}
 
 runs:
   using: composite

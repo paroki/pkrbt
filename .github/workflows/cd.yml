@@ -1,9 +1,10 @@
-name: Deploy Debug
+name: CD
 
 on:
   push:
     branches:
-      - deploy.debug
+      - next
+      - main
 
 # These are recommended by the semantic-release docs: https://github.com/semantic-release/npm#npm-provenance
 permissions:

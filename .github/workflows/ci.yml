@@ -4,11 +4,14 @@ on:
   push:
     branches:
       - next
-      - debug
+      - main
   pull_request:
     branches:
       - next
-      - debug
+      - main
+  workflow_dispatch: ~
+  schedule:
+    - cron: 0 2 * * 0
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -49,22 +52,3 @@ jobs:
     with:
       node_test: ${{ needs.changes.outputs.node_test }}
       web: ${{ needs.changes.outputs.web }}
-
-  build:
-    name: Build
-    needs: ["changes", "node-test"]
-    if: github.event_name != 'pull_request'
-    uses: paroki/pkrbt/.github/workflows/image.yml@next
-    secrets: inherit
-    with:
-      cms: ${{ needs.changes.outputs.build_cms }}
-
-  deploy:
-    name: Deploy
-    if: github.event_name != 'pull_request'
-    needs: ["changes", "e2e"]
-    uses: paroki/pkrbt/.github/workflows/deploy.yml@next
-    secrets: inherit
-    with:
-      web: ${{ needs.changes.outputs.web}}
-      pwa: ${{ needs.changes.outputs.pwa}}

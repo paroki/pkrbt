@@ -62,22 +62,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         id: release
 
-  image:
-    name: Image
+  build:
+    name: Build
     needs: ["release"]
-    uses: "paroki/pkrbt/.github/workflows/image.yml@next"
+    uses: "paroki/pkrbt/.github/workflows/build.yml@next"
     secrets: inherit
     with:
       ref_name: ${{ needs.release.outputs.version }}
-      cms: "true"
+      environment: production
 
   deploy:
     name: Deploy
-    # if: github.event_name != 'pull_request'
-    needs: ["image"]
+    needs: ["release", "build"]
     uses: paroki/pkrbt/.github/workflows/deploy.yml@next
     secrets: inherit
     with:
-      web: "true"
-      pwa: "true"
-      production: "true"
+      ref_name: ${{ needs.release.outputs.version }}
+      environment: production
