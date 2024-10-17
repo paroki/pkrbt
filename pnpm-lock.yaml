@@ -55,8 +55,8 @@ importers:
         specifier: 5.0.6
         version: 5.0.6
       '@strapi/provider-upload-cloudinary':
-        specifier: 5.0.6
-        version: 5.0.6
+        specifier: 5.1.0
+        version: 5.1.0
       '@strapi/strapi':
         specifier: 5.0.6
         version: 5.0.6(@babel/runtime@7.25.6)(@codemirror/autocomplete@6.18.1(@codemirror/language@6.10.3)(@codemirror/state@6.4.1)(@codemirror/view@6.33.0)(@lezer/common@1.2.1))(@codemirror/language@6.10.3)(@codemirror/lint@6.8.1)(@codemirror/search@6.5.6)(@codemirror/state@6.4.1)(@codemirror/theme-one-dark@6.1.2)(@codemirror/view@6.33.0)(@swc/helpers@0.5.5)(@types/hoist-non-react-statics@3.3.5)(@types/node@20.16.5)(@types/react-dom@18.3.0)(@types/react@18.3.8)(better-sqlite3@11.3.0)(codemirror@6.0.1(@lezer/common@1.2.1))(encoding@0.1.13)(koa@2.15.2)(pg@8.13.0)(react-dom@18.3.1(react@18.3.1))(react-router-dom@6.26.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)(redux@4.2.1)(styled-components@6.1.13(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(terser@5.33.0)(type-fest@4.26.1)
@@ -226,10 +226,10 @@ importers:
         version: 18.3.0
       '@vitejs/plugin-react':
         specifier: ^4.3.1
-        version: 4.3.1(vite@5.2.8(@types/node@20.16.5)(terser@5.33.0))
+        version: 4.3.1(vite@5.2.14(@types/node@20.16.5)(terser@5.33.0))
       '@vitejs/plugin-react-swc':
         specifier: ^3.7.1
-        version: 3.7.1(@swc/helpers@0.5.5)(vite@5.2.8(@types/node@20.16.5)(terser@5.33.0))
+        version: 3.7.1(@swc/helpers@0.5.5)(vite@5.2.14(@types/node@20.16.5)(terser@5.33.0))
       '@vitest/coverage-v8':
         specifier: ^2.1.1
         version: 2.1.1(vitest@2.1.1)
@@ -3626,8 +3626,8 @@ packages:
     resolution: {integrity: sha512-en9JugYHFZYAZbCklxEJYa+54AdoCaRb32Vs56tqwZwaznlE02iJkhpKBYZQDXFIjmY4RpCiY0tS5WTZr/hsuw==}
     engines: {node: '>=18.0.0 <=22.x.x', npm: '>=6.0.0'}
 
-  '@strapi/provider-upload-cloudinary@5.0.6':
-    resolution: {integrity: sha512-Hu8SDYQzXHJo74zDj+4HhzI1+8On1yqiSh0ve5QIRqz35xsz8r1BTS5aR2tBiSsD+G4LPBC4RyLBC6J7hv4giQ==}
+  '@strapi/provider-upload-cloudinary@5.1.0':
+    resolution: {integrity: sha512-chlFO4nSoguF3q+5LqoTbYQmtlNRbX/fA2r/iGA6A+ARosO3HYyoL/auHO42l5sgnsubxsCBBVbUYDE8Aqtfxw==}
     engines: {node: '>=18.0.0 <=22.x.x', npm: '>=6.0.0'}
 
   '@strapi/provider-upload-local@5.0.6':
@@ -3681,6 +3681,10 @@ packages:
 
   '@strapi/utils@5.0.6':
     resolution: {integrity: sha512-ipa4mFgiIaNWRnZfqQqm0vJUq5Vv5AaOIBa7tRuq6lGhpvGldz+xaO8RwPeS2eCNmG8mfZEX5CvJnKSQLm/z+w==}
+    engines: {node: '>=18.0.0 <=22.x.x', npm: '>=6.0.0'}
+
+  '@strapi/utils@5.1.0':
+    resolution: {integrity: sha512-dPb4JmEsNVYA4vtNq4QtDL7NAQa0DrsdZQOWGrLM62iLbaclBPzpSgsxxzv4RCTD3z07sfrLVeffjjt7VbyXog==}
     engines: {node: '>=18.0.0 <=22.x.x', npm: '>=6.0.0'}
 
   '@swc/core-darwin-arm64@1.7.26':
@@ -15296,9 +15300,9 @@ snapshots:
       '@strapi/utils': 5.0.6
       sendmail: 1.6.1
 
-  '@strapi/provider-upload-cloudinary@5.0.6':
+  '@strapi/provider-upload-cloudinary@5.1.0':
     dependencies:
-      '@strapi/utils': 5.0.6
+      '@strapi/utils': 5.1.0
       cloudinary: 1.41.3
       into-stream: 5.1.1
 
@@ -15608,6 +15612,19 @@ snapshots:
       - typescript
 
   '@strapi/utils@5.0.6':
+    dependencies:
+      '@sindresorhus/slugify': 1.1.0
+      date-fns: 2.30.0
+      execa: 5.1.1
+      http-errors: 2.0.0
+      lodash: 4.17.21
+      node-machine-id: 1.1.12
+      p-map: 4.0.0
+      preferred-pm: 3.1.2
+      yup: 0.32.9
+      zod: 3.23.8
+
+  '@strapi/utils@5.1.0':
     dependencies:
       '@sindresorhus/slugify': 1.1.0
       date-fns: 2.30.0
@@ -16456,21 +16473,21 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@vitejs/plugin-react-swc@3.7.1(@swc/helpers@0.5.5)(vite@5.2.8(@types/node@20.16.5)(terser@5.33.0))':
+  '@vitejs/plugin-react-swc@3.7.1(@swc/helpers@0.5.5)(vite@5.2.14(@types/node@20.16.5)(terser@5.33.0))':
     dependencies:
       '@swc/core': 1.7.26(@swc/helpers@0.5.5)
-      vite: 5.2.8(@types/node@20.16.5)(terser@5.33.0)
+      vite: 5.2.14(@types/node@20.16.5)(terser@5.33.0)
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@vitejs/plugin-react@4.3.1(vite@5.2.8(@types/node@20.16.5)(terser@5.33.0))':
+  '@vitejs/plugin-react@4.3.1(vite@5.2.14(@types/node@20.16.5)(terser@5.33.0))':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/plugin-transform-react-jsx-self': 7.24.7(@babel/core@7.25.2)
       '@babel/plugin-transform-react-jsx-source': 7.24.7(@babel/core@7.25.2)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 5.2.8(@types/node@20.16.5)(terser@5.33.0)
+      vite: 5.2.14(@types/node@20.16.5)(terser@5.33.0)
     transitivePeerDependencies:
       - supports-color
 

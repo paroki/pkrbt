@@ -20,7 +20,7 @@
     "@strapi/plugin-sentry": "^5.0.6",
     "@strapi/plugin-users-permissions": "5.0.6",
     "@strapi/provider-email-nodemailer": "5.0.6",
-    "@strapi/provider-upload-cloudinary": "5.0.6",
+    "@strapi/provider-upload-cloudinary": "5.1.0",
     "@strapi/strapi": "5.0.6",
     "better-sqlite3": "11.3.0",
     "lodash": "^4.17.21",
