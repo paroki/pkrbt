@@ -43,16 +43,16 @@ export default async function Home() {
               <Jumbotron homepage={homepage} />
             </div>
           </Container>
-          <Container className="bg-gray-50">
-            <div className="max-w-screen-lg mx-auto">
-              <ContainerHeader>Artikel</ContainerHeader>
-              <MainNews articles={articles} />
-            </div>
-          </Container>
           <Container className="bg-white">
             <div className="max-w-screen-lg mx-auto">
               <ContainerHeader>Jadwal Misa</ContainerHeader>
               <MassSchedule />
+            </div>
+          </Container>
+          <Container className="bg-gray-50">
+            <div className="max-w-screen-lg mx-auto">
+              <ContainerHeader>Artikel</ContainerHeader>
+              <MainNews articles={articles} />
             </div>
           </Container>
           <Container className="bg-gray-50">
