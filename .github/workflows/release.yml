@@ -70,6 +70,7 @@ jobs:
     with:
       ref_name: ${{ needs.release.outputs.version }}
       environment: production
+      cms: "true"
 
   deploy:
     name: Deploy
@@ -79,3 +80,4 @@ jobs:
     with:
       ref_name: ${{ needs.release.outputs.version }}
       environment: production
+      web: "true"

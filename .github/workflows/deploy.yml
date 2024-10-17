@@ -11,6 +11,10 @@ on:
         type: string
         description: Version to deploy
         default: ${{ github.ref_name }}
+      web:
+        type: string
+        description: Build Website
+        default: "false"
 
 permissions:
   contents: read
@@ -29,6 +33,7 @@ jobs:
   web:
     name: Website
     runs-on: ubuntu-latest
+    if: inputs.web == 'true'
     env:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_WEB_ID }}
     environment: ${{ inputs.environment }}

@@ -19,17 +19,35 @@ env:
   GITHUB_TOKEN: ${{ secrets.PAT }}
 
 jobs:
+  changes:
+    name: Collect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      web: ${{ steps.vars.outputs.web }}
+      build_cms: ${{ steps.vars.outputs.build_cms }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Collect changes
+        uses: ./.github/actions/collect-changes
+        id: vars
+
   build:
     name: Build
+    needs: ["changes"]
     uses: paroki/pkrbt/.github/workflows/build.yml@next
     secrets: inherit
     with:
       environment: development
+      cms: ${{ needs.changes.outputs.build_cms }}
 
   deploy:
     name: Deploy
-    needs: ["build"]
+    needs: ["changes", "build"]
     uses: paroki/pkrbt/.github/workflows/deploy.yml@next
     secrets: inherit
     with:
       environment: development
+      web: ${{ needs.changes.outputs.web }}

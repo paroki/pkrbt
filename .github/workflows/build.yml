@@ -11,12 +11,17 @@ on:
         type: string
         default: "development"
         description: GitHub Environment
+      cms:
+        type: string
+        default: "false"
+        description: Build CMS
 
 jobs:
   cms:
     name: CMS
     runs-on: ubuntu-latest
     environment: ${{ inputs.environment }}
+    if: inputs.cms == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4

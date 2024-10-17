@@ -113,17 +113,6 @@ jobs:
           GOSS_SLEEP: 2
           GOSS_FILES_STRATEGY: cp
           CONTAINER_LOG_OUTPUT: goss_container_log_output
-          # strapi env
-          HOST: 0.0.0.0
-          PORT: 1337
-          APP_KEYS: 41z2RxrFkHi8Qxm1/YpmiQ==,fsd8wobPwiJQ97Wi/+rdjw==,BGrQV/svxzNSvMV8jBModA==,U7ymepiS5g76LODr5qDNzw==
-          API_TOKEN_SALT: zjz5n+m079IMT6tEjWRXgw==
-          ADMIN_JWT_SECRET: rnBPrWHGsyIHMVAuNfGz9Q==
-          TRANSFER_TOKEN_SALT: ijtk5icKghyHlCq9g9F9xg==
-          DATABASE_CLIENT: sqlite
-          DATABASE_SSL: false
-          DATABASE_FILENAME: .tmp/data.db
-          JWT_SECRET: hUqUmXCxnu59VBrUqXfhQQ==
         run: dgoss run ${{ inputs.prefix }}:testingz
 
       - name: Docker meta
