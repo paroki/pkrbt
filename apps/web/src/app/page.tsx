@@ -3,7 +3,6 @@ import Jumbotron from "@/app/homepage/jumbotron";
 import ContainerHeader from "@/components/container-header";
 import MainNews from "@/components/main-news";
 import MassSchedule from "@/components/schedule";
-import Announcement from "@/components/announcement";
 import Marriages from "@/components/marriages";
 import Rings from "@/components/icons/rings";
 import { Text } from "@radix-ui/themes";
@@ -16,7 +15,13 @@ import { Image } from "@pkrbt/openapi";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata() {
-  const { metaTitle, metaDescription, metaImage } = await fetchHomepage();
+  const homepage = await fetchHomepage();
+
+  if (!homepage) {
+    return {};
+  }
+
+  const { metaTitle, metaDescription, metaImage } = homepage;
   return generateMeta({
     title: metaTitle,
     description: metaDescription,
@@ -38,23 +43,29 @@ export default async function Home() {
     return (
       <ErrorBoundary>
         <div>
-          <Container>
-            <div className="max-w-screen-lg mx-auto">
-              <Jumbotron homepage={homepage} />
-            </div>
-          </Container>
-          <Container className="bg-gray-50">
-            <div className="max-w-screen-lg mx-auto">
-              <ContainerHeader>Artikel</ContainerHeader>
-              <MainNews articles={articles} />
-            </div>
-          </Container>
+          {homepage && (
+            <Container>
+              <div className="max-w-screen-lg mx-auto">
+                <Jumbotron homepage={homepage} />
+              </div>
+            </Container>
+          )}
+
           <Container className="bg-white">
             <div className="max-w-screen-lg mx-auto">
               <ContainerHeader>Jadwal Misa</ContainerHeader>
               <MassSchedule />
             </div>
           </Container>
+          {articles.length > 0 && (
+            <Container className="bg-gray-50">
+              <div className="max-w-screen-lg mx-auto">
+                <ContainerHeader>Artikel</ContainerHeader>
+                <MainNews articles={articles} />
+              </div>
+            </Container>
+          )}
+          {/*
           <Container className="bg-gray-50">
             <div className="max-w-screen-lg mx-auto">
               <ContainerHeader className="text-base">
@@ -63,6 +74,7 @@ export default async function Home() {
               <Announcement />
             </div>
           </Container>
+          */}
           {marriages.length && (
             <Container className="bg-gray-50">
               <div className="max-w-screen-lg mx-auto">

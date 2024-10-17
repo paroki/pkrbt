@@ -23,6 +23,7 @@ function HomepageSlider({ images }: { images: Images }) {
       <Carousel
         opts={{
           align: "start",
+          loop: true,
         }}
         plugins={[plugin.current]}
         className="w-full"
@@ -54,10 +55,10 @@ function HomepageSlider({ images }: { images: Images }) {
 }
 export default function Jumbotron({ homepage }: Props) {
   return (
-    <div className="flex space-x-5 flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row gap-4">
       {homepage.images && <HomepageSlider images={homepage.images as Images} />}
 
-      <div className="py-4 flex-[1]">
+      <div className="flex-[1] bg-white border border-slate-200 drop-shadow-lg rounded-md p-4">
         <h2 className="uppercase font-semibold mb-4 tracking-widest text-xs">
           {homepage.subtitle}
         </h2>

@@ -15,11 +15,11 @@ export function Footer() {
           <Info />
         </div>
       </Container>
-      <footer className="text-center p-10 bg-gray-800 text-primary-600 flex flex-col">
+      <footer className="text-center p-2 bg-gray-800 text-primary-600 flex flex-col text-sm">
         <Link href="https://github.com/paroki/pkrbt">
-          PKRBT Website versi: <strong>{VERSION}</strong>
+          PKRBT website versi <strong>{VERSION}</strong>
         </Link>
-        <Link href="https://github.com/orgs/paroki/people">
+        <Link href="https://github.com/orgs/paroki/teams/developer">
           &copy; 2024 PKRBT Developers
         </Link>
       </footer>
