@@ -23,7 +23,7 @@ export const ListView = ({ article }: { article: Article }) => {
   return (
     <Box
       maxWidth="240px"
-      className="overflow-hidden group transition-all hover:scale-[1.01] bg-white drop-shadow-md rounded-md"
+      className="overflow-hidden group transition-all hover:scale-[1.01] bg-white border border-slate-200 drop-shadow-md rounded-md"
     >
       <Card size="2" className="relative">
         <Inset clip="padding-box" side="top" pb="current">

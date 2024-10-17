@@ -13,7 +13,7 @@ export function ArticleItem({ article }: { article: Article }) {
       {/* TODO: every article should have slug! remove line above */}
       <Box
         maxWidth="240px"
-        className="group bg-white rounded-b-md drop-shadow-md"
+        className="group bg-white border border-slate-200 rounded-md drop-shadow-md"
       >
         <Card size="2">
           <Inset

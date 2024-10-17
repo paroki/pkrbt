@@ -22,11 +22,12 @@ export default function MainNews({ articles }: { articles: Article[] }) {
         <Carousel
           opts={{
             align: "start",
+            loop: true,
           }}
           plugins={[plugin.current]}
           className="w-full"
         >
-          <CarouselContent>
+          <CarouselContent className="py-2">
             {articles.map((article, index) => (
               <CarouselItem
                 key={index}
