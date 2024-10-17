@@ -26,8 +26,6 @@ RUN corepack enable && \
     turbo \
     node-gyp
 
-ENTRYPOINT [ "docker-entrypoint" ]
-
 WORKDIR /pkrbt
 
 FROM base AS build
