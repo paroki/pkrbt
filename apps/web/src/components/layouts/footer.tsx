@@ -17,9 +17,9 @@ export function Footer() {
       </Container>
       <footer className="text-center p-10 bg-gray-800 text-primary-600 flex flex-col">
         <Link href="https://github.com/paroki/pkrbt">
-          PKRBT Website versi: <strong>{VERSION}</strong>
+          PKRBT Website Versi <strong>{VERSION}</strong>
         </Link>
-        <Link href="https://github.com/orgs/paroki/people">
+        <Link href="https://github.com/orgs/paroki/teams/developer">
           &copy; 2024 PKRBT Developers
         </Link>
       </footer>

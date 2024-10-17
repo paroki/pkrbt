@@ -1,8 +1,7 @@
 import api from "@/utils/strapi";
 import type { Homepage } from "@pkrbt/openapi";
-import invariant from "tiny-invariant";
 
-export async function fetchHomepage(): Promise<Required<Homepage>> {
+export async function fetchHomepage(): Promise<undefined | Required<Homepage>> {
   const { data } = await api.fetch.GET("/homepage", {
     params: {
       query: {
@@ -10,9 +9,11 @@ export async function fetchHomepage(): Promise<Required<Homepage>> {
       },
     },
   });
-  const homepage = data?.data as Required<Homepage>;
 
-  invariant(homepage, "Homepage section not configured in cms");
+  let homepage = undefined;
+  if (data?.data) {
+    homepage = data.data as Required<Homepage>;
+  }
 
   return homepage;
 }
