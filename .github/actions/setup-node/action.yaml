@@ -28,12 +28,6 @@ runs:
         restore-keys: |
           ${{ runner.os }}-pnpm-store-
 
-    - name: Configures default env
-      shell: bash
-      run: |
-        cp apps/web/.env.default apps/web/.env
-        cp apps/cms/.env.default apps/cms/.env
-
     - name: Install
       shell: bash
       run: pnpm install

@@ -41,17 +41,18 @@ jobs:
           vercel_build="vercel build"
           vercel_env="development"
           env="${{ inputs.environment }}"
+          version="${{ inputs.ref_name }}@${{ github.sha }}"
           if [[ $env == "production" ]]; then
             vercel_deploy="vercel deploy --prod --prebuilt"
             vercel_build="vercel build --prod"
             vercel_env="production"
+            version="${{ inputs.ref_name }}"
           fi
 
           echo "vercel_deploy=${vercel_deploy}" >> $GITHUB_OUTPUT
           echo "vercel_build=${vercel_build}" >> $GITHUB_OUTPUT
           echo "vercel_env=${vercel_env}" >> $GITHUB_OUTPUT
-          echo "NEXT_PUBLIC_STRAPI_URL=${{ secrets.CMS_URL }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_VERSION=${{ inputs.ref_name }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_VERSION=${version}" >> $GITHUB_ENV
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -73,7 +74,7 @@ jobs:
 
       - name: Build Project Artifacts
         run: |
-          pnpm build
+          pnpm build --filter=@pkrbt/web
           ${{ steps.vars.outputs.vercel_build }} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel

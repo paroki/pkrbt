@@ -1,8 +1,11 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import Container from '../ui/container';
-import Info from '../info';
+import * as React from "react";
+import Container from "../ui/container";
+import Info from "../info";
+import Link from "next/link";
+
+const VERSION = process.env.NEXT_PUBLIC_VERSION;
 
 export function Footer() {
   return (
@@ -12,8 +15,13 @@ export function Footer() {
           <Info />
         </div>
       </Container>
-      <footer className="text-center p-10 bg-gray-800 text-primary-600">
-        <p>Paroki Kristus Raja Barong Tongkok. 2024</p>
+      <footer className="text-center p-10 bg-gray-800 text-primary-600 flex flex-col">
+        <Link href="https://github.com/paroki/pkrbt">
+          PKRBT Website versi: <strong>{VERSION}</strong>
+        </Link>
+        <Link href="https://github.com/orgs/paroki/people">
+          &copy; 2024 PKRBT Developers
+        </Link>
       </footer>
     </>
   );

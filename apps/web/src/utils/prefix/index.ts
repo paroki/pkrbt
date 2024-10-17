@@ -1,9 +1,10 @@
 export function addPrefix(path?: string): string {
+  const url = process.env.NEXT_PUBLIC_CMS_URL;
+
   if (!path) {
     return "";
   }
-  const defaultPrefix = process.env.NEXT_PUBLIC_STRAPI_URL;
   const isPrefixed = /^(https?:\/\/)/;
 
-  return isPrefixed.test(path) ? path : `${defaultPrefix}${path}`;
+  return isPrefixed.test(path) ? path : `${url}${path}`;
 }

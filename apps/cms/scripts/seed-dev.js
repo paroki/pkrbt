@@ -443,10 +443,7 @@ async function writeToken(token, envDir) {
     encoding: "utf8",
   });
 
-  const replaced = contents.replace(
-    /^STRAPI_TOKEN.+/gm,
-    `STRAPI_TOKEN=${token}`,
-  );
+  const replaced = contents.replace(/^CMS_TOKEN.+/gm, `CMS_TOKEN=${token}`);
   fs.writeFileSync(envFile, replaced);
 }
 

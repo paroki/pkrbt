@@ -24,8 +24,16 @@ jobs:
       - name: Setup node
         uses: ./.github/actions/setup-node
 
+      - name: Configures default env
+        shell: bash
+        run: |
+          cp apps/web/.env.default apps/web/.env
+          cp apps/cms/.env.default apps/cms/.env
+
       - name: test with coverage
-        run: pnpm coverage
+        shell: bash
+        run: |
+          pnpm coverage
 
       - name: upload cms coverage
         uses: codecov/codecov-action@v4

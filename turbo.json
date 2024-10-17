@@ -2,18 +2,17 @@
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
   "globalEnv": [
-    "STRAPI_URL",
-    "STRAPI_PUBLIC_TOKEN",
-    "AUTH_SECRET",
-    "AUTH_GOOGLE_ID",
-    "AUTH_GOOGLE_SECRET"
+    "NEXT_PUBLIC_CMS_URL",
+    "NEXT_PUBLIC_VERSION",
+    "CMS_TOKEN",
+    "GOOGLE_ANALYTICS_ID",
+    "SENTRY_AUTH_TOKEN"
   ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**", "dist", ".strapi"],
-      "env": ["NEXT_PUBLIC_STRAPI_URL", "STRAPI_TOKEN", "GOOGLE_ANALYTICS_ID"]
+      "outputs": [".next/**", "!.next/cache/**", "dist", ".strapi"]
     },
     "dev": {
       "cache": false,
