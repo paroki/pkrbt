@@ -11,39 +11,42 @@ export function ArticleItem({ article }: { article: Article }) {
   return (
     <Link href={`/${article.slug ?? "no-slug"}`} className="hover:text-inherit">
       {/* TODO: every article should have slug! remove line above */}
-      <Box maxWidth="240px" className="group">
+      <Box
+        maxWidth="240px"
+        className="group bg-white rounded-b-md drop-shadow-md"
+      >
         <Card size="2">
           <Inset
             clip="padding-box"
             side="top"
             pb="current"
-            className="relative rounded overflow-hidden"
+            className="relative overflow-hidden rounded-t-md"
           >
             <div className="absolute w-full h-full bg-primary-400 opacity-0 group-hover:opacity-50 top-0 flex justify-center items-center transition-all">
               <EyeIcon className="text-white w-9 h-9" />
             </div>
-            <div className="absolute top-2 right-2 p-1 tracking-wider bg-slate-950 opacity-50 uppercase text-white rounded text-xs">
+            <div className="absolute top-2 right-2 p-1 tracking-wider bg-slate-950 opacity-50 uppercase text-white text-xs">
               <p>{article.category ? article.category.name : "Warta Gereja"}</p>
             </div>
             <Image
-              width={200}
-              height={140}
+              width={article.metaImage?.width ?? 900}
+              height={article.metaImage?.height ?? 497}
               src={
                 article.metaImage?.url
                   ? addPrefix(article.metaImage.url)
                   : "/static/noimg.jpg"
               }
               alt={`image for ${article.title}`}
+              sizes="100vw"
               style={{
                 display: "block",
                 objectFit: "cover",
-                width: "100%",
-                height: 140,
                 backgroundColor: "var(--gray-5)",
+                height: 200,
               }}
             />
           </Inset>
-          <div>
+          <div className="p-2">
             <h3 className="my-1 text-lg group-hover:text-primary-600">
               {article.title}
             </h3>

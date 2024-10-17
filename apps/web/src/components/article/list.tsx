@@ -23,7 +23,7 @@ export const ListView = ({ article }: { article: Article }) => {
   return (
     <Box
       maxWidth="240px"
-      className="overflow-hidden group transition-all hover:scale-[1.01]"
+      className="overflow-hidden group transition-all hover:scale-[1.01] bg-white drop-shadow-md rounded-md"
     >
       <Card size="2" className="relative">
         <Inset clip="padding-box" side="top" pb="current">
@@ -33,7 +33,6 @@ export const ListView = ({ article }: { article: Article }) => {
                 ? addPrefix(article.metaImage.url)
                 : "/static/noimg.jpg"
             }
-            className="rounded-md"
             alt="Bold typography"
             width={article.metaImage?.width ?? 605}
             height={article.metaImage?.height ?? 334}
@@ -46,16 +45,18 @@ export const ListView = ({ article }: { article: Article }) => {
             }}
           />
         </Inset>
-        <div className="absolute top-2 right-2 bg-slate-950 opacity-50 p-1 tracking-wider uppercase text-white rounded text-xs">
-          <p>{article.category ? article.category.name : "Warta Gereja"}</p>
-        </div>
-        <div>
-          <h3 className="text-base mb-2 group-hover:text-primary-600">
-            {article.title}
-          </h3>
-          <p>{article.metaDescription?.substring(0, 85)}...</p>
-          <div className="mt-4 text-gray-500 w-full">
-            <DateReadable isoDate={article.publishedAt as string} />
+        <div className="p-2">
+          <div className="absolute top-2 right-2 bg-slate-950 opacity-50 p-1 tracking-wider uppercase text-white rounded text-xs">
+            <p>{article.category ? article.category.name : "Warta Gereja"}</p>
+          </div>
+          <div>
+            <h3 className="text-base mb-2 group-hover:text-primary-600">
+              {article.title}
+            </h3>
+            <p>{article.metaDescription?.substring(0, 85)}...</p>
+            <div className="mt-4 text-gray-500 w-full">
+              <DateReadable isoDate={article.publishedAt as string} />
+            </div>
           </div>
         </div>
       </Card>

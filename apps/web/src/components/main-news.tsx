@@ -30,7 +30,7 @@ export default function MainNews({ articles }: { articles: Article[] }) {
             {articles.map((article, index) => (
               <CarouselItem
                 key={index}
-                className="md:basis-1/2 lg:basis-1/3 group "
+                className="md:basis-1/2 lg:basis-1/3 group"
               >
                 <ArticleItem article={article} />
               </CarouselItem>
