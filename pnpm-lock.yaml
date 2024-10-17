@@ -170,8 +170,8 @@ importers:
         specifier: ^4.17.21
         version: 4.17.21
       lucide-react:
-        specifier: ^0.452.0
-        version: 0.452.0(react@18.3.1)
+        specifier: ^0.453.0
+        version: 0.453.0(react@18.3.1)
       moment:
         specifier: ^2.30.1
         version: 2.30.1
@@ -226,10 +226,10 @@ importers:
         version: 18.3.0
       '@vitejs/plugin-react':
         specifier: ^4.3.1
-        version: 4.3.1(vite@5.2.8(@types/node@20.16.5)(terser@5.33.0))
+        version: 4.3.1(vite@5.2.14(@types/node@20.16.5)(terser@5.33.0))
       '@vitejs/plugin-react-swc':
         specifier: ^3.7.1
-        version: 3.7.1(@swc/helpers@0.5.5)(vite@5.2.8(@types/node@20.16.5)(terser@5.33.0))
+        version: 3.7.1(@swc/helpers@0.5.5)(vite@5.2.14(@types/node@20.16.5)(terser@5.33.0))
       '@vitest/coverage-v8':
         specifier: ^2.1.1
         version: 2.1.1(vitest@2.1.1)
@@ -7896,8 +7896,8 @@ packages:
   lru-memoizer@2.3.0:
     resolution: {integrity: sha512-GXn7gyHAMhO13WSKrIiNfztwxodVsP8IoZ3XfrJV4yH2x0/OeTO/FIaAHTY5YekdGgW94njfuKmyyt1E0mR6Ug==}
 
-  lucide-react@0.452.0:
-    resolution: {integrity: sha512-kNefjOUOGm+Mu3KDiryONyPba9r+nhcrz5oJs3N6JDzGboQNEXw5GB3yB8rnV9/FA4bPyggNU6CRSihZm9MvSw==}
+  lucide-react@0.453.0:
+    resolution: {integrity: sha512-kL+RGZCcJi9BvJtzg2kshO192Ddy9hv3ij+cPrVPWSRzgCWCVazoQJxOjAwgK53NomL07HB7GPHW120FimjNhQ==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
 
@@ -16456,21 +16456,21 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@vitejs/plugin-react-swc@3.7.1(@swc/helpers@0.5.5)(vite@5.2.8(@types/node@20.16.5)(terser@5.33.0))':
+  '@vitejs/plugin-react-swc@3.7.1(@swc/helpers@0.5.5)(vite@5.2.14(@types/node@20.16.5)(terser@5.33.0))':
     dependencies:
       '@swc/core': 1.7.26(@swc/helpers@0.5.5)
-      vite: 5.2.8(@types/node@20.16.5)(terser@5.33.0)
+      vite: 5.2.14(@types/node@20.16.5)(terser@5.33.0)
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@vitejs/plugin-react@4.3.1(vite@5.2.8(@types/node@20.16.5)(terser@5.33.0))':
+  '@vitejs/plugin-react@4.3.1(vite@5.2.14(@types/node@20.16.5)(terser@5.33.0))':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/plugin-transform-react-jsx-self': 7.24.7(@babel/core@7.25.2)
       '@babel/plugin-transform-react-jsx-source': 7.24.7(@babel/core@7.25.2)
       '@types/babel__core': 7.20.5
       react-refresh: 0.14.2
-      vite: 5.2.8(@types/node@20.16.5)(terser@5.33.0)
+      vite: 5.2.14(@types/node@20.16.5)(terser@5.33.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -21078,7 +21078,7 @@ snapshots:
       lodash.clonedeep: 4.5.0
       lru-cache: 6.0.0
 
-  lucide-react@0.452.0(react@18.3.1):
+  lucide-react@0.453.0(react@18.3.1):
     dependencies:
       react: 18.3.1
 
