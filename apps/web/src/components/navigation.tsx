@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LucideChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
+import logo from "../assets/logo.png";
 
 export function Navigation() {
   interface MenuItems {
@@ -62,16 +63,14 @@ export function Navigation() {
       : containerEl?.classList.add("show");
   };
   return (
-    <div className="sticky top-0 bg-white shadow-sm z-50 md:border-b flex items-center md:block justify-between w-full">
-      <nav className="flex max-w-screen-lg mx-auto ">
-        <div>
-          <Link href="/" className="flex items-center gap-4 p-4">
-            <Image src="/logo.png" width="50" height="50" alt="logo"></Image>
-            <h1 className="pt-3 text-xl ">PKRBT</h1>
-          </Link>
-        </div>
+    <div className="sticky top-0 bg-white shadow-md z-50 md:border-b flex items-center md:block justify-between w-full">
+      <nav className="flex max-w-screen-lg mx-auto">
+        <Link href="/" className="flex items-center gap-2 ml-2 lg:ml-0">
+          <Image src={logo} width={32} alt="logo" />
+          <h1 className="text-xl">PKRBT</h1>
+        </Link>
         <div className="container-nav relative " ref={containerNav}>
-          <div className="absolute w-full top-4 block md:hidden">
+          <div className="absolute w-full top-4 left-0 block md:hidden">
             <button
               className="p-3 hover:bg-primary-300 rounded-full active:scale-110 active:bg-primary-400"
               onClick={toggleVisibility}
@@ -119,7 +118,7 @@ export function Navigation() {
           </ul>
         </div>
       </nav>
-      <div className="flex w-full justify-end md:hidden p-2 px-8">
+      <div className="flex w-full justify-end md:hidden px-8">
         <button
           className="p-3 hover:bg-gray-50 rounded-full active:scale-110 active:bg-gray-100"
           onClick={toggleVisibility}
