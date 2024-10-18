@@ -1,9 +1,9 @@
 import Container from "@/components/ui/container";
 import Jumbotron from "@/app/homepage/jumbotron";
-import ContainerHeader from "@/components/container-header";
-import MainNews from "@/components/main-news";
-import MassSchedule from "@/components/schedule";
-import Marriages from "@/components/marriages";
+import ContainerHeader from "@/components/layouts/container-header";
+import MainNews from "@/app/homepage/main-news";
+import MassSchedule from "@/app/homepage/schedule";
+import Marriages from "@/app/homepage/marriages";
 import Rings from "@/components/icons/rings";
 import { Text } from "@radix-ui/themes";
 import { getArticles, getMarriages } from "@/utils/api";

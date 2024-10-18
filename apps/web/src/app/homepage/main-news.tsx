@@ -8,9 +8,9 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
-import LinkBtn from "./link";
+import LinkBtn from "@/components/common/link";
 import { Article } from "@pkrbt/openapi";
-import { ArticleItem } from "./article-item";
+import { ArticleItem } from "@/components/articles/article-item";
 
 export default function MainNews({ articles }: { articles: Article[] }) {
   const plugin = React.useRef(
