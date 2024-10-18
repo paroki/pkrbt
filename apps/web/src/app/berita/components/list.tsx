@@ -38,13 +38,15 @@ export default function ArticleList({ articles, pageMeta }: ArticleElProps) {
                 <ArticleItem article={article} key={index} />
               ))}
             </div>
-            <div className="mt-6">
-              <PaginationCustom
-                page={pageMeta.page ?? 1}
-                size={pageMeta.size}
-                search={pageMeta.search}
-              />
-            </div>
+            {pageMeta.size > 1 && (
+              <div className="mt-6">
+                <PaginationCustom
+                  page={pageMeta.page ?? 1}
+                  size={pageMeta.size}
+                  search={pageMeta.search}
+                />
+              </div>
+            )}
           </>
         ) : (
           <p className="w-full text-center text-gray-400 p-6">
