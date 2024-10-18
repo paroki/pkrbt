@@ -1,8 +1,8 @@
 "use client";
 
 import * as React from "react";
-import Container from "../ui/container";
-import Info from "../info";
+import Container from "@/components/ui/container";
+import Info from "@/components/layouts/info";
 import Link from "next/link";
 
 const VERSION = process.env.NEXT_PUBLIC_VERSION;

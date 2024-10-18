@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { Text } from '@radix-ui/themes';
-import LinkBtn from './link';
+import Link from "next/link";
+import { Text } from "@radix-ui/themes";
+import LinkBtn from "./common/link";
 
 export default function Announcement() {
   interface Announce {
@@ -10,20 +10,20 @@ export default function Announcement() {
   }
   const announces: Announce[] = [
     {
-      title: 'Pemberkasan utama sedikit lebih panjang',
-      path: '#',
-      date: '20 November 2024'
+      title: "Pemberkasan utama sedikit lebih panjang",
+      path: "#",
+      date: "20 November 2024",
     },
     {
-      title: 'Pelaporan tugas utama',
-      path: '#',
-      date: '21 November 2024'
+      title: "Pelaporan tugas utama",
+      path: "#",
+      date: "21 November 2024",
     },
     {
-      title: 'Pekerjaan utama',
-      path: '#',
-      date: '23 November 2024'
-    }
+      title: "Pekerjaan utama",
+      path: "#",
+      date: "23 November 2024",
+    },
   ];
 
   return (

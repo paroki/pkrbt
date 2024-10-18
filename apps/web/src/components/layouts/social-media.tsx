@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { FacebookCircle, Instagram, Youtube } from "./icons/socials";
+import { FacebookCircle, Instagram, Youtube } from "@/components/icons/socials";
 
 export default function SocialMedia() {
   return (

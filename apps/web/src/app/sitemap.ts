@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${urlPrefix}/dpp`,
+      url: `${urlPrefix}/dewan-pastoral-paroki`,
       lastModified: new Date(),
       changeFrequency: "hourly",
       priority: 1,

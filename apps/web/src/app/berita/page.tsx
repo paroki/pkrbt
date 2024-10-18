@@ -1,5 +1,5 @@
 import api from "@/utils/strapi";
-import ArticleList from "../../components/article/list";
+import ArticleList from "./components/list";
 import { Metadata } from "next";
 import { generateMeta } from "@/utils/meta";
 

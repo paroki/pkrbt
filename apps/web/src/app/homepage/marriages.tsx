@@ -1,6 +1,6 @@
 import { Frank_Ruhl_Libre as Frank } from "next/font/google";
 import { Text } from "@radix-ui/themes";
-import DateReadable from "./date";
+import DateReadable from "../../components/common/date";
 import { MarriagesProps } from "@/utils/api";
 import { groupByWeeks } from "@/utils/group-marriages";
 import React from "react";
