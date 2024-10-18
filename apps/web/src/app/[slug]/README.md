@@ -1,0 +1,1 @@
+Direktori untuk menampilkan artikel

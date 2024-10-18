@@ -14,7 +14,7 @@ export default defineConfig({
     },
     mockReset: true,
     include: ["./src/**/*.{test,spec}.{ts,tsx}"],
-    setupFiles: ["dotenv/config"],
+    setupFiles: ["dotenv/config", "./test/setup.ts"],
   },
   resolve: {
     alias: {

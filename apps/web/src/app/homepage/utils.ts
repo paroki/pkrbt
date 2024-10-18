@@ -8,6 +8,7 @@ export async function fetchHomepage(): Promise<undefined | Required<Homepage>> {
         populate: "*",
       },
     },
+    cache: "no-store",
   });
 
   let homepage = undefined;

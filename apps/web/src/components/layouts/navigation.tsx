@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LucideChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
-import logo from "../assets/logo.png";
+import logo from "../../assets/img/logo.png";
 
 export function Navigation() {
   interface MenuItems {
@@ -25,7 +25,7 @@ export function Navigation() {
     },
     {
       name: "DPP",
-      path: "/dpp",
+      path: "/dewan-pastoral-paroki",
     },
     /*
     {
