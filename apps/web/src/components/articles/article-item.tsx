@@ -3,7 +3,7 @@ import type { Article } from "@pkrbt/openapi";
 import { Box, Card, Inset } from "@radix-ui/themes";
 import { EyeIcon } from "lucide-react";
 import Link from "next/link";
-import DateReadable from "./date";
+import DateReadable from "../common/date";
 import { addPrefix } from "@/utils/prefix";
 import Image from "next/image";
 

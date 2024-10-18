@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Pagination,
   PaginationContent,
@@ -6,8 +6,8 @@ import {
   PaginationItem,
   PaginationLink,
   PaginationNext,
-  PaginationPrevious
-} from '@/components/ui/pagination';
+  PaginationPrevious,
+} from "@/components/ui/pagination";
 
 interface PaginationProps {
   size: number;
@@ -26,7 +26,11 @@ function getPaginationRange(currentPage: number, totalPages: number): number[] {
   return range;
 }
 
-export default function PaginationCustom({ size, page, search }: PaginationProps) {
+export default function PaginationCustom({
+  size,
+  page,
+  search,
+}: PaginationProps) {
   const serializeNumber = getPaginationRange(Number(page), size);
 
   return (
@@ -34,15 +38,20 @@ export default function PaginationCustom({ size, page, search }: PaginationProps
       <PaginationContent>
         {page > 1 ? (
           <PaginationItem>
-            <PaginationPrevious href={`?page=${page > 1 ? Number(page) - 1 : 1}${search ? `&search=${search}` : ''}`} />
+            <PaginationPrevious
+              href={`?page=${page > 1 ? Number(page) - 1 : 1}${search ? `&search=${search}` : ""}`}
+            />
           </PaginationItem>
         ) : (
-          ''
+          ""
         )}
 
         {serializeNumber.map((item, index) => (
           <PaginationItem key={index}>
-            <PaginationLink isActive={Number(page) === item} href={`?page=${item}${search ? `&search=${search}` : ''}`}>
+            <PaginationLink
+              isActive={Number(page) === item}
+              href={`?page=${item}${search ? `&search=${search}` : ""}`}
+            >
               {item}
             </PaginationLink>
           </PaginationItem>
@@ -53,11 +62,11 @@ export default function PaginationCustom({ size, page, search }: PaginationProps
         {page < size ? (
           <PaginationItem>
             <PaginationNext
-              href={`?page=${page < size ? Number(page) + 1 : size}${search ? `&search=${search}` : ''}`}
+              href={`?page=${page < size ? Number(page) + 1 : size}${search ? `&search=${search}` : ""}`}
             />
           </PaginationItem>
         ) : (
-          ''
+          ""
         )}
       </PaginationContent>
     </Pagination>

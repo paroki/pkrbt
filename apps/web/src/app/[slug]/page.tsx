@@ -1,7 +1,7 @@
-import BlocksView from "@/components/blocks/blocks";
-import DateReadable from "@/components/date";
-import LatestNews from "@/components/latest-news";
-import ShareArticle from "@/components/share-article";
+import BlocksView from "@/app/[slug]/components/blocks";
+import DateReadable from "@/components/common/date";
+import LatestNews from "@/app/[slug]/components/latest-news";
+import ShareArticle from "@/app/[slug]/components/share-article";
 import Container from "@/components/ui/container";
 import { Separator } from "@/components/ui/separator";
 import { getArticles } from "@/utils/api";

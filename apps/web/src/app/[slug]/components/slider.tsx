@@ -1,6 +1,10 @@
 "use client";
 import { BlockSlider } from "@pkrbt/openapi";
-import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "../../../components/ui/carousel";
 import Image from "next/image";
 import { useRef } from "react";
 import Autoplay from "embla-carousel-autoplay";

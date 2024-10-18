@@ -1,9 +1,9 @@
 import Container from "@/components/ui/container";
-import Jumbotron from "@/app/homepage/jumbotron";
-import ContainerHeader from "@/components/container-header";
-import MainNews from "@/components/main-news";
-import MassSchedule from "@/components/schedule";
-import Marriages from "@/components/marriages";
+import Jumbotron from "@/app/homepage/components/jumbotron";
+import ContainerHeader from "@/components/layouts/container-header";
+import MainNews from "@/app/homepage/components/main-news";
+import MassSchedule from "@/app/homepage/components/schedule";
+import Marriages from "@/app/homepage/components/marriages";
 import Rings from "@/components/icons/rings";
 import { Text } from "@radix-ui/themes";
 import { getArticles, getMarriages } from "@/utils/api";
@@ -75,7 +75,7 @@ export default async function Home() {
             </div>
           </Container>
           */}
-          {marriages.length && (
+          {marriages.length > 0 && (
             <Container className="bg-gray-50">
               <div className="max-w-screen-lg mx-auto">
                 <div className="flex gap-5 items-center flex-col md:flex-row">

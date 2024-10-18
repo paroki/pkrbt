@@ -1,13 +1,23 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import React, { useEffect, useState } from 'react';
-import { BrandsFacebookF, BrandsTwitter, BrandsWhatsapp, SolidLink } from './icons/socials';
-import { useToast } from '@/hooks/use-toast';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
+import {
+  BrandsFacebookF,
+  BrandsTwitter,
+  BrandsWhatsapp,
+  SolidLink,
+} from "../../../components/icons/socials";
+import { useToast } from "@/hooks/use-toast";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function ShareArticle() {
-  const [currentUrl, setCurrentUrl] = useState('');
+  const [currentUrl, setCurrentUrl] = useState("");
 
   useEffect(() => {
     // Set current URL on client side
@@ -26,18 +36,18 @@ export default function ShareArticle() {
     {
       path: `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`,
       element: <BrandsFacebookF />,
-      name: 'Facebook'
+      name: "Facebook",
     },
     {
       path: `https://api.whatsapp.com/send?text=Baca%20ini:%20${currentUrl}`,
       element: <BrandsWhatsapp />,
-      name: 'Whatsapp'
+      name: "Whatsapp",
     },
     {
       path: `https://twitter.com/intent/tweet?text=${currentUrl}`,
       element: <BrandsTwitter />,
-      name: 'Twitter'
-    }
+      name: "Twitter",
+    },
   ];
 
   return (
@@ -50,7 +60,8 @@ export default function ShareArticle() {
                 <Link
                   target="_blank"
                   href={item.path}
-                  className="p-2 bg-gray-100 hover:bg-gray-200 rounded text-gray-500 block active:bg-gray-300">
+                  className="p-2 bg-gray-100 hover:bg-gray-200 rounded text-gray-500 block active:bg-gray-300"
+                >
                   {item.element}
                 </Link>
               </TooltipTrigger>
@@ -70,10 +81,11 @@ export default function ShareArticle() {
                 onClick={() => {
                   navigator.clipboard.writeText(currentUrl);
                   toast({
-                    description: 'Tautan berhasil disalin!',
-                    duration: 1000
+                    description: "Tautan berhasil disalin!",
+                    duration: 1000,
                   });
-                }}>
+                }}
+              >
                 <SolidLink />
               </div>
             </TooltipTrigger>
