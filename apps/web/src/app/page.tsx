@@ -75,7 +75,7 @@ export default async function Home() {
             </div>
           </Container>
           */}
-          {marriages.length && (
+          {marriages.length > 0 && (
             <Container className="bg-gray-50">
               <div className="max-w-screen-lg mx-auto">
                 <div className="flex gap-5 items-center flex-col md:flex-row">
