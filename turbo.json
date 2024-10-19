@@ -6,7 +6,9 @@
     "NEXT_PUBLIC_VERSION",
     "CMS_TOKEN",
     "GOOGLE_ANALYTICS_ID",
-    "SENTRY_AUTH_TOKEN"
+    "SENTRY_AUTH_TOKEN",
+    "DIRECTUS_ENDPOINT",
+    "DIRECTUS_TOKEN"
   ],
   "tasks": {
     "build": {
@@ -15,6 +17,10 @@
       "outputs": [".next/**", "!.next/cache/**", "dist", ".strapi"]
     },
     "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "pwa": {
       "cache": false,
       "persistent": true
     },

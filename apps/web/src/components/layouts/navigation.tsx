@@ -58,6 +58,7 @@ export function Navigation() {
 
   const toggleVisibility = (): void => {
     const containerEl = containerNav.current;
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     containerEl?.className.includes("show")
       ? containerEl.classList.remove("show")
       : containerEl?.classList.add("show");

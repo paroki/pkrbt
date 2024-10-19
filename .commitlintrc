@@ -8,10 +8,10 @@
       [
         "ci",
         "tools",
-        "openapi",
+        "directus",
         "api",
-        "cms",
         "pwa",
+	"ui",
         "test",
         "web"
       ]

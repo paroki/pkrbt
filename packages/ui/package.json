@@ -1,28 +1,41 @@
 {
   "name": "@pkrbt/ui",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "private": true,
-  "exports": {
-    "./button": "./src/button.tsx",
-    "./card": "./src/card.tsx",
-    "./code": "./src/code.tsx"
-  },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
-    "generate:component": "turbo gen react-component"
+    "ui": "pnpm dlx shadcn@latest",
+    "lint:test": "eslint ."
+  },
+  "peerDependencies": {
+    "react": "^18"
   },
   "devDependencies": {
     "@pkrbt/eslint-config": "workspace:*",
     "@pkrbt/typescript-config": "workspace:*",
-    "@turbo/gen": "^2.0.0",
-    "@types/node": "^20.11.24",
-    "@types/eslint": "^8",
-    "@types/react": "^18.2.61",
-    "@types/react-dom": "^18.2.19",
-    "eslint": "^8",
-    "typescript": "^5.3.3"
+    "@types/node": "catalog:",
+    "@types/react": "catalog:react18",
+    "autoprefixer": "^10",
+    "postcss": "^8",
+    "postcss-load-config": "^6",
+    "tailwindcss": "catalog:",
+    "typescript": "catalog:"
   },
   "dependencies": {
-    "react": "^18.2.0"
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "catalog:",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "exports": {
+    "./globals.css": "./src/globals.css",
+    "./postcss.config": "./postcss.config.mjs",
+    "./tailwind.config": "./tailwind.config.ts",
+    "./utils/*": "./src/utils/*.ts",
+    "./hooks/*": "./src/hooks/*.ts",
+    "./components/*": "./src/components/*.tsx",
+    "./blocks/*": "./src/blocks/*.tsx"
   }
 }

@@ -1,4 +1,11 @@
-/vars/
+/vars/*
+#/vars/directus/database/*
+!vars/directus/database/.gitkeep
+#/vars/directus/uploads/*
+!vars/directus/uploads/.gitkeep
+#/vars/directus/extensions/*
+!vars/directus/extensions/.gitkeep
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # Dependencies
