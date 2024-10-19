@@ -1,0 +1,6 @@
+{
+  "extends": "@pkrbt/eslint-config/library.js",
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "ignorePatterns": ["coverage", "src/core/types.ts"]
+}

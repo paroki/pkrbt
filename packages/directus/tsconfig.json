@@ -1,0 +1,14 @@
+{
+  "extends": "@pkrbt/typescript-config/base.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "module": "ESNext", // or "NodeNext"
+    "moduleResolution": "Bundler", // or "NodeNext",
+    "noUncheckedIndexedAccess": true,
+    "emitDeclarationOnly": true,
+    "allowImportingTsExtensions": true,
+    "sourceMap": true
+  },
+  "include": ["src", "tests"],
+  "exclude": ["node_modules", "dist"]
+}
