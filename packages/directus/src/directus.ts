@@ -1,8 +1,15 @@
-import { createDirectus } from "@directus/sdk";
-import invariant from "tiny-invariant";
-import { Schema } from "./types";
+import { DirectusCore, DirectusPlugin } from "./core";
+import { category, page, post } from "./website";
 
-invariant(process.env.DIRECTUS_ENDPOINT, "DIRECTUS_ENDPOINT not configured.");
-const directus = createDirectus<Schema>(process.env.DIRECTUS_ENDPOINT);
+const website: DirectusPlugin = () => {
+  return {
+    page,
+    post,
+    category,
+  };
+};
 
-export default directus;
+export const Directus = DirectusCore.plugin(website);
+
+// eslint-disable-next-line no-redeclare
+export type Directus = InstanceType<typeof Directus>;

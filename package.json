@@ -14,7 +14,8 @@
     "start": "turbo run start",
     "seed:dev": "turbo run seed:dev",
     "generate:types": "turbo run generate:types",
-    "ui": "pnpm --filter @pkrbt/ui ui"
+    "ui": "pnpm --filter @pkrbt/ui ui",
+    "web": "turbo web"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",

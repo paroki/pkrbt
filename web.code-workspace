@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "apps/web",
+    },
+    {
+      "path": "packages/directus",
+    },
+    {
+      "path": "packages/ui",
+    },
+  ],
+}

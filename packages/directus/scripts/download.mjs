@@ -20,7 +20,6 @@ async function downloadSchema() {
 
   const json = await data.json();
   writeFileSync(SCHEMA_FILE, JSON.stringify(json, undefined, 2));
-  console.log(json);
 }
 async function main() {
   await downloadSchema();

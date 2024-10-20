@@ -1,1 +1,3 @@
-export * as page from "./page";
+export * from "./category";
+export * from "./page";
+export * from "./post";

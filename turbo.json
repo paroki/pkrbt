@@ -24,6 +24,10 @@
       "cache": false,
       "persistent": true
     },
+    "web": {
+      "cache": false,
+      "persistent": true
+    },
     "lint": {
       "dependsOn": ["^lint"]
     },
