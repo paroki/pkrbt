@@ -1,6 +1,7 @@
 {
   "name": "pkrbt",
   "private": true,
+  "type": "module",
   "scripts": {
     "prepare": "node .husky/install.mjs",
     "build": "turbo build",
@@ -12,11 +13,15 @@
     "e2e": "turbo run e2e",
     "start": "turbo run start",
     "seed:dev": "turbo run seed:dev",
-    "generate:types": "turbo run generate:types"
+    "generate:types": "turbo run generate:types",
+    "directus:schema": "docker compose exec -it directus npx directus schema snapshot --yes /directus/schema/schema.yml",
+    "directus:apply": "directusctl --help",
+    "api": "turbo run api"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
+    "@directus/cli": "^9.14.3",
     "@types/node": "^22.5.5",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
