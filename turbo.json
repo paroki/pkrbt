@@ -18,6 +18,10 @@
       "cache": false,
       "persistent": true
     },
+    "api": {
+      "dependsOn": ["^build"],
+      "cache": true
+    },
     "lint": {
       "dependsOn": ["^lint"]
     },
