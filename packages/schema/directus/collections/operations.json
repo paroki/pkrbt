@@ -1,0 +1,189 @@
+[
+  {
+    "name": "Check Content Payload",
+    "key": "check_content_payload",
+    "type": "condition",
+    "position_x": 37,
+    "position_y": 1,
+    "options": {
+      "filter": {
+        "content_payload": {
+          "summary": {
+            "_nnull": true
+          }
+        }
+      }
+    },
+    "resolve": "b7c3477f-ec27-4b15-8f6a-b920bc0f4199",
+    "reject": null,
+    "flow": "e3898473-c8f7-4e18-924e-b472c1e91f56",
+    "_syncId": "24eb384f-ab47-4598-bc44-6ce18cdc545c"
+  },
+  {
+    "name": "Content Payload",
+    "key": "content_payload",
+    "type": "exec",
+    "position_x": 19,
+    "position_y": 1,
+    "options": {
+      "code": "function generateSummary(blocks){\n    const regex = /^(?:([*_`]|\\*\\*|\\[){0,1}[a-z]+)(.*)/gim;\n    for(let i=0; i<blocks.length;i++){\n        block=blocks[i];\n        if(block.collection == 'block_markdown'){\n            const matches = block.item.body.match(regex);\n            if(null !== matches){\n                return matches[0]\n            }\n            return block.item.body;\n        }\n    }\n    return null;\n}\n\nmodule.exports = async function(data) {\n    const payload = data.$trigger.payload;\n\tlet summary = null;\n   \t\n    if(payload.blocks.create){\n        summary = generateSummary(payload.blocks.create);\n    }\n    \n    if(null == summary && payload.blocks.update){\n        summary = generateSummary(payload.blocks.update);\n    }\n    \n    const keys = data.$trigger.keys ?? [data.$trigger.key];\n\treturn {summary, keys};\n}"
+    },
+    "resolve": "24eb384f-ab47-4598-bc44-6ce18cdc545c",
+    "reject": null,
+    "flow": "e3898473-c8f7-4e18-924e-b472c1e91f56",
+    "_syncId": "93cd8f52-a288-4d82-bcbc-4990ed9719f5"
+  },
+  {
+    "name": "Update Data",
+    "key": "item_update_pitlb",
+    "type": "item-update",
+    "position_x": 58,
+    "position_y": 1,
+    "options": {
+      "collection": "{{$trigger.collection}}",
+      "key": "{{slug_update_payload.keys}}",
+      "payload": {
+        "slug": "{{slug_update_payload.slug}}"
+      }
+    },
+    "resolve": null,
+    "reject": null,
+    "flow": "5f3afd9d-98ea-4b19-bd88-fb41c0495269",
+    "_syncId": "69c9a0a6-bc44-4f7d-b728-8476d5de3191"
+  },
+  {
+    "name": "Gather Item Data",
+    "key": "seo_item_data",
+    "type": "item-read",
+    "position_x": 37,
+    "position_y": 1,
+    "options": {
+      "collection": "{{$trigger.collection}}",
+      "key": "{{set_trigger_key[0]}}"
+    },
+    "resolve": "7b12db7a-df07-4931-bec3-3947fa1d5946",
+    "reject": null,
+    "flow": "a9c018d8-4a61-4391-b28c-10301341a0ac",
+    "_syncId": "ae4c5b61-ea28-4cd2-accc-b74237301c5c"
+  },
+  {
+    "name": "SEO Payload",
+    "key": "seo_payload",
+    "type": "exec",
+    "position_x": 55,
+    "position_y": 1,
+    "options": {
+      "code": "function generateSummary(blocks){\n    const regex = /^(?:([*_`]|\\*\\*|\\[){0,1}[a-z]+)(.*)/gim;\n    for(let i=0; i<blocks.length;i++){\n        block=blocks[i];\n        if(block.collection == 'block_markdown'){\n            const matches = block.item.body.match(regex);\n            if(null !== matches){\n                return matches[0]\n            }\n            return block.item.body;\n        }\n    }\n    return null;\n}\n\nmodule.exports = async function(data) {\n    const item = data.seo_item_data;\n    const payload = data.$trigger.payload;\n    \n\tlet seo = {};\n    let key = item.id;\n    if(item.seo){\n        seo.id = item.seo;\n    }\n    seo.title = item.title;\n    seo.image = item.cover;\n    seo.description = item.summary;\n    \n    if(payload.blocks.update){\n        let update = generateSummary(payload.blocks.update);\n        if(null !== update){\n            seo.description = update;\n        }\n    }\n    \n    if(payload.blocks.create){\n        let create = generateSummary(payload.blocks.create);\n        if(null !== create){\n            seo.description = create;\n        }\n    }\n    \n\treturn {seo, key};\n}"
+    },
+    "resolve": "3617e226-bbcd-4559-a162-346a6852398c",
+    "reject": null,
+    "flow": "a9c018d8-4a61-4391-b28c-10301341a0ac",
+    "_syncId": "7b12db7a-df07-4931-bec3-3947fa1d5946"
+  },
+  {
+    "name": "SEO Payload not empty",
+    "key": "seo_payload_not_empty",
+    "type": "condition",
+    "position_x": 3,
+    "position_y": 21,
+    "options": {
+      "filter": {
+        "seo_payload": {
+          "seo": {
+            "_neq": {}
+          }
+        }
+      }
+    },
+    "resolve": "b3fd295f-bfaf-4453-90c1-a53b91e91c72",
+    "reject": null,
+    "flow": "a9c018d8-4a61-4391-b28c-10301341a0ac",
+    "_syncId": "3617e226-bbcd-4559-a162-346a6852398c"
+  },
+  {
+    "name": "Update Data",
+    "key": "seo_update_data",
+    "type": "item-update",
+    "position_x": 23,
+    "position_y": 21,
+    "options": {
+      "collection": "{{$trigger.collection}}",
+      "key": "{{seo_payload.key}}",
+      "payload": {
+        "seo": "{{seo_payload.seo}}"
+      }
+    },
+    "resolve": null,
+    "reject": null,
+    "flow": "a9c018d8-4a61-4391-b28c-10301341a0ac",
+    "_syncId": "b3fd295f-bfaf-4453-90c1-a53b91e91c72"
+  },
+  {
+    "name": "Set Trigger key",
+    "key": "set_trigger_key",
+    "type": "exec",
+    "position_x": 19,
+    "position_y": 1,
+    "options": {
+      "code": "module.exports = async function(data) {\n\treturn data.$trigger.keys ?? [data.$trigger.key];\n}"
+    },
+    "resolve": "ae4c5b61-ea28-4cd2-accc-b74237301c5c",
+    "reject": null,
+    "flow": "a9c018d8-4a61-4391-b28c-10301341a0ac",
+    "_syncId": "44ced322-e701-411e-9f47-6c86e10ec0a7"
+  },
+  {
+    "name": "Slug Update Payload",
+    "key": "slug_update_payload",
+    "type": "exec",
+    "position_x": 40,
+    "position_y": 1,
+    "options": {
+      "code": "module.exports = async function(data) {\n\tlet keys = data.$trigger.keys ?? [data.$trigger.key];\n    let slug = data.$trigger.payload.title\n\t\t.toLowerCase()\n\t\t.trim()\n\t\t.replace(/[^\\w\\s-]/g, '')\n\t\t.replace(/[\\s_-]+/g, '-')\n\t\t.replace(/^-+|-+$/g, '');\n    return {keys, slug}\n}"
+    },
+    "resolve": "69c9a0a6-bc44-4f7d-b728-8476d5de3191",
+    "reject": null,
+    "flow": "5f3afd9d-98ea-4b19-bd88-fb41c0495269",
+    "_syncId": "c92ee469-ed53-46d6-befd-8a53406c89c5"
+  },
+  {
+    "name": "Title Payload Changed",
+    "key": "title_payload_changed",
+    "type": "condition",
+    "position_x": 20,
+    "position_y": 1,
+    "options": {
+      "filter": {
+        "$trigger": {
+          "payload": {
+            "title": {
+              "_nnull": true
+            }
+          }
+        }
+      }
+    },
+    "resolve": "c92ee469-ed53-46d6-befd-8a53406c89c5",
+    "reject": null,
+    "flow": "5f3afd9d-98ea-4b19-bd88-fb41c0495269",
+    "_syncId": "e998e1fc-2174-44fd-9175-238d652c9b99"
+  },
+  {
+    "name": "update summary",
+    "key": "update_summary",
+    "type": "item-update",
+    "position_x": 55,
+    "position_y": 1,
+    "options": {
+      "collection": "{{$trigger.collection}}",
+      "key": "{{content_payload.keys}}",
+      "payload": {
+        "summary": "{{ content_payload.summary }}"
+      }
+    },
+    "resolve": null,
+    "reject": null,
+    "flow": "e3898473-c8f7-4e18-924e-b472c1e91f56",
+    "_syncId": "b7c3477f-ec27-4b15-8f6a-b920bc0f4199"
+  }
+]

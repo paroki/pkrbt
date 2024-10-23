@@ -1,0 +1,25 @@
+{
+  "collection": "page_blocks",
+  "field": "page",
+  "related_collection": "page",
+  "meta": {
+    "junction_field": "item",
+    "many_collection": "page_blocks",
+    "many_field": "page",
+    "one_allowed_collections": null,
+    "one_collection": "page",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": "blocks",
+    "sort_field": null
+  },
+  "schema": {
+    "table": "page_blocks",
+    "column": "page",
+    "foreign_key_table": "page",
+    "foreign_key_column": "id",
+    "constraint_name": "page_blocks_page_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "SET NULL"
+  }
+}

@@ -8,9 +8,9 @@
       [
         "ci",
         "tools",
-        "openapi",
         "api",
-        "cms",
+        "directus",
+        "schema",
         "pwa",
         "test",
         "web"

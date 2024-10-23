@@ -1,0 +1,10 @@
+{
+  "folders": [
+    {
+      "path": "packages/schema",
+    },
+    {
+      "path": "packages/directus",
+    },
+  ],
+}

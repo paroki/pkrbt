@@ -1,0 +1,20 @@
+{
+  "collection": "post_blocks",
+  "field": "item",
+  "related_collection": null,
+  "meta": {
+    "junction_field": "post",
+    "many_collection": "post_blocks",
+    "many_field": "item",
+    "one_allowed_collections": [
+      "block_richtext",
+      "block_markdown",
+      "block_hero"
+    ],
+    "one_collection": null,
+    "one_collection_field": "collection",
+    "one_deselect_action": "nullify",
+    "one_field": null,
+    "sort_field": null
+  }
+}
