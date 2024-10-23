@@ -1,8 +1,8 @@
 import { MetadataRoute } from "next";
-import { headers } from "next/headers";
+import { headers, type UnsafeUnwrappedHeaders } from "next/headers";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const urlPrefix = headers().get("x-origin");
+  const urlPrefix = (headers() as unknown as UnsafeUnwrappedHeaders).get("x-origin");
   return [
     {
       url: `${urlPrefix}/berita`,

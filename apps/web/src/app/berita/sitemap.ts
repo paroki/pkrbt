@@ -3,7 +3,7 @@ import { MetadataRoute } from "next";
 import { headers } from "next/headers";
 
 async function fetchSitemap(page = 1): Promise<MetadataRoute.Sitemap> {
-  const prefix = headers().get("x-origin");
+  const prefix = (await headers()).get("x-origin");
   let sitemap: MetadataRoute.Sitemap = [];
 
   const { items, meta } = await api.article.search({

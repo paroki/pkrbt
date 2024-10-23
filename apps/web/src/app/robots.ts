@@ -1,8 +1,8 @@
 import { MetadataRoute } from "next";
-import { headers } from "next/headers";
+import { headers, type UnsafeUnwrappedHeaders } from "next/headers";
 
 export default function robots(): MetadataRoute.Robots {
-  const prefix = headers().get("x-origin");
+  const prefix = (headers() as unknown as UnsafeUnwrappedHeaders).get("x-origin");
   return {
     rules: {
       userAgent: "*",

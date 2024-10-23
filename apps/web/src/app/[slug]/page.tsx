@@ -14,9 +14,9 @@ import type { Article, Image } from "@pkrbt/openapi";
 import { generateMeta } from "@/utils/meta";
 
 type Props = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 interface BlockProps {
@@ -41,7 +41,8 @@ const getArticle = async (slug: string): Promise<Article> => {
   return await api.article.read(slug);
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const params = await props.params;
   const article = (await getArticle(params.slug)) as Required<Article>;
   const image = article.metaImage as Required<Image>;
   return generateMeta({
@@ -52,7 +53,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   });
 }
 
-export default async function Page({ params }: Props) {
+export default async function Page(props: Props) {
+  const params = await props.params;
   const { slug } = params;
 
   const article = await getArticle(slug);
