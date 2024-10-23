@@ -13,7 +13,8 @@
         "schema",
         "pwa",
         "test",
-        "web"
+        "web",
+        "deps"
       ]
     ],
     "scope-empty": [
