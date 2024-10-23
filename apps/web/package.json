@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -13,7 +13,7 @@
     "e2e": "pnpm exec playwright test"
   },
   "dependencies": {
-    "@next/third-parties": "^14.2.13",
+    "@next/third-parties": "15.0.1",
     "@radix-ui/react-navigation-menu": "^1.2.0",
     "@radix-ui/react-separator": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
@@ -29,9 +29,9 @@
     "lodash": "^4.17.21",
     "lucide-react": "^0.453.0",
     "moment": "^2.30.1",
-    "next": "14.2.15",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "15.0.1",
+    "react": "19.0.0-rc-69d4b800-20241021",
+    "react-dom": "19.0.0-rc-69d4b800-20241021",
     "reading-time": "^1.5.0",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
@@ -45,15 +45,15 @@
     "@testing-library/react": "^16.0.1",
     "@types/lodash": "^4.17.9",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/react": "npm:types-react@19.0.0-rc.1",
+    "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
     "@vitejs/plugin-react": "^4.3.1",
     "@vitejs/plugin-react-swc": "^3.7.1",
     "@vitest/coverage-v8": "^2.1.1",
     "@vitest/ui": "^2.1.1",
     "dotenv": "^16.4.5",
     "eslint": "^8",
-    "eslint-config-next": "14.2.15",
+    "eslint-config-next": "15.0.1",
     "jsdom": "^25.0.0",
     "lorem-ipsum": "^2.0.8",
     "msw": "^2.4.9",
@@ -62,5 +62,11 @@
     "tiny-invariant": "^1.3.3",
     "typescript": "^5",
     "vitest": "^2.1.1"
+  },
+  "pnpm": {
+    "overrides": {
+      "@types/react": "npm:types-react@19.0.0-rc.1",
+      "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1"
+    }
   }
 }

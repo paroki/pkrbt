@@ -29,7 +29,8 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default async function Page({ searchParams }: Props) {
+export default async function Page(props: Props) {
+  const searchParams = await props.searchParams;
   const withDefaults = {
     page: searchParams.page ?? 1,
     limit: 9,
