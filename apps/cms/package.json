@@ -18,7 +18,7 @@
     "@strapi/plugin-cloud": "5.1.0",
     "@strapi/plugin-documentation": "5.1.0",
     "@strapi/plugin-sentry": "^5.0.6",
-    "@strapi/plugin-users-permissions": "5.1.0",
+    "@strapi/plugin-users-permissions": "5.1.1",
     "@strapi/provider-email-nodemailer": "5.1.0",
     "@strapi/provider-upload-cloudinary": "5.1.0",
     "@strapi/strapi": "5.1.0",
