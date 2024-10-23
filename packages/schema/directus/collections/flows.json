@@ -1,0 +1,68 @@
+[
+  {
+    "name": "[Website] Sluggify contents",
+    "icon": "bolt",
+    "color": null,
+    "description": "Sluggify Website Contents",
+    "status": "active",
+    "trigger": "event",
+    "accountability": "all",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.create",
+        "items.update"
+      ],
+      "collections": [
+        "page",
+        "post"
+      ]
+    },
+    "operation": "e998e1fc-2174-44fd-9175-238d652c9b99",
+    "_syncId": "5f3afd9d-98ea-4b19-bd88-fb41c0495269"
+  },
+  {
+    "name": "[Website] Generate SEO",
+    "icon": "bolt",
+    "color": null,
+    "description": "Generate SEO For Post, Category, and Page",
+    "status": "active",
+    "trigger": "event",
+    "accountability": "all",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.create",
+        "items.update"
+      ],
+      "collections": [
+        "post",
+        "page"
+      ]
+    },
+    "operation": "44ced322-e701-411e-9f47-6c86e10ec0a7",
+    "_syncId": "a9c018d8-4a61-4391-b28c-10301341a0ac"
+  },
+  {
+    "name": "[Website] Content Block Updates",
+    "icon": "bolt",
+    "color": null,
+    "description": "Update summary on markdown/richtext blocks changed",
+    "status": "active",
+    "trigger": "event",
+    "accountability": "all",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.create",
+        "items.update"
+      ],
+      "collections": [
+        "page",
+        "post"
+      ]
+    },
+    "operation": "93cd8f52-a288-4d82-bcbc-4990ed9719f5",
+    "_syncId": "e3898473-c8f7-4e18-924e-b472c1e91f56"
+  }
+]

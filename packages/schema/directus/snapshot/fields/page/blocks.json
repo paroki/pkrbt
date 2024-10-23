@@ -1,0 +1,29 @@
+{
+  "collection": "page",
+  "field": "blocks",
+  "type": "alias",
+  "meta": {
+    "collection": "page",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "blocks",
+    "group": null,
+    "hidden": false,
+    "interface": "list-m2a",
+    "note": null,
+    "options": {
+      "enableSelect": false
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 13,
+    "special": [
+      "m2a"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

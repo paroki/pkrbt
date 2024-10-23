@@ -1,0 +1,25 @@
+{
+  "collection": "hero_images",
+  "field": "hero",
+  "related_collection": "block_hero",
+  "meta": {
+    "junction_field": "image",
+    "many_collection": "hero_images",
+    "many_field": "hero",
+    "one_allowed_collections": null,
+    "one_collection": "block_hero",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": "images",
+    "sort_field": null
+  },
+  "schema": {
+    "table": "hero_images",
+    "column": "hero",
+    "foreign_key_table": "block_hero",
+    "foreign_key_column": "id",
+    "constraint_name": "hero_images_hero_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "SET NULL"
+  }
+}

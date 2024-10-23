@@ -1,0 +1,20 @@
+{
+  "collection": "page_blocks",
+  "field": "item",
+  "related_collection": null,
+  "meta": {
+    "junction_field": "page",
+    "many_collection": "page_blocks",
+    "many_field": "item",
+    "one_allowed_collections": [
+      "block_hero",
+      "block_richtext",
+      "block_markdown"
+    ],
+    "one_collection": null,
+    "one_collection_field": "collection",
+    "one_deselect_action": "nullify",
+    "one_field": null,
+    "sort_field": null
+  }
+}

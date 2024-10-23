@@ -1,0 +1,25 @@
+{
+  "collection": "post_blocks",
+  "field": "post",
+  "related_collection": "post",
+  "meta": {
+    "junction_field": "item",
+    "many_collection": "post_blocks",
+    "many_field": "post",
+    "one_allowed_collections": null,
+    "one_collection": "post",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": "blocks",
+    "sort_field": null
+  },
+  "schema": {
+    "table": "post_blocks",
+    "column": "post",
+    "foreign_key_table": "post",
+    "foreign_key_column": "id",
+    "constraint_name": "post_blocks_post_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "SET NULL"
+  }
+}
