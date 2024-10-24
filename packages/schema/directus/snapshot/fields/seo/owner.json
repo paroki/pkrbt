@@ -1,37 +1,33 @@
 {
-  "collection": "post",
-  "field": "createdAt",
-  "type": "timestamp",
+  "collection": "seo",
+  "field": "owner",
+  "type": "string",
   "meta": {
-    "collection": "post",
+    "collection": "seo",
     "conditions": null,
-    "display": "datetime",
-    "display_options": {
-      "relative": true
-    },
-    "field": "createdAt",
+    "display": null,
+    "display_options": null,
+    "field": "owner",
     "group": null,
-    "hidden": true,
-    "interface": "datetime",
+    "hidden": false,
+    "interface": "input",
     "note": null,
     "options": null,
-    "readonly": true,
+    "readonly": false,
     "required": false,
     "sort": 6,
-    "special": [
-      "date-created"
-    ],
+    "special": null,
     "translations": null,
     "validation": null,
     "validation_message": null,
-    "width": "half"
+    "width": "full"
   },
   "schema": {
-    "name": "createdAt",
-    "table": "post",
-    "data_type": "timestamp with time zone",
+    "name": "owner",
+    "table": "seo",
+    "data_type": "character varying",
     "default_value": null,
-    "max_length": null,
+    "max_length": 255,
     "numeric_precision": null,
     "numeric_scale": null,
     "is_nullable": true,

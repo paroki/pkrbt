@@ -37,7 +37,8 @@
       ],
       "collections": [
         "post",
-        "page"
+        "page",
+        "category"
       ]
     },
     "operation": "44ced322-e701-411e-9f47-6c86e10ec0a7",
@@ -59,10 +60,33 @@
       ],
       "collections": [
         "page",
+        "category",
         "post"
       ]
     },
     "operation": "93cd8f52-a288-4d82-bcbc-4990ed9719f5",
     "_syncId": "e3898473-c8f7-4e18-924e-b472c1e91f56"
+  },
+  {
+    "name": "[Website]  SEO Owner Deleted",
+    "icon": "bolt",
+    "color": null,
+    "description": null,
+    "status": "active",
+    "trigger": "event",
+    "accountability": "all",
+    "options": {
+      "type": "filter",
+      "scope": [
+        "items.delete"
+      ],
+      "collections": [
+        "post",
+        "page",
+        "category"
+      ]
+    },
+    "operation": "11b42ae8-407d-4b94-b490-f6b487a17e07",
+    "_syncId": "eb9f6032-6fc3-480c-adfb-392d643721b2"
   }
 ]

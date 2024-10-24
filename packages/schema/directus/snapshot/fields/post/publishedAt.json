@@ -1,35 +1,31 @@
 {
   "collection": "post",
-  "field": "createdAt",
-  "type": "timestamp",
+  "field": "publishedAt",
+  "type": "dateTime",
   "meta": {
     "collection": "post",
     "conditions": null,
-    "display": "datetime",
-    "display_options": {
-      "relative": true
-    },
-    "field": "createdAt",
+    "display": null,
+    "display_options": null,
+    "field": "publishedAt",
     "group": null,
-    "hidden": true,
+    "hidden": false,
     "interface": "datetime",
     "note": null,
     "options": null,
-    "readonly": true,
+    "readonly": false,
     "required": false,
-    "sort": 6,
-    "special": [
-      "date-created"
-    ],
+    "sort": 4,
+    "special": null,
     "translations": null,
     "validation": null,
     "validation_message": null,
     "width": "half"
   },
   "schema": {
-    "name": "createdAt",
+    "name": "publishedAt",
     "table": "post",
-    "data_type": "timestamp with time zone",
+    "data_type": "timestamp without time zone",
     "default_value": null,
     "max_length": null,
     "numeric_precision": null,

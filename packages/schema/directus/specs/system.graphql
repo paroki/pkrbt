@@ -254,13 +254,13 @@ type Subscription {
   directus_settings_mutated(event: EventEnum): directus_settings_mutated
   directus_policies_mutated(event: EventEnum): directus_policies_mutated
   directus_access_mutated(event: EventEnum): directus_access_mutated
-  post_mutated(event: EventEnum): post_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
+  post_mutated(event: EventEnum): post_mutated
   seo_mutated(event: EventEnum): seo_mutated
+  block_hero_mutated(event: EventEnum): block_hero_mutated
   post_images_mutated(event: EventEnum): post_images_mutated
   page_mutated(event: EventEnum): page_mutated
   block_richtext_mutated(event: EventEnum): block_richtext_mutated
-  block_hero_mutated(event: EventEnum): block_hero_mutated
   globals_mutated(event: EventEnum): globals_mutated
   hero_images_mutated(event: EventEnum): hero_images_mutated
   post_blocks_mutated(event: EventEnum): post_blocks_mutated
@@ -364,6 +364,7 @@ type block_hero {
   updatedAt_func: datetime_functions
   title: String
   subtitle: String
+  content: String
   images(filter: hero_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [hero_images]
   images_func: count_functions
 }
@@ -1737,11 +1738,13 @@ type post {
   updatedAt_func: datetime_functions
   title: String
   slug: String
-  seo(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): seo
   summary: String
   cover(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
   category(filter: category_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): category
   customSummary: Boolean
+  publishedAt: Date
+  publishedAt_func: datetime_functions
+  seo(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): seo
   images(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [post_images]
   images_func: count_functions
   blocks(filter: post_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [post_blocks]
@@ -1784,6 +1787,7 @@ type seo {
   title: String
   description: String
   image(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  owner: String
 }
 
 type seo_mutated {
@@ -1866,6 +1870,7 @@ input block_hero_filter {
   updatedAt_func: datetime_function_filter_operators
   title: string_filter_operators
   subtitle: string_filter_operators
+  content: string_filter_operators
   images: hero_images_filter
   images_func: count_function_filter_operators
   _and: [block_hero_filter]
@@ -2769,11 +2774,13 @@ input post_filter {
   updatedAt_func: datetime_function_filter_operators
   title: string_filter_operators
   slug: string_filter_operators
-  seo: seo_filter
   summary: string_filter_operators
   cover: directus_files_filter
   category: category_filter
   customSummary: boolean_filter_operators
+  publishedAt: date_filter_operators
+  publishedAt_func: datetime_function_filter_operators
+  seo: seo_filter
   images: post_images_filter
   images_func: count_function_filter_operators
   blocks: post_blocks_filter
@@ -2795,6 +2802,7 @@ input seo_filter {
   title: string_filter_operators
   description: string_filter_operators
   image: directus_files_filter
+  owner: string_filter_operators
   _and: [seo_filter]
   _or: [seo_filter]
 }

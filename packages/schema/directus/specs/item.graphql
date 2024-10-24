@@ -1,16 +1,20 @@
 type Query {
-  post(filter: post_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [post!]!
-  post_by_id(id: ID!, version: String): post
-  post_aggregated(groupBy: [String], filter: post_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [post_aggregated!]!
-  post_by_version(version: String!, id: ID!): version_post
   directus_sync_id_map(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_sync_id_map!]!
   directus_sync_id_map_by_id(id: ID!, version: String): directus_sync_id_map
   directus_sync_id_map_aggregated(groupBy: [String], filter: directus_sync_id_map_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_sync_id_map_aggregated!]!
   directus_sync_id_map_by_version(version: String!, id: ID!): version_directus_sync_id_map
+  post(filter: post_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [post!]!
+  post_by_id(id: ID!, version: String): post
+  post_aggregated(groupBy: [String], filter: post_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [post_aggregated!]!
+  post_by_version(version: String!, id: ID!): version_post
   seo(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [seo!]!
   seo_by_id(id: ID!, version: String): seo
   seo_aggregated(groupBy: [String], filter: seo_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [seo_aggregated!]!
   seo_by_version(version: String!, id: ID!): version_seo
+  block_hero(filter: block_hero_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [block_hero!]!
+  block_hero_by_id(id: ID!, version: String): block_hero
+  block_hero_aggregated(groupBy: [String], filter: block_hero_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [block_hero_aggregated!]!
+  block_hero_by_version(version: String!, id: ID!): version_block_hero
   post_images(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [post_images!]!
   post_images_by_id(id: ID!, version: String): post_images
   post_images_aggregated(groupBy: [String], filter: post_images_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [post_images_aggregated!]!
@@ -23,10 +27,6 @@ type Query {
   block_richtext_by_id(id: ID!, version: String): block_richtext
   block_richtext_aggregated(groupBy: [String], filter: block_richtext_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [block_richtext_aggregated!]!
   block_richtext_by_version(version: String!, id: ID!): version_block_richtext
-  block_hero(filter: block_hero_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [block_hero!]!
-  block_hero_by_id(id: ID!, version: String): block_hero
-  block_hero_aggregated(groupBy: [String], filter: block_hero_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [block_hero_aggregated!]!
-  block_hero_by_version(version: String!, id: ID!): version_block_hero
   globals(version: String): globals
   globals_by_version(version: String!): version_globals
   hero_images(filter: hero_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [hero_images!]!
@@ -52,20 +52,20 @@ type Query {
 }
 
 type Mutation {
-  create_post_items(filter: post_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_post_input!]): [post!]!
-  create_post_item(data: create_post_input!): post
   create_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_sync_id_map_input!]): [directus_sync_id_map!]!
   create_directus_sync_id_map_item(data: create_directus_sync_id_map_input!): directus_sync_id_map
+  create_post_items(filter: post_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_post_input!]): [post!]!
+  create_post_item(data: create_post_input!): post
   create_seo_items(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_seo_input!]): [seo!]!
   create_seo_item(data: create_seo_input!): seo
+  create_block_hero_items(filter: block_hero_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_block_hero_input!]): [block_hero!]!
+  create_block_hero_item(data: create_block_hero_input!): block_hero
   create_post_images_items(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_post_images_input!]): [post_images!]!
   create_post_images_item(data: create_post_images_input!): post_images
   create_page_items(filter: page_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_page_input!]): [page!]!
   create_page_item(data: create_page_input!): page
   create_block_richtext_items(filter: block_richtext_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_block_richtext_input!]): [block_richtext!]!
   create_block_richtext_item(data: create_block_richtext_input!): block_richtext
-  create_block_hero_items(filter: block_hero_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_block_hero_input!]): [block_hero!]!
-  create_block_hero_item(data: create_block_hero_input!): block_hero
   create_hero_images_items(filter: hero_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_hero_images_input!]): [hero_images!]!
   create_hero_images_item(data: create_hero_images_input!): hero_images
   create_post_blocks_items(filter: post_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_post_blocks_input!]): [post_blocks!]!
@@ -76,15 +76,18 @@ type Mutation {
   create_page_blocks_item(data: create_page_blocks_input!): page_blocks
   create_block_markdown_items(filter: block_markdown_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_block_markdown_input!]): [block_markdown!]!
   create_block_markdown_item(data: create_block_markdown_input!): block_markdown
-  update_post_items(filter: post_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_post_input!): [post!]!
-  update_post_batch(filter: post_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_post_input!]): [post!]!
-  update_post_item(id: ID!, data: update_post_input!): post
   update_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_sync_id_map_input!): [directus_sync_id_map!]!
   update_directus_sync_id_map_batch(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_sync_id_map_input!]): [directus_sync_id_map!]!
   update_directus_sync_id_map_item(id: ID!, data: update_directus_sync_id_map_input!): directus_sync_id_map
+  update_post_items(filter: post_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_post_input!): [post!]!
+  update_post_batch(filter: post_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_post_input!]): [post!]!
+  update_post_item(id: ID!, data: update_post_input!): post
   update_seo_items(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_seo_input!): [seo!]!
   update_seo_batch(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_seo_input!]): [seo!]!
   update_seo_item(id: ID!, data: update_seo_input!): seo
+  update_block_hero_items(filter: block_hero_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_block_hero_input!): [block_hero!]!
+  update_block_hero_batch(filter: block_hero_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_block_hero_input!]): [block_hero!]!
+  update_block_hero_item(id: ID!, data: update_block_hero_input!): block_hero
   update_post_images_items(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_post_images_input!): [post_images!]!
   update_post_images_batch(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_post_images_input!]): [post_images!]!
   update_post_images_item(id: ID!, data: update_post_images_input!): post_images
@@ -94,9 +97,6 @@ type Mutation {
   update_block_richtext_items(filter: block_richtext_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_block_richtext_input!): [block_richtext!]!
   update_block_richtext_batch(filter: block_richtext_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_block_richtext_input!]): [block_richtext!]!
   update_block_richtext_item(id: ID!, data: update_block_richtext_input!): block_richtext
-  update_block_hero_items(filter: block_hero_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_block_hero_input!): [block_hero!]!
-  update_block_hero_batch(filter: block_hero_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_block_hero_input!]): [block_hero!]!
-  update_block_hero_item(id: ID!, data: update_block_hero_input!): block_hero
   update_globals(data: update_globals_input!): globals
   update_hero_images_items(filter: hero_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_hero_images_input!): [hero_images!]!
   update_hero_images_batch(filter: hero_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_hero_images_input!]): [hero_images!]!
@@ -113,20 +113,20 @@ type Mutation {
   update_block_markdown_items(filter: block_markdown_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_block_markdown_input!): [block_markdown!]!
   update_block_markdown_batch(filter: block_markdown_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_block_markdown_input!]): [block_markdown!]!
   update_block_markdown_item(id: ID!, data: update_block_markdown_input!): block_markdown
-  delete_post_items(ids: [ID]!): delete_many
-  delete_post_item(id: ID!): delete_one
   delete_directus_sync_id_map_items(ids: [ID]!): delete_many
   delete_directus_sync_id_map_item(id: ID!): delete_one
+  delete_post_items(ids: [ID]!): delete_many
+  delete_post_item(id: ID!): delete_one
   delete_seo_items(ids: [ID]!): delete_many
   delete_seo_item(id: ID!): delete_one
+  delete_block_hero_items(ids: [ID]!): delete_many
+  delete_block_hero_item(id: ID!): delete_one
   delete_post_images_items(ids: [ID]!): delete_many
   delete_post_images_item(id: ID!): delete_one
   delete_page_items(ids: [ID]!): delete_many
   delete_page_item(id: ID!): delete_one
   delete_block_richtext_items(ids: [ID]!): delete_many
   delete_block_richtext_item(id: ID!): delete_one
-  delete_block_hero_items(ids: [ID]!): delete_many
-  delete_block_hero_item(id: ID!): delete_one
   delete_hero_images_items(ids: [ID]!): delete_many
   delete_hero_images_item(id: ID!): delete_one
   delete_post_blocks_items(ids: [ID]!): delete_many
@@ -160,13 +160,13 @@ type Subscription {
   directus_settings_mutated(event: EventEnum): directus_settings_mutated
   directus_policies_mutated(event: EventEnum): directus_policies_mutated
   directus_access_mutated(event: EventEnum): directus_access_mutated
-  post_mutated(event: EventEnum): post_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
+  post_mutated(event: EventEnum): post_mutated
   seo_mutated(event: EventEnum): seo_mutated
+  block_hero_mutated(event: EventEnum): block_hero_mutated
   post_images_mutated(event: EventEnum): post_images_mutated
   page_mutated(event: EventEnum): page_mutated
   block_richtext_mutated(event: EventEnum): block_richtext_mutated
-  block_hero_mutated(event: EventEnum): block_hero_mutated
   globals_mutated(event: EventEnum): globals_mutated
   hero_images_mutated(event: EventEnum): hero_images_mutated
   post_blocks_mutated(event: EventEnum): post_blocks_mutated
@@ -236,6 +236,7 @@ type block_hero {
   updatedAt_func: datetime_functions
   title: String
   subtitle: String
+  content: String
   images(filter: hero_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [hero_images]
   images_func: count_functions
 }
@@ -262,6 +263,7 @@ type block_hero_aggregated_count {
   updatedAt: Int
   title: Int
   subtitle: Int
+  content: Int
   images: Int
 }
 
@@ -1136,11 +1138,13 @@ type post {
   updatedAt_func: datetime_functions
   title: String
   slug: String
-  seo(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): seo
   summary: String
   cover(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
   category(filter: category_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): category
   customSummary: Boolean
+  publishedAt: Date
+  publishedAt_func: datetime_functions
+  seo(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): seo
   images(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [post_images]
   images_func: count_functions
   blocks(filter: post_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [post_blocks]
@@ -1170,11 +1174,12 @@ type post_aggregated_count {
   updatedAt: Int
   title: Int
   slug: Int
-  seo: Int
   summary: Int
   cover: Int
   category: Int
   customSummary: Int
+  publishedAt: Int
+  seo: Int
   images: Int
   blocks: Int
 }
@@ -1266,6 +1271,7 @@ type seo {
   title: String
   description: String
   image(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  owner: String
 }
 
 type seo_aggregated {
@@ -1280,6 +1286,7 @@ type seo_aggregated_count {
   title: Int
   description: Int
   image: Int
+  owner: Int
 }
 
 type seo_mutated {
@@ -1298,6 +1305,7 @@ type version_block_hero {
   updatedAt: Date
   title: String
   subtitle: String
+  content: String
   images: JSON
 }
 
@@ -1402,11 +1410,12 @@ type version_post {
   updatedAt: Date
   title: String
   slug: String
-  seo: JSON
   summary: String
   cover: JSON
   category: JSON
   customSummary: Boolean
+  publishedAt: Date
+  seo: JSON
   images: JSON
   blocks: JSON
 }
@@ -1432,6 +1441,7 @@ type version_seo {
   title: String
   description: String
   image: JSON
+  owner: String
 }
 
 input big_int_filter_operators {
@@ -1460,6 +1470,7 @@ input block_hero_filter {
   updatedAt_func: datetime_function_filter_operators
   title: string_filter_operators
   subtitle: string_filter_operators
+  content: string_filter_operators
   images: hero_images_filter
   images_func: count_function_filter_operators
   _and: [block_hero_filter]
@@ -1531,6 +1542,7 @@ input create_block_hero_input {
   updatedAt: Date
   title: String
   subtitle: String
+  content: String
   images: [create_hero_images_input]
 }
 
@@ -1738,11 +1750,12 @@ input create_post_input {
   updatedAt: Date
   title: String
   slug: String
-  seo: create_seo_input
   summary: String
   cover: create_directus_files_input
   category: create_category_input
   customSummary: Boolean
+  publishedAt: Date
+  seo: create_seo_input
   images: [create_post_images_input]
   blocks: [create_post_blocks_input]
 }
@@ -1752,6 +1765,7 @@ input create_seo_input {
   title: String
   description: String
   image: create_directus_files_input
+  owner: String
 }
 
 input date_filter_operators {
@@ -2147,11 +2161,13 @@ input post_filter {
   updatedAt_func: datetime_function_filter_operators
   title: string_filter_operators
   slug: string_filter_operators
-  seo: seo_filter
   summary: string_filter_operators
   cover: directus_files_filter
   category: category_filter
   customSummary: boolean_filter_operators
+  publishedAt: date_filter_operators
+  publishedAt_func: datetime_function_filter_operators
+  seo: seo_filter
   images: post_images_filter
   images_func: count_function_filter_operators
   blocks: post_blocks_filter
@@ -2173,6 +2189,7 @@ input seo_filter {
   title: string_filter_operators
   description: string_filter_operators
   image: directus_files_filter
+  owner: string_filter_operators
   _and: [seo_filter]
   _or: [seo_filter]
 }
@@ -2208,6 +2225,7 @@ input update_block_hero_input {
   updatedAt: Date
   title: String
   subtitle: String
+  content: String
   images: [update_hero_images_input]
 }
 
@@ -2427,11 +2445,12 @@ input update_post_input {
   updatedAt: Date
   title: String
   slug: String
-  seo: update_seo_input
   summary: String
   cover: update_directus_files_input
   category: update_category_input
   customSummary: Boolean
+  publishedAt: Date
+  seo: update_seo_input
   images: [update_post_images_input]
   blocks: [update_post_blocks_input]
 }
@@ -2441,4 +2460,5 @@ input update_seo_input {
   title: String
   description: String
   image: update_directus_files_input
+  owner: String
 }

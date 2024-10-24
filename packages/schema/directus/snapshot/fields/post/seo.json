@@ -9,16 +9,13 @@
     "display_options": null,
     "field": "seo",
     "group": null,
-    "hidden": true,
+    "hidden": false,
     "interface": "select-dropdown-m2o",
     "note": null,
-    "options": {
-      "enableSelect": false,
-      "template": "{{description}}"
-    },
+    "options": null,
     "readonly": false,
     "required": false,
-    "sort": 9,
+    "sort": 18,
     "special": [
       "m2o"
     ],
