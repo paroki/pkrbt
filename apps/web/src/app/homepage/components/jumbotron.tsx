@@ -1,7 +1,4 @@
 "use client";
-import Image from "next/image";
-import type { Homepage, Image as ImageType } from "@pkrbt/openapi";
-import { addPrefix } from "@/utils/prefix";
 import {
   Carousel,
   CarouselContent,
@@ -9,12 +6,14 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
+import { BlockHero, BlockHeroImages, Page } from "@pkrbt/directus";
+import DirectusImage from "@/components/common/image";
 
 type Props = {
-  homepage: Required<Homepage>;
+  homepage: Page;
 };
 
-type Images = Array<Required<ImageType>>;
+type Images = Array<Required<BlockHeroImages>>;
 
 function HomepageSlider({ images }: { images: Images }) {
   const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: false }));
@@ -31,14 +30,11 @@ function HomepageSlider({ images }: { images: Images }) {
         <CarouselContent>
           {images.map((item, index) => (
             <CarouselItem key={index}>
-              <Image
+              <DirectusImage
                 priority
-                width={item.width}
-                height={item.height}
+                image={item.image}
                 className="rounded-md w-full"
-                alt={item.alternativeText ?? "homepage"}
-                src={addPrefix(item?.url ?? "")}
-                sizes="100vw"
+                sizes="(max-width: 640px) 100vw"
                 style={{
                   display: "block",
                   objectFit: "cover",
@@ -53,23 +49,37 @@ function HomepageSlider({ images }: { images: Images }) {
     </div>
   );
 }
-export default function Jumbotron({ homepage }: Props) {
+
+function HomepageHero({ item }: { item: BlockHero }) {
   return (
     <div className="flex flex-col md:flex-row gap-4">
-      {homepage.images && <HomepageSlider images={homepage.images as Images} />}
-
+      <HomepageSlider images={item.images as Images} />
       <div className="flex-[1] bg-white border border-slate-200 drop-shadow-lg rounded-md p-4">
         <h2 className="uppercase font-semibold mb-4 tracking-widest text-xs">
-          {homepage.subtitle}
+          {item.subtitle}
         </h2>
         <h2 className="scroll-m-20 text-xl text-primary-500 font-extrabold tracking-tight lg:text-3xl mb-4">
-          {homepage.title}
+          {item.title}
         </h2>
         <div
           className="markdown"
-          dangerouslySetInnerHTML={{ __html: homepage.content }}
+          dangerouslySetInnerHTML={{ __html: item.content as string }}
         />
       </div>
     </div>
+  );
+}
+
+export default function Jumbotron({ homepage }: Props) {
+  return (
+    <>
+      {homepage.blocks?.map((block, index) => (
+        <div key={index}>
+          {block.collection == "block_hero" && (
+            <HomepageHero item={block.item as BlockHero} />
+          )}
+        </div>
+      ))}
+    </>
   );
 }

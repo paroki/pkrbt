@@ -4,10 +4,7 @@
       "path": "apps/web",
     },
     {
-      "path": "apps/cms",
-    },
-    {
-      "path": "packages/openapi",
+      "path": "packages/directus",
     },
     {
       "path": ".github",
