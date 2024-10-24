@@ -35,6 +35,10 @@ function createReadGraphql(directus: Directus<Schema>) {
 
 export function post(directus: Directus<Schema>) {
   const methods = restMethods<Post>(directus, "post");
+
+  /**
+   * Search posts with category or keyword
+   */
   async function search(params: Partial<SearchWithCategory>) {
     const withDefaults: SearchWithCategory = {
       page: 1,

@@ -1,15 +1,14 @@
-import { describe, expect, it, beforeEach, vi } from "vitest";
+import { describe, expect, it, beforeEach } from "vitest";
 import { post } from "../../src/website/post";
 import { mockDeep, mockReset } from "vitest-mock-extended";
 import { Directus } from "../../src";
 
-vi.mock("@directus/sdk");
 const mock = mockDeep<Directus>();
 const postItem = {
   title: "Post Title",
 };
 
-describe("directus.post plugin", () => {
+describe("post plugin", () => {
   const plugin = post(mock);
 
   beforeEach(() => {
@@ -37,18 +36,20 @@ describe("directus.post plugin", () => {
   it("should search posts", async () => {
     mock.graphql.query.mockResolvedValue({
       post: [postItem],
-      post_aggregated: {
-        count: {
-          id: 30,
+      post_aggregated: [
+        {
+          count: {
+            id: 30,
+          },
         },
-      },
+      ],
     });
 
     const { items, error, meta } = await plugin.search({ keyword: "test" });
 
     expect(error).toBeUndefined();
     expect(items).toStrictEqual([postItem]);
-    expect(meta.page).toBe(1);
-    expect(meta.nextPage).toBe(2);
+    expect(meta?.page).toBe(1);
+    expect(meta?.nextPage).toBe(2);
   });
 });

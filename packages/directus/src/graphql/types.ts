@@ -48,8 +48,8 @@ export type GraphqlExecResponse<T> = {
 
 export type GraphqlPaginateResponse<T> = {
   items: T[];
-  meta: GraphqlPaginateMeta;
-  error?: GraphqlError;
+  meta?: GraphqlPaginateMeta;
+  error?: GraphqlError | Error;
 };
 
 export type GraphqlOptions = {

@@ -75,8 +75,18 @@ export class Graphql {
   ): Promise<GraphqlPaginateResponse<T>> {
     let error;
     let items: T[] = [];
+    let meta;
 
-    const meta = await this.createPageMeta(params);
+    try {
+      meta = await this.createPageMeta(params);
+    } catch (e) {
+      error = new Error("Unknown error", { cause: e });
+      if (e instanceof Error) {
+        error = e;
+      }
+      return { meta, error, items };
+    }
+
     this.addParam({ name: "page", type: "Int" });
     this.addParam({ name: "limit", type: "Int" });
     try {
@@ -85,6 +95,9 @@ export class Graphql {
       items = data ?? [];
     } catch (e) {
       error = new GraphqlError("", { cause: e });
+      if (e instanceof Error) {
+        error = e;
+      }
     }
 
     return {
@@ -98,7 +111,7 @@ export class Graphql {
     params: GraphqlPaginateParams,
   ): Promise<GraphqlPaginateMeta> {
     const template = `
-query ${this.type}(
+query ${this.type}_aggregated(
   %vars%
 ){
   ${this.type}_aggregated(
@@ -112,20 +125,28 @@ query ${this.type}(
 `;
     const page = params.page;
     const limit = params.limit;
+    const query = this.renderParam(template, ["sort", "page", "limit"]).replace(
+      /\(\s+\)/gim,
+      "",
+    );
 
-    const query = this.renderParam(template, ["sort", "page", "limit"]);
-
-    const meta = await this.directus.graphql.query(query, params);
-    const count = meta.post_aggregated.count.id;
-    const size: number = Number((count / limit).toFixed(0));
-
-    return {
-      page,
-      pageSize: size,
-      rows: count,
-      nextPage: page < size ? page + 1 : page,
-      previousPage: page > 1 ? page - 1 : page,
-    };
+    try {
+      const { post_aggregated } = await this.directus.graphql.query(
+        query,
+        params,
+      );
+      const count = post_aggregated[0].count.id;
+      const size: number = Number((count / limit).toFixed(0));
+      return {
+        page,
+        pageSize: size,
+        rows: count,
+        nextPage: page < size ? page + 1 : page,
+        previousPage: page > 1 ? page - 1 : page,
+      };
+    } catch (e) {
+      throw new GraphqlError(query, e);
+    }
   }
 
   private createQuery() {
@@ -134,7 +155,7 @@ query ${this.type}(
     if (this.fragment) {
       const fragments = this.fragment.content.split("\n").join("\n  ").trim();
       output += `
-fragment ${this.fragment.name} {
+fragment ${this.fragment.name} on ${this.type} {
   ${fragments}
 }
 `;
@@ -165,7 +186,7 @@ query ${this.type}(
     Object.entries(this.params).forEach((entry) => {
       const definition = entry[1];
       const { name, type, required, argumentName, variableName } = definition;
-      const rtype = required && type !== "[String!]!" ? `!${type}` : type;
+      const rtype = required && type !== "[String!]!" ? `${type}!` : type;
 
       if (!filters.includes(name)) {
         vars.push(`${variableName}: ${rtype}`);
