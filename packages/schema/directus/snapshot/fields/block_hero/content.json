@@ -1,35 +1,33 @@
 {
-  "collection": "post",
-  "field": "createdAt",
-  "type": "timestamp",
+  "collection": "block_hero",
+  "field": "content",
+  "type": "text",
   "meta": {
-    "collection": "post",
+    "collection": "block_hero",
     "conditions": null,
-    "display": "datetime",
-    "display_options": {
-      "relative": true
-    },
-    "field": "createdAt",
+    "display": null,
+    "display_options": null,
+    "field": "content",
     "group": null,
-    "hidden": true,
-    "interface": "datetime",
+    "hidden": false,
+    "interface": "input-multiline",
     "note": null,
-    "options": null,
-    "readonly": true,
+    "options": {
+      "softLength": 500
+    },
+    "readonly": false,
     "required": false,
-    "sort": 6,
-    "special": [
-      "date-created"
-    ],
+    "sort": 11,
+    "special": null,
     "translations": null,
     "validation": null,
     "validation_message": null,
-    "width": "half"
+    "width": "full"
   },
   "schema": {
-    "name": "createdAt",
-    "table": "post",
-    "data_type": "timestamp with time zone",
+    "name": "content",
+    "table": "block_hero",
+    "data_type": "text",
     "default_value": null,
     "max_length": null,
     "numeric_precision": null,

@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "collection": "post",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "_sync_default_public_policy",
+    "_syncId": "d565a1e7-ef06-4359-a7dd-61d4e5ba5336"
+  }
+]

@@ -12,7 +12,9 @@
     "hidden": false,
     "interface": "input-multiline",
     "note": null,
-    "options": null,
+    "options": {
+      "softLength": 500
+    },
     "readonly": false,
     "required": false,
     "sort": 3,
