@@ -6,7 +6,8 @@ import { pageReadFields } from "./page.query";
 /**
  * Page response with required values
  */
-type PageR = Omit<Page, "id"> & Pick<Required<Page>, "id">;
+type PageR = Omit<Page, "id"> & Pick<Required<Page>, "id" | "seo">;
+
 export function page(directus: Directus<Schema>) {
   const methods = restMethods<PageR>(directus, "page");
 
@@ -15,6 +16,8 @@ export function page(directus: Directus<Schema>) {
       type: "page_by_id",
       fields: pageReadFields,
     });
+    gql.addParam({ name: "id", type: "ID" });
+
     const { data, error: readError } = await gql.execute<PageR>({ id });
     const item = data;
     const error = readError;

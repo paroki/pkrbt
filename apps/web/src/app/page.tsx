@@ -6,11 +6,9 @@ import MassSchedule from "@/app/homepage/components/schedule";
 import Marriages from "@/app/homepage/components/marriages";
 import Rings from "@/components/icons/rings";
 import { Text } from "@radix-ui/themes";
-import { getArticles, getMarriages } from "@/utils/api";
 import ErrorBoundary from "@/components/ui/error-boundaries";
+import { generateMeta, MetaImage } from "@/utils/meta";
 import { fetchHomepage } from "./homepage/utils";
-import { generateMeta } from "@/utils/meta";
-import { Image } from "@pkrbt/openapi";
 
 export const dynamic = "force-dynamic";
 
@@ -21,18 +19,18 @@ export async function generateMetadata() {
     return {};
   }
 
-  const { metaTitle, metaDescription, metaImage } = homepage;
+  const { title, description, image } = homepage.seo;
   return generateMeta({
-    title: metaTitle,
-    description: metaDescription,
-    image: metaImage as Required<Image>,
-    type: "website",
+    title,
+    description,
+    image: image as MetaImage,
+    type: "article",
   });
 }
 
 export default async function Home() {
-  const articles = await getArticles();
-  const marriages = await getMarriages();
+  const articles = []; // await getArticles();
+  const marriages = []; // await getMarriages();
   const homepage = await fetchHomepage();
 
   if (!homepage) {

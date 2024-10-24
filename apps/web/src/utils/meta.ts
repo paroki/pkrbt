@@ -1,20 +1,20 @@
 import { Metadata } from "next";
 import { OpenGraphType } from "next/dist/lib/metadata/types/opengraph-types";
 import { addPrefix } from "./prefix";
-import { headers, type UnsafeUnwrappedHeaders } from "next/headers";
 import invariant from "tiny-invariant";
 
 export type MetaImage = {
   url: string;
   width: number;
   height: number;
-  alternativeText: string;
-};
-
-export type ParokiMeta = {
   title: string;
   description: string;
-  image?: MetaImage;
+};
+
+export type Meta = {
+  title?: string | null;
+  description?: string | null;
+  image?: MetaImage | null;
   type: OpenGraphType;
 };
 
@@ -23,11 +23,10 @@ export function generateMeta({
   description,
   image,
   type,
-}: ParokiMeta): Metadata {
+}: Meta): Metadata {
   const images = [];
-  const headerList = (headers() as unknown as UnsafeUnwrappedHeaders);
-  const url = headerList.get("x-current-url");
-  const origin = headerList.get("x-origin") ?? "http://localhost:3000";
+  const url = "/";
+  const origin = "http://localhost:3000";
 
   invariant(url, "Can not get current url");
 
@@ -36,7 +35,7 @@ export function generateMeta({
       url: addPrefix(image.url),
       width: image.width,
       height: image.height,
-      alt: image.alternativeText,
+      alt: image.title,
     });
   } else {
     images.push({

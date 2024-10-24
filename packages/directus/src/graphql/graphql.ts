@@ -196,6 +196,7 @@ query ${this.type}(
 
     return template
       .replace("%vars%", vars.join(",\n  "))
-      .replace("%args%", args.join(",\n    "));
+      .replace("%args%", args.join(",\n    "))
+      .replace(/\(\s+\)/gim, "");
   }
 }

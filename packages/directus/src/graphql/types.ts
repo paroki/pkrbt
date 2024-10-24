@@ -4,6 +4,7 @@ import { GraphqlError } from "./error";
 
 export type GraphqlParamType =
   | "Int"
+  | "ID"
   | "String"
   | "[String!]!"
   | "!Int"

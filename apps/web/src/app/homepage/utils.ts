@@ -1,20 +1,10 @@
-import api from "@/utils/strapi";
-import type { Homepage } from "@pkrbt/openapi";
+import { directus } from "@/utils/directus";
 
-export async function fetchHomepage(): Promise<undefined | Required<Homepage>> {
-  const { data } = await api.fetch.GET("/homepage", {
-    params: {
-      query: {
-        populate: "*",
-      },
-    },
-    cache: "no-store",
-  });
+export async function fetchHomepage() {
+  const { item, error } = await directus.page.readBySlug("beranda");
 
-  let homepage = undefined;
-  if (data?.data) {
-    homepage = data.data as Required<Homepage>;
+  if (error) {
+    Promise.reject(error.cause);
   }
-
-  return homepage;
+  return item;
 }
