@@ -4,6 +4,9 @@
       "path": "packages/schema",
     },
     {
+      "path": "packages/directus-core",
+    },
+    {
       "path": "packages/directus",
     },
   ],
