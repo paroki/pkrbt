@@ -3,9 +3,6 @@ import { Schema } from "../schema";
 import { Graphql } from "./graphql";
 import { GraphqlOptions } from "./types";
 
-export * from "./graphql";
-export * from "./types";
-
 export function createGraphql(
   directus: Directus<Schema>,
   options: Omit<GraphqlOptions, "directus"> &
@@ -17,3 +14,6 @@ export function createGraphql(
   };
   return new Graphql(withDefaults);
 }
+
+export * from "./graphql";
+export * from "./types";

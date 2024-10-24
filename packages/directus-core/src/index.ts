@@ -71,7 +71,7 @@ export class Directus<T> {
   constructor(options: DirectusOptions) {
     this.client = createDirectus<T>(options.baseUrl);
     if (options.token) {
-      this.client.with(staticToken(options.token));
+      this.client = this.client.with(staticToken(options.token));
     }
 
     this.rest = this.client.with(rest());

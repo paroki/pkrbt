@@ -72,7 +72,7 @@ category {
     });
 
     const expectedQuery = `
-fragment searchFragment {
+fragment searchFragment on post {
   id
   title
   category {
@@ -81,8 +81,8 @@ fragment searchFragment {
 }
 
 query post(
-  $page: !Int,
-  $limit: !Int
+  $page: Int!,
+  $limit: Int!
 ){
   post(
     page: $page,
@@ -114,11 +114,13 @@ query post(
 
     directus.graphql.query.mockResolvedValue({
       post: [postItem],
-      post_aggregated: {
-        count: {
-          id: 32,
+      post_aggregated: [
+        {
+          count: {
+            id: 32,
+          },
         },
-      },
+      ],
     });
 
     gql.addParam({ name: "keyword", type: "String", argumentName: "search" });
