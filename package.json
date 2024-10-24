@@ -12,7 +12,7 @@
     "coverage": "turbo run coverage",
     "e2e": "turbo run e2e",
     "start": "turbo run start",
-    "seed:dev": "turbo run seed:dev",
+    "seed:sample": "turbo run seed:sample",
     "generate:types": "turbo run generate:types",
     "directus:schema": "docker compose exec -it directus npx directus schema snapshot --yes /directus/schema/schema.yml",
     "directus:apply": "directusctl --help",
