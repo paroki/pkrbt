@@ -1,0 +1,43 @@
+{
+  "images": [
+    {
+      "name": "praying",
+      "url": "https://res.cloudinary.com/pkrbt/image/upload/v1729384607/jumboimg_agteid.jpg"
+    },
+    {
+      "name": "coffee-beans",
+      "url": "https://res.cloudinary.com/pkrbt/image/upload/v1729384577/coffee-beans_dx6d0a.jpg"
+    },
+    {
+      "name": "coffee-art",
+      "url": "https://res.cloudinary.com/pkrbt/image/upload/v1729384569/coffee-art_e19ycq.jpg"
+    },
+    {
+      "name": "obviously-peaceful",
+      "url": "https://res.cloudinary.com/pkrbt/image/upload/v1729384568/obviously-peaceful_yelvck.jpg"
+    },
+    {
+      "name": "obviously-failed",
+      "url": "https://res.cloudinary.com/pkrbt/image/upload/v1729384568/obviously-failed_cwe9qo.jpg"
+    },
+    {
+      "name": "obviously-randomly",
+      "url": "https://res.cloudinary.com/pkrbt/image/upload/v1729384568/obviously-randomly_eufvk2.jpg"
+    },
+    {
+      "name": "obviously-confusing",
+      "url": "https://res.cloudinary.com/pkrbt/image/upload/v1729384568/obviously-confusing_kefun5.jpg"
+    }
+  ],
+  "category": [
+    {
+      "title": "Uncategorized"
+    },
+    {
+      "title": "Orang Kudus"
+    },
+    {
+      "title": "Kegiatan"
+    }
+  ]
+}
