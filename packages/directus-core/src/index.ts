@@ -69,9 +69,13 @@ export class Directus<T> {
   graphql: typeof this.client & GraphqlClient<T>;
 
   constructor(options: DirectusOptions) {
-    this.client = createDirectus<T>(options.baseUrl);
+    this.client = createDirectus<T>(options.baseUrl, {
+      ...options.clientOptions,
+    });
     if (options.token) {
       this.client = this.client.with(staticToken(options.token));
+    } else if (options.staticToken) {
+      this.client = this.client.with(staticToken(options.staticToken));
     }
 
     this.rest = this.client.with(rest());

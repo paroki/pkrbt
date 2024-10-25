@@ -18,11 +18,11 @@
     },
     "seed:sample": {
       "dependsOn": ["^build"],
-      "cache": true
+      "cache": false,
+      "persistent": true
     },
     "schema:pull": {
-      
-"cache": false,
+      "cache": false,
       "persistent": true
     },
     "schema:push": {

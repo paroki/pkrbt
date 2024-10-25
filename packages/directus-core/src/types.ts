@@ -1,9 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { ClientOptions } from "@directus/sdk";
 import type { Directus } from "./index.js";
 
 export interface DirectusOptions {
   baseUrl: string;
   token?: string;
+  staticToken?: string;
+  accessToken?: string;
+  clientOptions?: ClientOptions;
 }
 
 export type Constructor<T> = new (...args: any[]) => T;

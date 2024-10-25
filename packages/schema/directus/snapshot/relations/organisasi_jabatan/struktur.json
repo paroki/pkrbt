@@ -1,0 +1,25 @@
+{
+  "collection": "organisasi_jabatan",
+  "field": "struktur",
+  "related_collection": "organisasi_struktur",
+  "meta": {
+    "junction_field": null,
+    "many_collection": "organisasi_jabatan",
+    "many_field": "struktur",
+    "one_allowed_collections": null,
+    "one_collection": "organisasi_struktur",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": null,
+    "sort_field": null
+  },
+  "schema": {
+    "table": "organisasi_jabatan",
+    "column": "struktur",
+    "foreign_key_table": "organisasi_struktur",
+    "foreign_key_column": "id",
+    "constraint_name": "organisasi_jabatan_struktur_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "CASCADE"
+  }
+}

@@ -1,7 +1,7 @@
 import { createDirectus } from "../directus.mjs";
 import { ensureError } from "../util.mjs";
 
-const directus = createDirectus();
+const directus = await createDirectus();
 const fixtures = [
   {
     title: "Berita",
@@ -24,7 +24,9 @@ const fixtures = [
 let categories = [];
 
 async function ensureCategory(category) {
-  const { id, error } = await directus.category.findId(category.title);
+  const { id, error } = await directus.category.findId({
+    search: category.title,
+  });
 
   ensureError(error);
 
@@ -59,4 +61,5 @@ export async function ensureCategories() {
     const category = await ensureCategory(fixtures[i]);
     categories.push(category);
   }
+  console.warn("imported categories");
 }

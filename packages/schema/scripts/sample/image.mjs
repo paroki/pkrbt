@@ -4,7 +4,7 @@ import { importFile, readFiles } from "@directus/sdk";
 
 let images = [];
 
-const directus = createDirectus();
+const directus = await createDirectus();
 
 async function importImage({ name, url }) {
   const rest = directus.rest;
@@ -37,4 +37,5 @@ export async function importImages() {
 
     images.push(file);
   }
+  console.warn("imported images");
 }
