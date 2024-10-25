@@ -1,16 +1,13 @@
-/* eslint-disable @next/next/no-img-element */
-import type { Article } from "@pkrbt/openapi";
 import { Box, Card, Inset } from "@radix-ui/themes";
 import { EyeIcon } from "lucide-react";
 import Link from "next/link";
 import DateReadable from "../common/date";
-import { addPrefix } from "@/utils/prefix";
-import Image from "next/image";
+import { Post } from "@pkrbt/directus";
+import DirectusImage from "../common/image";
 
-export function ArticleItem({ article }: { article: Article }) {
+export function PostItem({ post }: { post: Post }) {
   return (
-    <Link href={`/${article.slug ?? "no-slug"}`} className="hover:text-inherit">
-      {/* TODO: every article should have slug! remove line above */}
+    <Link href={`/${post.slug}`} className="hover:text-inherit">
       <Box
         maxWidth="240px"
         className="group bg-white border border-slate-200 rounded-md drop-shadow-md"
@@ -26,35 +23,30 @@ export function ArticleItem({ article }: { article: Article }) {
               <EyeIcon className="text-white w-9 h-9" />
             </div>
             <div className="absolute top-2 right-2 p-1 tracking-wider bg-slate-950 opacity-50 uppercase text-white text-xs">
-              <p>{article.category ? article.category.name : "Warta Gereja"}</p>
+              <p>{post.category ? post.category.title : "Warta Gereja"}</p>
             </div>
-            <Image
-              width={article.metaImage?.width ?? 900}
-              height={article.metaImage?.height ?? 497}
-              src={
-                article.metaImage?.url
-                  ? addPrefix(article.metaImage.url)
-                  : "/static/noimg.jpg"
-              }
-              alt={`image for ${article.title}`}
-              sizes="100vw"
-              style={{
-                display: "block",
-                objectFit: "cover",
-                backgroundColor: "var(--gray-5)",
-                height: 200,
-              }}
-            />
+            {post.cover && (
+              <DirectusImage
+                image={post.cover}
+                sizes="100vw"
+                style={{
+                  display: "block",
+                  objectFit: "cover",
+                  backgroundColor: "var(--gray-5)",
+                  height: 200,
+                }}
+              />
+            )}
           </Inset>
           <div className="p-2">
             <h3 className="my-1 text-lg group-hover:text-primary-600">
-              {article.title}
+              {post.title}
             </h3>
             <p className="text-base hover:text-inherit">
-              {article.description?.substring(0, 75)}...
+              {post.summary?.substring(0, 200)}...
             </p>
             <DateReadable
-              isoDate={article.publishedAt as string}
+              isoDate={post.publishedAt as string}
               showIcon
               className="text-sm my-2"
             />

@@ -155,7 +155,7 @@ query ${this.type}_aggregated(
     if (this.fragment) {
       const fragments = this.fragment.content.split("\n").join("\n  ").trim();
       output += `
-fragment ${this.fragment.name} on ${this.type} {
+fragment ${this.fragment.name} on ${this.type.split("_")[0]} {
   ${fragments}
 }
 `;

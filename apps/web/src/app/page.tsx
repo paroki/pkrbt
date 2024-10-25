@@ -9,6 +9,7 @@ import { Text } from "@radix-ui/themes";
 import ErrorBoundary from "@/components/ui/error-boundaries";
 import { generateMeta, MetaImage } from "@/utils/meta";
 import { fetchHomepage } from "./homepage/utils";
+import { directus } from "@/utils/directus";
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +30,11 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  const articles = []; // await getArticles();
+  const { items: posts, error } = await directus.post.search({ limit: 5 });
+
+  if (error) {
+    Promise.reject(error.cause);
+  }
   const marriages = []; // await getMarriages();
   const homepage = await fetchHomepage();
 
@@ -55,11 +60,11 @@ export default async function Home() {
               <MassSchedule />
             </div>
           </Container>
-          {articles.length > 0 && (
+          {posts.length > 0 && (
             <Container className="bg-gray-50">
               <div className="max-w-screen-lg mx-auto">
                 <ContainerHeader>Artikel</ContainerHeader>
-                <MainNews articles={articles} />
+                <MainNews posts={posts} />
               </div>
             </Container>
           )}

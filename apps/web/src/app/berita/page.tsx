@@ -1,10 +1,10 @@
-import api from "@/utils/strapi";
-import ArticleList from "./components/list";
+import PostList from "./components/list";
 import { Metadata } from "next";
 import { generateMeta } from "@/utils/meta";
+import { directus } from "@/utils/directus";
 
 type SearchParams = {
-  search?: string;
+  keyword?: string;
   page?: number;
   limit?: number;
   category?: string;
@@ -34,36 +34,21 @@ export default async function Page(props: Props) {
   const withDefaults = {
     page: searchParams.page ?? 1,
     limit: 9,
-    sort: ["publishedAt:desc"],
-    filters: {
-      $or: [
-        {
-          title: {
-            $containsi: searchParams.search ?? "",
-          },
-        },
-        {
-          category: {
-            name: {
-              $containsi: searchParams.search ?? "",
-            },
-          },
-        },
-      ],
-    },
+    sort: ["-publishedAt"],
+    filter: {},
   };
 
-  const { items, meta } = await api.article.search(withDefaults);
+  const { items, meta } = await directus.post.search(withDefaults);
 
   const pageMeta = {
-    size: meta.pagination.pageCount ?? 0,
-    page: withDefaults.page,
-    search: searchParams.search,
+    size: meta?.pageSize ?? 0,
+    page: meta?.page ?? 1,
+    keyword: searchParams.keyword,
   };
 
   return (
     <>
-      <ArticleList articles={items} pageMeta={pageMeta} />
+      <PostList posts={items} pageMeta={pageMeta} />
     </>
   );
 }

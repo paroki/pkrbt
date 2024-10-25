@@ -4,14 +4,15 @@ import LatestNews from "@/app/[slug]/components/latest-news";
 import ShareArticle from "@/app/[slug]/components/share-article";
 import Container from "@/components/ui/container";
 import { Separator } from "@/components/ui/separator";
-import { getArticles } from "@/utils/api";
-import api from "@/utils/strapi";
 import { TimerIcon } from "lucide-react";
 import { notFound } from "next/navigation";
 import readingTime from "reading-time";
 import type { Metadata } from "next";
-import type { Article, Image } from "@pkrbt/openapi";
-import { generateMeta } from "@/utils/meta";
+import { generateMeta, MetaImage } from "@/utils/meta";
+import { directus } from "@/utils/directus";
+import { ImageType, PostBlock } from "@pkrbt/directus";
+import PostImages from "./components/post-images";
+import PostImage from "./components/post-image";
 
 type Props = {
   params: Promise<{
@@ -19,37 +20,32 @@ type Props = {
   }>;
 };
 
-interface BlockProps {
-  __component: string;
-  id: number;
-  body?: string;
-}
-
 const getBlockItemBody = (
   blockItem: string,
-  blocksArr: BlockProps[],
-  callback: (filteredBlocks: BlockProps[]) => (string | undefined)[],
+  blocksArr: PostBlock[],
+  callback: (filteredBlocks: PostBlock[]) => string[],
 ) => {
   const arr = blocksArr.filter((block) => {
-    return block?.__component === blockItem;
+    return block.collection === blockItem;
   });
 
   return callback(arr);
 };
 
-const getArticle = async (slug: string): Promise<Article> => {
-  return await api.article.read(slug);
-};
-
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
-  const article = (await getArticle(params.slug)) as Required<Article>;
-  const image = article.metaImage as Required<Image>;
+
+  const { item, error } = await directus.post.readBySlug(params.slug);
+  if (error) {
+    Promise.reject(error.cause);
+  }
+  const seo = item?.seo;
+
   return generateMeta({
-    title: article.metaTitle,
-    description: article.metaDescription,
+    title: seo?.title,
+    description: seo?.description,
     type: "article",
-    image,
+    image: seo?.image as MetaImage,
   });
 }
 
@@ -57,66 +53,68 @@ export default async function Page(props: Props) {
   const params = await props.params;
   const { slug } = params;
 
-  const article = await getArticle(slug);
-  const latestArticles = await getArticles(3);
-  const { items: relatedArticle } = await api.article.search({
-    filters: {
-      category: {
-        slug: {
-          $eq: article.category?.slug,
-        },
-      },
-    },
+  const { item: post, error } = await directus.post.readBySlug(slug);
+
+  if (error) {
+    Promise.reject(error);
+  }
+  const { items: latestPosts } = await directus.post.search({ limit: 3 });
+  const { items: relatedPost } = await directus.post.search({
+    category: post?.category?.id,
     limit: 3,
   });
 
-  if (!article) {
+  if (!post) {
     return notFound();
   }
 
-  const getBody = getBlockItemBody(
-    "block.rich-text",
-    article.blocks as BlockProps[],
-    (blocks) => {
-      return blocks.map((block) => {
-        return block.body;
-      });
-    },
-  );
-
-  const reading = readingTime(String(getBody[0]));
+  const getBody = getBlockItemBody("block_markdown", post.blocks, (blocks) => {
+    return blocks.map((block) => {
+      return block.item.body as string;
+    });
+  });
+  const reading = readingTime(getBody[0]);
 
   return (
     <Container>
       <div className="max-w-screen-lg mx-auto">
         <div className="flex items-center gap-3">
           <p className="text-primary-600 font-bold tracking-widest uppercase">
-            {article.category ? article.category.name : "Warta Gereja"}
+            {post.category ? post.category.title : "Warta Gereja"}
           </p>
         </div>
         <h1 className="font-bold md:text-5xl leading-normal my-6">
-          {article.title}
+          {post.title}
         </h1>
         <div className="flex gap-1 sm:gap-5 my-4 sm:items-center flex-col sm:flex-row items-start text-gray-500">
-          <DateReadable isoDate={article.publishedAt as string} showIcon year />
-          <div className="flex items-center gap-3">
-            <TimerIcon className="w-4 h-4" /> <p>{reading.text}</p>
-          </div>
+          <DateReadable isoDate={post.publishedAt as string} showIcon year />
+          {reading && (
+            <div className="flex items-center gap-3">
+              <TimerIcon className="w-4 h-4" /> <p>{reading.text}</p>
+            </div>
+          )}
         </div>
         <Separator className="my-2 bg-gray-200" />
+        {post.images ? (
+          <PostImages images={post.images} />
+        ) : (
+          <PostImage image={post.cover as ImageType} />
+        )}
         {/* start content */}
-        <BlocksView
-          blocks={article.blocks}
-          className="mt-4 leading-loose text-lg"
-        />
+        {post.blocks && (
+          <BlocksView
+            blocks={post.blocks}
+            className="mt-4 leading-loose text-lg"
+          />
+        )}
         {/* end content */}
         <ShareArticle />
-        <LatestNews articles={latestArticles} title="Tulisan Terbaru" />
+        <LatestNews posts={latestPosts} title="Tulisan Terbaru" />
         <Separator className="my-5 bg-gray-200" />
         <LatestNews
-          articles={relatedArticle}
+          posts={relatedPost}
           className="mt-5"
-          title={`Lihat Kategori ${article.category?.name} Lainnya:`}
+          title={`Lihat Kategori ${post.category?.title} Lainnya:`}
         />
       </div>
     </Container>

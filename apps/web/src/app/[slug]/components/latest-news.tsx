@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 
 import * as React from "react";
-import { Article } from "@pkrbt/openapi";
-import { ArticleItem } from "@/components/articles/article-item";
+import { PostItem } from "@/components/posts/post-item";
+import { Post } from "@pkrbt/directus";
 
 export default function News({
-  articles,
+  posts,
   title,
   className,
 }: {
-  articles: Article[];
+  posts: Post[];
   title: string;
   className?: string;
 }) {
@@ -19,10 +19,8 @@ export default function News({
         {title}
       </h3>
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3">
-        {articles.length > 0 ? (
-          articles.map((article, index) => (
-            <ArticleItem article={article} key={index} />
-          ))
+        {posts.length > 0 ? (
+          posts.map((article, index) => <PostItem post={article} key={index} />)
         ) : (
           <div>No article</div>
         )}

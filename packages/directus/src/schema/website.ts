@@ -10,6 +10,7 @@ export type ImageType = Omit<
     width: number;
     height: number;
   };
+
 export type BlockHeroImages = components["schemas"]["ItemsHeroImages"] & {
   image?: ImageType;
 };
@@ -22,7 +23,7 @@ export type BlockRichtext = components["schemas"]["ItemsBlockRichtext"];
 export type BlockItem = BlockHero | BlockMarkdown | BlockRichtext;
 
 // page sections
-export type PageBlocks = Omit<
+export type PageBlock = Omit<
   components["schemas"]["ItemsPageBlocks"],
   "item"
 > & {
@@ -35,7 +36,7 @@ export type Page = Omit<
 > & {
   cover?: File;
   seo?: SEO;
-  blocks?: PageBlocks[];
+  blocks?: PageBlock[];
 };
 
 export type Category = components["schemas"]["ItemsCategory"] & {
@@ -44,19 +45,19 @@ export type Category = components["schemas"]["ItemsCategory"] & {
 };
 
 // post section
-export type PostImages = components["schemas"]["ItemsPostImages"] & {
-  image?: File;
+export type PostImage = components["schemas"]["ItemsPostImages"] & {
+  image: ImageType;
 };
-export type PostBlocks = Omit<
+export type PostBlock = Omit<
   components["schemas"]["ItemsPostBlocks"],
   "item"
 > & {
-  item?: BlockItem;
+  item: BlockItem;
 };
 export type Post = components["schemas"]["ItemsPost"] & {
-  blocks?: PostBlocks[];
-  cover?: File;
+  blocks: PostBlock[];
+  cover?: ImageType;
   seo?: SEO;
   category?: Category;
-  images?: PostImages[];
+  images?: PostImage[];
 };
