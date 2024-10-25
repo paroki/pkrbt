@@ -2,26 +2,22 @@ import { faker } from "@faker-js/faker";
 import { createDirectus } from "../directus.mjs";
 import {
   createContent,
-  createParagraphs,
   createTitle,
   extractSummary,
   getImage,
 } from "./generator.mjs";
+import { ensureError } from "../util.mjs";
 
 const directus = createDirectus();
 
 async function createHome() {
-  const { id, error: findError } = await directus.page.findId({
-    slug: {
-      _eq: "beranda",
-    },
-  });
+  const { id, error: findError } = await directus.page.readBySlug("beranda");
 
+  ensureError(findError);
+  console.log(id);
   if (id) {
     const { error } = await directus.page.remove(id);
-    if (error) {
-      console.error(error);
-    }
+    ensureError(error);
   }
 
   const content = createContent();
@@ -51,6 +47,7 @@ async function createHome() {
       },
     ],
   });
+  ensureError(error);
 }
 export async function createPages() {
   await createHome();

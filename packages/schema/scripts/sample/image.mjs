@@ -31,7 +31,7 @@ export function getImages() {
   return images;
 }
 export async function importImages() {
-  const data = JSON.parse(fs.readFileSync("./scripts/fixtures/data/data.json"));
+  const data = JSON.parse(fs.readFileSync("./scripts/sample/data/data.json"));
   for (let i = 0; i < data.images.length; i++) {
     const file = await importImage(data.images[i]);
 

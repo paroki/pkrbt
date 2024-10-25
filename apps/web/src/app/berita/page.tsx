@@ -32,7 +32,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Page(props: Props) {
   const searchParams = await props.searchParams;
   const withDefaults = {
-    page: searchParams.page ?? 1,
+    page: Number(searchParams.page) ?? 1,
     limit: 9,
     sort: ["-publishedAt"],
     filter: {},
@@ -40,6 +40,7 @@ export default async function Page(props: Props) {
 
   const { items, meta } = await directus.post.search(withDefaults);
 
+  console.log(meta);
   const pageMeta = {
     size: meta?.pageSize ?? 0,
     page: meta?.page ?? 1,
