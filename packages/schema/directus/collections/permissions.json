@@ -1,6 +1,6 @@
 [
   {
-    "collection": "post",
+    "collection": "directus_files",
     "action": "read",
     "permissions": null,
     "validation": null,
@@ -9,6 +9,6 @@
       "*"
     ],
     "policy": "_sync_default_public_policy",
-    "_syncId": "d565a1e7-ef06-4359-a7dd-61d4e5ba5336"
+    "_syncId": "a6e41bd3-c8e9-4445-a968-c83f9d007733"
   }
 ]

@@ -13,9 +13,10 @@
     "e2e": "turbo run e2e",
     "start": "turbo run start",
     "seed:sample": "turbo run seed:sample",
+    "schema:pull": "turbo run schema:pull",
+    "schema:push:dev": "turbo run schema:push:dev",
+    "schema:push:prod": "turbo run schema:push:prod",
     "generate:types": "turbo run generate:types",
-    "directus:schema": "docker compose exec -it directus npx directus schema snapshot --yes /directus/schema/schema.yml",
-    "directus:apply": "directusctl --help",
     "api": "turbo run api"
   },
   "devDependencies": {
@@ -27,13 +28,6 @@
     "prettier": "^3.2.5",
     "turbo": "^2.2.3",
     "typescript": "^5.4.5"
-  },
-  "pnpm": {
-    "peerDependenciesRules": {
-      "allowedVersions": {
-        "eslint": "8"
-      }
-    }
   },
   "engines": {
     "node": "20.x"

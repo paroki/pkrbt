@@ -1,35 +1,33 @@
 {
-  "collection": "post",
-  "field": "publishedAt",
-  "type": "dateTime",
+  "collection": "category",
+  "field": "seo",
+  "type": "uuid",
   "meta": {
-    "collection": "post",
+    "collection": "category",
     "conditions": null,
-    "display": "datetime",
-    "display_options": {
-      "relative": true
-    },
-    "field": "publishedAt",
+    "display": null,
+    "display_options": null,
+    "field": "seo",
     "group": null,
     "hidden": false,
-    "interface": "datetime",
+    "interface": "select-dropdown-m2o",
     "note": null,
-    "options": {
-      "includeSeconds": true
-    },
+    "options": null,
     "readonly": false,
     "required": false,
-    "sort": 4,
-    "special": null,
+    "sort": 11,
+    "special": [
+      "m2o"
+    ],
     "translations": null,
     "validation": null,
     "validation_message": null,
-    "width": "half"
+    "width": "full"
   },
   "schema": {
-    "name": "publishedAt",
-    "table": "post",
-    "data_type": "timestamp without time zone",
+    "name": "seo",
+    "table": "category",
+    "data_type": "uuid",
     "default_value": null,
     "max_length": null,
     "numeric_precision": null,
@@ -40,7 +38,7 @@
     "is_generated": false,
     "generation_expression": null,
     "has_auto_increment": false,
-    "foreign_key_table": null,
-    "foreign_key_column": null
+    "foreign_key_table": "seo",
+    "foreign_key_column": "id"
   }
 }

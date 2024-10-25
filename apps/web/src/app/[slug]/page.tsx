@@ -10,7 +10,7 @@ import readingTime from "reading-time";
 import type { Metadata } from "next";
 import { generateMeta, MetaImage } from "@/utils/meta";
 import { directus } from "@/utils/directus";
-import { ImageType, PostBlock } from "@pkrbt/directus";
+import { BlockMarkdown, ImageType, PostBlock } from "@pkrbt/directus";
 import PostImages from "./components/post-images";
 import PostImage from "./components/post-image";
 
@@ -72,7 +72,8 @@ export default async function Page(props: Props) {
 
   const getBody = getBlockItemBody("block_markdown", post.blocks, (blocks) => {
     return blocks.map((block) => {
-      return block.item.body as string;
+      const item: BlockMarkdown = block.item;
+      return item.body as string;
     });
   });
   const reading = readingTime(getBody[0]);

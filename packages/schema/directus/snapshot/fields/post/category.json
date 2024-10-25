@@ -5,8 +5,10 @@
   "meta": {
     "collection": "post",
     "conditions": null,
-    "display": null,
-    "display_options": null,
+    "display": "related-values",
+    "display_options": {
+      "template": "{{title}}"
+    },
     "field": "category",
     "group": null,
     "hidden": false,
