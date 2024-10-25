@@ -69,8 +69,17 @@ export function post(directus: Directus<Schema>) {
     if (withDefaults.keyword) {
       gql.addParam({ name: "keyword", argumentName: "search", type: "String" });
     }
+
     if (withDefaults.category) {
-      gql.addParam({ name: "category", type: "String" });
+      withDefaults.filter = {
+        category: {
+          id: {
+            _eq: withDefaults.category,
+          },
+        },
+      };
+
+      gql.addParam({ name: "filter", type: "post_filter" });
     }
 
     return await gql.paginate<PostR>(withDefaults);
@@ -97,7 +106,9 @@ export function post(directus: Directus<Schema>) {
 
   async function readBySlug(slug: string) {
     const { error: findError, id } = await methods.findId({
-      slug: { _eq: slug },
+      filter: {
+        slug: { _eq: slug },
+      },
     });
 
     if (findError) {

@@ -11,6 +11,7 @@ import {
 } from "./types";
 import { Schema } from "..";
 import { GraphqlError } from "./error";
+import { aggregate } from "@directus/sdk";
 
 export class Graphql {
   fragment?: GraphqlFragment;
@@ -57,6 +58,18 @@ export class Graphql {
     let error;
     const query = this.createQuery();
     const graphql = this.directus.graphql;
+
+    /*
+    if (params && Object.keys(params).includes("filter")) {
+      const stringify = JSON.stringify(params.filter).replace(
+        /"([^"]+)":/g,
+        "$1:",
+      );
+      query = query.replace("%filter%", `filter: ${stringify}`);
+      console.log(query);
+    }
+    */
+
     try {
       const response = await graphql.query(query, params);
       data = response[this.type];
@@ -106,7 +119,6 @@ export class Graphql {
       error,
     };
   }
-
   private async createPageMeta(
     params: GraphqlPaginateParams,
   ): Promise<GraphqlPaginateMeta> {

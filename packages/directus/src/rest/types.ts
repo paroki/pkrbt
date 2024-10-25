@@ -20,7 +20,10 @@ export type RestResponse<T> = {
 };
 
 export type RestFiltersParams = {
-  [key: string]: unknown;
+  filter?: {
+    [key: string]: any;
+  };
+  search?: string;
 };
 
 export type RestFindIdType = {

@@ -6,9 +6,12 @@ export type GraphqlParamType =
   | "Int"
   | "ID"
   | "String"
+  | "ARG"
   | "[String!]!"
   | "!Int"
-  | "!String";
+  | "!String"
+  | "category_filter"
+  | "post_filter";
 
 export type GraphqlParam = {
   name: string;
@@ -31,6 +34,7 @@ export type GraphqlPaginateParams = {
   page: number;
   limit: number;
   sort?: string[];
+  filter?: object;
   [key: string]: unknown;
 };
 
