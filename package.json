@@ -14,6 +14,7 @@
     "start": "turbo run start",
     "seed:sample": "turbo run seed:sample",
     "schema:pull": "turbo run schema:pull",
+    "schema:push": "turbo run schema:push",
     "schema:push:dev": "turbo run schema:push:dev",
     "schema:push:prod": "turbo run schema:push:prod",
     "generate:types": "turbo run generate:types",

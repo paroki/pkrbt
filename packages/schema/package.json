@@ -11,8 +11,9 @@
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "api": "node ./bin/api.mjs",
     "schema:pull": "npx directus-sync pull",
-    "schema:push:local": "npx directus-sync push",
-    "schema:push": "npx directus-sync -c directus-sync.target.js push",
+    "schema:push": "npx directus-sync push",
+    "schema:push:dev": "npx directus-sync push -c directus-sync.dev.js",
+    "schema:push:live": "npx directus-sync push -c directus-sync.live.js",
     "seed:sample": "node ./scripts/seed.mjs"
   },
   "keywords": [],
