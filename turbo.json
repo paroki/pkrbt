@@ -2,7 +2,9 @@
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
   "globalEnv": [
-    "NEXT_PUBLIC_CMS_URL",
+    "DIRECTUS_URL",
+    "DIRECTUS_PUBLIC_TOKEN",
+    "DIRECTUS_ADMIN_TOKEN",
     "NEXT_PUBLIC_VERSION",
     "CMS_TOKEN",
     "GOOGLE_ANALYTICS_ID",
@@ -19,6 +21,15 @@
       "cache": true
     },
     "schema:pull": {
+      "persistent": true
+    },
+    "schema:push": {
+      "persistent": true
+    },
+    "schema:push:dev": {
+      "persistent": true
+    },
+    "schema:push:live": {
       "persistent": true
     },
     "dev": {

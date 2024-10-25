@@ -1,7 +1,6 @@
 /vars/postgres/
 /vars/directus/database/*
 /vars/directus/uploads/*
-/vars/directus/extensions/*
 !vars/.gitkeep
 !vars/directus/database/.gitkeep
 !vars/directus/uploads/.gitkeep
