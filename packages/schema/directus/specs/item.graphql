@@ -27,6 +27,10 @@ type Query {
   block_richtext_by_id(id: ID!, version: String): block_richtext
   block_richtext_aggregated(groupBy: [String], filter: block_richtext_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [block_richtext_aggregated!]!
   block_richtext_by_version(version: String!, id: ID!): version_block_richtext
+  category(filter: category_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [category!]!
+  category_by_id(id: ID!, version: String): category
+  category_aggregated(groupBy: [String], filter: category_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [category_aggregated!]!
+  category_by_version(version: String!, id: ID!): version_category
   globals(version: String): globals
   globals_by_version(version: String!): version_globals
   hero_images(filter: hero_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [hero_images!]!
@@ -37,10 +41,6 @@ type Query {
   post_blocks_by_id(id: ID!, version: String): post_blocks
   post_blocks_aggregated(groupBy: [String], filter: post_blocks_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [post_blocks_aggregated!]!
   post_blocks_by_version(version: String!, id: ID!): version_post_blocks
-  category(filter: category_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [category!]!
-  category_by_id(id: ID!, version: String): category
-  category_aggregated(groupBy: [String], filter: category_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [category_aggregated!]!
-  category_by_version(version: String!, id: ID!): version_category
   page_blocks(filter: page_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [page_blocks!]!
   page_blocks_by_id(id: ID!, version: String): page_blocks
   page_blocks_aggregated(groupBy: [String], filter: page_blocks_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [page_blocks_aggregated!]!
@@ -66,12 +66,12 @@ type Mutation {
   create_page_item(data: create_page_input!): page
   create_block_richtext_items(filter: block_richtext_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_block_richtext_input!]): [block_richtext!]!
   create_block_richtext_item(data: create_block_richtext_input!): block_richtext
+  create_category_items(filter: category_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_category_input!]): [category!]!
+  create_category_item(data: create_category_input!): category
   create_hero_images_items(filter: hero_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_hero_images_input!]): [hero_images!]!
   create_hero_images_item(data: create_hero_images_input!): hero_images
   create_post_blocks_items(filter: post_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_post_blocks_input!]): [post_blocks!]!
   create_post_blocks_item(data: create_post_blocks_input!): post_blocks
-  create_category_items(filter: category_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_category_input!]): [category!]!
-  create_category_item(data: create_category_input!): category
   create_page_blocks_items(filter: page_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_page_blocks_input!]): [page_blocks!]!
   create_page_blocks_item(data: create_page_blocks_input!): page_blocks
   create_block_markdown_items(filter: block_markdown_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_block_markdown_input!]): [block_markdown!]!
@@ -97,6 +97,9 @@ type Mutation {
   update_block_richtext_items(filter: block_richtext_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_block_richtext_input!): [block_richtext!]!
   update_block_richtext_batch(filter: block_richtext_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_block_richtext_input!]): [block_richtext!]!
   update_block_richtext_item(id: ID!, data: update_block_richtext_input!): block_richtext
+  update_category_items(filter: category_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_category_input!): [category!]!
+  update_category_batch(filter: category_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_category_input!]): [category!]!
+  update_category_item(id: ID!, data: update_category_input!): category
   update_globals(data: update_globals_input!): globals
   update_hero_images_items(filter: hero_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_hero_images_input!): [hero_images!]!
   update_hero_images_batch(filter: hero_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_hero_images_input!]): [hero_images!]!
@@ -104,9 +107,6 @@ type Mutation {
   update_post_blocks_items(filter: post_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_post_blocks_input!): [post_blocks!]!
   update_post_blocks_batch(filter: post_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_post_blocks_input!]): [post_blocks!]!
   update_post_blocks_item(id: ID!, data: update_post_blocks_input!): post_blocks
-  update_category_items(filter: category_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_category_input!): [category!]!
-  update_category_batch(filter: category_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_category_input!]): [category!]!
-  update_category_item(id: ID!, data: update_category_input!): category
   update_page_blocks_items(filter: page_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_page_blocks_input!): [page_blocks!]!
   update_page_blocks_batch(filter: page_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_page_blocks_input!]): [page_blocks!]!
   update_page_blocks_item(id: ID!, data: update_page_blocks_input!): page_blocks
@@ -127,12 +127,12 @@ type Mutation {
   delete_page_item(id: ID!): delete_one
   delete_block_richtext_items(ids: [ID]!): delete_many
   delete_block_richtext_item(id: ID!): delete_one
+  delete_category_items(ids: [ID]!): delete_many
+  delete_category_item(id: ID!): delete_one
   delete_hero_images_items(ids: [ID]!): delete_many
   delete_hero_images_item(id: ID!): delete_one
   delete_post_blocks_items(ids: [ID]!): delete_many
   delete_post_blocks_item(id: ID!): delete_one
-  delete_category_items(ids: [ID]!): delete_many
-  delete_category_item(id: ID!): delete_one
   delete_page_blocks_items(ids: [ID]!): delete_many
   delete_page_blocks_item(id: ID!): delete_one
   delete_block_markdown_items(ids: [ID]!): delete_many
@@ -167,10 +167,10 @@ type Subscription {
   post_images_mutated(event: EventEnum): post_images_mutated
   page_mutated(event: EventEnum): page_mutated
   block_richtext_mutated(event: EventEnum): block_richtext_mutated
+  category_mutated(event: EventEnum): category_mutated
   globals_mutated(event: EventEnum): globals_mutated
   hero_images_mutated(event: EventEnum): hero_images_mutated
   post_blocks_mutated(event: EventEnum): post_blocks_mutated
-  category_mutated(event: EventEnum): category_mutated
   page_blocks_mutated(event: EventEnum): page_blocks_mutated
   block_markdown_mutated(event: EventEnum): block_markdown_mutated
 }
@@ -380,6 +380,7 @@ type category {
   slug: String
   summary: String
   title: String
+  seo(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): seo
 }
 
 type category_aggregated {
@@ -406,6 +407,7 @@ type category_aggregated_count {
   slug: Int
   summary: Int
   title: Int
+  seo: Int
 }
 
 type category_aggregated_fields {
@@ -1343,6 +1345,7 @@ type version_category {
   slug: String
   summary: String
   title: String
+  seo: JSON
 }
 
 """"""
@@ -1525,6 +1528,7 @@ input category_filter {
   slug: string_filter_operators
   summary: string_filter_operators
   title: string_filter_operators
+  seo: seo_filter
   _and: [category_filter]
   _or: [category_filter]
 }
@@ -1577,6 +1581,7 @@ input create_category_input {
   slug: String
   summary: String
   title: String
+  seo: create_seo_input
 }
 
 input create_directus_access_input {
@@ -2260,6 +2265,7 @@ input update_category_input {
   slug: String
   summary: String
   title: String
+  seo: update_seo_input
 }
 
 input update_directus_access_input {

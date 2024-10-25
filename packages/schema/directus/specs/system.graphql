@@ -261,10 +261,10 @@ type Subscription {
   post_images_mutated(event: EventEnum): post_images_mutated
   page_mutated(event: EventEnum): page_mutated
   block_richtext_mutated(event: EventEnum): block_richtext_mutated
+  category_mutated(event: EventEnum): category_mutated
   globals_mutated(event: EventEnum): globals_mutated
   hero_images_mutated(event: EventEnum): hero_images_mutated
   post_blocks_mutated(event: EventEnum): post_blocks_mutated
-  category_mutated(event: EventEnum): category_mutated
   page_blocks_mutated(event: EventEnum): page_blocks_mutated
   block_markdown_mutated(event: EventEnum): block_markdown_mutated
 }
@@ -424,6 +424,7 @@ type category {
   slug: String
   summary: String
   title: String
+  seo(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): seo
 }
 
 type category_mutated {
@@ -1925,6 +1926,7 @@ input category_filter {
   slug: string_filter_operators
   summary: string_filter_operators
   title: string_filter_operators
+  seo: seo_filter
   _and: [category_filter]
   _or: [category_filter]
 }

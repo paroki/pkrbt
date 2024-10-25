@@ -18,6 +18,9 @@
       "dependsOn": ["^build"],
       "cache": true
     },
+    "schema:pull": {
+      "persistent": true
+    },
     "dev": {
       "cache": false,
       "persistent": true
