@@ -30,7 +30,9 @@ export function page(directus: Directus<Schema>) {
     let error;
 
     const { error: findError, id } = await methods.findId({
-      slug: { _eq: slug },
+      filter: {
+        slug: { _eq: slug },
+      },
     });
 
     if (findError) {

@@ -18,14 +18,14 @@ export function restMethods<T>(
   /**
    * Search item id
    */
-  async function findId(filter: RestFiltersParams): Promise<RestFindIdType> {
+  async function findId(params: RestFiltersParams): Promise<RestFindIdType> {
     let id;
     let error;
 
     try {
       const items = await rest.request(
         readItems(collection, {
-          filter,
+          ...params,
           limit: 1,
           fields: ["id"],
         }),
