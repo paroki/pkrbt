@@ -7671,780 +7671,6 @@
         ]
       }
     },
-    "/items/post": {
-      "post": {
-        "summary": "Create an Item",
-        "description": "Create a new post item.",
-        "tags": [
-          "Items",
-          "ItemsPost"
-        ],
-        "operationId": "createItemsPost",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ItemsPost"
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/ItemsPost"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "$ref": "#/components/schemas/ItemsPost"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "get": {
-        "summary": "List Items",
-        "description": "List the post items.",
-        "tags": [
-          "Items",
-          "ItemsPost"
-        ],
-        "operationId": "readItemsPost",
-        "security": [
-          {
-            "Auth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "$ref": "#/components/schemas/ItemsPost"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update Multiple Items",
-        "description": "Update multiple post items at the same time.",
-        "tags": [
-          "Items",
-          "ItemsPost"
-        ],
-        "operationId": "updateItemsPost",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ItemsPost"
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/ItemsPost"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "$ref": "#/components/schemas/ItemsPost"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing post items.",
-        "tags": [
-          "Items",
-          "ItemsPost"
-        ],
-        "operationId": "deleteItemsPost",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        },
-        "parameters": []
-      }
-    },
-    "/items/post/{id}": {
-      "get": {
-        "summary": "Retrieve an Item",
-        "description": "Retrieve a single post item by unique identifier.",
-        "tags": [
-          "Items",
-          "ItemsPost"
-        ],
-        "operationId": "readSingleItemsPost",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Version"
-          },
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/ItemsPost"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update an Item",
-        "description": "Update an existing post item.",
-        "tags": [
-          "Items",
-          "ItemsPost"
-        ],
-        "operationId": "updateSingleItemsPost",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "$ref": "#/components/schemas/ItemsPost"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/ItemsPost"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete an Item",
-        "description": "Delete an existing post item.",
-        "tags": [
-          "Items",
-          "ItemsPost"
-        ],
-        "operationId": "deleteSingleItemsPost",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    "/items/seo": {
-      "post": {
-        "summary": "Create an Item",
-        "description": "Create a new seo item.",
-        "tags": [
-          "Items",
-          "ItemsSEO"
-        ],
-        "operationId": "createItemsSEO",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ItemsSEO"
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/ItemsSEO"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "$ref": "#/components/schemas/ItemsSEO"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "get": {
-        "summary": "List Items",
-        "description": "List the seo items.",
-        "tags": [
-          "Items",
-          "ItemsSEO"
-        ],
-        "operationId": "readItemsSEO",
-        "security": [
-          {
-            "Auth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "$ref": "#/components/schemas/ItemsSEO"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update Multiple Items",
-        "description": "Update multiple seo items at the same time.",
-        "tags": [
-          "Items",
-          "ItemsSEO"
-        ],
-        "operationId": "updateItemsSEO",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ItemsSEO"
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/ItemsSEO"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "$ref": "#/components/schemas/ItemsSEO"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing seo items.",
-        "tags": [
-          "Items",
-          "ItemsSEO"
-        ],
-        "operationId": "deleteItemsSEO",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        },
-        "parameters": []
-      }
-    },
-    "/items/seo/{id}": {
-      "get": {
-        "summary": "Retrieve an Item",
-        "description": "Retrieve a single seo item by unique identifier.",
-        "tags": [
-          "Items",
-          "ItemsSEO"
-        ],
-        "operationId": "readSingleItemsSEO",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Version"
-          },
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/ItemsSEO"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update an Item",
-        "description": "Update an existing seo item.",
-        "tags": [
-          "Items",
-          "ItemsSEO"
-        ],
-        "operationId": "updateSingleItemsSEO",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "$ref": "#/components/schemas/ItemsSEO"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/ItemsSEO"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete an Item",
-        "description": "Delete an existing seo item.",
-        "tags": [
-          "Items",
-          "ItemsSEO"
-        ],
-        "operationId": "deleteSingleItemsSEO",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
     "/items/block_hero": {
       "post": {
         "summary": "Create an Item",
@@ -8832,15 +8058,15 @@
         ]
       }
     },
-    "/items/post_images": {
+    "/items/block_markdown": {
       "post": {
         "summary": "Create an Item",
-        "description": "Create a new post_images item.",
+        "description": "Create a new block_markdown item.",
         "tags": [
           "Items",
-          "ItemsPostImages"
+          "ItemsBlockMarkdown"
         ],
-        "operationId": "createItemsPostImages",
+        "operationId": "createItemsBlockMarkdown",
         "parameters": [
           {
             "$ref": "#/components/parameters/Meta"
@@ -8854,11 +8080,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsPostImages"
+                      "$ref": "#/components/schemas/ItemsBlockMarkdown"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsPostImages"
+                    "$ref": "#/components/schemas/ItemsBlockMarkdown"
                   }
                 ]
               }
@@ -8875,7 +8101,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsPostImages"
+                        "$ref": "#/components/schemas/ItemsBlockMarkdown"
                       }
                     }
                   }
@@ -8890,12 +8116,12 @@
       },
       "get": {
         "summary": "List Items",
-        "description": "List the post_images items.",
+        "description": "List the block_markdown items.",
         "tags": [
           "Items",
-          "ItemsPostImages"
+          "ItemsBlockMarkdown"
         ],
-        "operationId": "readItemsPostImages",
+        "operationId": "readItemsBlockMarkdown",
         "security": [
           {
             "Auth": []
@@ -8936,7 +8162,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "$ref": "#/components/schemas/ItemsPostImages"
+                        "$ref": "#/components/schemas/ItemsBlockMarkdown"
                       }
                     },
                     "meta": {
@@ -8954,12 +8180,12 @@
       },
       "patch": {
         "summary": "Update Multiple Items",
-        "description": "Update multiple post_images items at the same time.",
+        "description": "Update multiple block_markdown items at the same time.",
         "tags": [
           "Items",
-          "ItemsPostImages"
+          "ItemsBlockMarkdown"
         ],
-        "operationId": "updateItemsPostImages",
+        "operationId": "updateItemsBlockMarkdown",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -8991,11 +8217,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsPostImages"
+                      "$ref": "#/components/schemas/ItemsBlockMarkdown"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsPostImages"
+                    "$ref": "#/components/schemas/ItemsBlockMarkdown"
                   }
                 ]
               }
@@ -9011,7 +8237,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsPostImages"
+                        "$ref": "#/components/schemas/ItemsBlockMarkdown"
                       }
                     }
                   }
@@ -9023,12 +8249,12 @@
       },
       "delete": {
         "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing post_images items.",
+        "description": "Delete multiple existing block_markdown items.",
         "tags": [
           "Items",
-          "ItemsPostImages"
+          "ItemsBlockMarkdown"
         ],
-        "operationId": "deleteItemsPostImages",
+        "operationId": "deleteItemsBlockMarkdown",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -9040,15 +8266,15 @@
         "parameters": []
       }
     },
-    "/items/post_images/{id}": {
+    "/items/block_markdown/{id}": {
       "get": {
         "summary": "Retrieve an Item",
-        "description": "Retrieve a single post_images item by unique identifier.",
+        "description": "Retrieve a single block_markdown item by unique identifier.",
         "tags": [
           "Items",
-          "ItemsPostImages"
+          "ItemsBlockMarkdown"
         ],
-        "operationId": "readSingleItemsPostImages",
+        "operationId": "readSingleItemsBlockMarkdown",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -9090,7 +8316,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsPostImages"
+                      "$ref": "#/components/schemas/ItemsBlockMarkdown"
                     }
                   }
                 }
@@ -9107,12 +8333,12 @@
       },
       "patch": {
         "summary": "Update an Item",
-        "description": "Update an existing post_images item.",
+        "description": "Update an existing block_markdown item.",
         "tags": [
           "Items",
-          "ItemsPostImages"
+          "ItemsBlockMarkdown"
         ],
-        "operationId": "updateSingleItemsPostImages",
+        "operationId": "updateSingleItemsBlockMarkdown",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -9146,7 +8372,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "$ref": "#/components/schemas/ItemsPostImages"
+                "$ref": "#/components/schemas/ItemsBlockMarkdown"
               }
             }
           }
@@ -9161,7 +8387,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsPostImages"
+                      "$ref": "#/components/schemas/ItemsBlockMarkdown"
                     }
                   }
                 }
@@ -9178,399 +8404,12 @@
       },
       "delete": {
         "summary": "Delete an Item",
-        "description": "Delete an existing post_images item.",
+        "description": "Delete an existing block_markdown item.",
         "tags": [
           "Items",
-          "ItemsPostImages"
+          "ItemsBlockMarkdown"
         ],
-        "operationId": "deleteSingleItemsPostImages",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ]
-      }
-    },
-    "/items/page": {
-      "post": {
-        "summary": "Create an Item",
-        "description": "Create a new page item.",
-        "tags": [
-          "Items",
-          "ItemsPage"
-        ],
-        "operationId": "createItemsPage",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ItemsPage"
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/ItemsPage"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "$ref": "#/components/schemas/ItemsPage"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "get": {
-        "summary": "List Items",
-        "description": "List the page items.",
-        "tags": [
-          "Items",
-          "ItemsPage"
-        ],
-        "operationId": "readItemsPage",
-        "security": [
-          {
-            "Auth": []
-          }
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "$ref": "#/components/schemas/ItemsPage"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update Multiple Items",
-        "description": "Update multiple page items at the same time.",
-        "tags": [
-          "Items",
-          "ItemsPage"
-        ],
-        "operationId": "updateItemsPage",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "oneOf": [
-                  {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/ItemsPage"
-                    }
-                  },
-                  {
-                    "$ref": "#/components/schemas/ItemsPage"
-                  }
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "data": {
-                      "items": {
-                        "$ref": "#/components/schemas/ItemsPage"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing page items.",
-        "tags": [
-          "Items",
-          "ItemsPage"
-        ],
-        "operationId": "deleteItemsPage",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        },
-        "parameters": []
-      }
-    },
-    "/items/page/{id}": {
-      "get": {
-        "summary": "Retrieve an Item",
-        "description": "Retrieve a single page item by unique identifier.",
-        "tags": [
-          "Items",
-          "ItemsPage"
-        ],
-        "operationId": "readSingleItemsPage",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Version"
-          },
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/ItemsPage"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      },
-      "patch": {
-        "summary": "Update an Item",
-        "description": "Update an existing page item.",
-        "tags": [
-          "Items",
-          "ItemsPage"
-        ],
-        "operationId": "updateSingleItemsPage",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "name": "id",
-            "description": "Index of the item.",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "oneOf": [
-                {
-                  "type": "integer",
-                  "description": "Incremental index of the item.",
-                  "example": 1
-                },
-                {
-                  "type": "string",
-                  "description": "Unique identifier of the item.",
-                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
-                }
-              ]
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "$ref": "#/components/schemas/ItemsPage"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "object",
-                      "$ref": "#/components/schemas/ItemsPage"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete an Item",
-        "description": "Delete an existing page item.",
-        "tags": [
-          "Items",
-          "ItemsPage"
-        ],
-        "operationId": "deleteSingleItemsPage",
+        "operationId": "deleteSingleItemsBlockMarkdown",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -10380,6 +9219,393 @@
         ]
       }
     },
+    "/items/seo": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new seo item.",
+        "tags": [
+          "Items",
+          "ItemsSEO"
+        ],
+        "operationId": "createItemsSEO",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsSEO"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsSEO"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsSEO"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the seo items.",
+        "tags": [
+          "Items",
+          "ItemsSEO"
+        ],
+        "operationId": "readItemsSEO",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsSEO"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple seo items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsSEO"
+        ],
+        "operationId": "updateItemsSEO",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsSEO"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsSEO"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsSEO"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing seo items.",
+        "tags": [
+          "Items",
+          "ItemsSEO"
+        ],
+        "operationId": "deleteItemsSEO",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/seo/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single seo item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsSEO"
+        ],
+        "operationId": "readSingleItemsSEO",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsSEO"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing seo item.",
+        "tags": [
+          "Items",
+          "ItemsSEO"
+        ],
+        "operationId": "updateSingleItemsSEO",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsSEO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsSEO"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing seo item.",
+        "tags": [
+          "Items",
+          "ItemsSEO"
+        ],
+        "operationId": "deleteSingleItemsSEO",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
     "/items/globals": {
       "post": {
         "summary": "Create an Item",
@@ -11154,15 +10380,15 @@
         ]
       }
     },
-    "/items/post_blocks": {
+    "/items/page": {
       "post": {
         "summary": "Create an Item",
-        "description": "Create a new post_blocks item.",
+        "description": "Create a new page item.",
         "tags": [
           "Items",
-          "ItemsPostBlocks"
+          "ItemsPage"
         ],
-        "operationId": "createItemsPostBlocks",
+        "operationId": "createItemsPage",
         "parameters": [
           {
             "$ref": "#/components/parameters/Meta"
@@ -11176,11 +10402,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsPostBlocks"
+                      "$ref": "#/components/schemas/ItemsPage"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsPostBlocks"
+                    "$ref": "#/components/schemas/ItemsPage"
                   }
                 ]
               }
@@ -11197,7 +10423,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsPostBlocks"
+                        "$ref": "#/components/schemas/ItemsPage"
                       }
                     }
                   }
@@ -11212,12 +10438,12 @@
       },
       "get": {
         "summary": "List Items",
-        "description": "List the post_blocks items.",
+        "description": "List the page items.",
         "tags": [
           "Items",
-          "ItemsPostBlocks"
+          "ItemsPage"
         ],
-        "operationId": "readItemsPostBlocks",
+        "operationId": "readItemsPage",
         "security": [
           {
             "Auth": []
@@ -11258,7 +10484,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "$ref": "#/components/schemas/ItemsPostBlocks"
+                        "$ref": "#/components/schemas/ItemsPage"
                       }
                     },
                     "meta": {
@@ -11276,12 +10502,12 @@
       },
       "patch": {
         "summary": "Update Multiple Items",
-        "description": "Update multiple post_blocks items at the same time.",
+        "description": "Update multiple page items at the same time.",
         "tags": [
           "Items",
-          "ItemsPostBlocks"
+          "ItemsPage"
         ],
-        "operationId": "updateItemsPostBlocks",
+        "operationId": "updateItemsPage",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -11313,11 +10539,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsPostBlocks"
+                      "$ref": "#/components/schemas/ItemsPage"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsPostBlocks"
+                    "$ref": "#/components/schemas/ItemsPage"
                   }
                 ]
               }
@@ -11333,7 +10559,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsPostBlocks"
+                        "$ref": "#/components/schemas/ItemsPage"
                       }
                     }
                   }
@@ -11345,12 +10571,12 @@
       },
       "delete": {
         "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing post_blocks items.",
+        "description": "Delete multiple existing page items.",
         "tags": [
           "Items",
-          "ItemsPostBlocks"
+          "ItemsPage"
         ],
-        "operationId": "deleteItemsPostBlocks",
+        "operationId": "deleteItemsPage",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -11362,15 +10588,15 @@
         "parameters": []
       }
     },
-    "/items/post_blocks/{id}": {
+    "/items/page/{id}": {
       "get": {
         "summary": "Retrieve an Item",
-        "description": "Retrieve a single post_blocks item by unique identifier.",
+        "description": "Retrieve a single page item by unique identifier.",
         "tags": [
           "Items",
-          "ItemsPostBlocks"
+          "ItemsPage"
         ],
-        "operationId": "readSingleItemsPostBlocks",
+        "operationId": "readSingleItemsPage",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -11412,7 +10638,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsPostBlocks"
+                      "$ref": "#/components/schemas/ItemsPage"
                     }
                   }
                 }
@@ -11429,12 +10655,12 @@
       },
       "patch": {
         "summary": "Update an Item",
-        "description": "Update an existing post_blocks item.",
+        "description": "Update an existing page item.",
         "tags": [
           "Items",
-          "ItemsPostBlocks"
+          "ItemsPage"
         ],
-        "operationId": "updateSingleItemsPostBlocks",
+        "operationId": "updateSingleItemsPage",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -11468,7 +10694,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "$ref": "#/components/schemas/ItemsPostBlocks"
+                "$ref": "#/components/schemas/ItemsPage"
               }
             }
           }
@@ -11483,7 +10709,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsPostBlocks"
+                      "$ref": "#/components/schemas/ItemsPage"
                     }
                   }
                 }
@@ -11500,12 +10726,12 @@
       },
       "delete": {
         "summary": "Delete an Item",
-        "description": "Delete an existing post_blocks item.",
+        "description": "Delete an existing page item.",
         "tags": [
           "Items",
-          "ItemsPostBlocks"
+          "ItemsPage"
         ],
-        "operationId": "deleteSingleItemsPostBlocks",
+        "operationId": "deleteSingleItemsPage",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -11928,15 +11154,15 @@
         ]
       }
     },
-    "/items/block_markdown": {
+    "/items/post": {
       "post": {
         "summary": "Create an Item",
-        "description": "Create a new block_markdown item.",
+        "description": "Create a new post item.",
         "tags": [
           "Items",
-          "ItemsBlockMarkdown"
+          "ItemsPost"
         ],
-        "operationId": "createItemsBlockMarkdown",
+        "operationId": "createItemsPost",
         "parameters": [
           {
             "$ref": "#/components/parameters/Meta"
@@ -11950,11 +11176,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsBlockMarkdown"
+                      "$ref": "#/components/schemas/ItemsPost"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsBlockMarkdown"
+                    "$ref": "#/components/schemas/ItemsPost"
                   }
                 ]
               }
@@ -11971,7 +11197,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsBlockMarkdown"
+                        "$ref": "#/components/schemas/ItemsPost"
                       }
                     }
                   }
@@ -11986,12 +11212,12 @@
       },
       "get": {
         "summary": "List Items",
-        "description": "List the block_markdown items.",
+        "description": "List the post items.",
         "tags": [
           "Items",
-          "ItemsBlockMarkdown"
+          "ItemsPost"
         ],
-        "operationId": "readItemsBlockMarkdown",
+        "operationId": "readItemsPost",
         "security": [
           {
             "Auth": []
@@ -12032,7 +11258,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "$ref": "#/components/schemas/ItemsBlockMarkdown"
+                        "$ref": "#/components/schemas/ItemsPost"
                       }
                     },
                     "meta": {
@@ -12050,12 +11276,12 @@
       },
       "patch": {
         "summary": "Update Multiple Items",
-        "description": "Update multiple block_markdown items at the same time.",
+        "description": "Update multiple post items at the same time.",
         "tags": [
           "Items",
-          "ItemsBlockMarkdown"
+          "ItemsPost"
         ],
-        "operationId": "updateItemsBlockMarkdown",
+        "operationId": "updateItemsPost",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -12087,11 +11313,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsBlockMarkdown"
+                      "$ref": "#/components/schemas/ItemsPost"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsBlockMarkdown"
+                    "$ref": "#/components/schemas/ItemsPost"
                   }
                 ]
               }
@@ -12107,7 +11333,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsBlockMarkdown"
+                        "$ref": "#/components/schemas/ItemsPost"
                       }
                     }
                   }
@@ -12119,12 +11345,12 @@
       },
       "delete": {
         "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing block_markdown items.",
+        "description": "Delete multiple existing post items.",
         "tags": [
           "Items",
-          "ItemsBlockMarkdown"
+          "ItemsPost"
         ],
-        "operationId": "deleteItemsBlockMarkdown",
+        "operationId": "deleteItemsPost",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -12136,15 +11362,15 @@
         "parameters": []
       }
     },
-    "/items/block_markdown/{id}": {
+    "/items/post/{id}": {
       "get": {
         "summary": "Retrieve an Item",
-        "description": "Retrieve a single block_markdown item by unique identifier.",
+        "description": "Retrieve a single post item by unique identifier.",
         "tags": [
           "Items",
-          "ItemsBlockMarkdown"
+          "ItemsPost"
         ],
-        "operationId": "readSingleItemsBlockMarkdown",
+        "operationId": "readSingleItemsPost",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -12186,7 +11412,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsBlockMarkdown"
+                      "$ref": "#/components/schemas/ItemsPost"
                     }
                   }
                 }
@@ -12203,12 +11429,12 @@
       },
       "patch": {
         "summary": "Update an Item",
-        "description": "Update an existing block_markdown item.",
+        "description": "Update an existing post item.",
         "tags": [
           "Items",
-          "ItemsBlockMarkdown"
+          "ItemsPost"
         ],
-        "operationId": "updateSingleItemsBlockMarkdown",
+        "operationId": "updateSingleItemsPost",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -12242,7 +11468,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "$ref": "#/components/schemas/ItemsBlockMarkdown"
+                "$ref": "#/components/schemas/ItemsPost"
               }
             }
           }
@@ -12257,7 +11483,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsBlockMarkdown"
+                      "$ref": "#/components/schemas/ItemsPost"
                     }
                   }
                 }
@@ -12274,12 +11500,786 @@
       },
       "delete": {
         "summary": "Delete an Item",
-        "description": "Delete an existing block_markdown item.",
+        "description": "Delete an existing post item.",
         "tags": [
           "Items",
-          "ItemsBlockMarkdown"
+          "ItemsPost"
         ],
-        "operationId": "deleteSingleItemsBlockMarkdown",
+        "operationId": "deleteSingleItemsPost",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/items/post_blocks": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new post_blocks item.",
+        "tags": [
+          "Items",
+          "ItemsPostBlocks"
+        ],
+        "operationId": "createItemsPostBlocks",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsPostBlocks"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsPostBlocks"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsPostBlocks"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the post_blocks items.",
+        "tags": [
+          "Items",
+          "ItemsPostBlocks"
+        ],
+        "operationId": "readItemsPostBlocks",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsPostBlocks"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple post_blocks items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsPostBlocks"
+        ],
+        "operationId": "updateItemsPostBlocks",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsPostBlocks"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsPostBlocks"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsPostBlocks"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing post_blocks items.",
+        "tags": [
+          "Items",
+          "ItemsPostBlocks"
+        ],
+        "operationId": "deleteItemsPostBlocks",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/post_blocks/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single post_blocks item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsPostBlocks"
+        ],
+        "operationId": "readSingleItemsPostBlocks",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsPostBlocks"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing post_blocks item.",
+        "tags": [
+          "Items",
+          "ItemsPostBlocks"
+        ],
+        "operationId": "updateSingleItemsPostBlocks",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsPostBlocks"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsPostBlocks"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing post_blocks item.",
+        "tags": [
+          "Items",
+          "ItemsPostBlocks"
+        ],
+        "operationId": "deleteSingleItemsPostBlocks",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/items/post_images": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new post_images item.",
+        "tags": [
+          "Items",
+          "ItemsPostImages"
+        ],
+        "operationId": "createItemsPostImages",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsPostImages"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsPostImages"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsPostImages"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the post_images items.",
+        "tags": [
+          "Items",
+          "ItemsPostImages"
+        ],
+        "operationId": "readItemsPostImages",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsPostImages"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple post_images items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsPostImages"
+        ],
+        "operationId": "updateItemsPostImages",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsPostImages"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsPostImages"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsPostImages"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing post_images items.",
+        "tags": [
+          "Items",
+          "ItemsPostImages"
+        ],
+        "operationId": "deleteItemsPostImages",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/post_images/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single post_images item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsPostImages"
+        ],
+        "operationId": "readSingleItemsPostImages",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsPostImages"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing post_images item.",
+        "tags": [
+          "Items",
+          "ItemsPostImages"
+        ],
+        "operationId": "updateSingleItemsPostImages",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsPostImages"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsPostImages"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing post_images item.",
+        "tags": [
+          "Items",
+          "ItemsPostImages"
+        ],
+        "operationId": "deleteSingleItemsPostImages",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -12439,24 +12439,12 @@
       "x-collection": "directus_sync_id_map"
     },
     {
-      "name": "ItemsPost",
-      "x-collection": "post"
-    },
-    {
-      "name": "ItemsSEO",
-      "x-collection": "seo"
-    },
-    {
       "name": "ItemsBlockHero",
       "x-collection": "block_hero"
     },
     {
-      "name": "ItemsPostImages",
-      "x-collection": "post_images"
-    },
-    {
-      "name": "ItemsPage",
-      "x-collection": "page"
+      "name": "ItemsBlockMarkdown",
+      "x-collection": "block_markdown"
     },
     {
       "name": "ItemsBlockRichtext",
@@ -12467,6 +12455,10 @@
       "x-collection": "category"
     },
     {
+      "name": "ItemsSEO",
+      "x-collection": "seo"
+    },
+    {
       "name": "ItemsGlobals",
       "x-collection": "globals"
     },
@@ -12475,16 +12467,24 @@
       "x-collection": "hero_images"
     },
     {
-      "name": "ItemsPostBlocks",
-      "x-collection": "post_blocks"
+      "name": "ItemsPage",
+      "x-collection": "page"
     },
     {
       "name": "ItemsPageBlocks",
       "x-collection": "page_blocks"
     },
     {
-      "name": "ItemsBlockMarkdown",
-      "x-collection": "block_markdown"
+      "name": "ItemsPost",
+      "x-collection": "post"
+    },
+    {
+      "name": "ItemsPostBlocks",
+      "x-collection": "post_blocks"
+    },
+    {
+      "name": "ItemsPostImages",
+      "x-collection": "post_images"
     }
   ],
   "components": {
@@ -14327,190 +14327,17 @@
         },
         "x-collection": "directus_sync_id_map"
       },
-      "ItemsPost": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "status": {
-            "nullable": false,
-            "type": "string"
-          },
-          "sort": {
-            "nullable": true,
-            "type": "integer"
-          },
-          "createdBy": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "createdAt": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "updatedBy": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "updatedAt": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "title": {
-            "nullable": true,
-            "type": "string"
-          },
-          "slug": {
-            "nullable": true,
-            "type": "string"
-          },
-          "summary": {
-            "nullable": true,
-            "type": "string"
-          },
-          "cover": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Files"
-              }
-            ]
-          },
-          "category": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsCategory"
-              }
-            ]
-          },
-          "customSummary": {
-            "nullable": true,
-            "type": "boolean"
-          },
-          "publishedAt": {
-            "nullable": true,
-            "type": "string",
-            "format": "date-time"
-          },
-          "seo": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsSEO"
-              }
-            ]
-          },
-          "images": {
-            "nullable": true,
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "integer"
-                },
-                {
-                  "$ref": "#/components/schemas/ItemsPostImages"
-                }
-              ]
-            }
-          },
-          "blocks": {
-            "nullable": true,
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "integer"
-                },
-                {
-                  "$ref": "#/components/schemas/ItemsPostBlocks"
-                }
-              ]
-            }
-          }
-        },
-        "x-collection": "post"
-      },
-      "ItemsSEO": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "title": {
-            "nullable": true,
-            "type": "string"
-          },
-          "description": {
-            "nullable": true,
-            "type": "string"
-          },
-          "image": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Files"
-              }
-            ]
-          },
-          "owner": {
-            "nullable": true,
-            "type": "string"
-          }
-        },
-        "x-collection": "seo"
-      },
       "ItemsBlockHero": {
         "type": "object",
         "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "sort": {
+          "content": {
             "nullable": true,
-            "type": "integer"
+            "type": "string"
+          },
+          "createdAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
           },
           "createdBy": {
             "nullable": true,
@@ -14524,39 +14351,39 @@
               }
             ]
           },
-          "createdAt": {
-            "nullable": true,
+          "id": {
+            "nullable": false,
             "type": "string",
-            "format": "timestamp"
+            "format": "uuid"
           },
-          "updatedBy": {
+          "sort": {
             "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "updatedAt": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "title": {
-            "nullable": true,
-            "type": "string"
+            "type": "integer"
           },
           "subtitle": {
             "nullable": true,
             "type": "string"
           },
-          "content": {
+          "title": {
             "nullable": true,
             "type": "string"
+          },
+          "updatedAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "updatedBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
           },
           "images": {
             "nullable": true,
@@ -14575,55 +14402,17 @@
         },
         "x-collection": "block_hero"
       },
-      "ItemsPostImages": {
+      "ItemsBlockMarkdown": {
         "type": "object",
         "properties": {
-          "id": {
-            "nullable": false,
-            "type": "integer"
-          },
-          "post": {
+          "body": {
             "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsPost"
-              }
-            ]
-          },
-          "image": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Files"
-              }
-            ]
-          }
-        },
-        "x-collection": "post_images"
-      },
-      "ItemsPage": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "status": {
-            "nullable": false,
             "type": "string"
           },
-          "sort": {
+          "createdAt": {
             "nullable": true,
-            "type": "integer"
+            "type": "string",
+            "format": "timestamp"
           },
           "createdBy": {
             "nullable": true,
@@ -14637,7 +14426,233 @@
               }
             ]
           },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "updatedAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "updatedBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          }
+        },
+        "x-collection": "block_markdown"
+      },
+      "ItemsBlockRichtext": {
+        "type": "object",
+        "properties": {
+          "body": {
+            "nullable": true,
+            "type": "string"
+          },
+          "createdBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "cretedAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "updatedAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "updatedBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          }
+        },
+        "x-collection": "block_richtext"
+      },
+      "ItemsCategory": {
+        "type": "object",
+        "properties": {
+          "cover": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Files"
+              }
+            ]
+          },
           "createdAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "createdBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "seo": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsSEO"
+              }
+            ]
+          },
+          "slug": {
+            "nullable": true,
+            "type": "string"
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "summary": {
+            "nullable": true,
+            "type": "string"
+          },
+          "title": {
+            "nullable": true,
+            "type": "string"
+          },
+          "updatedAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "updatedBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          }
+        },
+        "x-collection": "category"
+      },
+      "ItemsSEO": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "image": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Files"
+              }
+            ]
+          },
+          "owner": {
+            "nullable": true,
+            "type": "string"
+          },
+          "title": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "x-collection": "seo"
+      },
+      "ItemsGlobals": {
+        "type": "object",
+        "properties": {
+          "facebook": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "instagram": {
+            "nullable": true,
+            "type": "string"
+          },
+          "metaDescription": {
+            "nullable": true,
+            "type": "string"
+          },
+          "metaTitle": {
+            "nullable": true,
+            "type": "string"
+          },
+          "updatedAt": {
             "nullable": true,
             "type": "string",
             "format": "timestamp"
@@ -14654,22 +14669,87 @@
               }
             ]
           },
-          "updatedAt": {
+          "whatsapp": {
+            "nullable": true,
+            "type": "string"
+          },
+          "youtube": {
+            "nullable": true,
+            "type": "string"
+          }
+        },
+        "x-collection": "globals"
+      },
+      "ItemsHeroImages": {
+        "type": "object",
+        "properties": {
+          "hero": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsBlockHero"
+              }
+            ]
+          },
+          "id": {
+            "nullable": false,
+            "type": "integer"
+          },
+          "image": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Files"
+              }
+            ]
+          }
+        },
+        "x-collection": "hero_images"
+      },
+      "ItemsPage": {
+        "type": "object",
+        "properties": {
+          "cover": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Files"
+              }
+            ]
+          },
+          "createdAt": {
             "nullable": true,
             "type": "string",
             "format": "timestamp"
           },
-          "title": {
+          "createdBy": {
             "nullable": true,
-            "type": "string"
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
           },
-          "slug": {
-            "nullable": true,
-            "type": "string"
-          },
-          "summary": {
-            "nullable": true,
-            "type": "string"
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
           },
           "seo": {
             "nullable": true,
@@ -14683,7 +14763,32 @@
               }
             ]
           },
-          "cover": {
+          "slug": {
+            "nullable": true,
+            "type": "string"
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "status": {
+            "nullable": false,
+            "type": "string"
+          },
+          "summary": {
+            "nullable": true,
+            "type": "string"
+          },
+          "title": {
+            "nullable": true,
+            "type": "string"
+          },
+          "updatedAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "updatedBy": {
             "nullable": true,
             "oneOf": [
               {
@@ -14691,7 +14796,7 @@
                 "format": "uuid"
               },
               {
-                "$ref": "#/components/schemas/Files"
+                "$ref": "#/components/schemas/Users"
               }
             ]
           },
@@ -14712,72 +14817,38 @@
         },
         "x-collection": "page"
       },
-      "ItemsBlockRichtext": {
+      "ItemsPageBlocks": {
         "type": "object",
         "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "sort": {
-            "nullable": true,
-            "type": "integer"
-          },
-          "createdBy": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "cretedAt": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "updatedBy": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "updatedAt": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "body": {
+          "collection": {
             "nullable": true,
             "type": "string"
-          }
-        },
-        "x-collection": "block_richtext"
-      },
-      "ItemsCategory": {
-        "type": "object",
-        "properties": {
+          },
           "id": {
             "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "sort": {
-            "nullable": true,
             "type": "integer"
           },
-          "createdBy": {
+          "item": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsBlockHero"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsBlockMarkdown"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsBlockRichtext"
+                }
+              ]
+            }
+          },
+          "page": {
             "nullable": true,
             "oneOf": [
               {
@@ -14785,16 +14856,17 @@
                 "format": "uuid"
               },
               {
-                "$ref": "#/components/schemas/Users"
+                "$ref": "#/components/schemas/ItemsPage"
               }
             ]
-          },
-          "createdAt": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "updatedBy": {
+          }
+        },
+        "x-collection": "page_blocks"
+      },
+      "ItemsPost": {
+        "type": "object",
+        "properties": {
+          "category": {
             "nullable": true,
             "oneOf": [
               {
@@ -14802,14 +14874,9 @@
                 "format": "uuid"
               },
               {
-                "$ref": "#/components/schemas/Users"
+                "$ref": "#/components/schemas/ItemsCategory"
               }
             ]
-          },
-          "updatedAt": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
           },
           "cover": {
             "nullable": true,
@@ -14823,222 +14890,10 @@
               }
             ]
           },
-          "slug": {
-            "nullable": true,
-            "type": "string"
-          },
-          "summary": {
-            "nullable": true,
-            "type": "string"
-          },
-          "title": {
-            "nullable": true,
-            "type": "string"
-          },
-          "seo": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsSEO"
-              }
-            ]
-          }
-        },
-        "x-collection": "category"
-      },
-      "ItemsGlobals": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "updatedBy": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "updatedAt": {
+          "createdAt": {
             "nullable": true,
             "type": "string",
             "format": "timestamp"
-          },
-          "metaTitle": {
-            "nullable": true,
-            "type": "string"
-          },
-          "metaDescription": {
-            "nullable": true,
-            "type": "string"
-          },
-          "facebook": {
-            "nullable": true,
-            "type": "string"
-          },
-          "youtube": {
-            "nullable": true,
-            "type": "string"
-          },
-          "instagram": {
-            "nullable": true,
-            "type": "string"
-          },
-          "whatsapp": {
-            "nullable": true,
-            "type": "string"
-          }
-        },
-        "x-collection": "globals"
-      },
-      "ItemsHeroImages": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "nullable": false,
-            "type": "integer"
-          },
-          "hero": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsBlockHero"
-              }
-            ]
-          },
-          "image": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Files"
-              }
-            ]
-          }
-        },
-        "x-collection": "hero_images"
-      },
-      "ItemsPostBlocks": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "nullable": false,
-            "type": "integer"
-          },
-          "post": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsPost"
-              }
-            ]
-          },
-          "item": {
-            "nullable": true,
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "$ref": "#/components/schemas/ItemsBlockHero"
-                },
-                {
-                  "$ref": "#/components/schemas/ItemsBlockRichtext"
-                },
-                {
-                  "$ref": "#/components/schemas/ItemsBlockMarkdown"
-                }
-              ]
-            }
-          },
-          "collection": {
-            "nullable": true,
-            "type": "string"
-          }
-        },
-        "x-collection": "post_blocks"
-      },
-      "ItemsPageBlocks": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "nullable": false,
-            "type": "integer"
-          },
-          "page": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsPage"
-              }
-            ]
-          },
-          "item": {
-            "nullable": true,
-            "type": "array",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "$ref": "#/components/schemas/ItemsBlockHero"
-                },
-                {
-                  "$ref": "#/components/schemas/ItemsBlockRichtext"
-                },
-                {
-                  "$ref": "#/components/schemas/ItemsBlockMarkdown"
-                }
-              ]
-            }
-          },
-          "collection": {
-            "nullable": true,
-            "type": "string"
-          }
-        },
-        "x-collection": "page_blocks"
-      },
-      "ItemsBlockMarkdown": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "nullable": false,
-            "type": "string",
-            "format": "uuid"
-          },
-          "sort": {
-            "nullable": true,
-            "type": "integer"
           },
           "createdBy": {
             "nullable": true,
@@ -15052,7 +14907,53 @@
               }
             ]
           },
-          "createdAt": {
+          "customSummary": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "publishedAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "date-time"
+          },
+          "seo": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsSEO"
+              }
+            ]
+          },
+          "slug": {
+            "nullable": true,
+            "type": "string"
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "status": {
+            "nullable": false,
+            "type": "string"
+          },
+          "summary": {
+            "nullable": true,
+            "type": "string"
+          },
+          "title": {
+            "nullable": true,
+            "type": "string"
+          },
+          "updatedAt": {
             "nullable": true,
             "type": "string",
             "format": "timestamp"
@@ -15069,17 +14970,116 @@
               }
             ]
           },
-          "updatedAt": {
+          "blocks": {
             "nullable": true,
-            "type": "string",
-            "format": "timestamp"
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsPostBlocks"
+                }
+              ]
+            }
           },
-          "body": {
+          "images": {
             "nullable": true,
-            "type": "string"
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsPostImages"
+                }
+              ]
+            }
           }
         },
-        "x-collection": "block_markdown"
+        "x-collection": "post"
+      },
+      "ItemsPostBlocks": {
+        "type": "object",
+        "properties": {
+          "collection": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "nullable": false,
+            "type": "integer"
+          },
+          "item": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsBlockHero"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsBlockMarkdown"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsBlockRichtext"
+                }
+              ]
+            }
+          },
+          "post": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsPost"
+              }
+            ]
+          }
+        },
+        "x-collection": "post_blocks"
+      },
+      "ItemsPostImages": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "nullable": false,
+            "type": "integer"
+          },
+          "image": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Files"
+              }
+            ]
+          },
+          "post": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsPost"
+              }
+            ]
+          }
+        },
+        "x-collection": "post_images"
       }
     },
     "parameters": {
