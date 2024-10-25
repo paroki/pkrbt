@@ -1,4 +1,5 @@
 import { createDirectus } from "../directus.mjs";
+import { ensureError } from "../util.mjs";
 import {
   createParagraphs,
   createTitle,
@@ -9,7 +10,7 @@ import {
 } from "./generator.mjs";
 import moment from "moment";
 
-const directus = createDirectus();
+const directus = await createDirectus();
 
 async function cleanupPosts() {
   const { items, error } = await directus.post.search({ limit: 50, page: 1 });
@@ -58,11 +59,7 @@ ${createParagraphs()}`;
     ],
   });
 
-  if (error) {
-    console.error(error);
-  } else {
-    console.log("added", item.title);
-  }
+  ensureError(error);
 }
 
 async function createTypography() {
@@ -103,4 +100,5 @@ export async function createPosts() {
   }
 
   await createTypography();
+  console.warn("created posts");
 }

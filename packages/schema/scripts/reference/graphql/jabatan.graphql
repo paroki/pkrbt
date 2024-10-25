@@ -1,0 +1,10 @@
+query {
+  organisasi_struktur {
+    id
+    sort
+    nama
+    induk {
+      sort
+    }
+  }
+}

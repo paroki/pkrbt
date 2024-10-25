@@ -32,10 +32,7 @@ export function restMethods<T>(
       );
       id = items[0]?.id;
     } catch (e) {
-      error = new Error("Unknown error", { cause: e });
-      if (e instanceof Error) {
-        error = e;
-      }
+      error = e as Error;
     }
 
     return { id, error };
@@ -47,9 +44,7 @@ export function restMethods<T>(
     try {
       data = await rest.request(createItem(collection, item));
     } catch (e) {
-      if (e instanceof Error) {
-        error = e;
-      }
+      error = e as Error;
     }
 
     return { item: data as T, error };
@@ -62,11 +57,7 @@ export function restMethods<T>(
       invariant(item.id, "id undefined");
       data = await rest.request(updateItem(collection, item.id, item));
     } catch (e) {
-      if (e instanceof Error) {
-        error = e;
-      } else {
-        error = new Error("Unknown error", { cause: e });
-      }
+      error = e as Error;
     }
 
     return { item: data as T, error };
@@ -78,10 +69,7 @@ export function restMethods<T>(
     try {
       await rest.request(deleteItem(collection, id));
     } catch (e) {
-      error = new Error("Unknown error", { cause: e });
-      if (e instanceof Error) {
-        error = e;
-      }
+      error = e as Error;
     }
 
     return { error };

@@ -8,15 +8,14 @@ import {
 } from "./generator.mjs";
 import { ensureError } from "../util.mjs";
 
-const directus = createDirectus();
+const directus = await createDirectus();
 
 async function createHome() {
-  const { id, error: findError } = await directus.page.readBySlug("beranda");
+  const { item, error: findError } = await directus.page.readBySlug("beranda");
 
   ensureError(findError);
-  console.log(id);
-  if (id) {
-    const { error } = await directus.page.remove(id);
+  if (item) {
+    const { error } = await directus.page.remove(item.id);
     ensureError(error);
   }
 
@@ -51,4 +50,5 @@ async function createHome() {
 }
 export async function createPages() {
   await createHome();
+  console.warn("created pages");
 }

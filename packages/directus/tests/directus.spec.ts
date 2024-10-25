@@ -2,9 +2,22 @@ import { describe, expect, it } from "vitest";
 import { Directus } from "../src";
 
 describe("directus", () => {
+  const directus = new Directus({ baseUrl: "http://localhost:8055" });
   it("should load website plugin", () => {
-    const directus = new Directus({ baseUrl: "http://localhost:8055" });
     expect(directus).toHaveProperty("post");
     expect(directus.post).toHaveProperty("create");
+  });
+
+  it("should load organisasi plugin", () => {
+    expect(directus).toHaveProperty("organisasi");
+    // crud validation
+    expect(directus.organisasi).toHaveProperty("create");
+    expect(directus.organisasi).toHaveProperty("update");
+    expect(directus.organisasi).toHaveProperty("remove");
+
+    // sub plugin validation
+    expect(directus.organisasi).toHaveProperty("struktur");
+    expect(directus.organisasi).toHaveProperty("jabatan");
+    expect(directus.organisasi).toHaveProperty("anggota");
   });
 });

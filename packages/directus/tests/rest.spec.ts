@@ -58,7 +58,9 @@ describe("rest", () => {
 
     directus.rest.request.mockResolvedValue([{ id: "some-id" }]);
 
-    const { id, error } = await rest.findId({ slug: { _eq: "some-slug" } });
+    const { id, error } = await rest.findId({
+      filter: { slug: { _eq: "some-slug" } },
+    });
     expect(sdk.readItems).toHaveBeenCalled();
     expect(sdk.readItems).toHaveBeenCalledWith("post", {
       filter: {
