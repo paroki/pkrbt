@@ -21,9 +21,12 @@
       "cache": true
     },
     "schema:pull": {
+      
+"cache": false,
       "persistent": true
     },
     "schema:push": {
+      "cache": false,
       "persistent": true
     },
     "schema:push:dev": {
