@@ -1,23 +1,19 @@
 "use client";
-import type { BlockContent, Blocks, BlockImage } from "@pkrbt/openapi";
-import BlockImageView from "./image";
-import BlockSliderView from "./slider";
+
 import BlockMarkdownView from "./markdown";
+import { PostBlock } from "@pkrbt/directus";
 
 type Props = {
-  blocks: Blocks;
+  blocks: PostBlock[];
   className?: string;
 };
 
-function BlockItem({ block }: { block: BlockContent }) {
-  if ("block.image" === block.__component) {
-    return BlockImageView({ block: block as BlockImage });
-  } else if ("block.slider" === block.__component) {
-    return BlockSliderView({ block });
-  } else if ("block.rich-text" === block.__component) {
-    return BlockMarkdownView({ block });
-  } else if ("block.seo" === block.__component) {
-    return <span></span>;
+function BlockItem({ block }: { block: PostBlock }) {
+  const collection = block.collection;
+  const item = block.item;
+
+  if ("block_markdown" === collection) {
+    return BlockMarkdownView({ block: item });
   }
   throw Error("Unsupported block type");
 }

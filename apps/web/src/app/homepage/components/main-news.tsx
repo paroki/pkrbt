@@ -9,16 +9,16 @@ import {
 } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
 import LinkBtn from "@/components/common/link";
-import { Article } from "@pkrbt/openapi";
-import { ArticleItem } from "@/components/articles/article-item";
+import { PostItem } from "@/components/posts/post-item";
+import { Post } from "@pkrbt/directus";
 
-export default function MainNews({ articles }: { articles: Article[] }) {
+export default function MainNews({ posts }: { posts: Post[] }) {
   const plugin = React.useRef(
     Autoplay({ delay: 6000, stopOnInteraction: false }),
   );
   return (
     <>
-      {articles.length > 0 ? (
+      {posts.length > 0 ? (
         <Carousel
           opts={{
             align: "start",
@@ -28,12 +28,12 @@ export default function MainNews({ articles }: { articles: Article[] }) {
           className="w-full"
         >
           <CarouselContent className="py-2">
-            {articles.map((article, index) => (
+            {posts.map((post, index) => (
               <CarouselItem
                 key={index}
                 className="md:basis-1/2 lg:basis-1/3 group"
               >
-                <ArticleItem article={article} />
+                <PostItem post={post} />
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -41,7 +41,7 @@ export default function MainNews({ articles }: { articles: Article[] }) {
       ) : (
         <div>No article.</div>
       )}
-      {articles.length > 0 ? (
+      {posts.length > 0 ? (
         <div className="flex justify-end mt-8">
           <LinkBtn name="Selengkapnya" path="/berita" />
         </div>

@@ -3,9 +3,11 @@ import {
   createGraphql,
   Graphql,
   GraphqlPaginateParams,
+  ImageType,
   Post,
   restMethods,
   Schema,
+  SEO,
 } from "..";
 import {
   postReadFields,
@@ -19,6 +21,12 @@ type SearchWithCategory = GraphqlPaginateParams & {
   sort?: string[];
 };
 
+type PostR = Omit<Post, "slug"> &
+  Pick<Required<Post>, "id" | "slug"> & {
+    cover?: ImageType;
+    seo: Required<SEO>;
+  };
+
 function createReadGraphql(directus: Directus<Schema>) {
   const gql = createGraphql(directus, {
     type: "post_by_id",
@@ -29,12 +37,12 @@ function createReadGraphql(directus: Directus<Schema>) {
     },
   });
 
-  gql.addParam({ name: "id", type: "String" });
+  gql.addParam({ name: "id", type: "ID" });
   return gql;
 }
 
 export function post(directus: Directus<Schema>) {
-  const methods = restMethods<Post>(directus, "post");
+  const methods = restMethods<PostR>(directus, "post");
 
   /**
    * Search posts with category or keyword
@@ -65,7 +73,7 @@ export function post(directus: Directus<Schema>) {
       gql.addParam({ name: "category", type: "String" });
     }
 
-    return await gql.paginate<Post>(withDefaults);
+    return await gql.paginate<PostR>(withDefaults);
   }
 
   async function read(id: string | number) {
