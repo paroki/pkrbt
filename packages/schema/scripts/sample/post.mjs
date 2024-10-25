@@ -3,9 +3,11 @@ import {
   createParagraphs,
   createTitle,
   extractSummary,
+  generateCategory,
   getImage,
   typhographyContent,
 } from "./generator.mjs";
+import moment from "moment";
 
 const directus = createDirectus();
 
@@ -33,6 +35,7 @@ ${createParagraphs()},
 ${createParagraphs()}`;
 
   const cover = getImage().id;
+  moment().t;
   const { item, error } = await directus.post.create({
     title,
     summary: extractSummary(content),
@@ -42,6 +45,9 @@ ${createParagraphs()}`;
       { image: getImage().id },
       { image: getImage().id },
     ],
+    category: generateCategory().id,
+    status: "published",
+    publishedAt: moment(Date.now()).utcOffset("+8").toISOString(),
     blocks: [
       {
         collection: "block_markdown",
@@ -71,6 +77,9 @@ async function createTypography() {
       { image: getImage().id },
       { image: getImage().id },
     ],
+    status: "published",
+    publishedAt: new Date(),
+    category: generateCategory().id,
     blocks: [
       {
         collection: "block_markdown",

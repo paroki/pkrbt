@@ -59,10 +59,12 @@ export default async function Page(props: Props) {
     Promise.reject(error);
   }
   const { items: latestPosts } = await directus.post.search({ limit: 3 });
-  const { items: relatedPost } = await directus.post.search({
-    category: post?.category?.id,
-    limit: 3,
-  });
+  const { items: relatedPost, error: categoryError } =
+    await directus.post.search({
+      category: post?.category?.id,
+      limit: 3,
+    });
+  if (categoryError) Promise.reject(categoryError.cause);
 
   if (!post) {
     return notFound();
@@ -109,13 +111,13 @@ export default async function Page(props: Props) {
         )}
         {/* end content */}
         <ShareArticle />
-        <LatestNews posts={latestPosts} title="Tulisan Terbaru" />
-        <Separator className="my-5 bg-gray-200" />
         <LatestNews
           posts={relatedPost}
           className="mt-5"
           title={`Lihat Kategori ${post.category?.title} Lainnya:`}
         />
+        <Separator className="my-5 bg-gray-200" />
+        <LatestNews posts={latestPosts} title="Tulisan Terbaru" />
       </div>
     </Container>
   );

@@ -11,7 +11,6 @@ import {
 } from "./types";
 import { Schema } from "..";
 import { GraphqlError } from "./error";
-import { aggregate } from "@directus/sdk";
 
 export class Graphql {
   fragment?: GraphqlFragment;

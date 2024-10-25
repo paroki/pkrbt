@@ -1,6 +1,7 @@
 import { faker } from "@faker-js/faker";
 import _ from "lodash";
 import { getImages } from "./image.mjs";
+import { getCategories } from "../reference/category.mjs";
 
 export function createTitle() {
   return _.startCase(faker.lorem.words({ min: 2, max: 4 }));
@@ -65,4 +66,10 @@ export function getImage() {
   const index = faker.number.int({ min: 0, max: images.length - 1 });
 
   return images[index];
+}
+
+export function generateCategory() {
+  const categories = getCategories();
+  const index = faker.number.int({ min: 0, max: categories.length - 1 });
+  return categories[index];
 }
