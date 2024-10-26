@@ -30,5 +30,21 @@
       }
     ],
     "_syncId": "_sync_default_public_policy"
+  },
+  {
+    "name": "Registered",
+    "icon": "badge",
+    "description": "Registered Users Policy",
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": true,
+    "roles": [
+      {
+        "role": "fe856227-d8ae-46f4-9cf9-b540fa85297b",
+        "sort": 1
+      }
+    ],
+    "_syncId": "94a06577-4a5a-41b1-bdd3-51f39e1fdc82"
   }
 ]
