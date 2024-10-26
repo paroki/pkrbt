@@ -13,7 +13,7 @@ export default function DirectusImage({ image, ...props }: Props) {
       width={image.width}
       height={image.height}
       alt={image.title}
-      src={`http://localhost:8055/assets/${image.id}`}
+      src={`${process.env.NEXT_PUBLIC_ASSET_URL}/${image.id}`}
     />
   );
 }

@@ -1,8 +1,7 @@
 import { MetadataRoute } from "next";
-import { headers, type UnsafeUnwrappedHeaders } from "next/headers";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const urlPrefix = (headers() as unknown as UnsafeUnwrappedHeaders).get("x-origin");
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const urlPrefix = process.env.NEXT_PUBLIC_URL;
   return [
     {
       url: `${urlPrefix}/berita`,

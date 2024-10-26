@@ -10,6 +10,7 @@
     "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
     "lint": "eslint . --max-warnings 0",
     "test:ui": "vitest --ui",
+    "coverage": "vitest --coverage",
     "test": "vitest"
   },
   "keywords": [],

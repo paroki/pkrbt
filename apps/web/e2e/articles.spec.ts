@@ -3,7 +3,7 @@ import { test, expect } from "@playwright/test";
 const BASE_URL = "http://localhost:3000";
 
 test("reading an article", async ({ page }) => {
-  const response = await page.goto(`${BASE_URL}/typography-testing`);
+  const response = await page.goto(`${BASE_URL}/typhography-testing`);
 
   expect(response?.status()).toBe(200);
 

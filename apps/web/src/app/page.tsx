@@ -18,7 +18,7 @@ export async function generateMetadata() {
   }
 
   const { title, description, image } = homepage.seo;
-  return generateMeta({
+  return await generateMeta({
     title,
     description,
     image: image as MetaImage,
@@ -69,36 +69,6 @@ export default async function Home() {
               </div>
             </Container>
           )}
-          {/*
-          <Container className="bg-gray-50">
-            <div className="max-w-screen-lg mx-auto">
-              <ContainerHeader className="text-base">
-                Warta Gereja
-              </ContainerHeader>
-              <Announcement />
-            </div>
-          </Container>
-          */}
-
-          {/*marriages.length > 0 && (
-            <Container className="bg-gray-50">
-              <div className="max-w-screen-lg mx-auto">
-                <div className="flex gap-5 items-center flex-col md:flex-row">
-                  <Rings />
-                  <div>
-                    <ContainerHeader className="text-base">
-                      Akan Menerima Sakramen Perkawinan
-                    </ContainerHeader>
-                    <Text as="p" className="text-sm">
-                      Jika umat mengetahui adanya halangan perkawinan ini, wajib
-                      memberitahu pastor paroki
-                    </Text>
-                  </div>
-                </div>
-                <Marriages items={marriages} />
-              </div>
-            </Container>
-          )*/}
         </div>
       </ErrorBoundary>
     );

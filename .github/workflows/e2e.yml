@@ -17,7 +17,9 @@ env:
   TURBO_TEAM: ${{ secrets.VERCEL_TEAM }}
   TURBO_REMOTE_ONLY: true
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-
+  DIRECTUS_URL: ${{ secrets.DIRECTUS_URL }}
+  DIRECTUS_TOKEN: ${{ secrets.DIRECTUS_TOKEN }}
+  DIRECTUS_ASSET_URL: ${{ secrets.DIRECTUS_ASSET_URL }}
 jobs:
   web:
     name: Website
@@ -33,17 +35,17 @@ jobs:
       - name: Configures default env
         shell: bash
         run: |
-          cp apps/web/.env.default apps/web/.env
-          cp apps/cms/.env.default apps/cms/.env
+          cp .env.default .env.local
 
       - name: Build
         shell: bash
         run: |
-          pnpm build --filter=@pkrbt/cms
           pnpm build --filter=@pkrbt/web
 
-      - name: Seed test data
-        run: pnpm seed:dev
+      #- name: Check HTTP reachability
+      #  shell: bash
+      #  run: |
+      #    until curl --output /dev/null --silent --head --fail http://localhost:8055/server/ping; do printf '.'; sleep 5; done
 
       - name: Start dev server
         run: pnpm start &

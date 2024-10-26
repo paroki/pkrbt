@@ -5,7 +5,7 @@ on:
     inputs:
       environment:
         type: string
-        description: Production release
+        description: Release Environment
         default: "development"
       ref_name:
         type: string
@@ -28,6 +28,10 @@ env:
   TURBO_REMOTE_ONLY: true
   VERCEL_ORG_ID: ${{ secrets.VERCEL_USER_ID }}
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+  DIRECTUS_URL: ${{ secrets.DIRECTUS_URL }}
+  DIRECTUS_TOKEN: ${{ secrets.DIRECTUS_TOKEN }}
+  NEXT_PUBLIC_URL: https://dev.pkrbt.id
+  NEXT_PUBLIC_ASSET_URL: https://api-dev.pkrbt.id/assets
 
 jobs:
   web:
@@ -78,6 +82,8 @@ jobs:
             --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
         run: |
           pnpm build --filter=@pkrbt/web
           ${{ steps.vars.outputs.vercel_build }} --token=${{ secrets.VERCEL_TOKEN }}

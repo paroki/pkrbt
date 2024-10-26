@@ -1,8 +1,7 @@
 import { MetadataRoute } from "next";
-import { headers, type UnsafeUnwrappedHeaders } from "next/headers";
 
-export default function robots(): MetadataRoute.Robots {
-  const prefix = (headers() as unknown as UnsafeUnwrappedHeaders).get("x-origin");
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const prefix = process.env.NEXT_PUBLIC_URL;
   return {
     rules: {
       userAgent: "*",

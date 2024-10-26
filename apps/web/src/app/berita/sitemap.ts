@@ -1,31 +1,26 @@
-import api from "@/utils/strapi";
+import { directus } from "@/utils/directus";
 import { MetadataRoute } from "next";
-import { headers } from "next/headers";
+
+export const dynamic = "force-dynamic";
 
 async function fetchSitemap(page = 1): Promise<MetadataRoute.Sitemap> {
-  const prefix = (await headers()).get("x-origin");
   let sitemap: MetadataRoute.Sitemap = [];
 
-  const { items, meta } = await api.article.search({
-    sort: ["publishedAt:desc"],
+  const { items, meta } = await directus.post.search({
+    sort: ["-publishedAt"],
     page: page,
     limit: 50,
   });
   items.map((item) => {
     sitemap.push({
-      url: `${prefix}/${item.slug}`,
-      lastModified: item.updatedAt,
+      url: process.env.NEXT_PUBLIC_URL + "/" + item.slug,
+      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     });
   });
 
-  console.log(meta);
-  if (
-    meta.pagination &&
-    meta.pagination.pageCount &&
-    page < meta.pagination.pageCount
-  ) {
+  if (meta?.page && meta.pageSize && page < meta.pageSize) {
     const nextMap = await fetchSitemap(page + 1);
     sitemap = [...sitemap, ...nextMap];
   }
@@ -35,7 +30,5 @@ async function fetchSitemap(page = 1): Promise<MetadataRoute.Sitemap> {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const maps = await fetchSitemap();
-
-  console.log(maps.length);
   return maps;
 }

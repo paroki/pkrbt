@@ -28,22 +28,31 @@ jobs:
         shell: bash
         run: |
           cp apps/web/.env.default apps/web/.env
-          cp apps/cms/.env.default apps/cms/.env
 
       - name: test with coverage
         shell: bash
         run: |
           pnpm coverage
 
-      - name: upload cms coverage
+      - name: upload directus coverage
         uses: codecov/codecov-action@v4
         with:
-          flags: cms # optional
-          name: cms # optional
+          flags: directus # optional
+          name: directus # optional
           files: ./clover.xml
           token: ${{ secrets.CODECOV_TOKEN }} # required
           verbose: true
-          directory: ./apps/cms/coverage
+          directory: ./packages/directus/coverage
+
+      - name: upload directus-core coverage
+        uses: codecov/codecov-action@v4
+        with:
+          flags: directus-core # optional
+          name: directus-core # optional
+          files: ./clover.xml
+          token: ${{ secrets.CODECOV_TOKEN }} # required
+          verbose: true
+          directory: ./packages/directus-core/coverage
 
       - name: upload web coverage
         uses: codecov/codecov-action@v4
@@ -54,13 +63,3 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }} # required
           verbose: true
           directory: ./apps/web/coverage
-
-      - name: upload openapi coverage
-        uses: codecov/codecov-action@v4
-        with:
-          flags: openapi # optional
-          name: openapi # optional
-          files: ./clover.xml
-          token: ${{ secrets.CODECOV_TOKEN }} # required
-          verbose: true
-          directory: ./packages/openapi/coverage
