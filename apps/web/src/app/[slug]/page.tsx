@@ -32,6 +32,8 @@ const getBlockItemBody = (
   return callback(arr);
 };
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const params = await props.params;
 
@@ -41,7 +43,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
   const seo = item?.seo;
 
-  return generateMeta({
+  return await generateMeta({
     title: seo?.title,
     description: seo?.description,
     type: "article",

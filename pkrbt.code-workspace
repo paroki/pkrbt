@@ -7,6 +7,9 @@
       "path": "packages/directus",
     },
     {
+      "path": "packages/schema",
+    },
+    {
       "path": ".github",
     },
   ],

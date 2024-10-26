@@ -1,9 +1,8 @@
 import { Metadata } from "next";
 import { OpenGraphType } from "next/dist/lib/metadata/types/opengraph-types";
-import { addPrefix } from "./prefix";
-import invariant from "tiny-invariant";
 
 export type MetaImage = {
+  id: string;
   url: string;
   width: number;
   height: number;
@@ -18,21 +17,19 @@ export type Meta = {
   type: OpenGraphType;
 };
 
-export function generateMeta({
+export async function generateMeta({
   title,
   description,
   image,
   type,
-}: Meta): Metadata {
+}: Meta): Promise<Metadata> {
   const images = [];
   const url = "/";
-  const origin = "http://localhost:3000";
-
-  invariant(url, "Can not get current url");
+  const origin = process.env.NEXT_PUBLIC_URL as string;
 
   if (image) {
     images.push({
-      url: addPrefix(image.url),
+      url: `${process.env.NEXT_PUBLIC_ASSET_URL}/${image.id}`,
       width: image.width,
       height: image.height,
       alt: image.title,
@@ -46,8 +43,13 @@ export function generateMeta({
     });
   }
 
+  title = title ?? "PKRBT";
+  description = description ?? "Website Paroki Kristus Raja Barong Tongkok";
+
   const metadata: Metadata = {
-    metadataBase: new URL(origin),
+    metadataBase: new URL(
+      process.env.NEXT_PUBLIC_URL ?? "https://dev.pkrbt.id",
+    ),
     title: `${title} | PKRBT`,
     description,
     openGraph: {

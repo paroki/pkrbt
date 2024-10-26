@@ -5,6 +5,7 @@ on:
     branches:
       - next
       - main
+
   pull_request:
     branches:
       - next
@@ -22,12 +23,9 @@ jobs:
     name: Collect Changes
     runs-on: ubuntu-latest
     outputs:
-      api: ${{ steps.vars.outputs.api }}
-      cms: ${{ steps.vars.outputs.cms }}
       web: ${{ steps.vars.outputs.web }}
       pwa: ${{ steps.vars.outputs.pwa }}
       node_test: ${{ steps.vars.outputs.node_test }}
-      build_cms: ${{ steps.vars.outputs.build_cms }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -8,7 +8,7 @@ import DirectusImage from "@/components/common/image";
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(): Promise<Metadata> {
-  return generateMeta({
+  return await generateMeta({
     title: "Dewan Pastoral Paroki",
     description:
       "Dewan Pastoral Paroki Paroki Kristus Raja Barong Tongkok, Keuskupan Agung Samarinda",

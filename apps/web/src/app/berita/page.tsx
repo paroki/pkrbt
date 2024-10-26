@@ -3,48 +3,33 @@ import { Metadata } from "next";
 import { generateMeta } from "@/utils/meta";
 import { directus } from "@/utils/directus";
 
-type SearchParams = {
-  keyword?: string;
-  page?: number;
-  limit?: number;
-  category?: string;
-  sort?: string[];
-  filters?: {
-    [key: string]: number | string;
-  };
-};
-
-type Props = {
-  searchParams: SearchParams;
-};
-
-// TODO: find a way to remove the line below
-export const dynamic = "force-dynamic";
-
 export async function generateMetadata(): Promise<Metadata> {
-  return generateMeta({
+  return await generateMeta({
     title: "Kumpulan Berita dan Artikel | PKRBT",
     description: "Kumpulan artikel Paroki Kristus Raja Barong Tongkok",
     type: "article",
   });
 }
 
-export default async function Page(props: Props) {
-  const searchParams = await props.searchParams;
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | undefined }>;
+}) {
+  const filters = await searchParams;
   const withDefaults = {
-    page: Number(searchParams.page ?? 1),
+    page: Number(filters.page ?? 1),
     limit: 9,
     sort: ["-publishedAt"],
-    keyword: searchParams.keyword,
+    keyword: filters.keyword,
   };
 
-  console.log(withDefaults);
   const { items, meta } = await directus.post.search(withDefaults);
 
   const pageMeta = {
     size: meta?.pageSize ?? 0,
     page: meta?.page ?? 1,
-    keyword: searchParams.keyword,
+    keyword: withDefaults.keyword,
   };
 
   return (

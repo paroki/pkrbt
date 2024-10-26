@@ -2,12 +2,6 @@ name: Collect Changes
 description: Collect changes from commit
 
 outputs:
-  api:
-    description: API code changed
-    value: ${{ steps.filter.outputs.api }}
-  cms:
-    description: CMS code changed
-    value: ${{ steps.filter.outputs.cms }}
   web:
     description: Website code changed
     value: ${{ steps.filter.outputs.web }}
@@ -17,15 +11,6 @@ outputs:
   node_test:
     description: Require node tests
     value: ${{ steps.filter.outputs.node_test }}
-  api_test:
-    description: Require api tests
-    value: ${{ steps.filter.outputs.api_test }}
-  build_cms:
-    description: Build CMS
-    value: ${{ steps.filter.outputs.build_cms }}
-  build_api:
-    description: Build API
-    value: ${{ steps.filter.outputs.build_api }}
   environment:
     description: Environment
     value: ${{ steps.vars.outputs.environment }}
@@ -38,27 +23,12 @@ runs:
       id: filter
       with:
         filters: |
-          api:
-            - "api/**"
           pwa:
             - "apps/pwa/**"
-          cms:
-            - "apps/cms/**"
           web:
             - "apps/web/**"
           node_test:
-            - ".github/workflows/test.yml"
+            - ".github/workflows/node-test.yml"
             - ".github/actions/setup-node/**"
-            - "apps/cms/**"
             - "apps/web/**"
             - "apps/pwa/**"
-          api_test:
-            - ".github/workflows/test.yml"
-            - ".github/actions/php/**"
-            - "api/**"
-          build_cms:
-            - "apps/cms/**"
-            - ".github/workflows/image.yml"
-          build_api:
-            - "api/**"
-            - ".github/workflows/image.yml"
