@@ -5,5 +5,12 @@
     "description": "$t:admin_description",
     "parent": null,
     "_syncId": "_sync_default_admin_role"
+  },
+  {
+    "name": "Registered",
+    "icon": "supervised_user_circle",
+    "description": "Registered Users",
+    "parent": null,
+    "_syncId": "fe856227-d8ae-46f4-9cf9-b540fa85297b"
   }
 ]
