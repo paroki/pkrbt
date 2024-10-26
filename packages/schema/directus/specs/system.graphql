@@ -267,8 +267,8 @@ type Subscription {
   post_mutated(event: EventEnum): post_mutated
   post_blocks_mutated(event: EventEnum): post_blocks_mutated
   post_images_mutated(event: EventEnum): post_images_mutated
-  organisasi_anggota_mutated(event: EventEnum): organisasi_anggota_mutated
   organisasi_mutated(event: EventEnum): organisasi_mutated
+  organisasi_anggota_mutated(event: EventEnum): organisasi_anggota_mutated
   organisasi_struktur_mutated(event: EventEnum): organisasi_struktur_mutated
   organisasi_jabatan_periode_mutated(event: EventEnum): organisasi_jabatan_periode_mutated
   organisasi_jabatan_mutated(event: EventEnum): organisasi_jabatan_mutated
@@ -1722,6 +1722,7 @@ type organisasi_anggota {
   gelarBelakang: String
   aktif: Boolean
   user(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  foto(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
 }
 
 type organisasi_anggota_mutated {
@@ -2861,6 +2862,7 @@ input organisasi_anggota_filter {
   gelarBelakang: string_filter_operators
   aktif: boolean_filter_operators
   user: directus_users_filter
+  foto: directus_files_filter
   _and: [organisasi_anggota_filter]
   _or: [organisasi_anggota_filter]
 }

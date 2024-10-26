@@ -3783,6 +3783,8 @@ export interface components {
             nama?: string | null;
             gelarBelakang?: string | null;
             aktif?: boolean | null;
+            user?: (string | components["schemas"]["Users"]) | null;
+            foto?: (string | components["schemas"]["Files"]) | null;
         };
         ItemsOrganisasiStruktur: {
             /** Format: uuid */

@@ -1,4 +1,5 @@
 import { components } from "./openapi";
+import { ImageType } from "./website";
 
 type schema = components["schemas"];
 
@@ -20,17 +21,21 @@ export type PeriodeJabatan = Omit<
     "nama" | "dimulaiPada" | "berakhirPada" | "organisasi" | "sort"
   >;
 
+export type AnggotaOrganisasi = Omit<
+  schema["ItemsOrganisasiAnggota"],
+  "nama" | "aktif" | "foto"
+> &
+  Pick<Required<schema["ItemsOrganisasiAnggota"]>, "nama" | "aktif"> & {
+    foto?: ImageType;
+  };
+
 export type JabatanOrganisasi = Omit<
   schema["ItemsOrganisasiJabatan"],
-  "nama" | "aktif" | "struktur" | "periode"
+  "nama" | "aktif" | "struktur" | "periode" | "penjabat"
 > &
   Pick<
     Required<schema["ItemsOrganisasiJabatan"]>,
     "nama" | "aktif" | "struktur" | "periode"
-  >;
-
-export type AnggotaOrganisasi = Omit<
-  schema["ItemsOrganisasiAnggota"],
-  "nama" | "aktif"
-> &
-  Pick<Required<schema["ItemsOrganisasiAnggota"]>, "nama" | "aktif">;
+  > & {
+    penjabat: AnggotaOrganisasi;
+  };

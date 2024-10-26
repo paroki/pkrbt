@@ -8,6 +8,7 @@ import {
   Schema,
   StrukturOrganisasi,
 } from "..";
+import { jabatan } from "./jabatan";
 
 export function organisasi(directus: Directus<Schema>) {
   return {
@@ -18,6 +19,7 @@ export function organisasi(directus: Directus<Schema>) {
       },
       jabatan: {
         ...restMethods<JabatanOrganisasi>(directus, "organisasi_jabatan"),
+        ...jabatan(directus),
       },
       periode: {
         ...restMethods<PeriodeJabatan>(directus, "organisasi_jabatan_periode"),
