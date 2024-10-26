@@ -3,9 +3,6 @@ import Jumbotron from "@/app/homepage/components/jumbotron";
 import ContainerHeader from "@/components/layouts/container-header";
 import MainNews from "@/app/homepage/components/main-news";
 import MassSchedule from "@/app/homepage/components/schedule";
-import Marriages from "@/app/homepage/components/marriages";
-import Rings from "@/components/icons/rings";
-import { Text } from "@radix-ui/themes";
 import ErrorBoundary from "@/components/ui/error-boundaries";
 import { generateMeta, MetaImage } from "@/utils/meta";
 import { fetchHomepage } from "./homepage/utils";
@@ -35,8 +32,12 @@ export default async function Home() {
   if (error) {
     Promise.reject(error.cause);
   }
-  const marriages = []; // await getMarriages();
-  const homepage = await fetchHomepage();
+  // const marriages = []; // await getMarriages();
+  const { item: homepage, error: homepageError } =
+    await directus.page.readBySlug("beranda");
+  if (homepageError) {
+    Promise.reject(homepageError);
+  }
 
   if (!homepage) {
     return <div>Loading</div>;
@@ -78,7 +79,8 @@ export default async function Home() {
             </div>
           </Container>
           */}
-          {marriages.length > 0 && (
+
+          {/*marriages.length > 0 && (
             <Container className="bg-gray-50">
               <div className="max-w-screen-lg mx-auto">
                 <div className="flex gap-5 items-center flex-col md:flex-row">
@@ -96,7 +98,7 @@ export default async function Home() {
                 <Marriages items={marriages} />
               </div>
             </Container>
-          )}
+          )*/}
         </div>
       </ErrorBoundary>
     );

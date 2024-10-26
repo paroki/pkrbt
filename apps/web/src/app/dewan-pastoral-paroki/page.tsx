@@ -1,9 +1,9 @@
 import Container from "@/components/ui/container";
 import { generateMeta } from "@/utils/meta";
-import { addPrefix } from "@/utils/prefix";
-import api from "@/utils/strapi";
 import { Metadata } from "next";
+import { directus } from "@/utils/directus";
 import Image from "next/image";
+import DirectusImage from "@/components/common/image";
 
 export const dynamic = "force-dynamic";
 
@@ -17,10 +17,25 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-  const { items } = await api.dpp.search({
-    sort: ["id:asc"],
-    limit: 100,
+  const { items, error } = await directus.organisasi.jabatan.search({
+    filter: {
+      struktur: {
+        sort: 1100,
+      },
+    },
+    fields: [
+      "*",
+      { penjabat: ["gelarDepan", "nama", "gelarBelakang", "foto"] },
+    ],
   });
+
+  if (!items) {
+    return <h1>Data Tidak Ditemukan!</h1>;
+  }
+
+  if (error) {
+    throw new Error("Terjadi kesalahan", { cause: error });
+  }
 
   return (
     <Container>
@@ -44,27 +59,35 @@ export default async function Page() {
               key={index}
               className="flex flex-col justify-center items-center"
             >
-              <Image
-                src={
-                  item.photo?.url
-                    ? addPrefix(item.photo.url)
-                    : "/static/unknown-person.jpg"
-                }
-                alt={`foto dari ${item.name}`}
-                width={item.photo?.width ?? 256}
-                height={item.photo?.height ?? 283}
-                style={{
-                  height: 240,
-                  width: 200,
-                  objectFit: "cover",
-                }}
-                className="rounded-lg w-full overflow-hidden"
-              />
+              {item?.penjabat.foto ? (
+                <DirectusImage
+                  image={item.penjabat.foto}
+                  style={{
+                    height: 240,
+                    width: 200,
+                    objectFit: "cover",
+                  }}
+                  className="rounded-lg w-full overflow-hidden"
+                />
+              ) : (
+                <Image
+                  src="/static/unknown-person.jpg"
+                  width={256}
+                  height={283}
+                  alt={`foto dari ${item.nama}`}
+                  style={{
+                    height: 240,
+                    width: 200,
+                    objectFit: "cover",
+                  }}
+                />
+              )}
+
               <div className="my-2 flex flex-col items-center w-full lg:text-center">
                 <span className="lg:text-2xl font-bold text-primary-600">
-                  {item.name}
+                  {item?.penjabat.nama}
                 </span>
-                <span className="lg:text-1xl font-semibold">{item.title}</span>
+                <span className="lg:text-1xl font-semibold">{item.nama}</span>
               </div>
             </div>
           ))}

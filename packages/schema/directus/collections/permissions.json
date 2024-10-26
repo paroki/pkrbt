@@ -12,6 +12,234 @@
     "_syncId": "a6e41bd3-c8e9-4445-a968-c83f9d007733"
   },
   {
+    "collection": "block_hero",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "39f17e70-820c-4cba-b14e-176c388e7d8b"
+  },
+  {
+    "collection": "block_markdown",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "748252ab-5621-4490-aa5c-cfe9413913b0"
+  },
+  {
+    "collection": "block_richtext",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "e8b86c61-ed06-40f1-9afe-d1f9d8d09510"
+  },
+  {
+    "collection": "category",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "e70547ac-ce52-47a7-9f6b-325dd3c17ba2"
+  },
+  {
+    "collection": "directus_files",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "9357b4a6-9ade-4c57-892f-8a74927fa1ba"
+  },
+  {
+    "collection": "directus_sync_id_map",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "03a8ca86-089d-44e0-9874-a65c1871d326"
+  },
+  {
+    "collection": "globals",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "36d3a4b1-487b-4e06-9313-d2877aeca28a"
+  },
+  {
+    "collection": "hero_images",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "d87caf59-f580-46e2-8eba-9d6c99c107d0"
+  },
+  {
+    "collection": "organisasi_anggota",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "1be3a042-41e9-4b58-8432-c6dd525065ea"
+  },
+  {
+    "collection": "organisasi_jabatan_periode",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "14752352-ccd7-4380-b3fa-9fc67ee909df"
+  },
+  {
+    "collection": "organisasi_jabatan",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "a2e40de8-b162-46e1-bb3f-734bde09c445"
+  },
+  {
+    "collection": "organisasi_struktur",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "5ac9cf5a-0cbf-4b35-8d1a-2f2ff43bea89"
+  },
+  {
+    "collection": "organisasi",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "ccab6a44-a127-4fe7-8bae-13e62681f026"
+  },
+  {
+    "collection": "page_blocks",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "3a330917-83c4-4abe-ab61-00833cfe35d9"
+  },
+  {
+    "collection": "page",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "5a53faba-f7f5-4cd3-b754-c348205705c3"
+  },
+  {
+    "collection": "post_blocks",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "c2713b12-0356-4d5d-a748-953b845b8ff1"
+  },
+  {
+    "collection": "post_images",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "9bcad781-5143-425d-84a9-a3ba9391434a"
+  },
+  {
+    "collection": "post",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "71d63c05-9aa7-483c-bcb0-372eb0d5a0ab"
+  },
+  {
+    "collection": "seo",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "dbdb2cfd-120a-4dd8-a5c7-8b84757c2b64"
+  },
+  {
     "collection": "post",
     "action": "read",
     "permissions": null,

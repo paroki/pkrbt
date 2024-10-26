@@ -32,6 +32,26 @@
     "_syncId": "_sync_default_public_policy"
   },
   {
+    "name": "Guest",
+    "icon": "badge",
+    "description": "Guest Users Policy",
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false,
+    "roles": [
+      {
+        "role": "e689734c-f563-49ce-8e38-c79a993fa5a7",
+        "sort": 1
+      },
+      {
+        "role": "fe856227-d8ae-46f4-9cf9-b540fa85297b",
+        "sort": 2
+      }
+    ],
+    "_syncId": "177a76e2-95c3-45b1-9299-f6a34fa9eb73"
+  },
+  {
     "name": "Registered",
     "icon": "badge",
     "description": "Registered Users Policy",

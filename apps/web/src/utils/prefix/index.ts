@@ -1,5 +1,5 @@
 export function addPrefix(path?: string): string {
-  const url = process.env.NEXT_PUBLIC_CMS_URL;
+  const url = process.env.DIRECTUS_URL;
 
   if (!path) {
     return "";

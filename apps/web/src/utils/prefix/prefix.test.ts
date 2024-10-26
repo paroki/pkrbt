@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { addPrefix } from ".";
 
-const CMS_URL = process.env.NEXT_PUBLIC_CMS_URL;
+const CMS_URL = process.env.DIRECTUS_URL;
 
 describe("Add prefix", () => {
   it("should adding http prefix for unprefixed path", () => {

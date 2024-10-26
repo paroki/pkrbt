@@ -1,8 +1,8 @@
-'use client';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useDebouncedCallback } from 'use-debounce';
-import { Input } from '@/components/ui/input';
-import { SearchIcon } from 'lucide-react';
+"use client";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useDebouncedCallback } from "use-debounce";
+import { Input } from "@/components/ui/input";
+import { SearchIcon } from "lucide-react";
 
 export function Search() {
   const searchParams = useSearchParams();
@@ -11,12 +11,12 @@ export function Search() {
 
   const handleSearch = useDebouncedCallback((term: string) => {
     const params = new URLSearchParams(searchParams);
-    params.set('page', '1');
+    params.set("page", "1");
 
     if (term) {
-      params.set('search', term);
+      params.set("keyword", term);
     } else {
-      params.delete('search');
+      params.delete("keyword");
     }
 
     replace(`${pathname}?${params.toString()}`);
@@ -28,7 +28,7 @@ export function Search() {
         type="text"
         placeholder="Cari artikel atau kategori..."
         onChange={(e) => handleSearch(e.target.value)}
-        defaultValue={searchParams.get('search')?.toString()}
+        defaultValue={searchParams.get("keyword")?.toString()}
         className="my-0 pl-12 group"
       />
       <div className="absolute left-3 top-1/4 ">

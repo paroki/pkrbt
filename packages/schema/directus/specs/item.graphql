@@ -49,14 +49,14 @@ type Query {
   post_images_by_id(id: ID!, version: String): post_images
   post_images_aggregated(groupBy: [String], filter: post_images_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [post_images_aggregated!]!
   post_images_by_version(version: String!, id: ID!): version_post_images
-  organisasi_anggota(filter: organisasi_anggota_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_anggota!]!
-  organisasi_anggota_by_id(id: ID!, version: String): organisasi_anggota
-  organisasi_anggota_aggregated(groupBy: [String], filter: organisasi_anggota_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_anggota_aggregated!]!
-  organisasi_anggota_by_version(version: String!, id: ID!): version_organisasi_anggota
   organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi!]!
   organisasi_by_id(id: ID!, version: String): organisasi
   organisasi_aggregated(groupBy: [String], filter: organisasi_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_aggregated!]!
   organisasi_by_version(version: String!, id: ID!): version_organisasi
+  organisasi_anggota(filter: organisasi_anggota_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_anggota!]!
+  organisasi_anggota_by_id(id: ID!, version: String): organisasi_anggota
+  organisasi_anggota_aggregated(groupBy: [String], filter: organisasi_anggota_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_anggota_aggregated!]!
+  organisasi_anggota_by_version(version: String!, id: ID!): version_organisasi_anggota
   organisasi_struktur(filter: organisasi_struktur_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_struktur!]!
   organisasi_struktur_by_id(id: ID!, version: String): organisasi_struktur
   organisasi_struktur_aggregated(groupBy: [String], filter: organisasi_struktur_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_struktur_aggregated!]!
@@ -96,10 +96,10 @@ type Mutation {
   create_post_blocks_item(data: create_post_blocks_input!): post_blocks
   create_post_images_items(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_post_images_input!]): [post_images!]!
   create_post_images_item(data: create_post_images_input!): post_images
-  create_organisasi_anggota_items(filter: organisasi_anggota_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_anggota_input!]): [organisasi_anggota!]!
-  create_organisasi_anggota_item(data: create_organisasi_anggota_input!): organisasi_anggota
   create_organisasi_items(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_input!]): [organisasi!]!
   create_organisasi_item(data: create_organisasi_input!): organisasi
+  create_organisasi_anggota_items(filter: organisasi_anggota_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_anggota_input!]): [organisasi_anggota!]!
+  create_organisasi_anggota_item(data: create_organisasi_anggota_input!): organisasi_anggota
   create_organisasi_struktur_items(filter: organisasi_struktur_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_struktur_input!]): [organisasi_struktur!]!
   create_organisasi_struktur_item(data: create_organisasi_struktur_input!): organisasi_struktur
   create_organisasi_jabatan_periode_items(filter: organisasi_jabatan_periode_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_jabatan_periode_input!]): [organisasi_jabatan_periode!]!
@@ -143,12 +143,12 @@ type Mutation {
   update_post_images_items(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_post_images_input!): [post_images!]!
   update_post_images_batch(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_post_images_input!]): [post_images!]!
   update_post_images_item(id: ID!, data: update_post_images_input!): post_images
-  update_organisasi_anggota_items(filter: organisasi_anggota_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_anggota_input!): [organisasi_anggota!]!
-  update_organisasi_anggota_batch(filter: organisasi_anggota_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_anggota_input!]): [organisasi_anggota!]!
-  update_organisasi_anggota_item(id: ID!, data: update_organisasi_anggota_input!): organisasi_anggota
   update_organisasi_items(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_input!): [organisasi!]!
   update_organisasi_batch(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_input!]): [organisasi!]!
   update_organisasi_item(id: ID!, data: update_organisasi_input!): organisasi
+  update_organisasi_anggota_items(filter: organisasi_anggota_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_anggota_input!): [organisasi_anggota!]!
+  update_organisasi_anggota_batch(filter: organisasi_anggota_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_anggota_input!]): [organisasi_anggota!]!
+  update_organisasi_anggota_item(id: ID!, data: update_organisasi_anggota_input!): organisasi_anggota
   update_organisasi_struktur_items(filter: organisasi_struktur_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_struktur_input!): [organisasi_struktur!]!
   update_organisasi_struktur_batch(filter: organisasi_struktur_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_struktur_input!]): [organisasi_struktur!]!
   update_organisasi_struktur_item(id: ID!, data: update_organisasi_struktur_input!): organisasi_struktur
@@ -182,10 +182,10 @@ type Mutation {
   delete_post_blocks_item(id: ID!): delete_one
   delete_post_images_items(ids: [ID]!): delete_many
   delete_post_images_item(id: ID!): delete_one
-  delete_organisasi_anggota_items(ids: [ID]!): delete_many
-  delete_organisasi_anggota_item(id: ID!): delete_one
   delete_organisasi_items(ids: [ID]!): delete_many
   delete_organisasi_item(id: ID!): delete_one
+  delete_organisasi_anggota_items(ids: [ID]!): delete_many
+  delete_organisasi_anggota_item(id: ID!): delete_one
   delete_organisasi_struktur_items(ids: [ID]!): delete_many
   delete_organisasi_struktur_item(id: ID!): delete_one
   delete_organisasi_jabatan_periode_items(ids: [ID]!): delete_many
@@ -228,8 +228,8 @@ type Subscription {
   post_mutated(event: EventEnum): post_mutated
   post_blocks_mutated(event: EventEnum): post_blocks_mutated
   post_images_mutated(event: EventEnum): post_images_mutated
-  organisasi_anggota_mutated(event: EventEnum): organisasi_anggota_mutated
   organisasi_mutated(event: EventEnum): organisasi_mutated
+  organisasi_anggota_mutated(event: EventEnum): organisasi_anggota_mutated
   organisasi_struktur_mutated(event: EventEnum): organisasi_struktur_mutated
   organisasi_jabatan_periode_mutated(event: EventEnum): organisasi_jabatan_periode_mutated
   organisasi_jabatan_mutated(event: EventEnum): organisasi_jabatan_mutated
@@ -1155,6 +1155,7 @@ type organisasi_anggota {
   gelarBelakang: String
   aktif: Boolean
   user(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  foto(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
 }
 
 type organisasi_anggota_aggregated {
@@ -1175,6 +1176,7 @@ type organisasi_anggota_aggregated_count {
   gelarBelakang: Int
   aktif: Int
   user: Int
+  foto: Int
 }
 
 type organisasi_anggota_mutated {
@@ -1714,6 +1716,7 @@ type version_organisasi_anggota {
   gelarBelakang: String
   aktif: Boolean
   user: JSON
+  foto: JSON
 }
 
 """"""
@@ -2102,6 +2105,7 @@ input create_organisasi_anggota_input {
   gelarBelakang: String
   aktif: Boolean
   user: create_directus_users_input
+  foto: create_directus_files_input
 }
 
 input create_organisasi_input {
@@ -2578,6 +2582,7 @@ input organisasi_anggota_filter {
   gelarBelakang: string_filter_operators
   aktif: boolean_filter_operators
   user: directus_users_filter
+  foto: directus_files_filter
   _and: [organisasi_anggota_filter]
   _or: [organisasi_anggota_filter]
 }
@@ -2956,6 +2961,7 @@ input update_organisasi_anggota_input {
   gelarBelakang: String
   aktif: Boolean
   user: update_directus_users_input
+  foto: update_directus_files_input
 }
 
 input update_organisasi_input {
