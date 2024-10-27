@@ -6,14 +6,14 @@ import PaginationCustom from "@/components/common/pagination";
 import { PostItem } from "@/components/posts/post-item";
 import { Post } from "@pkrbt/directus";
 
-interface PostProps {
+type PostProps = {
   posts: Post[];
   pageMeta: {
     size: number;
     page?: number;
     keyword?: string;
   };
-}
+};
 
 export default function PostList({ posts, pageMeta }: PostProps) {
   return (

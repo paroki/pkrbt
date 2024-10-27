@@ -2,12 +2,13 @@ import Link from "next/link";
 import { Text } from "@radix-ui/themes";
 import LinkBtn from "./common/link";
 
+type Announce = {
+  title: string;
+  path: string;
+  date: string;
+};
+
 export default function Announcement() {
-  interface Announce {
-    title: string;
-    path: string;
-    date: string;
-  }
   const announces: Announce[] = [
     {
       title: "Pemberkasan utama sedikit lebih panjang",

@@ -7,9 +7,9 @@ const Day = ({ day, time }: { day: string; time: string }) => {
   );
 };
 
-interface ContainerHeaderType {
+export type ContainerHeaderType = {
   children: React.ReactNode; // Deklarasikan tipe children
-}
+};
 
 const Header = ({ children }: ContainerHeaderType) => {
   return (

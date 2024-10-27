@@ -9,11 +9,11 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-interface PaginationProps {
+type PaginationProps = {
   size: number;
   page: number;
   search?: string;
-}
+};
 
 function getPaginationRange(currentPage: number, totalPages: number): number[] {
   const start = Math.max(currentPage - 1, 1);

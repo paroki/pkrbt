@@ -5,9 +5,9 @@ import * as React from "react";
 import { mockDeep, mockReset } from "vitest-mock-extended";
 import { directus } from "@/utils/directus";
 
-interface Carousel {
+type Carousel = {
   children: React.ReactNode;
-}
+};
 
 vi.mock("@/utils/directus");
 const mock = mockDeep<typeof directus>();

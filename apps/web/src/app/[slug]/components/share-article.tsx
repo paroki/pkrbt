@@ -16,6 +16,13 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+type SocialsProps = {
+  name: string;
+  path: string;
+  element: React.JSX.Element;
+};
+
 export default function ShareArticle() {
   const [currentUrl, setCurrentUrl] = useState("");
 
@@ -25,12 +32,6 @@ export default function ShareArticle() {
   }, []);
 
   const { toast } = useToast();
-
-  interface SocialsProps {
-    name: string;
-    path: string;
-    element: React.JSX.Element;
-  }
 
   const links: SocialsProps[] = [
     {

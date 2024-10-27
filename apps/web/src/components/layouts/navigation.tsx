@@ -7,13 +7,13 @@ import { LucideChevronDown, Menu, X } from "lucide-react";
 import Image from "next/image";
 import logo from "../../assets/img/logo.png";
 
-export function Navigation() {
-  interface MenuItems {
-    name: string;
-    path: string;
-    children?: MenuItems[];
-  }
+type MenuItems = {
+  name: string;
+  path: string;
+  children?: MenuItems[];
+};
 
+export function Navigation() {
   const menus: MenuItems[] = [
     {
       name: "Beranda",

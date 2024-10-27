@@ -1,0 +1,16 @@
+{
+  "folders": [
+    {
+      "path": "apps/pwa",
+    },
+    {
+      "path": "packages/directus",
+    },
+    {
+      "path": "packages/directus-core",
+    },
+    {
+      "path": ".github",
+    },
+  ],
+}

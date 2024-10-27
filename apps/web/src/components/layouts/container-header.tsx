@@ -2,11 +2,11 @@
 
 import React from "react";
 
-interface ContainerHeaderType {
+type ContainerHeaderType = {
   children: React.ReactNode;
   size?: string;
   className?: string;
-}
+};
 
 export default function ContainerHeader({
   children,
