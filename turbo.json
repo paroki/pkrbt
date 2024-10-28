@@ -38,6 +38,10 @@
       "cache": false,
       "persistent": true
     },
+    "pwa": {
+      "cache": false,
+      "persistent": true
+    },
     "api": {
       "dependsOn": ["^build"],
       "cache": true
