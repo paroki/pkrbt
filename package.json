@@ -6,6 +6,7 @@
     "prepare": "node .husky/install.mjs",
     "build": "turbo build",
     "dev": "turbo dev",
+    "pwa": "turbo pwa",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "test": "turbo run test",
