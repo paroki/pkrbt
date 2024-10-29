@@ -48,6 +48,13 @@ export function post(directus: Directus<Schema>) {
    * Search posts with category or keyword
    */
   async function search(params: Partial<SearchWithCategory>) {
+    const andFilter = [];
+    andFilter.push({
+      status: {
+        _eq: "published",
+      },
+    });
+
     const withDefaults: SearchWithCategory = {
       page: 1,
       limit: 10,
@@ -71,16 +78,19 @@ export function post(directus: Directus<Schema>) {
     }
 
     if (withDefaults.category) {
-      withDefaults.filter = {
+      andFilter.push({
         category: {
           id: {
             _eq: withDefaults.category,
           },
         },
-      };
-
-      gql.addParam({ name: "filter", type: "post_filter" });
+      });
     }
+    gql.addParam({ name: "filter", type: "post_filter" });
+
+    withDefaults.filter = {
+      _and: andFilter,
+    };
 
     return await gql.paginate<PostR>(withDefaults);
   }
