@@ -61,9 +61,9 @@ export default async function Page(props: Props) {
   const { item: post, error } = await directus.post.readBySlug(slug);
 
   const writer = {
-    // @ts-ignore fix later
+    // @ts-expect-error fix later
     firstName: post?.createdBy!.first_name ?? '',
-    // @ts-ignore fix later
+    // @ts-expect-error fix later
     lastName: post?.createdBy!.last_name ?? ''
   };
 
