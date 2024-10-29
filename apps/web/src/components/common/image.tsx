@@ -1,8 +1,8 @@
-import { ImageType } from "@pkrbt/directus";
-import Image, { type ImageProps } from "next/image";
+import { ImageType } from '@pkrbt/directus';
+import Image, { type ImageProps } from 'next/image';
 
-type Props = Omit<ImageProps, "alt" | "src"> &
-  Pick<Partial<ImageProps>, "alt" | "src"> & {
+type Props = Omit<ImageProps, 'alt' | 'src'> &
+  Pick<Partial<ImageProps>, 'alt' | 'src'> & {
     image: ImageType;
   };
 
