@@ -1,15 +1,6 @@
-import { components } from "./openapi";
-import { File } from "./system";
+import { components } from "../schema/openapi";
+import { File, ImageType } from "../schema/system";
 export type SEO = components["schemas"]["ItemsSEO"];
-
-export type ImageType = Omit<
-  File,
-  "id" | "title" | "description" | "height" | "width"
-> &
-  Pick<Required<File>, "id" | "title" | "description"> & {
-    width: number;
-    height: number;
-  };
 
 export type BlockHeroImages = components["schemas"]["ItemsHeroImages"] & {
   image?: ImageType;

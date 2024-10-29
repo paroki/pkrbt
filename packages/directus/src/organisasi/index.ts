@@ -1,3 +1,4 @@
+export * from "./types";
 import { Directus } from "@pkrbt/directus-core";
 import {
   AnggotaOrganisasi,

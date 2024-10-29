@@ -4,44 +4,48 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: 'i.imgur.com'
+        hostname: "i.imgur.com",
       },
       {
-        hostname: 'img.freepik.com'
+        hostname: "img.freepik.com",
       },
       {
-        hostname: 'api-dev.pkrbt.id',
-        protocol: 'https'
+        hostname: "api-dev.pkrbt.id",
+        protocol: "https",
       },
       {
-        hostname: 'api.pkrbt.id',
-        protocol: 'https'
+        hostname: "api.pkrbt.id",
+        protocol: "https",
       },
       {
-        hostname: 'res.cloudinary.com',
-        protocol: 'https'
+        hostname: "api-dev.pkrbt.id",
+        protocol: "https",
       },
       {
-        protocol: 'http',
-        port: '8055',
-        hostname: 'localhost'
-      }
-    ]
+        hostname: "res.cloudinary.com",
+        protocol: "https",
+      },
+      {
+        protocol: "http",
+        port: "8055",
+        hostname: "localhost",
+      },
+    ],
   },
-  pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  productionBrowserSourceMaps: true
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+  productionBrowserSourceMaps: true,
 };
 
 // next.config.mjs
-import { withSentryConfig } from '@sentry/nextjs';
+import { withSentryConfig } from "@sentry/nextjs";
 
 export default withSentryConfig(
   withSentryConfig(nextConfig, {
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
 
-    org: 'pkrbt-developer',
-    project: 'pkrbt',
+    org: "pkrbt-developer",
+    project: "pkrbt",
 
     // Only print logs for uploading source maps in CI
     silent: !process.env.CI,
@@ -54,7 +58,7 @@ export default withSentryConfig(
 
     // Automatically annotate React components to show their full name in breadcrumbs and session replay
     reactComponentAnnotation: {
-      enabled: true
+      enabled: true,
     },
 
     // Uncomment to route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
@@ -73,14 +77,14 @@ export default withSentryConfig(
     // See the following for more information:
     // https://docs.sentry.io/product/crons/
     // https://vercel.com/docs/cron-jobs
-    automaticVercelMonitors: true
+    automaticVercelMonitors: true,
   }),
   {
     // For all available options, see:
     // https://github.com/getsentry/sentry-webpack-plugin#options
 
-    org: 'pkrbt-developer',
-    project: 'pkrbt',
+    org: "pkrbt-developer",
+    project: "pkrbt",
 
     // Only print logs for uploading source maps in CI
     silent: !process.env.CI,
@@ -93,14 +97,14 @@ export default withSentryConfig(
 
     // Automatically annotate React components to show their full name in breadcrumbs and session replay
     reactComponentAnnotation: {
-      enabled: true
+      enabled: true,
     },
 
     // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
     // This can increase your server load as well as your hosting bill.
     // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
     // side errors will fail.
-    tunnelRoute: '/monitoring',
+    tunnelRoute: "/monitoring",
 
     // Hides source maps from generated client bundles
     hideSourceMaps: true,
@@ -112,6 +116,6 @@ export default withSentryConfig(
     // See the following for more information:
     // https://docs.sentry.io/product/crons/
     // https://vercel.com/docs/cron-jobs
-    automaticVercelMonitors: true
-  }
+    automaticVercelMonitors: true,
+  },
 );

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { OpenGraphType } from "next/dist/lib/metadata/types/opengraph-types";
+import { ASSET_URL, PUBLIC_URL } from "./config";
 
 export type MetaImage = {
   id: string;
@@ -25,11 +26,11 @@ export async function generateMeta({
 }: Meta): Promise<Metadata> {
   const images = [];
   const url = "/";
-  const origin = process.env.NEXT_PUBLIC_URL as string;
+  const origin = PUBLIC_URL;
 
   if (image) {
     images.push({
-      url: `${process.env.NEXT_PUBLIC_ASSET_URL}/${image.id}`,
+      url: `${ASSET_URL}/${image.id}`,
       width: image.width,
       height: image.height,
       alt: image.title,
@@ -47,9 +48,7 @@ export async function generateMeta({
   description = description ?? "Website Paroki Kristus Raja Barong Tongkok";
 
   const metadata: Metadata = {
-    metadataBase: new URL(
-      process.env.NEXT_PUBLIC_URL ?? "https://dev.pkrbt.id",
-    ),
+    metadataBase: new URL(PUBLIC_URL),
     title: `${title} | PKRBT`,
     description,
     openGraph: {

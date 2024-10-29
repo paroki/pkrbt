@@ -1,6 +1,6 @@
 import { Directus } from "@pkrbt/directus-core";
 import { createGraphql, restMethods, Schema } from "..";
-import { Page } from "..";
+import { Page } from "./types";
 import { pageReadFields } from "./page.query";
 
 /**
