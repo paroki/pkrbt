@@ -24,7 +24,6 @@ jobs:
     name: Website
     if: inputs.web == 'true' && inputs.node_test == 'true'
     runs-on: ubuntu-latest
-    environment: development
     env:
       DIRECTUS_TOKEN: ${{ secrets.DIRECTUS_TOKEN }}
       NEXT_PUBLIC_DIRECTUS_URL: ${{ secrets.NEXT_PUBLIC_DIRECTUS_URL }}

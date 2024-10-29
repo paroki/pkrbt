@@ -20,7 +20,6 @@ jobs:
     name: Vitest
     if: inputs.node_test == 'true'
     runs-on: ubuntu-latest
-    environment: "development"
     env:
       TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       TURBO_TEAM: ${{ secrets.VERCEL_TEAM }}
@@ -34,11 +33,6 @@ jobs:
 
       - name: Setup node
         uses: ./.github/actions/setup-node
-
-      - name: copy env vars
-        shell: bash
-        run: |
-          cp apps/web/.env.default apps/web/.env.test
 
       - name: test with coverage
         shell: bash
