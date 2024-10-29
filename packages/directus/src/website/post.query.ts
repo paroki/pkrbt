@@ -15,7 +15,10 @@ cover {
   height
 }
 publishedAt
-createdBy
+createdBy {
+  first_name
+  last_name
+}
 `;
 
 export const postSearchFields = `

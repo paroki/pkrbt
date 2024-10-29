@@ -1,5 +1,4 @@
-import { components } from "../schema/openapi";
-import { ImageType } from "../website/types";
+import { ImageType, components } from "..";
 
 type schema = components["schemas"];
 
