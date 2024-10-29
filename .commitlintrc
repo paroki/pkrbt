@@ -14,7 +14,8 @@
         "pwa",
         "test",
         "web",
-        "deps"
+        "deps",
+        "ui"
       ]
     ],
     "scope-empty": [
