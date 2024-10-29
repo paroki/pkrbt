@@ -32,7 +32,7 @@ export function PostItem({ post }: { post: Post }) {
           </Inset>
           <div className="p-2">
             <h3 className="my-1 text-lg group-hover:text-primary-600">{post.title}</h3>
-            <p className="text-base hover:text-inherit">{post.summary?.substring(0, 200)}...</p>
+            <p className="text-base hover:text-inherit">{post.summary?.substring(0, 200)}</p>
             <DateReadable isoDate={post.publishedAt as string} showIcon className="text-sm my-2" />
           </div>
         </Card>
