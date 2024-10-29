@@ -28,19 +28,18 @@ env:
   TURBO_REMOTE_ONLY: true
   VERCEL_ORG_ID: ${{ secrets.VERCEL_USER_ID }}
   SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-  DIRECTUS_URL: ${{ secrets.DIRECTUS_URL }}
-  DIRECTUS_TOKEN: ${{ secrets.DIRECTUS_TOKEN }}
-  NEXT_PUBLIC_URL: https://dev.pkrbt.id
-  NEXT_PUBLIC_ASSET_URL: https://api-dev.pkrbt.id/assets
 
 jobs:
   web:
     name: Website
     runs-on: ubuntu-latest
     if: inputs.web == 'true'
+    environment: ${{ inputs.environment }}
     env:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_WEB_ID }}
-    environment: ${{ inputs.environment }}
+      DIRECTUS_TOKEN: ${{ secrets.DIRECTUS_TOKEN }}
+      NEXT_PUBLIC_DIRECTUS_URL: ${{ secrets.NEXT_PUBLIC_DIRECTUS_URL }}
+      NEXT_PUBLIC_URL: ${{ secrets.NEXT_PUBLIC_URL }}
     steps:
       - name: setup vars
         id: vars

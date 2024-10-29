@@ -8,15 +8,26 @@ on:
         description: Runs node test
         default: "false"
 
+env:
+  TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  TURBO_TEAM: ${{ secrets.VERCEL_TEAM }}
+  TURBO_REMOTE_ONLY: true
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_USER_ID }}
+  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
 jobs:
   vitest:
     name: Vitest
     if: inputs.node_test == 'true'
     runs-on: ubuntu-latest
+    environment: "development"
     env:
       TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
       TURBO_TEAM: ${{ secrets.VERCEL_TEAM }}
       TURBO_REMOTE_ONLY: true
+      DIRECTUS_TOKEN: ${{ secrets.DIRECTUS_TOKEN }}
+      NEXT_PUBLIC_DIRECTUS_URL: ${{ secrets.NEXT_PUBLIC_DIRECTUS_URL }}
+      NEXT_PUBLIC_URL: ${{ secrets.NEXT_PUBLIC_URL }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,10 +35,10 @@ jobs:
       - name: Setup node
         uses: ./.github/actions/setup-node
 
-      - name: Configures default env
+      - name: copy env vars
         shell: bash
         run: |
-          cp apps/web/.env.default apps/web/.env
+          cp apps/web/.env.default apps/web/.env.test
 
       - name: test with coverage
         shell: bash

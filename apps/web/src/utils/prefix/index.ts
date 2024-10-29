@@ -1,10 +1,10 @@
-export function addPrefix(path?: string): string {
-  const url = process.env.DIRECTUS_URL;
+import { DIRECTUS_URL } from "../config";
 
+export function addPrefix(path?: string): string {
   if (!path) {
     return "";
   }
   const isPrefixed = /^(https?:\/\/)/;
 
-  return isPrefixed.test(path) ? path : `${url}${path}`;
+  return isPrefixed.test(path) ? path : `${DIRECTUS_URL}${path}`;
 }

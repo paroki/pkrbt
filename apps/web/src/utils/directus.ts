@@ -1,6 +1,7 @@
 import { Directus } from "@pkrbt/directus";
+import { DIRECTUS_URL } from "./config";
 
 export const directus = new Directus({
-  baseUrl: process.env.DIRECTUS_URL as string,
+  baseUrl: DIRECTUS_URL,
   token: process.env.DIRECTUS_TOKEN,
 });

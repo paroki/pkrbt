@@ -1,7 +1,8 @@
+import { PUBLIC_URL } from "@/utils/config";
 import { MetadataRoute } from "next";
 
 export default async function robots(): Promise<MetadataRoute.Robots> {
-  const prefix = process.env.NEXT_PUBLIC_URL;
+  const prefix = PUBLIC_URL;
   return {
     rules: {
       userAgent: "*",
