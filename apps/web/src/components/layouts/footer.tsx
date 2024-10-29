@@ -4,8 +4,7 @@ import * as React from "react";
 import Container from "@/components/ui/container";
 import Info from "@/components/layouts/info";
 import Link from "next/link";
-
-const VERSION = process.env.NEXT_PUBLIC_VERSION;
+import { VERSION } from "@/utils/config";
 
 export function Footer() {
   return (

@@ -1,3 +1,4 @@
+import { PUBLIC_URL } from "@/utils/config";
 import { directus } from "@/utils/directus";
 import { MetadataRoute } from "next";
 
@@ -13,7 +14,7 @@ async function fetchSitemap(page = 1): Promise<MetadataRoute.Sitemap> {
   });
   items.map((item) => {
     sitemap.push({
-      url: process.env.NEXT_PUBLIC_URL + "/" + item.slug,
+      url: PUBLIC_URL + "/" + item.slug,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,

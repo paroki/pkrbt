@@ -1,7 +1,8 @@
+import { PUBLIC_URL } from "@/utils/config";
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const urlPrefix = process.env.NEXT_PUBLIC_URL;
+  const urlPrefix = PUBLIC_URL;
   return [
     {
       url: `${urlPrefix}/berita`,
