@@ -1,7 +1,8 @@
 import { Directus } from "@pkrbt/directus-core";
-import { Category, createGraphql, Schema } from "..";
+import { createGraphql, Schema } from "..";
 import { restMethods } from "..";
 import { categoryFields, categoryFragment } from "./category.query";
+import { Category } from "./types";
 
 export function category(directus: Directus<Schema>) {
   const methods = restMethods(directus, "category");

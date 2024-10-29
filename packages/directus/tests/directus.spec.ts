@@ -20,4 +20,16 @@ describe("directus", () => {
     expect(directus.organisasi).toHaveProperty("jabatan");
     expect(directus.organisasi).toHaveProperty("anggota");
   });
+
+  it("should load user plugin", () => {
+    expect(directus).toHaveProperty("user");
+
+    const users = directus.user;
+
+    expect(users).toHaveProperty("create");
+    expect(users).toHaveProperty("update");
+    expect(users).toHaveProperty("remove");
+    expect(users).toHaveProperty("search");
+    expect(users).toHaveProperty("read");
+  });
 });
