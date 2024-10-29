@@ -19,7 +19,8 @@
     "schema:push:dev": "turbo run schema:push:dev",
     "schema:push:prod": "turbo run schema:push:prod",
     "generate:types": "turbo run generate:types",
-    "api": "turbo run api"
+    "api": "turbo run api",
+    "ui": "pnpm --filter @pkrbt/ui ui"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.5.0",
