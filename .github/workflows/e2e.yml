@@ -6,11 +6,11 @@ on:
       node_test:
         type: string
         description: Runs node test
-        default: "false"
+        default: 'false'
       web:
         type: string
         description: Runs web test
-        default: "false"
+        default: 'false'
 
 env:
   TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
@@ -20,6 +20,8 @@ env:
   DIRECTUS_URL: ${{ secrets.DIRECTUS_URL }}
   DIRECTUS_TOKEN: ${{ secrets.DIRECTUS_TOKEN }}
   DIRECTUS_ASSET_URL: ${{ secrets.DIRECTUS_ASSET_URL }}
+  NEXT_PUBLIC_ASSET_URL: ${{ secrets.DIRECTUS_ASSET_URL }}
+  NEXT_PUBLIC_URL: http://localhost:3000
 jobs:
   web:
     name: Website
