@@ -187,8 +187,8 @@ importers:
   packages/directus:
     dependencies:
       '@directus/sdk':
-        specifier: ^17.0.2
-        version: 17.0.2
+        specifier: ^18.0.0
+        version: 18.0.0
       '@pkrbt/directus-core':
         specifier: workspace:*
         version: link:../directus-core
@@ -236,8 +236,8 @@ importers:
   packages/directus-core:
     dependencies:
       '@directus/sdk':
-        specifier: ^17.0.2
-        version: 17.0.2
+        specifier: ^18.0.0
+        version: 18.0.0
     devDependencies:
       '@eslint/js':
         specifier: ^9.13.0
@@ -270,8 +270,8 @@ importers:
   packages/schema:
     dependencies:
       '@directus/sdk':
-        specifier: ^17.0.2
-        version: 17.0.2
+        specifier: ^18.0.0
+        version: 18.0.0
       '@pkrbt/typescript-config':
         specifier: workspace:*
         version: link:../typescript-config
@@ -533,8 +533,8 @@ packages:
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
 
-  '@directus/sdk@17.0.2':
-    resolution: {integrity: sha512-gKfWH6oQKnHw6mUl5lM32PTjtWrmSF6f09/zfN/74FKGPD853srCwip6rGif2R0GfdcrPHXwGHc7vTMXNDlniw==}
+  '@directus/sdk@18.0.0':
+    resolution: {integrity: sha512-PREPeIKI1/EpvWxZHqWaRgL0HNccaauQm98sABBPMPwH3gCHfSz+sFJyugyx+MYHBiv2K5M8BCxF3MRCbAzljw==}
     engines: {node: '>=18.0.0'}
 
   '@emnapi/runtime@1.3.1':
@@ -6451,7 +6451,7 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
-  '@directus/sdk@17.0.2': {}
+  '@directus/sdk@18.0.0': {}
 
   '@emnapi/runtime@1.3.1':
     dependencies:
