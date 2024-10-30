@@ -45,7 +45,7 @@ export default async function Page() {
 
   return (
     <Container>
-      <div className="max-w-screen-lg mx-auto">
+      <div className="max-w-screen-md mx-auto">
         <div className="flex flex-col w-full mb-4 text-center">
           <span className="block font-bold text-lg lg:text-xl p-0 m-0 tracking-widest text-primary-600">
             PERIODE 2024-2027
@@ -57,7 +57,7 @@ export default async function Page() {
         <div className="flex flex-col w-full mb-8 text-center">
           <span className="text-2xl md:text-3xl p-0 m-0 ">Pengurus Harian</span>
         </div>
-        <div className="grid gap-12 items-start sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid gap-4 items-start sm:grid-cols-2 md:grid-cols-3">
           {items.map((item, index) => (
             <div key={index} className="flex flex-col justify-center items-center">
               {item?.penjabat.foto ? (
@@ -68,7 +68,7 @@ export default async function Page() {
                     width: 200,
                     objectFit: 'cover'
                   }}
-                  className="rounded-lg !w-full overflow-hidden"
+                  className="rounded-lg overflow-hidden"
                 />
               ) : (
                 <Image
@@ -81,7 +81,7 @@ export default async function Page() {
                     width: 200,
                     objectFit: 'cover'
                   }}
-                  className="rounded-lg !w-full"
+                  className="rounded-lg"
                 />
               )}
 
