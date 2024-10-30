@@ -23,7 +23,7 @@
     "generate:types": "node ./scripts/download.mjs && openapi-typescript ./scripts/downloads/openapi.json -o src/schema/openapi.ts"
   },
   "dependencies": {
-    "@directus/sdk": "^17.0.2",
+    "@directus/sdk": "^18.0.0",
     "@pkrbt/directus-core": "workspace:*",
     "tiny-invariant": "^1.3.3"
   },
