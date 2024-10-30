@@ -1,0 +1,36 @@
+{
+  "collection": "imam",
+  "field": "riwayat",
+  "type": "alias",
+  "meta": {
+    "collection": "imam",
+    "conditions": null,
+    "display": "related-values",
+    "display_options": null,
+    "field": "riwayat",
+    "group": null,
+    "hidden": false,
+    "interface": "list-o2m",
+    "note": null,
+    "options": {
+      "enableSelect": false,
+      "fields": [
+        "bertugasSebagai",
+        "dimulaiPada",
+        "berakhirPada"
+      ],
+      "layout": "table",
+      "sort": "dimulaiPada"
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 11,
+    "special": [
+      "o2m"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

@@ -9,7 +9,7 @@
     "display_options": null,
     "field": "seo",
     "group": null,
-    "hidden": false,
+    "hidden": true,
     "interface": "select-dropdown-m2o",
     "note": null,
     "options": null,

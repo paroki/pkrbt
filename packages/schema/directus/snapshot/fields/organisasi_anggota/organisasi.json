@@ -1,0 +1,32 @@
+{
+  "collection": "organisasi_anggota",
+  "field": "organisasi",
+  "type": "alias",
+  "meta": {
+    "collection": "organisasi_anggota",
+    "conditions": null,
+    "display": "related-values",
+    "display_options": {
+      "template": "{{organisasi.nama}}"
+    },
+    "field": "organisasi",
+    "group": null,
+    "hidden": false,
+    "interface": "list-m2m",
+    "note": null,
+    "options": {
+      "enableLink": true,
+      "template": "{{organisasi.singkatan}}"
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 14,
+    "special": [
+      "m2m"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:8055",
+      "url": "https://api.pkrbt.id",
       "description": "Your current Directus instance."
     }
   ],
@@ -946,6 +946,579 @@
         },
         "tags": [
           "Utilities"
+        ]
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "List Users",
+        "description": "List the users.",
+        "operationId": "getUsers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Users"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      },
+      "post": {
+        "summary": "Create a User",
+        "description": "Create a new user.",
+        "operationId": "createUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Users"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      },
+      "patch": {
+        "summary": "Update Multiple Users",
+        "description": "Update multiple users at the same time.",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "updateUsers",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "data": {
+                    "$ref": "#/components/schemas/Users"
+                  },
+                  "keys": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Users"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Users",
+        "description": "Delete multiple existing users.",
+        "tags": [
+          "Users"
+        ],
+        "operationId": "deleteUsers",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "summary": "Retrieve a User",
+        "description": "Retrieve a single user by unique identifier.",
+        "operationId": "getUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UUId"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      },
+      "patch": {
+        "summary": "Update a User",
+        "description": "Update an existing user",
+        "operationId": "updateUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UUId"
+          },
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Users"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      },
+      "delete": {
+        "summary": "Delete a User",
+        "description": "Delete an existing user",
+        "operationId": "deleteUser",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/UUId"
+          }
+        ]
+      }
+    },
+    "/users/invite": {
+      "post": {
+        "summary": "Invite User(s)",
+        "description": "Invites one or more users to this project. It creates a user with an invited status, and then sends an email to the user with instructions on how to activate their account.",
+        "operationId": "invite",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "description": "Email address or array of email addresses of the to-be-invited user(s).",
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/users/invite/accept": {
+      "post": {
+        "summary": "Accept User Invite",
+        "description": "Accepts and enables an invited user using a JWT invitation token.",
+        "operationId": "acceptInvite",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token": {
+                    "type": "string",
+                    "example": "eyJh...KmUk",
+                    "description": "Accept invite token."
+                  },
+                  "password": {
+                    "type": "string",
+                    "description": "Password of the user.",
+                    "format": "password",
+                    "example": "d1r3ctu5"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/users/me": {
+      "get": {
+        "summary": "Retrieve Current User",
+        "description": "Retrieve the currently authenticated user.",
+        "operationId": "getMe",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      },
+      "patch": {
+        "summary": "Update Current User",
+        "description": "Update the currently authenticated user.",
+        "operationId": "updateMe",
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/Users"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/users/me/track/page": {
+      "patch": {
+        "summary": "Update Last Page",
+        "description": "Updates the last used page field of the currently authenticated user. This is used internally to be able to open the Directus admin app from the last page you used.",
+        "operationId": "updateLastUsedPageMe",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "properties": {
+                  "last_page": {
+                    "description": "Path of the page you used last.",
+                    "type": "string"
+                  }
+                },
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/users/me/tfa/enable": {
+      "post": {
+        "summary": "Enable 2FA",
+        "description": "Enables two-factor authentication for the currently authenticated user.",
+        "operationId": "meTfaEnable",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/users/me/tfa/disable": {
+      "post": {
+        "summary": "Disable 2FA",
+        "description": "Disables two-factor authentication for the currently authenticated user.",
+        "operationId": "meTfaDisable",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "tags": [
+          "Users"
         ]
       }
     },
@@ -3678,6 +4251,393 @@
         ]
       }
     },
+    "/items/organisasi_user": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new organisasi_user item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiUser"
+        ],
+        "operationId": "createItemsOrganisasiUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasiUser"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasiUser"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasiUser"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the organisasi_user items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiUser"
+        ],
+        "operationId": "readItemsOrganisasiUser",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsOrganisasiUser"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple organisasi_user items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiUser"
+        ],
+        "operationId": "updateItemsOrganisasiUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasiUser"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasiUser"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasiUser"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing organisasi_user items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiUser"
+        ],
+        "operationId": "deleteItemsOrganisasiUser",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/organisasi_user/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single organisasi_user item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiUser"
+        ],
+        "operationId": "readSingleItemsOrganisasiUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasiUser"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing organisasi_user item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiUser"
+        ],
+        "operationId": "updateSingleItemsOrganisasiUser",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsOrganisasiUser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasiUser"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing organisasi_user item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiUser"
+        ],
+        "operationId": "deleteSingleItemsOrganisasiUser",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
     "/roles": {
       "get": {
         "summary": "List Roles",
@@ -4593,579 +5553,6 @@
           {
             "$ref": "#/components/parameters/Id"
           }
-        ]
-      }
-    },
-    "/users": {
-      "get": {
-        "summary": "List Users",
-        "description": "List the users.",
-        "operationId": "getUsers",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Users"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      },
-      "post": {
-        "summary": "Create a User",
-        "description": "Create a new user.",
-        "operationId": "createUser",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Users"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Users"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      },
-      "patch": {
-        "summary": "Update Multiple Users",
-        "description": "Update multiple users at the same time.",
-        "tags": [
-          "Users"
-        ],
-        "operationId": "updateUsers",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Limit"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          },
-          {
-            "$ref": "#/components/parameters/Offset"
-          },
-          {
-            "$ref": "#/components/parameters/Sort"
-          },
-          {
-            "$ref": "#/components/parameters/Filter"
-          },
-          {
-            "$ref": "#/components/parameters/Search"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "data": {
-                    "$ref": "#/components/schemas/Users"
-                  },
-                  "keys": {
-                    "type": "array",
-                    "items": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "type": "array",
-                      "items": {
-                        "$ref": "#/components/schemas/Users"
-                      }
-                    },
-                    "meta": {
-                      "$ref": "#/components/schemas/x-metadata"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      },
-      "delete": {
-        "summary": "Delete Multiple Users",
-        "description": "Delete multiple existing users.",
-        "tags": [
-          "Users"
-        ],
-        "operationId": "deleteUsers",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          }
-        }
-      }
-    },
-    "/users/{id}": {
-      "get": {
-        "summary": "Retrieve a User",
-        "description": "Retrieve a single user by unique identifier.",
-        "operationId": "getUser",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/UUId"
-          },
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Users"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      },
-      "patch": {
-        "summary": "Update a User",
-        "description": "Update an existing user",
-        "operationId": "updateUser",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/UUId"
-          },
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Users"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "data": {
-                      "type": "object"
-                    }
-                  },
-                  "type": "object"
-                }
-              }
-            },
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      },
-      "delete": {
-        "summary": "Delete a User",
-        "description": "Delete an existing user",
-        "operationId": "deleteUser",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ],
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/UUId"
-          }
-        ]
-      }
-    },
-    "/users/invite": {
-      "post": {
-        "summary": "Invite User(s)",
-        "description": "Invites one or more users to this project. It creates a user with an invited status, and then sends an email to the user with instructions on how to activate their account.",
-        "operationId": "invite",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "email": {
-                    "description": "Email address or array of email addresses of the to-be-invited user(s).",
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Users"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users/invite/accept": {
-      "post": {
-        "summary": "Accept User Invite",
-        "description": "Accepts and enables an invited user using a JWT invitation token.",
-        "operationId": "acceptInvite",
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "token": {
-                    "type": "string",
-                    "example": "eyJh...KmUk",
-                    "description": "Accept invite token."
-                  },
-                  "password": {
-                    "type": "string",
-                    "description": "Password of the user.",
-                    "format": "password",
-                    "example": "d1r3ctu5"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Users"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users/me": {
-      "get": {
-        "summary": "Retrieve Current User",
-        "description": "Retrieve the currently authenticated user.",
-        "operationId": "getMe",
-        "parameters": [
-          {
-            "$ref": "#/components/parameters/Fields"
-          },
-          {
-            "$ref": "#/components/parameters/Meta"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Users"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      },
-      "patch": {
-        "summary": "Update Current User",
-        "description": "Update the currently authenticated user.",
-        "operationId": "updateMe",
-        "responses": {
-          "200": {
-            "description": "Successful request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "data": {
-                      "$ref": "#/components/schemas/Users"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users/me/track/page": {
-      "patch": {
-        "summary": "Update Last Page",
-        "description": "Updates the last used page field of the currently authenticated user. This is used internally to be able to open the Directus admin app from the last page you used.",
-        "operationId": "updateLastUsedPageMe",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "last_page": {
-                    "description": "Path of the page you used last.",
-                    "type": "string"
-                  }
-                },
-                "type": "object"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users/me/tfa/enable": {
-      "post": {
-        "summary": "Enable 2FA",
-        "description": "Enables two-factor authentication for the currently authenticated user.",
-        "operationId": "meTfaEnable",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
-        ]
-      }
-    },
-    "/users/me/tfa/disable": {
-      "post": {
-        "summary": "Disable 2FA",
-        "description": "Disables two-factor authentication for the currently authenticated user.",
-        "operationId": "meTfaDisable",
-        "responses": {
-          "200": {
-            "description": "Successful request"
-          },
-          "401": {
-            "$ref": "#/components/responses/UnauthorizedError"
-          },
-          "404": {
-            "$ref": "#/components/responses/NotFoundError"
-          }
-        },
-        "tags": [
-          "Users"
         ]
       }
     },
@@ -7636,6 +8023,1941 @@
           "ItemsDirectusSyncIDMap"
         ],
         "operationId": "deleteSingleItemsDirectusSyncIDMap",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/items/organisasi_anggota_organisasi": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new organisasi_anggota_organisasi item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggotaOrganisasi"
+        ],
+        "operationId": "createItemsOrganisasiAnggotaOrganisasi",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasiAnggotaOrganisasi"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasiAnggotaOrganisasi"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasiAnggotaOrganisasi"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the organisasi_anggota_organisasi items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggotaOrganisasi"
+        ],
+        "operationId": "readItemsOrganisasiAnggotaOrganisasi",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsOrganisasiAnggotaOrganisasi"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple organisasi_anggota_organisasi items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggotaOrganisasi"
+        ],
+        "operationId": "updateItemsOrganisasiAnggotaOrganisasi",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasiAnggotaOrganisasi"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasiAnggotaOrganisasi"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasiAnggotaOrganisasi"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing organisasi_anggota_organisasi items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggotaOrganisasi"
+        ],
+        "operationId": "deleteItemsOrganisasiAnggotaOrganisasi",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/organisasi_anggota_organisasi/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single organisasi_anggota_organisasi item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggotaOrganisasi"
+        ],
+        "operationId": "readSingleItemsOrganisasiAnggotaOrganisasi",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasiAnggotaOrganisasi"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing organisasi_anggota_organisasi item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggotaOrganisasi"
+        ],
+        "operationId": "updateSingleItemsOrganisasiAnggotaOrganisasi",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsOrganisasiAnggotaOrganisasi"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasiAnggotaOrganisasi"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing organisasi_anggota_organisasi item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggotaOrganisasi"
+        ],
+        "operationId": "deleteSingleItemsOrganisasiAnggotaOrganisasi",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/items/organisasi_jabatan_periode": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new organisasi_jabatan_periode item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatanPeriode"
+        ],
+        "operationId": "createItemsOrganisasiJabatanPeriode",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the organisasi_jabatan_periode items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatanPeriode"
+        ],
+        "operationId": "readItemsOrganisasiJabatanPeriode",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple organisasi_jabatan_periode items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatanPeriode"
+        ],
+        "operationId": "updateItemsOrganisasiJabatanPeriode",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing organisasi_jabatan_periode items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatanPeriode"
+        ],
+        "operationId": "deleteItemsOrganisasiJabatanPeriode",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/organisasi_jabatan_periode/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single organisasi_jabatan_periode item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatanPeriode"
+        ],
+        "operationId": "readSingleItemsOrganisasiJabatanPeriode",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing organisasi_jabatan_periode item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatanPeriode"
+        ],
+        "operationId": "updateSingleItemsOrganisasiJabatanPeriode",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing organisasi_jabatan_periode item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatanPeriode"
+        ],
+        "operationId": "deleteSingleItemsOrganisasiJabatanPeriode",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/items/organisasi_anggota": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new organisasi_anggota item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggota"
+        ],
+        "operationId": "createItemsOrganisasiAnggota",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the organisasi_anggota items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggota"
+        ],
+        "operationId": "readItemsOrganisasiAnggota",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple organisasi_anggota items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggota"
+        ],
+        "operationId": "updateItemsOrganisasiAnggota",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing organisasi_anggota items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggota"
+        ],
+        "operationId": "deleteItemsOrganisasiAnggota",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/organisasi_anggota/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single organisasi_anggota item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggota"
+        ],
+        "operationId": "readSingleItemsOrganisasiAnggota",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing organisasi_anggota item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggota"
+        ],
+        "operationId": "updateSingleItemsOrganisasiAnggota",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing organisasi_anggota item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiAnggota"
+        ],
+        "operationId": "deleteSingleItemsOrganisasiAnggota",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/items/organisasi_jabatan": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new organisasi_jabatan item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatan"
+        ],
+        "operationId": "createItemsOrganisasiJabatan",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the organisasi_jabatan items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatan"
+        ],
+        "operationId": "readItemsOrganisasiJabatan",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple organisasi_jabatan items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatan"
+        ],
+        "operationId": "updateItemsOrganisasiJabatan",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing organisasi_jabatan items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatan"
+        ],
+        "operationId": "deleteItemsOrganisasiJabatan",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/organisasi_jabatan/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single organisasi_jabatan item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatan"
+        ],
+        "operationId": "readSingleItemsOrganisasiJabatan",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing organisasi_jabatan item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatan"
+        ],
+        "operationId": "updateSingleItemsOrganisasiJabatan",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing organisasi_jabatan item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiJabatan"
+        ],
+        "operationId": "deleteSingleItemsOrganisasiJabatan",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/items/organisasi": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new organisasi item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasi"
+        ],
+        "operationId": "createItemsOrganisasi",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasi"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasi"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasi"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the organisasi items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasi"
+        ],
+        "operationId": "readItemsOrganisasi",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsOrganisasi"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple organisasi items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasi"
+        ],
+        "operationId": "updateItemsOrganisasi",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasi"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasi"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasi"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing organisasi items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasi"
+        ],
+        "operationId": "deleteItemsOrganisasi",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/organisasi/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single organisasi item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasi"
+        ],
+        "operationId": "readSingleItemsOrganisasi",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasi"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing organisasi item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasi"
+        ],
+        "operationId": "updateSingleItemsOrganisasi",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsOrganisasi"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasi"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing organisasi item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasi"
+        ],
+        "operationId": "deleteSingleItemsOrganisasi",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -10380,6 +12702,393 @@
         ]
       }
     },
+    "/items/organisasi_struktur": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new organisasi_struktur item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiStruktur"
+        ],
+        "operationId": "createItemsOrganisasiStruktur",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the organisasi_struktur items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiStruktur"
+        ],
+        "operationId": "readItemsOrganisasiStruktur",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple organisasi_struktur items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiStruktur"
+        ],
+        "operationId": "updateItemsOrganisasiStruktur",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing organisasi_struktur items.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiStruktur"
+        ],
+        "operationId": "deleteItemsOrganisasiStruktur",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/organisasi_struktur/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single organisasi_struktur item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiStruktur"
+        ],
+        "operationId": "readSingleItemsOrganisasiStruktur",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing organisasi_struktur item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiStruktur"
+        ],
+        "operationId": "updateSingleItemsOrganisasiStruktur",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing organisasi_struktur item.",
+        "tags": [
+          "Items",
+          "ItemsOrganisasiStruktur"
+        ],
+        "operationId": "deleteSingleItemsOrganisasiStruktur",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
     "/items/page": {
       "post": {
         "summary": "Create an Item",
@@ -12315,15 +15024,15 @@
         ]
       }
     },
-    "/items/organisasi": {
+    "/items/sumber_pendapatan": {
       "post": {
         "summary": "Create an Item",
-        "description": "Create a new organisasi item.",
+        "description": "Create a new sumber_pendapatan item.",
         "tags": [
           "Items",
-          "ItemsOrganisasi"
+          "ItemsSumberPendapatan"
         ],
-        "operationId": "createItemsOrganisasi",
+        "operationId": "createItemsSumberPendapatan",
         "parameters": [
           {
             "$ref": "#/components/parameters/Meta"
@@ -12337,11 +15046,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsOrganisasi"
+                      "$ref": "#/components/schemas/ItemsSumberPendapatan"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsOrganisasi"
+                    "$ref": "#/components/schemas/ItemsSumberPendapatan"
                   }
                 ]
               }
@@ -12358,7 +15067,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsOrganisasi"
+                        "$ref": "#/components/schemas/ItemsSumberPendapatan"
                       }
                     }
                   }
@@ -12373,12 +15082,12 @@
       },
       "get": {
         "summary": "List Items",
-        "description": "List the organisasi items.",
+        "description": "List the sumber_pendapatan items.",
         "tags": [
           "Items",
-          "ItemsOrganisasi"
+          "ItemsSumberPendapatan"
         ],
-        "operationId": "readItemsOrganisasi",
+        "operationId": "readItemsSumberPendapatan",
         "security": [
           {
             "Auth": []
@@ -12419,7 +15128,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "$ref": "#/components/schemas/ItemsOrganisasi"
+                        "$ref": "#/components/schemas/ItemsSumberPendapatan"
                       }
                     },
                     "meta": {
@@ -12437,12 +15146,12 @@
       },
       "patch": {
         "summary": "Update Multiple Items",
-        "description": "Update multiple organisasi items at the same time.",
+        "description": "Update multiple sumber_pendapatan items at the same time.",
         "tags": [
           "Items",
-          "ItemsOrganisasi"
+          "ItemsSumberPendapatan"
         ],
-        "operationId": "updateItemsOrganisasi",
+        "operationId": "updateItemsSumberPendapatan",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -12474,11 +15183,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsOrganisasi"
+                      "$ref": "#/components/schemas/ItemsSumberPendapatan"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsOrganisasi"
+                    "$ref": "#/components/schemas/ItemsSumberPendapatan"
                   }
                 ]
               }
@@ -12494,7 +15203,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsOrganisasi"
+                        "$ref": "#/components/schemas/ItemsSumberPendapatan"
                       }
                     }
                   }
@@ -12506,12 +15215,12 @@
       },
       "delete": {
         "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing organisasi items.",
+        "description": "Delete multiple existing sumber_pendapatan items.",
         "tags": [
           "Items",
-          "ItemsOrganisasi"
+          "ItemsSumberPendapatan"
         ],
-        "operationId": "deleteItemsOrganisasi",
+        "operationId": "deleteItemsSumberPendapatan",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -12523,15 +15232,15 @@
         "parameters": []
       }
     },
-    "/items/organisasi/{id}": {
+    "/items/sumber_pendapatan/{id}": {
       "get": {
         "summary": "Retrieve an Item",
-        "description": "Retrieve a single organisasi item by unique identifier.",
+        "description": "Retrieve a single sumber_pendapatan item by unique identifier.",
         "tags": [
           "Items",
-          "ItemsOrganisasi"
+          "ItemsSumberPendapatan"
         ],
-        "operationId": "readSingleItemsOrganisasi",
+        "operationId": "readSingleItemsSumberPendapatan",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -12573,7 +15282,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsOrganisasi"
+                      "$ref": "#/components/schemas/ItemsSumberPendapatan"
                     }
                   }
                 }
@@ -12590,12 +15299,12 @@
       },
       "patch": {
         "summary": "Update an Item",
-        "description": "Update an existing organisasi item.",
+        "description": "Update an existing sumber_pendapatan item.",
         "tags": [
           "Items",
-          "ItemsOrganisasi"
+          "ItemsSumberPendapatan"
         ],
-        "operationId": "updateSingleItemsOrganisasi",
+        "operationId": "updateSingleItemsSumberPendapatan",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -12629,7 +15338,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "$ref": "#/components/schemas/ItemsOrganisasi"
+                "$ref": "#/components/schemas/ItemsSumberPendapatan"
               }
             }
           }
@@ -12644,7 +15353,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsOrganisasi"
+                      "$ref": "#/components/schemas/ItemsSumberPendapatan"
                     }
                   }
                 }
@@ -12661,12 +15370,12 @@
       },
       "delete": {
         "summary": "Delete an Item",
-        "description": "Delete an existing organisasi item.",
+        "description": "Delete an existing sumber_pendapatan item.",
         "tags": [
           "Items",
-          "ItemsOrganisasi"
+          "ItemsSumberPendapatan"
         ],
-        "operationId": "deleteSingleItemsOrganisasi",
+        "operationId": "deleteSingleItemsSumberPendapatan",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -12702,15 +15411,15 @@
         ]
       }
     },
-    "/items/organisasi_anggota": {
+    "/items/misa_dokumentasi": {
       "post": {
         "summary": "Create an Item",
-        "description": "Create a new organisasi_anggota item.",
+        "description": "Create a new misa_dokumentasi item.",
         "tags": [
           "Items",
-          "ItemsOrganisasiAnggota"
+          "ItemsMisaDokumentasi"
         ],
-        "operationId": "createItemsOrganisasiAnggota",
+        "operationId": "createItemsMisaDokumentasi",
         "parameters": [
           {
             "$ref": "#/components/parameters/Meta"
@@ -12724,11 +15433,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                      "$ref": "#/components/schemas/ItemsMisaDokumentasi"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                    "$ref": "#/components/schemas/ItemsMisaDokumentasi"
                   }
                 ]
               }
@@ -12745,7 +15454,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                        "$ref": "#/components/schemas/ItemsMisaDokumentasi"
                       }
                     }
                   }
@@ -12760,12 +15469,12 @@
       },
       "get": {
         "summary": "List Items",
-        "description": "List the organisasi_anggota items.",
+        "description": "List the misa_dokumentasi items.",
         "tags": [
           "Items",
-          "ItemsOrganisasiAnggota"
+          "ItemsMisaDokumentasi"
         ],
-        "operationId": "readItemsOrganisasiAnggota",
+        "operationId": "readItemsMisaDokumentasi",
         "security": [
           {
             "Auth": []
@@ -12806,7 +15515,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                        "$ref": "#/components/schemas/ItemsMisaDokumentasi"
                       }
                     },
                     "meta": {
@@ -12824,12 +15533,12 @@
       },
       "patch": {
         "summary": "Update Multiple Items",
-        "description": "Update multiple organisasi_anggota items at the same time.",
+        "description": "Update multiple misa_dokumentasi items at the same time.",
         "tags": [
           "Items",
-          "ItemsOrganisasiAnggota"
+          "ItemsMisaDokumentasi"
         ],
-        "operationId": "updateItemsOrganisasiAnggota",
+        "operationId": "updateItemsMisaDokumentasi",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -12861,11 +15570,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                      "$ref": "#/components/schemas/ItemsMisaDokumentasi"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                    "$ref": "#/components/schemas/ItemsMisaDokumentasi"
                   }
                 ]
               }
@@ -12881,7 +15590,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                        "$ref": "#/components/schemas/ItemsMisaDokumentasi"
                       }
                     }
                   }
@@ -12893,12 +15602,12 @@
       },
       "delete": {
         "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing organisasi_anggota items.",
+        "description": "Delete multiple existing misa_dokumentasi items.",
         "tags": [
           "Items",
-          "ItemsOrganisasiAnggota"
+          "ItemsMisaDokumentasi"
         ],
-        "operationId": "deleteItemsOrganisasiAnggota",
+        "operationId": "deleteItemsMisaDokumentasi",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -12910,15 +15619,15 @@
         "parameters": []
       }
     },
-    "/items/organisasi_anggota/{id}": {
+    "/items/misa_dokumentasi/{id}": {
       "get": {
         "summary": "Retrieve an Item",
-        "description": "Retrieve a single organisasi_anggota item by unique identifier.",
+        "description": "Retrieve a single misa_dokumentasi item by unique identifier.",
         "tags": [
           "Items",
-          "ItemsOrganisasiAnggota"
+          "ItemsMisaDokumentasi"
         ],
-        "operationId": "readSingleItemsOrganisasiAnggota",
+        "operationId": "readSingleItemsMisaDokumentasi",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -12960,7 +15669,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                      "$ref": "#/components/schemas/ItemsMisaDokumentasi"
                     }
                   }
                 }
@@ -12977,12 +15686,12 @@
       },
       "patch": {
         "summary": "Update an Item",
-        "description": "Update an existing organisasi_anggota item.",
+        "description": "Update an existing misa_dokumentasi item.",
         "tags": [
           "Items",
-          "ItemsOrganisasiAnggota"
+          "ItemsMisaDokumentasi"
         ],
-        "operationId": "updateSingleItemsOrganisasiAnggota",
+        "operationId": "updateSingleItemsMisaDokumentasi",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -13016,7 +15725,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                "$ref": "#/components/schemas/ItemsMisaDokumentasi"
               }
             }
           }
@@ -13031,7 +15740,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+                      "$ref": "#/components/schemas/ItemsMisaDokumentasi"
                     }
                   }
                 }
@@ -13048,12 +15757,12 @@
       },
       "delete": {
         "summary": "Delete an Item",
-        "description": "Delete an existing organisasi_anggota item.",
+        "description": "Delete an existing misa_dokumentasi item.",
         "tags": [
           "Items",
-          "ItemsOrganisasiAnggota"
+          "ItemsMisaDokumentasi"
         ],
-        "operationId": "deleteSingleItemsOrganisasiAnggota",
+        "operationId": "deleteSingleItemsMisaDokumentasi",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -13089,15 +15798,15 @@
         ]
       }
     },
-    "/items/organisasi_struktur": {
+    "/items/pendapatan": {
       "post": {
         "summary": "Create an Item",
-        "description": "Create a new organisasi_struktur item.",
+        "description": "Create a new pendapatan item.",
         "tags": [
           "Items",
-          "ItemsOrganisasiStruktur"
+          "ItemsPendapatan"
         ],
-        "operationId": "createItemsOrganisasiStruktur",
+        "operationId": "createItemsPendapatan",
         "parameters": [
           {
             "$ref": "#/components/parameters/Meta"
@@ -13111,11 +15820,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                      "$ref": "#/components/schemas/ItemsPendapatan"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                    "$ref": "#/components/schemas/ItemsPendapatan"
                   }
                 ]
               }
@@ -13132,7 +15841,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                        "$ref": "#/components/schemas/ItemsPendapatan"
                       }
                     }
                   }
@@ -13147,12 +15856,12 @@
       },
       "get": {
         "summary": "List Items",
-        "description": "List the organisasi_struktur items.",
+        "description": "List the pendapatan items.",
         "tags": [
           "Items",
-          "ItemsOrganisasiStruktur"
+          "ItemsPendapatan"
         ],
-        "operationId": "readItemsOrganisasiStruktur",
+        "operationId": "readItemsPendapatan",
         "security": [
           {
             "Auth": []
@@ -13193,7 +15902,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                        "$ref": "#/components/schemas/ItemsPendapatan"
                       }
                     },
                     "meta": {
@@ -13211,12 +15920,12 @@
       },
       "patch": {
         "summary": "Update Multiple Items",
-        "description": "Update multiple organisasi_struktur items at the same time.",
+        "description": "Update multiple pendapatan items at the same time.",
         "tags": [
           "Items",
-          "ItemsOrganisasiStruktur"
+          "ItemsPendapatan"
         ],
-        "operationId": "updateItemsOrganisasiStruktur",
+        "operationId": "updateItemsPendapatan",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -13248,11 +15957,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                      "$ref": "#/components/schemas/ItemsPendapatan"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                    "$ref": "#/components/schemas/ItemsPendapatan"
                   }
                 ]
               }
@@ -13268,7 +15977,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                        "$ref": "#/components/schemas/ItemsPendapatan"
                       }
                     }
                   }
@@ -13280,12 +15989,12 @@
       },
       "delete": {
         "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing organisasi_struktur items.",
+        "description": "Delete multiple existing pendapatan items.",
         "tags": [
           "Items",
-          "ItemsOrganisasiStruktur"
+          "ItemsPendapatan"
         ],
-        "operationId": "deleteItemsOrganisasiStruktur",
+        "operationId": "deleteItemsPendapatan",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -13297,15 +16006,15 @@
         "parameters": []
       }
     },
-    "/items/organisasi_struktur/{id}": {
+    "/items/pendapatan/{id}": {
       "get": {
         "summary": "Retrieve an Item",
-        "description": "Retrieve a single organisasi_struktur item by unique identifier.",
+        "description": "Retrieve a single pendapatan item by unique identifier.",
         "tags": [
           "Items",
-          "ItemsOrganisasiStruktur"
+          "ItemsPendapatan"
         ],
-        "operationId": "readSingleItemsOrganisasiStruktur",
+        "operationId": "readSingleItemsPendapatan",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -13347,7 +16056,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                      "$ref": "#/components/schemas/ItemsPendapatan"
                     }
                   }
                 }
@@ -13364,12 +16073,12 @@
       },
       "patch": {
         "summary": "Update an Item",
-        "description": "Update an existing organisasi_struktur item.",
+        "description": "Update an existing pendapatan item.",
         "tags": [
           "Items",
-          "ItemsOrganisasiStruktur"
+          "ItemsPendapatan"
         ],
-        "operationId": "updateSingleItemsOrganisasiStruktur",
+        "operationId": "updateSingleItemsPendapatan",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -13403,7 +16112,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                "$ref": "#/components/schemas/ItemsPendapatan"
               }
             }
           }
@@ -13418,7 +16127,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                      "$ref": "#/components/schemas/ItemsPendapatan"
                     }
                   }
                 }
@@ -13435,12 +16144,12 @@
       },
       "delete": {
         "summary": "Delete an Item",
-        "description": "Delete an existing organisasi_struktur item.",
+        "description": "Delete an existing pendapatan item.",
         "tags": [
           "Items",
-          "ItemsOrganisasiStruktur"
+          "ItemsPendapatan"
         ],
-        "operationId": "deleteSingleItemsOrganisasiStruktur",
+        "operationId": "deleteSingleItemsPendapatan",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -13476,15 +16185,15 @@
         ]
       }
     },
-    "/items/organisasi_jabatan_periode": {
+    "/items/misa": {
       "post": {
         "summary": "Create an Item",
-        "description": "Create a new organisasi_jabatan_periode item.",
+        "description": "Create a new misa item.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatanPeriode"
+          "ItemsMisa"
         ],
-        "operationId": "createItemsOrganisasiJabatanPeriode",
+        "operationId": "createItemsMisa",
         "parameters": [
           {
             "$ref": "#/components/parameters/Meta"
@@ -13498,11 +16207,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                      "$ref": "#/components/schemas/ItemsMisa"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                    "$ref": "#/components/schemas/ItemsMisa"
                   }
                 ]
               }
@@ -13519,7 +16228,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                        "$ref": "#/components/schemas/ItemsMisa"
                       }
                     }
                   }
@@ -13534,12 +16243,12 @@
       },
       "get": {
         "summary": "List Items",
-        "description": "List the organisasi_jabatan_periode items.",
+        "description": "List the misa items.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatanPeriode"
+          "ItemsMisa"
         ],
-        "operationId": "readItemsOrganisasiJabatanPeriode",
+        "operationId": "readItemsMisa",
         "security": [
           {
             "Auth": []
@@ -13580,7 +16289,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                        "$ref": "#/components/schemas/ItemsMisa"
                       }
                     },
                     "meta": {
@@ -13598,12 +16307,12 @@
       },
       "patch": {
         "summary": "Update Multiple Items",
-        "description": "Update multiple organisasi_jabatan_periode items at the same time.",
+        "description": "Update multiple misa items at the same time.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatanPeriode"
+          "ItemsMisa"
         ],
-        "operationId": "updateItemsOrganisasiJabatanPeriode",
+        "operationId": "updateItemsMisa",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -13635,11 +16344,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                      "$ref": "#/components/schemas/ItemsMisa"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                    "$ref": "#/components/schemas/ItemsMisa"
                   }
                 ]
               }
@@ -13655,7 +16364,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                        "$ref": "#/components/schemas/ItemsMisa"
                       }
                     }
                   }
@@ -13667,12 +16376,12 @@
       },
       "delete": {
         "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing organisasi_jabatan_periode items.",
+        "description": "Delete multiple existing misa items.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatanPeriode"
+          "ItemsMisa"
         ],
-        "operationId": "deleteItemsOrganisasiJabatanPeriode",
+        "operationId": "deleteItemsMisa",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -13684,15 +16393,15 @@
         "parameters": []
       }
     },
-    "/items/organisasi_jabatan_periode/{id}": {
+    "/items/misa/{id}": {
       "get": {
         "summary": "Retrieve an Item",
-        "description": "Retrieve a single organisasi_jabatan_periode item by unique identifier.",
+        "description": "Retrieve a single misa item by unique identifier.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatanPeriode"
+          "ItemsMisa"
         ],
-        "operationId": "readSingleItemsOrganisasiJabatanPeriode",
+        "operationId": "readSingleItemsMisa",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -13734,7 +16443,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                      "$ref": "#/components/schemas/ItemsMisa"
                     }
                   }
                 }
@@ -13751,12 +16460,12 @@
       },
       "patch": {
         "summary": "Update an Item",
-        "description": "Update an existing organisasi_jabatan_periode item.",
+        "description": "Update an existing misa item.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatanPeriode"
+          "ItemsMisa"
         ],
-        "operationId": "updateSingleItemsOrganisasiJabatanPeriode",
+        "operationId": "updateSingleItemsMisa",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -13790,7 +16499,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                "$ref": "#/components/schemas/ItemsMisa"
               }
             }
           }
@@ -13805,7 +16514,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+                      "$ref": "#/components/schemas/ItemsMisa"
                     }
                   }
                 }
@@ -13822,12 +16531,12 @@
       },
       "delete": {
         "summary": "Delete an Item",
-        "description": "Delete an existing organisasi_jabatan_periode item.",
+        "description": "Delete an existing misa item.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatanPeriode"
+          "ItemsMisa"
         ],
-        "operationId": "deleteSingleItemsOrganisasiJabatanPeriode",
+        "operationId": "deleteSingleItemsMisa",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -13863,15 +16572,15 @@
         ]
       }
     },
-    "/items/organisasi_jabatan": {
+    "/items/imam_riwayat": {
       "post": {
         "summary": "Create an Item",
-        "description": "Create a new organisasi_jabatan item.",
+        "description": "Create a new imam_riwayat item.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatan"
+          "ItemsImamRiwayat"
         ],
-        "operationId": "createItemsOrganisasiJabatan",
+        "operationId": "createItemsImamRiwayat",
         "parameters": [
           {
             "$ref": "#/components/parameters/Meta"
@@ -13885,11 +16594,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                      "$ref": "#/components/schemas/ItemsImamRiwayat"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                    "$ref": "#/components/schemas/ItemsImamRiwayat"
                   }
                 ]
               }
@@ -13906,7 +16615,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                        "$ref": "#/components/schemas/ItemsImamRiwayat"
                       }
                     }
                   }
@@ -13921,12 +16630,12 @@
       },
       "get": {
         "summary": "List Items",
-        "description": "List the organisasi_jabatan items.",
+        "description": "List the imam_riwayat items.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatan"
+          "ItemsImamRiwayat"
         ],
-        "operationId": "readItemsOrganisasiJabatan",
+        "operationId": "readItemsImamRiwayat",
         "security": [
           {
             "Auth": []
@@ -13967,7 +16676,7 @@
                       "type": "array",
                       "items": {
                         "type": "object",
-                        "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                        "$ref": "#/components/schemas/ItemsImamRiwayat"
                       }
                     },
                     "meta": {
@@ -13985,12 +16694,12 @@
       },
       "patch": {
         "summary": "Update Multiple Items",
-        "description": "Update multiple organisasi_jabatan items at the same time.",
+        "description": "Update multiple imam_riwayat items at the same time.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatan"
+          "ItemsImamRiwayat"
         ],
-        "operationId": "updateItemsOrganisasiJabatan",
+        "operationId": "updateItemsImamRiwayat",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -14022,11 +16731,11 @@
                   {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                      "$ref": "#/components/schemas/ItemsImamRiwayat"
                     }
                   },
                   {
-                    "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                    "$ref": "#/components/schemas/ItemsImamRiwayat"
                   }
                 ]
               }
@@ -14042,7 +16751,7 @@
                   "properties": {
                     "data": {
                       "items": {
-                        "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                        "$ref": "#/components/schemas/ItemsImamRiwayat"
                       }
                     }
                   }
@@ -14054,12 +16763,12 @@
       },
       "delete": {
         "summary": "Delete Multiple Items",
-        "description": "Delete multiple existing organisasi_jabatan items.",
+        "description": "Delete multiple existing imam_riwayat items.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatan"
+          "ItemsImamRiwayat"
         ],
-        "operationId": "deleteItemsOrganisasiJabatan",
+        "operationId": "deleteItemsImamRiwayat",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -14071,15 +16780,15 @@
         "parameters": []
       }
     },
-    "/items/organisasi_jabatan/{id}": {
+    "/items/imam_riwayat/{id}": {
       "get": {
         "summary": "Retrieve an Item",
-        "description": "Retrieve a single organisasi_jabatan item by unique identifier.",
+        "description": "Retrieve a single imam_riwayat item by unique identifier.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatan"
+          "ItemsImamRiwayat"
         ],
-        "operationId": "readSingleItemsOrganisasiJabatan",
+        "operationId": "readSingleItemsImamRiwayat",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -14121,7 +16830,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                      "$ref": "#/components/schemas/ItemsImamRiwayat"
                     }
                   }
                 }
@@ -14138,12 +16847,12 @@
       },
       "patch": {
         "summary": "Update an Item",
-        "description": "Update an existing organisasi_jabatan item.",
+        "description": "Update an existing imam_riwayat item.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatan"
+          "ItemsImamRiwayat"
         ],
-        "operationId": "updateSingleItemsOrganisasiJabatan",
+        "operationId": "updateSingleItemsImamRiwayat",
         "parameters": [
           {
             "$ref": "#/components/parameters/Fields"
@@ -14177,7 +16886,7 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                "$ref": "#/components/schemas/ItemsImamRiwayat"
               }
             }
           }
@@ -14192,7 +16901,7 @@
                   "properties": {
                     "data": {
                       "type": "object",
-                      "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                      "$ref": "#/components/schemas/ItemsImamRiwayat"
                     }
                   }
                 }
@@ -14209,12 +16918,399 @@
       },
       "delete": {
         "summary": "Delete an Item",
-        "description": "Delete an existing organisasi_jabatan item.",
+        "description": "Delete an existing imam_riwayat item.",
         "tags": [
           "Items",
-          "ItemsOrganisasiJabatan"
+          "ItemsImamRiwayat"
         ],
-        "operationId": "deleteSingleItemsOrganisasiJabatan",
+        "operationId": "deleteSingleItemsImamRiwayat",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "/items/imam": {
+      "post": {
+        "summary": "Create an Item",
+        "description": "Create a new imam item.",
+        "tags": [
+          "Items",
+          "ItemsImam"
+        ],
+        "operationId": "createItemsImam",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Meta"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsImam"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsImam"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsImam"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "get": {
+        "summary": "List Items",
+        "description": "List the imam items.",
+        "tags": [
+          "Items",
+          "ItemsImam"
+        ],
+        "operationId": "readItemsImam",
+        "security": [
+          {
+            "Auth": []
+          }
+        ],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "$ref": "#/components/schemas/ItemsImam"
+                      }
+                    },
+                    "meta": {
+                      "$ref": "#/components/schemas/x-metadata"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update Multiple Items",
+        "description": "Update multiple imam items at the same time.",
+        "tags": [
+          "Items",
+          "ItemsImam"
+        ],
+        "operationId": "updateItemsImam",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Limit"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Offset"
+          },
+          {
+            "$ref": "#/components/parameters/Sort"
+          },
+          {
+            "$ref": "#/components/parameters/Filter"
+          },
+          {
+            "$ref": "#/components/parameters/Search"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/ItemsImam"
+                    }
+                  },
+                  {
+                    "$ref": "#/components/schemas/ItemsImam"
+                  }
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "items": {
+                        "$ref": "#/components/schemas/ItemsImam"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Multiple Items",
+        "description": "Delete multiple existing imam items.",
+        "tags": [
+          "Items",
+          "ItemsImam"
+        ],
+        "operationId": "deleteItemsImam",
+        "responses": {
+          "200": {
+            "description": "Successful request"
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          }
+        },
+        "parameters": []
+      }
+    },
+    "/items/imam/{id}": {
+      "get": {
+        "summary": "Retrieve an Item",
+        "description": "Retrieve a single imam item by unique identifier.",
+        "tags": [
+          "Items",
+          "ItemsImam"
+        ],
+        "operationId": "readSingleItemsImam",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "$ref": "#/components/parameters/Version"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsImam"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update an Item",
+        "description": "Update an existing imam item.",
+        "tags": [
+          "Items",
+          "ItemsImam"
+        ],
+        "operationId": "updateSingleItemsImam",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Fields"
+          },
+          {
+            "$ref": "#/components/parameters/Meta"
+          },
+          {
+            "name": "id",
+            "description": "Index of the item.",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "integer",
+                  "description": "Incremental index of the item.",
+                  "example": 1
+                },
+                {
+                  "type": "string",
+                  "description": "Unique identifier of the item.",
+                  "example": "8cbb43fe-4cdf-4991-8352-c461779cec02"
+                }
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "$ref": "#/components/schemas/ItemsImam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "$ref": "#/components/schemas/ItemsImam"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "$ref": "#/components/responses/UnauthorizedError"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFoundError"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete an Item",
+        "description": "Delete an existing imam item.",
+        "tags": [
+          "Items",
+          "ItemsImam"
+        ],
+        "operationId": "deleteSingleItemsImam",
         "responses": {
           "200": {
             "description": "Successful request"
@@ -14285,6 +17381,11 @@
       ]
     },
     {
+      "name": "Users",
+      "description": "Users are what gives you access to the data.",
+      "x-collection": "directus_users"
+    },
+    {
       "name": "Activity",
       "description": "All events that happen within Directus are tracked and stored in the activities collection. This gives you full accountability over everything that happens.",
       "x-collection": "directus_activity"
@@ -14315,6 +17416,10 @@
       "x-collection": "directus_folders"
     },
     {
+      "name": "ItemsOrganisasiUser",
+      "x-collection": "organisasi_user"
+    },
+    {
       "name": "Roles",
       "description": "Roles are groups of users that share permissions.",
       "x-collection": "directus_roles"
@@ -14323,11 +17428,6 @@
       "name": "Presets",
       "description": "Presets hold the preferences of individual users of the platform. This allows Directus to show and maintain custom item listings for users of the app.",
       "x-collection": "directus_presets"
-    },
-    {
-      "name": "Users",
-      "description": "Users are what gives you access to the data.",
-      "x-collection": "directus_users"
     },
     {
       "name": "Relations",
@@ -14374,6 +17474,27 @@
       "x-collection": "directus_sync_id_map"
     },
     {
+      "name": "ItemsOrganisasiAnggotaOrganisasi",
+      "x-collection": "organisasi_anggota_organisasi"
+    },
+    {
+      "name": "ItemsOrganisasiJabatanPeriode",
+      "x-collection": "organisasi_jabatan_periode"
+    },
+    {
+      "name": "ItemsOrganisasiAnggota",
+      "x-collection": "organisasi_anggota",
+      "description": "Daftar Anggota Organisasi"
+    },
+    {
+      "name": "ItemsOrganisasiJabatan",
+      "x-collection": "organisasi_jabatan"
+    },
+    {
+      "name": "ItemsOrganisasi",
+      "x-collection": "organisasi"
+    },
+    {
       "name": "ItemsBlockHero",
       "x-collection": "block_hero"
     },
@@ -14402,6 +17523,10 @@
       "x-collection": "hero_images"
     },
     {
+      "name": "ItemsOrganisasiStruktur",
+      "x-collection": "organisasi_struktur"
+    },
+    {
       "name": "ItemsPage",
       "x-collection": "page"
     },
@@ -14422,25 +17547,29 @@
       "x-collection": "post_images"
     },
     {
-      "name": "ItemsOrganisasi",
-      "x-collection": "organisasi"
+      "name": "ItemsSumberPendapatan",
+      "x-collection": "sumber_pendapatan"
     },
     {
-      "name": "ItemsOrganisasiAnggota",
-      "x-collection": "organisasi_anggota",
-      "description": "Daftar Anggota Organisasi"
+      "name": "ItemsMisaDokumentasi",
+      "x-collection": "misa_dokumentasi"
     },
     {
-      "name": "ItemsOrganisasiStruktur",
-      "x-collection": "organisasi_struktur"
+      "name": "ItemsPendapatan",
+      "x-collection": "pendapatan"
     },
     {
-      "name": "ItemsOrganisasiJabatanPeriode",
-      "x-collection": "organisasi_jabatan_periode"
+      "name": "ItemsMisa",
+      "x-collection": "misa"
     },
     {
-      "name": "ItemsOrganisasiJabatan",
-      "x-collection": "organisasi_jabatan"
+      "name": "ItemsImamRiwayat",
+      "x-collection": "imam_riwayat",
+      "description": "Riwayat Imam yang bertugas di Paroki"
+    },
+    {
+      "name": "ItemsImam",
+      "x-collection": "imam"
     }
   ],
   "components": {
@@ -14971,6 +18100,33 @@
           "theme_dark_overrides": {
             "nullable": true
           },
+          "nama": {
+            "nullable": true,
+            "type": "string"
+          },
+          "tempatLahir": {
+            "nullable": true,
+            "type": "string"
+          },
+          "tanggalLahir": {
+            "nullable": true,
+            "type": "string",
+            "format": "date"
+          },
+          "orgnisasi": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsOrganisasiUser"
+                }
+              ]
+            }
+          },
           "policies": {
             "nullable": true
           }
@@ -15378,6 +18534,40 @@
           }
         },
         "x-collection": "directus_collections"
+      },
+      "ItemsOrganisasiUser": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "nullable": false,
+            "type": "integer"
+          },
+          "user": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "organisasi": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsOrganisasi"
+              }
+            ]
+          }
+        },
+        "x-collection": "organisasi_user"
       },
       "Presets": {
         "type": "object",
@@ -16283,6 +19473,428 @@
         },
         "x-collection": "directus_sync_id_map"
       },
+      "ItemsOrganisasiAnggotaOrganisasi": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "nullable": false,
+            "type": "integer"
+          },
+          "organisasi_anggota": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+              }
+            ]
+          },
+          "organisasi": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsOrganisasi"
+              }
+            ]
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          }
+        },
+        "x-collection": "organisasi_anggota_organisasi"
+      },
+      "ItemsOrganisasiJabatanPeriode": {
+        "type": "object",
+        "properties": {
+          "berakhirPada": {
+            "nullable": true,
+            "type": "string",
+            "format": "date"
+          },
+          "createdAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "createdBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "dimulaiPada": {
+            "nullable": false,
+            "type": "string",
+            "format": "date"
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "nama": {
+            "nullable": true,
+            "type": "string"
+          },
+          "organisasi": {
+            "nullable": false,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsOrganisasi"
+              }
+            ]
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "updatedAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "updatedBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "dilantikPada": {
+            "nullable": true,
+            "type": "string",
+            "format": "date"
+          },
+          "dokumentasi": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsOrganisasi"
+                }
+              ]
+            }
+          }
+        },
+        "x-collection": "organisasi_jabatan_periode"
+      },
+      "ItemsOrganisasiAnggota": {
+        "type": "object",
+        "properties": {
+          "aktif": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "createdAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "createdBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "foto": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Files"
+              }
+            ]
+          },
+          "gelarBelakang": {
+            "nullable": true,
+            "type": "string"
+          },
+          "gelarDepan": {
+            "nullable": true,
+            "type": "string"
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "nama": {
+            "nullable": true,
+            "type": "string"
+          },
+          "updatedAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "updatedBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "user": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "menjabat": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsOrganisasiJabatan"
+                }
+              ]
+            }
+          },
+          "organisasi": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsOrganisasiAnggotaOrganisasi"
+                }
+              ]
+            }
+          }
+        },
+        "x-collection": "organisasi_anggota"
+      },
+      "ItemsOrganisasiJabatan": {
+        "type": "object",
+        "properties": {
+          "aktif": {
+            "nullable": false,
+            "type": "boolean"
+          },
+          "createdAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "createdBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "nama": {
+            "nullable": true,
+            "type": "string"
+          },
+          "periode": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+              }
+            ]
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "struktur": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+              }
+            ]
+          },
+          "updatedAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "updatedBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "penjabat": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
+              }
+            ]
+          }
+        },
+        "x-collection": "organisasi_jabatan"
+      },
+      "ItemsOrganisasi": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "createdBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "nama": {
+            "nullable": true,
+            "type": "string"
+          },
+          "singkatan": {
+            "nullable": true,
+            "type": "string"
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "updatedAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "updatedBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "periode": {
+            "nullable": true,
+            "description": "periode aktif kepengurusan",
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
+              }
+            ]
+          },
+          "images": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Files"
+              }
+            ]
+          }
+        },
+        "x-collection": "organisasi"
+      },
       "ItemsBlockHero": {
         "type": "object",
         "properties": {
@@ -16670,6 +20282,87 @@
         },
         "x-collection": "hero_images"
       },
+      "ItemsOrganisasiStruktur": {
+        "type": "object",
+        "properties": {
+          "aktif": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "createdAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "createdBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          },
+          "id": {
+            "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "induk": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+              }
+            ]
+          },
+          "nama": {
+            "nullable": true,
+            "type": "string"
+          },
+          "organisasi": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsOrganisasi"
+              }
+            ]
+          },
+          "sort": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "updatedAt": {
+            "nullable": true,
+            "type": "string",
+            "format": "timestamp"
+          },
+          "updatedBy": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/Users"
+              }
+            ]
+          }
+        },
+        "x-collection": "organisasi_struktur"
+      },
       "ItemsPage": {
         "type": "object",
         "properties": {
@@ -16981,9 +20674,6 @@
                 },
                 {
                   "$ref": "#/components/schemas/ItemsBlockMarkdown"
-                },
-                {
-                  "$ref": "#/components/schemas/ItemsBlockRichtext"
                 }
               ]
             }
@@ -17037,7 +20727,7 @@
         },
         "x-collection": "post_images"
       },
-      "ItemsOrganisasi": {
+      "ItemsSumberPendapatan": {
         "type": "object",
         "properties": {
           "id": {
@@ -17083,26 +20773,21 @@
             "type": "string",
             "format": "timestamp"
           },
-          "nama": {
-            "nullable": true,
-            "type": "string"
-          },
-          "singkatan": {
+          "sumber": {
             "nullable": true,
             "type": "string"
           }
         },
-        "x-collection": "organisasi"
+        "x-collection": "sumber_pendapatan"
       },
-      "ItemsOrganisasiAnggota": {
+      "ItemsMisaDokumentasi": {
         "type": "object",
         "properties": {
           "id": {
             "nullable": false,
-            "type": "string",
-            "format": "uuid"
+            "type": "integer"
           },
-          "createdBy": {
+          "misa": {
             "nullable": true,
             "oneOf": [
               {
@@ -17110,61 +20795,11 @@
                 "format": "uuid"
               },
               {
-                "$ref": "#/components/schemas/Users"
+                "$ref": "#/components/schemas/ItemsMisa"
               }
             ]
           },
-          "createdAt": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "updatedBy": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "updatedAt": {
-            "nullable": true,
-            "type": "string",
-            "format": "timestamp"
-          },
-          "gelarDepan": {
-            "nullable": true,
-            "type": "string"
-          },
-          "nama": {
-            "nullable": true,
-            "type": "string"
-          },
-          "gelarBelakang": {
-            "nullable": true,
-            "type": "string"
-          },
-          "aktif": {
-            "nullable": true,
-            "type": "boolean"
-          },
-          "user": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/Users"
-              }
-            ]
-          },
-          "foto": {
+          "dokumentasi": {
             "nullable": true,
             "oneOf": [
               {
@@ -17177,9 +20812,9 @@
             ]
           }
         },
-        "x-collection": "organisasi_anggota"
+        "x-collection": "misa_dokumentasi"
       },
-      "ItemsOrganisasiStruktur": {
+      "ItemsPendapatan": {
         "type": "object",
         "properties": {
           "id": {
@@ -17225,11 +20860,20 @@
             "type": "string",
             "format": "timestamp"
           },
-          "nama": {
+          "jumlah": {
+            "nullable": true,
+            "type": "integer"
+          },
+          "catatan": {
             "nullable": true,
             "type": "string"
           },
-          "induk": {
+          "tanggal": {
+            "nullable": true,
+            "type": "string",
+            "format": "date"
+          },
+          "misa": {
             "nullable": true,
             "oneOf": [
               {
@@ -17237,11 +20881,11 @@
                 "format": "uuid"
               },
               {
-                "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                "$ref": "#/components/schemas/ItemsMisa"
               }
             ]
           },
-          "organisasi": {
+          "sumber": {
             "nullable": true,
             "oneOf": [
               {
@@ -17249,18 +20893,14 @@
                 "format": "uuid"
               },
               {
-                "$ref": "#/components/schemas/ItemsOrganisasi"
+                "$ref": "#/components/schemas/ItemsSumberPendapatan"
               }
             ]
-          },
-          "aktif": {
-            "nullable": true,
-            "type": "boolean"
           }
         },
-        "x-collection": "organisasi_struktur"
+        "x-collection": "pendapatan"
       },
-      "ItemsOrganisasiJabatanPeriode": {
+      "ItemsMisa": {
         "type": "object",
         "properties": {
           "id": {
@@ -17306,12 +20946,57 @@
             "type": "string",
             "format": "timestamp"
           },
-          "nama": {
+          "tanggal": {
+            "nullable": true,
+            "type": "string",
+            "format": "date"
+          },
+          "perayaan": {
             "nullable": true,
             "type": "string"
           },
-          "dimulaiPada": {
+          "pendapatan": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsPendapatan"
+                }
+              ]
+            }
+          },
+          "dokumentasi": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsMisaDokumentasi"
+                }
+              ]
+            }
+          }
+        },
+        "x-collection": "misa"
+      },
+      "ItemsImamRiwayat": {
+        "type": "object",
+        "properties": {
+          "id": {
             "nullable": false,
+            "type": "string",
+            "format": "uuid"
+          },
+          "dimulaiPada": {
+            "nullable": true,
             "type": "string",
             "format": "date"
           },
@@ -17320,22 +21005,30 @@
             "type": "string",
             "format": "date"
           },
-          "organisasi": {
-            "nullable": false,
+          "bertugasSebagai": {
+            "nullable": true,
+            "type": "string"
+          },
+          "imam": {
+            "nullable": true,
             "oneOf": [
               {
                 "type": "string",
                 "format": "uuid"
               },
               {
-                "$ref": "#/components/schemas/ItemsOrganisasi"
+                "$ref": "#/components/schemas/ItemsImam"
               }
             ]
+          },
+          "akurasiTanggal": {
+            "nullable": true,
+            "type": "boolean"
           }
         },
-        "x-collection": "organisasi_jabatan_periode"
+        "x-collection": "imam_riwayat"
       },
-      "ItemsOrganisasiJabatan": {
+      "ItemsImam": {
         "type": "object",
         "properties": {
           "id": {
@@ -17385,11 +21078,53 @@
             "nullable": true,
             "type": "string"
           },
+          "gelarBelakang": {
+            "nullable": true,
+            "type": "string"
+          },
+          "gelarDepan": {
+            "nullable": true,
+            "type": "string"
+          },
+          "tempatLahir": {
+            "nullable": true,
+            "type": "string"
+          },
+          "tanggalLahir": {
+            "nullable": true,
+            "type": "string",
+            "format": "date"
+          },
+          "ditahbisPada": {
+            "nullable": true,
+            "type": "string",
+            "format": "date"
+          },
+          "ditahbisOleh": {
+            "nullable": true,
+            "type": "string"
+          },
+          "ditahbisDi": {
+            "nullable": true,
+            "type": "string"
+          },
+          "catatan": {
+            "nullable": true,
+            "type": "string"
+          },
           "aktif": {
-            "nullable": false,
+            "nullable": true,
             "type": "boolean"
           },
-          "struktur": {
+          "imamDiosesan": {
+            "nullable": true,
+            "type": "boolean"
+          },
+          "tarekat": {
+            "nullable": true,
+            "type": "string"
+          },
+          "artikelTerkait": {
             "nullable": true,
             "oneOf": [
               {
@@ -17397,36 +21132,27 @@
                 "format": "uuid"
               },
               {
-                "$ref": "#/components/schemas/ItemsOrganisasiStruktur"
+                "$ref": "#/components/schemas/ItemsPost"
               }
             ]
           },
-          "penjabat": {
+          "riwayat": {
             "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsOrganisasiAnggota"
-              }
-            ]
-          },
-          "periode": {
-            "nullable": true,
-            "oneOf": [
-              {
-                "type": "string",
-                "format": "uuid"
-              },
-              {
-                "$ref": "#/components/schemas/ItemsOrganisasiJabatanPeriode"
-              }
-            ]
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                {
+                  "$ref": "#/components/schemas/ItemsImamRiwayat"
+                }
+              ]
+            }
           }
         },
-        "x-collection": "organisasi_jabatan"
+        "x-collection": "imam"
       }
     },
     "parameters": {

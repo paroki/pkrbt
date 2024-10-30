@@ -7,7 +7,6 @@
     "many_collection": "post_blocks",
     "many_field": "item",
     "one_allowed_collections": [
-      "block_richtext",
       "block_markdown",
       "block_hero"
     ],

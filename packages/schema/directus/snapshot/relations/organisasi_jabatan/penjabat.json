@@ -10,8 +10,8 @@
     "one_collection": "organisasi_anggota",
     "one_collection_field": null,
     "one_deselect_action": "nullify",
-    "one_field": null,
-    "sort_field": null
+    "one_field": "menjabat",
+    "sort_field": "sort"
   },
   "schema": {
     "table": "organisasi_jabatan",
@@ -20,6 +20,6 @@
     "foreign_key_column": "id",
     "constraint_name": "organisasi_jabatan_penjabat_foreign",
     "on_update": "NO ACTION",
-    "on_delete": "SET NULL"
+    "on_delete": "NO ACTION"
   }
 }

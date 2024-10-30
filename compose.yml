@@ -8,7 +8,7 @@ services:
       POSTGRES_USER: pkrbt
     volumes:
       - ./vars/postgres:/var/lib/postgresql/data:rw
-    env_file: .env.local
+    env_file: .env
     healthcheck:
       test: ["CMD", "pg_isready", "--host=localhost", "--username=pkrbt"]
       interval: 10s
@@ -43,4 +43,4 @@ services:
       - ./vars/directus/database:/directus/database
       - ./vars/directus/uploads:/directus/uploads
       - ./vars/directus/extensions:/directus/extensions
-    env_file: .env.local
+    env_file: .env

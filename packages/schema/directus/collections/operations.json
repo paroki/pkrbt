@@ -56,6 +56,21 @@
     "_syncId": "11b42ae8-407d-4b94-b490-f6b487a17e07"
   },
   {
+    "name": "Read Data",
+    "key": "item_read_xfr7k",
+    "type": "item-read",
+    "position_x": 19,
+    "position_y": 1,
+    "options": {
+      "collection": "organisasi_anggota",
+      "key": "{{$trigger.keys[0]}}"
+    },
+    "resolve": null,
+    "reject": null,
+    "flow": "3bf6e876-4bed-4afb-935e-f73efce54f26",
+    "_syncId": "6aafffee-a40f-4741-9c3b-ec8d5161cedb"
+  },
+  {
     "name": "Update Data",
     "key": "item_update_pitlb",
     "type": "item-update",

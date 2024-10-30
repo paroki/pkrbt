@@ -9,7 +9,7 @@
     "collection": "organisasi_struktur",
     "color": null,
     "display_template": "{{nama}}",
-    "group": "konten_organisasi",
+    "group": "administrasi_organisasi",
     "hidden": false,
     "icon": null,
     "item_duplication_fields": null,
@@ -18,7 +18,14 @@
     "singleton": false,
     "sort": 2,
     "sort_field": "sort",
-    "translations": null,
+    "translations": [
+      {
+        "language": "id-ID",
+        "plural": "Struktur",
+        "singular": "Struktur",
+        "translation": "Struktur"
+      }
+    ],
     "unarchive_value": null,
     "versioning": false
   },

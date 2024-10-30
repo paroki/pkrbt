@@ -14,11 +14,16 @@
     "icon": null,
     "item_duplication_fields": null,
     "note": null,
-    "preview_url": null,
+    "preview_url": "https://pkrbt.id/{{slug}}",
     "singleton": false,
     "sort": 1,
     "sort_field": "sort",
-    "translations": null,
+    "translations": [
+      {
+        "language": "id-ID",
+        "translation": "Artikel"
+      }
+    ],
     "unarchive_value": "draft",
     "versioning": false
   },

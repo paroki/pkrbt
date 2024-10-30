@@ -1,0 +1,29 @@
+{
+  "collection": "misa",
+  "field": "dokumentasi",
+  "type": "alias",
+  "meta": {
+    "collection": "misa",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "dokumentasi",
+    "group": null,
+    "hidden": false,
+    "interface": "files",
+    "note": null,
+    "options": {
+      "folder": "a707f83c-64ba-4fa8-a137-1270d0bd8c01"
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 10,
+    "special": [
+      "files"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

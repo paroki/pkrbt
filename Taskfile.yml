@@ -1,0 +1,42 @@
+---
+version: 3
+
+dotenv:
+  - .env
+
+tasks:
+  test:
+    cmd: echo "{{.DIRECTUS_PULL_TOKEN}}"
+
+  schema:pull:
+    desc: pull directus schema from api.pkrbt.id
+    cmd: pnpm schema:pull
+    dir: "./packages/schema"
+    env:
+      DIRECTUS_TOKEN: "{{.DIRECTUS_PULL_TOKEN}}"
+      DIRECTUS_URL: "https://api.pkrbt.id"
+
+  schema:push:
+    desc: push directus schema to local docker container
+    cmd: pnpm schema:push
+    env:
+      DIRECTUS_URL: http://localhost:8055
+      DIRECTUS_ADMIN_EMAIL: admin@pkrbt.id
+      DIRECTUS_ADMIN_PASSWORD: directus
+    dir: "./packages/schema"
+
+  schema:sync:
+    desc: sync schema from api.pkrbt.id to local docker container
+    cmds:
+      - task: schema:pull
+      - task: schema:push
+
+  schema:sync:dev:
+    desc: sync schema to api-dev.pkrbt.id
+    cmds:
+      - task: schema:pull
+      - pnpm schema:push
+    dir: "./packages/schema"
+    env:
+      DIRECTUS_URL: https://api-dev.pkrbt.id
+      DIRECTUS_TOKEN: "{{.DIRECTUS_DEV_TOKEN}}"

@@ -9,16 +9,21 @@
     "collection": "organisasi_jabatan",
     "color": null,
     "display_template": "{{nama}}",
-    "group": "konten_organisasi",
+    "group": "administrasi_organisasi",
     "hidden": false,
     "icon": null,
     "item_duplication_fields": null,
     "note": null,
     "preview_url": null,
     "singleton": false,
-    "sort": 3,
+    "sort": 4,
     "sort_field": "sort",
-    "translations": null,
+    "translations": [
+      {
+        "language": "id-ID",
+        "translation": "Jabatan"
+      }
+    ],
     "unarchive_value": null,
     "versioning": false
   },
