@@ -1,0 +1,25 @@
+{
+  "collection": "misa_dokumentasi",
+  "field": "misa",
+  "related_collection": "misa",
+  "meta": {
+    "junction_field": "dokumentasi",
+    "many_collection": "misa_dokumentasi",
+    "many_field": "misa",
+    "one_allowed_collections": null,
+    "one_collection": "misa",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": "dokumentasi",
+    "sort_field": null
+  },
+  "schema": {
+    "table": "misa_dokumentasi",
+    "column": "misa",
+    "foreign_key_table": "misa",
+    "foreign_key_column": "id",
+    "constraint_name": "misa_dokumentasi_misa_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "SET NULL"
+  }
+}

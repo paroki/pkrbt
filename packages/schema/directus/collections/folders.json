@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "name": "globals",
+    "parent": null,
+    "_syncId": "05529bb1-44b2-4673-a53d-e4729fc46986"
+  },
+  {
+    "name": "artikel",
+    "parent": null,
+    "_syncId": "312b8231-476c-43d1-b0dd-8b3a22d8f8f9"
+  },
+  {
+    "name": "dokumentasi",
+    "parent": null,
+    "_syncId": "333439ce-f543-471a-b0b9-865559f3789d"
+  },
+  {
+    "name": "20240922",
+    "parent": "965eac50-1867-496c-b180-afe049774bc4",
+    "_syncId": "4bce67dc-7864-4a85-a03a-110826725bdd"
+  },
+  {
+    "name": "dpp",
+    "parent": "f889565e-cf89-49cc-a5ad-d2153abca8cd",
+    "_syncId": "9159a897-7182-4234-9bd3-7cee648eaf56"
+  },
+  {
+    "name": "2024",
+    "parent": "333439ce-f543-471a-b0b9-865559f3789d",
+    "_syncId": "965eac50-1867-496c-b180-afe049774bc4"
+  },
+  {
+    "name": "santo-pio",
+    "parent": "312b8231-476c-43d1-b0dd-8b3a22d8f8f9",
+    "_syncId": "ba4cf541-e1c2-42ef-82e6-a1be65b1abfb"
+  },
+  {
+    "name": "2024-2027",
+    "parent": "9159a897-7182-4234-9bd3-7cee648eaf56",
+    "_syncId": "d1c9e27e-9d51-4142-b743-7816e4bddf5d"
+  },
+  {
+    "name": "organisasi",
+    "parent": null,
+    "_syncId": "f889565e-cf89-49cc-a5ad-d2153abca8cd"
+  }
+]

@@ -12,14 +12,21 @@
     "hidden": false,
     "interface": "files",
     "note": null,
-    "options": null,
+    "options": {
+      "folder": "312b8231-476c-43d1-b0dd-8b3a22d8f8f9"
+    },
     "readonly": false,
     "required": false,
     "sort": 16,
     "special": [
       "files"
     ],
-    "translations": null,
+    "translations": [
+      {
+        "language": "id-ID",
+        "translation": "Foto"
+      }
+    ],
     "validation": null,
     "validation_message": null,
     "width": "full"

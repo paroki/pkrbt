@@ -10,7 +10,7 @@ export function user(directus: Directus<Schema>) {
       ...restMethods(directus, "user"),
       async search(query: Query<Schema, User>) {
         let error;
-        let items: User[] | undefined;
+        let items;
         try {
           items = await directus.rest.request(readItems("user", query));
         } catch (e) {
@@ -21,7 +21,7 @@ export function user(directus: Directus<Schema>) {
       },
       async read(id: string, query: Query<Schema, User>) {
         let error: Error | undefined;
-        let item: User | undefined;
+        let item;
 
         try {
           item = await directus.rest.request(readItem("user", id, query));

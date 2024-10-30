@@ -9,16 +9,21 @@
     "collection": "organisasi_jabatan_periode",
     "color": null,
     "display_template": null,
-    "group": "konten_organisasi",
+    "group": "administrasi_organisasi",
     "hidden": false,
     "icon": null,
     "item_duplication_fields": null,
     "note": null,
     "preview_url": null,
     "singleton": false,
-    "sort": 4,
+    "sort": 3,
     "sort_field": "sort",
-    "translations": null,
+    "translations": [
+      {
+        "language": "id-ID",
+        "translation": "Periode Jabatan"
+      }
+    ],
     "unarchive_value": null,
     "versioning": false
   },

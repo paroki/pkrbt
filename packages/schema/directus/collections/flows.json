@@ -1,5 +1,26 @@
 [
   {
+    "name": "[Organisasi] Synchronize Anggota and User Organisasi",
+    "icon": "bolt",
+    "color": null,
+    "description": "Synchronize",
+    "status": "active",
+    "trigger": "event",
+    "accountability": "all",
+    "options": {
+      "type": "action",
+      "scope": [
+        "items.create",
+        "items.update"
+      ],
+      "collections": [
+        "organisasi_anggota"
+      ]
+    },
+    "operation": "6aafffee-a40f-4741-9c3b-ec8d5161cedb",
+    "_syncId": "3bf6e876-4bed-4afb-935e-f73efce54f26"
+  },
+  {
     "name": "[Website] Sluggify contents",
     "icon": "bolt",
     "color": null,

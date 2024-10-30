@@ -9,7 +9,7 @@
     "collection": "organisasi",
     "color": null,
     "display_template": "{{nama}}",
-    "group": "konten_organisasi",
+    "group": "administrasi_organisasi",
     "hidden": false,
     "icon": null,
     "item_duplication_fields": null,

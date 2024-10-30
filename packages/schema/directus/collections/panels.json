@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "dashboard": "88c1d5f2-6fdb-43af-ad7d-f10a91c8bd66",
+    "name": null,
+    "icon": null,
+    "color": null,
+    "show_header": true,
+    "note": null,
+    "type": "bar-chart",
+    "position_x": 1,
+    "position_y": 1,
+    "width": 39,
+    "height": 17,
+    "options": {
+      "collection": "pendapatan",
+      "xAxis": "sort",
+      "yAxis": "jumlah",
+      "function": "sum",
+      "horizontal": true
+    },
+    "_syncId": "cfce226e-a9c3-440c-9931-2f259235b7ab"
+  }
+]

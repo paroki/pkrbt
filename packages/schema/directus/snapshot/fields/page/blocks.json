@@ -5,15 +5,18 @@
   "meta": {
     "collection": "page",
     "conditions": null,
-    "display": null,
-    "display_options": null,
+    "display": "related-values",
+    "display_options": {
+      "template": "{{item:block_hero.title}}"
+    },
     "field": "blocks",
     "group": null,
     "hidden": false,
     "interface": "list-m2a",
     "note": null,
     "options": {
-      "enableSelect": false
+      "enableSelect": false,
+      "prefix": "{{item:block_hero.title}}{{collection}}"
     },
     "readonly": false,
     "required": false,

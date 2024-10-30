@@ -19,7 +19,12 @@
     "required": false,
     "sort": 12,
     "special": null,
-    "translations": null,
+    "translations": [
+      {
+        "language": "id-ID",
+        "translation": "Rangkuman Singkat"
+      }
+    ],
     "validation": null,
     "validation_message": null,
     "width": "full"

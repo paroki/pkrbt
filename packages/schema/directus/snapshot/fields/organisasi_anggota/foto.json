@@ -5,14 +5,18 @@
   "meta": {
     "collection": "organisasi_anggota",
     "conditions": null,
-    "display": null,
-    "display_options": null,
+    "display": "image",
+    "display_options": {
+      "circle": true
+    },
     "field": "foto",
     "group": null,
     "hidden": false,
     "interface": "file-image",
     "note": null,
-    "options": null,
+    "options": {
+      "crop": false
+    },
     "readonly": false,
     "required": false,
     "sort": 11,

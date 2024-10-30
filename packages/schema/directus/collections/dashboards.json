@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "name": "Test",
+    "icon": "cake_add",
+    "note": null,
+    "color": null,
+    "_syncId": "88c1d5f2-6fdb-43af-ad7d-f10a91c8bd66"
+  }
+]

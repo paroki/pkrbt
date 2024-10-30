@@ -52,6 +52,26 @@
     "_syncId": "177a76e2-95c3-45b1-9299-f6a34fa9eb73"
   },
   {
+    "name": "File Manager",
+    "icon": "badge",
+    "description": null,
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false,
+    "roles": [
+      {
+        "role": "64eeff11-901c-4dd9-b773-b5310b96912f",
+        "sort": 1
+      },
+      {
+        "role": "d1ab7769-5476-4925-8585-53f0eaaab6c1",
+        "sort": 2
+      }
+    ],
+    "_syncId": "4b4ca43f-52d2-4a18-bb46-22e891336090"
+  },
+  {
     "name": "Registered",
     "icon": "badge",
     "description": "Registered Users Policy",
@@ -63,8 +83,56 @@
       {
         "role": "fe856227-d8ae-46f4-9cf9-b540fa85297b",
         "sort": 1
+      },
+      {
+        "role": "64eeff11-901c-4dd9-b773-b5310b96912f",
+        "sort": 3
+      },
+      {
+        "role": "d1ab7769-5476-4925-8585-53f0eaaab6c1",
+        "sort": 3
       }
     ],
     "_syncId": "94a06577-4a5a-41b1-bdd3-51f39e1fdc82"
+  },
+  {
+    "name": "Organisasi Admin",
+    "icon": "badge",
+    "description": null,
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false,
+    "roles": [
+      {
+        "role": null,
+        "sort": 1
+      },
+      {
+        "role": "d1ab7769-5476-4925-8585-53f0eaaab6c1",
+        "sort": 5
+      }
+    ],
+    "_syncId": "97d8a9fd-ef91-4389-ab6e-d4b66600c287"
+  },
+  {
+    "name": "Author",
+    "icon": "badge",
+    "description": "Pengarang Artikel",
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false,
+    "roles": [
+      {
+        "role": "64eeff11-901c-4dd9-b773-b5310b96912f",
+        "sort": 2
+      },
+      {
+        "role": "d1ab7769-5476-4925-8585-53f0eaaab6c1",
+        "sort": 4
+      }
+    ],
+    "_syncId": "9ce6c818-dc32-42de-9700-e8af79ad0128"
   }
 ]

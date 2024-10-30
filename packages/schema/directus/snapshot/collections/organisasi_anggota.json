@@ -9,7 +9,7 @@
     "collection": "organisasi_anggota",
     "color": null,
     "display_template": null,
-    "group": "konten_organisasi",
+    "group": "administrasi_organisasi",
     "hidden": false,
     "icon": null,
     "item_duplication_fields": null,
@@ -18,7 +18,12 @@
     "singleton": false,
     "sort": 5,
     "sort_field": null,
-    "translations": null,
+    "translations": [
+      {
+        "language": "id-ID",
+        "translation": "Anggota"
+      }
+    ],
     "unarchive_value": null,
     "versioning": false
   },

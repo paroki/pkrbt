@@ -12,8 +12,8 @@
   },
   "aliases": {
     "components": "@pkrbt/ui/components",
-    "ui": "@pkrbt/ui/shadcn/ui",
-    "utils": "@pkrbt/ui/utils",
+    "ui": "@pkrbt/ui/shadcn",
+    "utils": "@pkrbt/ui/utils/ui",
     "lib": "@pkrbt/ui/utils",
     "hooks": "@pkrbt/ui/hooks"
   }

@@ -1,0 +1,25 @@
+{
+  "collection": "pendapatan",
+  "field": "misa",
+  "related_collection": "misa",
+  "meta": {
+    "junction_field": null,
+    "many_collection": "pendapatan",
+    "many_field": "misa",
+    "one_allowed_collections": null,
+    "one_collection": "misa",
+    "one_collection_field": null,
+    "one_deselect_action": "delete",
+    "one_field": "pendapatan",
+    "sort_field": "sort"
+  },
+  "schema": {
+    "table": "pendapatan",
+    "column": "misa",
+    "foreign_key_table": "misa",
+    "foreign_key_column": "id",
+    "constraint_name": "pendapatan_misa_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "SET NULL"
+  }
+}
