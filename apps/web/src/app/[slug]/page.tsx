@@ -15,6 +15,7 @@ import PostImage from "./components/post-image";
 import { SolarUserBoldDuotone } from "@/components/icons/user";
 import { PostImage as PostImageType } from "@pkrbt/directus";
 import MasonryGridImage from "@/components/layouts/masonry/grid-el";
+import DirectusImage from "@/components/common/image";
 
 type Props = {
   params: Promise<{
@@ -107,7 +108,18 @@ export default async function Page(props: Props) {
         </h1>
         {/* {post?.category?.title !== 'Galeri' ? <p className="mb-6 text-gray-500 italic">{post?.summary}</p> : ''} */}
         <div className="flex gap-5 items-center border-b border-gray-100 py-2 mb-4">
-          <SolarUserBoldDuotone className="w-8 h-8 text-gray-500" />
+          <div>
+            {post?.createdBy?.avatar ? (
+              <DirectusImage
+                image={post.createdBy.avatar}
+                className="w-9 h-9"
+                style={{ objectFit: "cover" }}
+              />
+            ) : (
+              <SolarUserBoldDuotone className="w-8 h-8 text-gray-500" />
+            )}
+          </div>
+
           <div>
             <p>
               {writer.firstName ?? "Admin"} {writer.lastName ?? ""}

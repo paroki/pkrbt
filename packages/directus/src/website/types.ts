@@ -1,5 +1,6 @@
 import { components } from "../schema/openapi";
 import { File, ImageType } from "../schema/system";
+import { User } from "..";
 export type SEO = components["schemas"]["ItemsSEO"];
 
 export type BlockHeroImages = components["schemas"]["ItemsHeroImages"] & {
@@ -51,4 +52,5 @@ export type Post = components["schemas"]["ItemsPost"] & {
   seo?: SEO;
   category?: Category;
   images?: PostImage[];
+  createdBy?: User;
 };

@@ -18,6 +18,13 @@ publishedAt
 createdBy {
   first_name
   last_name
+  avatar {
+    id
+    title
+    description
+    width
+    height
+  }
 }
 `;
 
