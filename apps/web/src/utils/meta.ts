@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { OpenGraphType } from "next/dist/lib/metadata/types/opengraph-types";
 import { ASSET_URL, PUBLIC_URL } from "./config";
+import { headers } from "next/headers";
 
 export type MetaImage = {
   id: string;
@@ -25,7 +26,8 @@ export async function generateMeta({
   type,
 }: Meta): Promise<Metadata> {
   const images = [];
-  const url = "/";
+  const header = await headers();
+  const url = header.get("x-current-url") as string;
   const origin = PUBLIC_URL;
 
   if (image) {
