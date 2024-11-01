@@ -1,6 +1,5 @@
 "use client";
 
-import * as React from "react";
 import Container from "@/components/ui/container";
 import Info from "@/components/layouts/info";
 import Link from "next/link";
@@ -15,10 +14,10 @@ export function Footer() {
         </div>
       </Container>
       <footer className="text-center p-2 bg-gray-800 text-primary-600 flex flex-col text-sm">
-        <Link href="https://github.com/paroki/pkrbt">
+        <Link href="https://github.com/paroki/pkrbt/releases">
           PKRBT website versi <strong>{VERSION}</strong>
         </Link>
-        <Link href="https://github.com/orgs/paroki/teams/developer">
+        <Link href="https://github.com/paroki/pkrbt">
           &copy; 2024 PKRBT Developers
         </Link>
       </footer>

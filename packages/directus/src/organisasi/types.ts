@@ -34,7 +34,8 @@ export type JabatanOrganisasi = Omit<
 > &
   Pick<
     Required<schema["ItemsOrganisasiJabatan"]>,
-    "nama" | "aktif" | "struktur" | "periode"
+    "nama" | "aktif" | "periode"
   > & {
     penjabat: AnggotaOrganisasi;
+    struktur: StrukturOrganisasi;
   };

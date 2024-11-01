@@ -2,8 +2,11 @@ import { components, ImageType } from "..";
 
 type schema = components["schemas"];
 
-export type OrganisasiUser = schema["ItemsOrganisasiUser"];
+export type OrganisasiUser = schema["ItemsUserOrganisasi"];
 
-export type User = Omit<schema["Users"], "avatar" | "user" | "role"> & {
+export type UserRole = schema["Roles"];
+
+export type User = Omit<schema["Users"], "avatar" | "role"> & {
   avatar?: ImageType;
+  role?: UserRole | null;
 };

@@ -40,3 +40,11 @@ tasks:
     env:
       DIRECTUS_URL: https://api-dev.pkrbt.id
       DIRECTUS_TOKEN: "{{.DIRECTUS_DEV_TOKEN}}"
+
+  generate:types:
+    desc: generate types
+    cmd: pnpm generate:types
+    dir: "./packages/directus"
+    env:
+      DIRECTUS_URL: https://api.pkrbt.id
+      DIRECTUS_TOKEN: "{{.DIRECTUS_PULL_TOKEN}}"

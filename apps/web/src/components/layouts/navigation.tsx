@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import * as React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { LucideChevronDown, Menu, X } from 'lucide-react';
-import Image from 'next/image';
-import logo from '../../assets/img/logo.png';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { LucideChevronDown, Menu, X } from "lucide-react";
+import Image from "next/image";
+import logo from "../../assets/img/logo.png";
+import { useRef } from "react";
 
 export function Navigation() {
   interface MenuItems {
@@ -16,17 +16,21 @@ export function Navigation() {
 
   const menus: MenuItems[] = [
     {
-      name: 'Beranda',
-      path: '/'
+      name: "Beranda",
+      path: "/",
     },
     {
-      name: 'Warta Paroki',
-      path: '/berita'
+      name: "Warta Paroki",
+      path: "/berita",
     },
     {
-      name: 'DPP',
-      path: '/dewan-pastoral-paroki'
-    }
+      name: "Imam",
+      path: "/imam",
+    },
+    {
+      name: "DPP",
+      path: "/dewan-pastoral-paroki",
+    },
     /*
     {
       name: "Sejarah",
@@ -53,14 +57,16 @@ export function Navigation() {
     */
   ];
 
-  const containerNav = React.useRef<HTMLDivElement>(null);
+  const containerNav = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   const toggleVisibility = (): void => {
     const containerEl = containerNav.current;
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    containerEl?.className.includes('show') ? containerEl.classList.remove('show') : containerEl?.classList.add('show');
+    containerEl?.className.includes("show")
+      ? containerEl.classList.remove("show")
+      : containerEl?.classList.add("show");
   };
   return (
     <div className="sticky top-0 bg-white z-50 flex items-center md:block justify-between w-full shadow py-1">
@@ -73,7 +79,8 @@ export function Navigation() {
           <div className="absolute w-full top-4 left-0 block md:hidden">
             <button
               className="p-3 hover:bg-primary-300 rounded-full active:scale-110 active:bg-primary-400"
-              onClick={toggleVisibility}>
+              onClick={toggleVisibility}
+            >
               <X className="text-center w-9 h-9" />
             </button>
           </div>
@@ -82,7 +89,8 @@ export function Navigation() {
               (menu.children?.length ?? 0 > 0) ? (
                 <li className="parent-nav" key={index}>
                   <Link href="#">
-                    <span>{menu.name}</span> <LucideChevronDown className="inline w-4 h-4" />
+                    <span>{menu.name}</span>{" "}
+                    <LucideChevronDown className="inline w-4 h-4" />
                   </Link>
                   <ul className="subnav">
                     {menu.children?.map((submenu, subindex) => (
@@ -91,7 +99,8 @@ export function Navigation() {
                           onClick={() => {
                             toggleVisibility();
                           }}
-                          href={submenu.path}>
+                          href={submenu.path}
+                        >
                           {submenu.name}
                         </Link>
                       </li>
@@ -105,11 +114,12 @@ export function Navigation() {
                       toggleVisibility();
                     }}
                     href={menu.path}
-                    className={`${pathname === menu.path ? 'link-active' : ''}`}>
+                    className={`${pathname === menu.path ? "link-active" : ""}`}
+                  >
                     {menu.name}
                   </Link>
                 </li>
-              )
+              ),
             )}
           </ul>
         </div>
@@ -117,7 +127,8 @@ export function Navigation() {
       <div className="flex w-full justify-end md:hidden px-8">
         <button
           className="p-3 hover:bg-gray-50 rounded-full active:scale-110 active:bg-gray-100"
-          onClick={toggleVisibility}>
+          onClick={toggleVisibility}
+        >
           <Menu className="text-center w-8 h-8" />
         </button>
       </div>

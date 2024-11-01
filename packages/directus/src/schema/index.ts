@@ -11,6 +11,7 @@ import {
   Post,
 } from "..";
 import { User } from "..";
+import { Imam } from "../paroki";
 
 export type Schema = {
   page: Page[];
@@ -22,4 +23,5 @@ export type Schema = {
   organisasi_jabatan_periode: PeriodeJabatan[];
   organisasi_anggota: AnggotaOrganisasi[];
   user: User[];
+  imam: Imam[];
 };

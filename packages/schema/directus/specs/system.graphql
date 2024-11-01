@@ -274,12 +274,12 @@ type Subscription {
   post_mutated(event: EventEnum): post_mutated
   post_blocks_mutated(event: EventEnum): post_blocks_mutated
   post_images_mutated(event: EventEnum): post_images_mutated
+  pendapatan_mutated(event: EventEnum): pendapatan_mutated
+  imam_mutated(event: EventEnum): imam_mutated
   sumber_pendapatan_mutated(event: EventEnum): sumber_pendapatan_mutated
   misa_dokumentasi_mutated(event: EventEnum): misa_dokumentasi_mutated
-  pendapatan_mutated(event: EventEnum): pendapatan_mutated
   misa_mutated(event: EventEnum): misa_mutated
   imam_riwayat_mutated(event: EventEnum): imam_riwayat_mutated
-  imam_mutated(event: EventEnum): imam_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -1738,6 +1738,7 @@ type imam {
   imamDiosesan: Boolean
   tarekat: String
   artikelTerkait(filter: post_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): post
+  foto(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
   riwayat(filter: imam_riwayat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [imam_riwayat]
   riwayat_func: count_functions
 }
@@ -3083,6 +3084,7 @@ input imam_filter {
   imamDiosesan: boolean_filter_operators
   tarekat: string_filter_operators
   artikelTerkait: post_filter
+  foto: directus_files_filter
   riwayat: imam_riwayat_filter
   riwayat_func: count_function_filter_operators
   _and: [imam_filter]

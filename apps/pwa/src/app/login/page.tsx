@@ -1,10 +1,3 @@
-import SignInForm from "@/app/login/components/sign-in";
+import LoginPage from "@/pkg/auth/pages/login";
 
-export default function LoginPage({}) {
-  return (
-    <div>
-      <h1>Aplikasi PKRBT</h1>
-      <SignInForm />
-    </div>
-  );
-}
+export default LoginPage;
