@@ -1,2 +1,2 @@
-import ProfilePage from "@/user/profile/ProfilePage";
+import ProfilePage from "@/pkg/user/pages/ProfilePage";
 export default ProfilePage;

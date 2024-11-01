@@ -20,6 +20,16 @@
     "_syncId": "4bce67dc-7864-4a85-a03a-110826725bdd"
   },
   {
+    "name": "avatar",
+    "parent": null,
+    "_syncId": "595e977e-2dbf-4438-9e6b-be0037d81f33"
+  },
+  {
+    "name": "imam",
+    "parent": null,
+    "_syncId": "7fd5726b-8494-4f6f-8712-fd7faa63992e"
+  },
+  {
     "name": "dpp",
     "parent": "f889565e-cf89-49cc-a5ad-d2153abca8cd",
     "_syncId": "9159a897-7182-4234-9bd3-7cee648eaf56"
@@ -43,5 +53,10 @@
     "name": "organisasi",
     "parent": null,
     "_syncId": "f889565e-cf89-49cc-a5ad-d2153abca8cd"
+  },
+  {
+    "name": "20241031",
+    "parent": "312b8231-476c-43d1-b0dd-8b3a22d8f8f9",
+    "_syncId": "fefe58cf-fc0b-4068-ad7b-f665af315b3a"
   }
 ]

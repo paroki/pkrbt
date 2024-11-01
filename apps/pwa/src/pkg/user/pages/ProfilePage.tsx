@@ -1,10 +1,9 @@
-import { auth } from "@/common/auth";
 import { createDirectus } from "@/common/directus";
 import { getCurrentUser } from "@/common/user";
-import { readItem, readUser } from "@directus/sdk";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import ProfileForm from "@/user/components/ProfileForm";
+import ProfileForm from "@/pkg/user/components/ProfileForm";
+import DefaultLayout from "@/ui/layout/default";
+import { UserR } from "../types";
 
 type Props = {
   params: {
@@ -19,7 +18,7 @@ export async function getUser(id: string) {
     return { item: currentUser, error: undefined };
   }
 
-  const directus = createDirectus();
+  const directus = await createDirectus();
   return await directus.user.read(id, {
     fields: ["*", { role: ["id", "name"] }],
   });
@@ -42,9 +41,10 @@ export default async function ProfilePage({ params }: Props) {
   }
 
   return (
-    <div>
-      <Link href="/">Homepage</Link>
-      <ProfileForm user={user} />
-    </div>
+    <DefaultLayout>
+      <div className="py-8">
+        <ProfileForm user={user as UserR} />
+      </div>
+    </DefaultLayout>
   );
 }

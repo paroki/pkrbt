@@ -3,7 +3,7 @@ import Credentials from "next-auth/providers/credentials";
 import { cookies } from "next/headers";
 import { DIRECTUS_TOKEN_NAME, DIRECTUS_URL } from "./config";
 import { createDirectus, readMe, rest, staticToken } from "@directus/sdk";
-import { Schema, type User as DirectusUser } from "@pkrbt/directus";
+import { Schema } from "@pkrbt/directus";
 import { AdapterUser } from "next-auth/adapters";
 
 export async function getSessionToken() {

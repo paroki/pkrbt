@@ -176,7 +176,7 @@
     "position_x": 40,
     "position_y": 1,
     "options": {
-      "code": "module.exports = async function(data) {\n\tlet keys = data.$trigger.keys ?? [data.$trigger.key];\n    let slug = data.$trigger.payload.title\n\t\t.toLowerCase()\n\t\t.trim()\n\t\t.replace(/[^\\w\\s-]/g, '')\n\t\t.replace(/[\\s_-]+/g, '-')\n\t\t.replace(/^-+|-+$/g, '');\n    return {keys, slug}\n}"
+      "code": "module.exports = async function(data) {\n\tlet keys = data.$trigger.keys ?? [data.$trigger.key];\n    let slug = data.$trigger.payload.title\n\t\t.toLowerCase()\n\t\t.trim()\n\t\t.replace(/[^\\w\\s-]/g, '')\n\t\t.replace(/[\\s_-]+/g, '-')\n\t\t.replace(/^-+|-+$/g, '');\n    let title = data.$trigger.payload.title\n    return {keys, slug, title}\n}"
     },
     "resolve": "69c9a0a6-bc44-4f7d-b728-8476d5de3191",
     "reject": null,

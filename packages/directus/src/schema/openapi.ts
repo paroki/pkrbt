@@ -404,6 +404,190 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/users": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Users
+         * @description List the users.
+         */
+        get: operations["getUsers"];
+        put?: never;
+        /**
+         * Create a User
+         * @description Create a new user.
+         */
+        post: operations["createUser"];
+        /**
+         * Delete Multiple Users
+         * @description Delete multiple existing users.
+         */
+        delete: operations["deleteUsers"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Users
+         * @description Update multiple users at the same time.
+         */
+        patch: operations["updateUsers"];
+        trace?: never;
+    };
+    "/users/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve a User
+         * @description Retrieve a single user by unique identifier.
+         */
+        get: operations["getUser"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete a User
+         * @description Delete an existing user
+         */
+        delete: operations["deleteUser"];
+        options?: never;
+        head?: never;
+        /**
+         * Update a User
+         * @description Update an existing user
+         */
+        patch: operations["updateUser"];
+        trace?: never;
+    };
+    "/users/invite": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Invite User(s)
+         * @description Invites one or more users to this project. It creates a user with an invited status, and then sends an email to the user with instructions on how to activate their account.
+         */
+        post: operations["invite"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/users/invite/accept": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Accept User Invite
+         * @description Accepts and enables an invited user using a JWT invitation token.
+         */
+        post: operations["acceptInvite"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/users/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve Current User
+         * @description Retrieve the currently authenticated user.
+         */
+        get: operations["getMe"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Update Current User
+         * @description Update the currently authenticated user.
+         */
+        patch: operations["updateMe"];
+        trace?: never;
+    };
+    "/users/me/track/page": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        /**
+         * Update Last Page
+         * @description Updates the last used page field of the currently authenticated user. This is used internally to be able to open the Directus admin app from the last page you used.
+         */
+        patch: operations["updateLastUsedPageMe"];
+        trace?: never;
+    };
+    "/users/me/tfa/enable": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Enable 2FA
+         * @description Enables two-factor authentication for the currently authenticated user.
+         */
+        post: operations["meTfaEnable"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/users/me/tfa/disable": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Disable 2FA
+         * @description Disables two-factor authentication for the currently authenticated user.
+         */
+        post: operations["meTfaDisable"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/activity": {
         parameters: {
             query?: never;
@@ -932,7 +1116,7 @@ export interface paths {
         patch: operations["updatePreset"];
         trace?: never;
     };
-    "/users": {
+    "/items/user_organisasi": {
         parameters: {
             query?: never;
             header?: never;
@@ -940,31 +1124,31 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * List Users
-         * @description List the users.
+         * List Items
+         * @description List the user_organisasi items.
          */
-        get: operations["getUsers"];
+        get: operations["readItemsUserOrganisasi"];
         put?: never;
         /**
-         * Create a User
-         * @description Create a new user.
+         * Create an Item
+         * @description Create a new user_organisasi item.
          */
-        post: operations["createUser"];
+        post: operations["createItemsUserOrganisasi"];
         /**
-         * Delete Multiple Users
-         * @description Delete multiple existing users.
+         * Delete Multiple Items
+         * @description Delete multiple existing user_organisasi items.
          */
-        delete: operations["deleteUsers"];
+        delete: operations["deleteItemsUserOrganisasi"];
         options?: never;
         head?: never;
         /**
-         * Update Multiple Users
-         * @description Update multiple users at the same time.
+         * Update Multiple Items
+         * @description Update multiple user_organisasi items at the same time.
          */
-        patch: operations["updateUsers"];
+        patch: operations["updateItemsUserOrganisasi"];
         trace?: never;
     };
-    "/users/{id}": {
+    "/items/user_organisasi/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -972,148 +1156,24 @@ export interface paths {
             cookie?: never;
         };
         /**
-         * Retrieve a User
-         * @description Retrieve a single user by unique identifier.
+         * Retrieve an Item
+         * @description Retrieve a single user_organisasi item by unique identifier.
          */
-        get: operations["getUser"];
+        get: operations["readSingleItemsUserOrganisasi"];
         put?: never;
         post?: never;
         /**
-         * Delete a User
-         * @description Delete an existing user
+         * Delete an Item
+         * @description Delete an existing user_organisasi item.
          */
-        delete: operations["deleteUser"];
+        delete: operations["deleteSingleItemsUserOrganisasi"];
         options?: never;
         head?: never;
         /**
-         * Update a User
-         * @description Update an existing user
+         * Update an Item
+         * @description Update an existing user_organisasi item.
          */
-        patch: operations["updateUser"];
-        trace?: never;
-    };
-    "/users/invite": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Invite User(s)
-         * @description Invites one or more users to this project. It creates a user with an invited status, and then sends an email to the user with instructions on how to activate their account.
-         */
-        post: operations["invite"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/users/invite/accept": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Accept User Invite
-         * @description Accepts and enables an invited user using a JWT invitation token.
-         */
-        post: operations["acceptInvite"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/users/me": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieve Current User
-         * @description Retrieve the currently authenticated user.
-         */
-        get: operations["getMe"];
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        /**
-         * Update Current User
-         * @description Update the currently authenticated user.
-         */
-        patch: operations["updateMe"];
-        trace?: never;
-    };
-    "/users/me/track/page": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        post?: never;
-        delete?: never;
-        options?: never;
-        head?: never;
-        /**
-         * Update Last Page
-         * @description Updates the last used page field of the currently authenticated user. This is used internally to be able to open the Directus admin app from the last page you used.
-         */
-        patch: operations["updateLastUsedPageMe"];
-        trace?: never;
-    };
-    "/users/me/tfa/enable": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Enable 2FA
-         * @description Enables two-factor authentication for the currently authenticated user.
-         */
-        post: operations["meTfaEnable"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/users/me/tfa/disable": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        get?: never;
-        put?: never;
-        /**
-         * Disable 2FA
-         * @description Disables two-factor authentication for the currently authenticated user.
-         */
-        post: operations["meTfaDisable"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
+        patch: operations["updateSingleItemsUserOrganisasi"];
         trace?: never;
     };
     "/relations": {
@@ -1652,6 +1712,606 @@ export interface paths {
         patch: operations["updateSingleItemsDirectusSyncIDMap"];
         trace?: never;
     };
+    "/items/organisasi_anggota_organisasi": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the organisasi_anggota_organisasi items.
+         */
+        get: operations["readItemsOrganisasiAnggotaOrganisasi"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new organisasi_anggota_organisasi item.
+         */
+        post: operations["createItemsOrganisasiAnggotaOrganisasi"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing organisasi_anggota_organisasi items.
+         */
+        delete: operations["deleteItemsOrganisasiAnggotaOrganisasi"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple organisasi_anggota_organisasi items at the same time.
+         */
+        patch: operations["updateItemsOrganisasiAnggotaOrganisasi"];
+        trace?: never;
+    };
+    "/items/organisasi_anggota_organisasi/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single organisasi_anggota_organisasi item by unique identifier.
+         */
+        get: operations["readSingleItemsOrganisasiAnggotaOrganisasi"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing organisasi_anggota_organisasi item.
+         */
+        delete: operations["deleteSingleItemsOrganisasiAnggotaOrganisasi"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing organisasi_anggota_organisasi item.
+         */
+        patch: operations["updateSingleItemsOrganisasiAnggotaOrganisasi"];
+        trace?: never;
+    };
+    "/items/ibadat": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the ibadat items.
+         */
+        get: operations["readItemsIbadat"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new ibadat item.
+         */
+        post: operations["createItemsIbadat"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing ibadat items.
+         */
+        delete: operations["deleteItemsIbadat"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple ibadat items at the same time.
+         */
+        patch: operations["updateItemsIbadat"];
+        trace?: never;
+    };
+    "/items/ibadat/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single ibadat item by unique identifier.
+         */
+        get: operations["readSingleItemsIbadat"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing ibadat item.
+         */
+        delete: operations["deleteSingleItemsIbadat"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing ibadat item.
+         */
+        patch: operations["updateSingleItemsIbadat"];
+        trace?: never;
+    };
+    "/items/organisasi_jabatan_periode_files": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the organisasi_jabatan_periode_files items.
+         */
+        get: operations["readItemsOrganisasiJabatanPeriodeFiles"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new organisasi_jabatan_periode_files item.
+         */
+        post: operations["createItemsOrganisasiJabatanPeriodeFiles"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing organisasi_jabatan_periode_files items.
+         */
+        delete: operations["deleteItemsOrganisasiJabatanPeriodeFiles"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple organisasi_jabatan_periode_files items at the same time.
+         */
+        patch: operations["updateItemsOrganisasiJabatanPeriodeFiles"];
+        trace?: never;
+    };
+    "/items/organisasi_jabatan_periode_files/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single organisasi_jabatan_periode_files item by unique identifier.
+         */
+        get: operations["readSingleItemsOrganisasiJabatanPeriodeFiles"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing organisasi_jabatan_periode_files item.
+         */
+        delete: operations["deleteSingleItemsOrganisasiJabatanPeriodeFiles"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing organisasi_jabatan_periode_files item.
+         */
+        patch: operations["updateSingleItemsOrganisasiJabatanPeriodeFiles"];
+        trace?: never;
+    };
+    "/items/timeline": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the timeline items.
+         */
+        get: operations["readItemsTimeline"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new timeline item.
+         */
+        post: operations["createItemsTimeline"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing timeline items.
+         */
+        delete: operations["deleteItemsTimeline"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple timeline items at the same time.
+         */
+        patch: operations["updateItemsTimeline"];
+        trace?: never;
+    };
+    "/items/timeline/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single timeline item by unique identifier.
+         */
+        get: operations["readSingleItemsTimeline"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing timeline item.
+         */
+        delete: operations["deleteSingleItemsTimeline"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing timeline item.
+         */
+        patch: operations["updateSingleItemsTimeline"];
+        trace?: never;
+    };
+    "/items/kegiatan_rapat_files": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the kegiatan_rapat_files items.
+         */
+        get: operations["readItemsKegiatanRapatFiles"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new kegiatan_rapat_files item.
+         */
+        post: operations["createItemsKegiatanRapatFiles"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing kegiatan_rapat_files items.
+         */
+        delete: operations["deleteItemsKegiatanRapatFiles"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple kegiatan_rapat_files items at the same time.
+         */
+        patch: operations["updateItemsKegiatanRapatFiles"];
+        trace?: never;
+    };
+    "/items/kegiatan_rapat_files/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single kegiatan_rapat_files item by unique identifier.
+         */
+        get: operations["readSingleItemsKegiatanRapatFiles"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing kegiatan_rapat_files item.
+         */
+        delete: operations["deleteSingleItemsKegiatanRapatFiles"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing kegiatan_rapat_files item.
+         */
+        patch: operations["updateSingleItemsKegiatanRapatFiles"];
+        trace?: never;
+    };
+    "/items/pertemuan": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the pertemuan items.
+         */
+        get: operations["readItemsPertemuan"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new pertemuan item.
+         */
+        post: operations["createItemsPertemuan"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing pertemuan items.
+         */
+        delete: operations["deleteItemsPertemuan"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple pertemuan items at the same time.
+         */
+        patch: operations["updateItemsPertemuan"];
+        trace?: never;
+    };
+    "/items/pertemuan/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single pertemuan item by unique identifier.
+         */
+        get: operations["readSingleItemsPertemuan"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing pertemuan item.
+         */
+        delete: operations["deleteSingleItemsPertemuan"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing pertemuan item.
+         */
+        patch: operations["updateSingleItemsPertemuan"];
+        trace?: never;
+    };
+    "/items/kegiatan_misa": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the kegiatan_misa items.
+         */
+        get: operations["readItemsKegiatanMisa"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new kegiatan_misa item.
+         */
+        post: operations["createItemsKegiatanMisa"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing kegiatan_misa items.
+         */
+        delete: operations["deleteItemsKegiatanMisa"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple kegiatan_misa items at the same time.
+         */
+        patch: operations["updateItemsKegiatanMisa"];
+        trace?: never;
+    };
+    "/items/kegiatan_misa/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single kegiatan_misa item by unique identifier.
+         */
+        get: operations["readSingleItemsKegiatanMisa"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing kegiatan_misa item.
+         */
+        delete: operations["deleteSingleItemsKegiatanMisa"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing kegiatan_misa item.
+         */
+        patch: operations["updateSingleItemsKegiatanMisa"];
+        trace?: never;
+    };
+    "/items/organisasi_jabatan_periode": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the organisasi_jabatan_periode items.
+         */
+        get: operations["readItemsOrganisasiJabatanPeriode"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new organisasi_jabatan_periode item.
+         */
+        post: operations["createItemsOrganisasiJabatanPeriode"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing organisasi_jabatan_periode items.
+         */
+        delete: operations["deleteItemsOrganisasiJabatanPeriode"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple organisasi_jabatan_periode items at the same time.
+         */
+        patch: operations["updateItemsOrganisasiJabatanPeriode"];
+        trace?: never;
+    };
+    "/items/organisasi_jabatan_periode/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single organisasi_jabatan_periode item by unique identifier.
+         */
+        get: operations["readSingleItemsOrganisasiJabatanPeriode"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing organisasi_jabatan_periode item.
+         */
+        delete: operations["deleteSingleItemsOrganisasiJabatanPeriode"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing organisasi_jabatan_periode item.
+         */
+        patch: operations["updateSingleItemsOrganisasiJabatanPeriode"];
+        trace?: never;
+    };
+    "/items/organisasi_anggota": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the organisasi_anggota items.
+         */
+        get: operations["readItemsOrganisasiAnggota"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new organisasi_anggota item.
+         */
+        post: operations["createItemsOrganisasiAnggota"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing organisasi_anggota items.
+         */
+        delete: operations["deleteItemsOrganisasiAnggota"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple organisasi_anggota items at the same time.
+         */
+        patch: operations["updateItemsOrganisasiAnggota"];
+        trace?: never;
+    };
+    "/items/organisasi_anggota/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single organisasi_anggota item by unique identifier.
+         */
+        get: operations["readSingleItemsOrganisasiAnggota"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing organisasi_anggota item.
+         */
+        delete: operations["deleteSingleItemsOrganisasiAnggota"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing organisasi_anggota item.
+         */
+        patch: operations["updateSingleItemsOrganisasiAnggota"];
+        trace?: never;
+    };
+    "/items/organisasi_jabatan": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the organisasi_jabatan items.
+         */
+        get: operations["readItemsOrganisasiJabatan"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new organisasi_jabatan item.
+         */
+        post: operations["createItemsOrganisasiJabatan"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing organisasi_jabatan items.
+         */
+        delete: operations["deleteItemsOrganisasiJabatan"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple organisasi_jabatan items at the same time.
+         */
+        patch: operations["updateItemsOrganisasiJabatan"];
+        trace?: never;
+    };
+    "/items/organisasi_jabatan/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single organisasi_jabatan item by unique identifier.
+         */
+        get: operations["readSingleItemsOrganisasiJabatan"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing organisasi_jabatan item.
+         */
+        delete: operations["deleteSingleItemsOrganisasiJabatan"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing organisasi_jabatan item.
+         */
+        patch: operations["updateSingleItemsOrganisasiJabatan"];
+        trace?: never;
+    };
     "/items/block_hero": {
         parameters: {
             query?: never;
@@ -2072,546 +2732,6 @@ export interface paths {
         patch: operations["updateSingleItemsHeroImages"];
         trace?: never;
     };
-    "/items/post": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Items
-         * @description List the post items.
-         */
-        get: operations["readItemsPost"];
-        put?: never;
-        /**
-         * Create an Item
-         * @description Create a new post item.
-         */
-        post: operations["createItemsPost"];
-        /**
-         * Delete Multiple Items
-         * @description Delete multiple existing post items.
-         */
-        delete: operations["deleteItemsPost"];
-        options?: never;
-        head?: never;
-        /**
-         * Update Multiple Items
-         * @description Update multiple post items at the same time.
-         */
-        patch: operations["updateItemsPost"];
-        trace?: never;
-    };
-    "/items/post/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieve an Item
-         * @description Retrieve a single post item by unique identifier.
-         */
-        get: operations["readSingleItemsPost"];
-        put?: never;
-        post?: never;
-        /**
-         * Delete an Item
-         * @description Delete an existing post item.
-         */
-        delete: operations["deleteSingleItemsPost"];
-        options?: never;
-        head?: never;
-        /**
-         * Update an Item
-         * @description Update an existing post item.
-         */
-        patch: operations["updateSingleItemsPost"];
-        trace?: never;
-    };
-    "/items/imam": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Items
-         * @description List the imam items.
-         */
-        get: operations["readItemsImam"];
-        put?: never;
-        /**
-         * Create an Item
-         * @description Create a new imam item.
-         */
-        post: operations["createItemsImam"];
-        /**
-         * Delete Multiple Items
-         * @description Delete multiple existing imam items.
-         */
-        delete: operations["deleteItemsImam"];
-        options?: never;
-        head?: never;
-        /**
-         * Update Multiple Items
-         * @description Update multiple imam items at the same time.
-         */
-        patch: operations["updateItemsImam"];
-        trace?: never;
-    };
-    "/items/imam/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieve an Item
-         * @description Retrieve a single imam item by unique identifier.
-         */
-        get: operations["readSingleItemsImam"];
-        put?: never;
-        post?: never;
-        /**
-         * Delete an Item
-         * @description Delete an existing imam item.
-         */
-        delete: operations["deleteSingleItemsImam"];
-        options?: never;
-        head?: never;
-        /**
-         * Update an Item
-         * @description Update an existing imam item.
-         */
-        patch: operations["updateSingleItemsImam"];
-        trace?: never;
-    };
-    "/items/imam_riwayat": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Items
-         * @description List the imam_riwayat items.
-         */
-        get: operations["readItemsImamRiwayat"];
-        put?: never;
-        /**
-         * Create an Item
-         * @description Create a new imam_riwayat item.
-         */
-        post: operations["createItemsImamRiwayat"];
-        /**
-         * Delete Multiple Items
-         * @description Delete multiple existing imam_riwayat items.
-         */
-        delete: operations["deleteItemsImamRiwayat"];
-        options?: never;
-        head?: never;
-        /**
-         * Update Multiple Items
-         * @description Update multiple imam_riwayat items at the same time.
-         */
-        patch: operations["updateItemsImamRiwayat"];
-        trace?: never;
-    };
-    "/items/imam_riwayat/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieve an Item
-         * @description Retrieve a single imam_riwayat item by unique identifier.
-         */
-        get: operations["readSingleItemsImamRiwayat"];
-        put?: never;
-        post?: never;
-        /**
-         * Delete an Item
-         * @description Delete an existing imam_riwayat item.
-         */
-        delete: operations["deleteSingleItemsImamRiwayat"];
-        options?: never;
-        head?: never;
-        /**
-         * Update an Item
-         * @description Update an existing imam_riwayat item.
-         */
-        patch: operations["updateSingleItemsImamRiwayat"];
-        trace?: never;
-    };
-    "/items/misa": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Items
-         * @description List the misa items.
-         */
-        get: operations["readItemsMisa"];
-        put?: never;
-        /**
-         * Create an Item
-         * @description Create a new misa item.
-         */
-        post: operations["createItemsMisa"];
-        /**
-         * Delete Multiple Items
-         * @description Delete multiple existing misa items.
-         */
-        delete: operations["deleteItemsMisa"];
-        options?: never;
-        head?: never;
-        /**
-         * Update Multiple Items
-         * @description Update multiple misa items at the same time.
-         */
-        patch: operations["updateItemsMisa"];
-        trace?: never;
-    };
-    "/items/misa/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieve an Item
-         * @description Retrieve a single misa item by unique identifier.
-         */
-        get: operations["readSingleItemsMisa"];
-        put?: never;
-        post?: never;
-        /**
-         * Delete an Item
-         * @description Delete an existing misa item.
-         */
-        delete: operations["deleteSingleItemsMisa"];
-        options?: never;
-        head?: never;
-        /**
-         * Update an Item
-         * @description Update an existing misa item.
-         */
-        patch: operations["updateSingleItemsMisa"];
-        trace?: never;
-    };
-    "/items/misa_dokumentasi": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Items
-         * @description List the misa_dokumentasi items.
-         */
-        get: operations["readItemsMisaDokumentasi"];
-        put?: never;
-        /**
-         * Create an Item
-         * @description Create a new misa_dokumentasi item.
-         */
-        post: operations["createItemsMisaDokumentasi"];
-        /**
-         * Delete Multiple Items
-         * @description Delete multiple existing misa_dokumentasi items.
-         */
-        delete: operations["deleteItemsMisaDokumentasi"];
-        options?: never;
-        head?: never;
-        /**
-         * Update Multiple Items
-         * @description Update multiple misa_dokumentasi items at the same time.
-         */
-        patch: operations["updateItemsMisaDokumentasi"];
-        trace?: never;
-    };
-    "/items/misa_dokumentasi/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieve an Item
-         * @description Retrieve a single misa_dokumentasi item by unique identifier.
-         */
-        get: operations["readSingleItemsMisaDokumentasi"];
-        put?: never;
-        post?: never;
-        /**
-         * Delete an Item
-         * @description Delete an existing misa_dokumentasi item.
-         */
-        delete: operations["deleteSingleItemsMisaDokumentasi"];
-        options?: never;
-        head?: never;
-        /**
-         * Update an Item
-         * @description Update an existing misa_dokumentasi item.
-         */
-        patch: operations["updateSingleItemsMisaDokumentasi"];
-        trace?: never;
-    };
-    "/items/organisasi": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Items
-         * @description List the organisasi items.
-         */
-        get: operations["readItemsOrganisasi"];
-        put?: never;
-        /**
-         * Create an Item
-         * @description Create a new organisasi item.
-         */
-        post: operations["createItemsOrganisasi"];
-        /**
-         * Delete Multiple Items
-         * @description Delete multiple existing organisasi items.
-         */
-        delete: operations["deleteItemsOrganisasi"];
-        options?: never;
-        head?: never;
-        /**
-         * Update Multiple Items
-         * @description Update multiple organisasi items at the same time.
-         */
-        patch: operations["updateItemsOrganisasi"];
-        trace?: never;
-    };
-    "/items/organisasi/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieve an Item
-         * @description Retrieve a single organisasi item by unique identifier.
-         */
-        get: operations["readSingleItemsOrganisasi"];
-        put?: never;
-        post?: never;
-        /**
-         * Delete an Item
-         * @description Delete an existing organisasi item.
-         */
-        delete: operations["deleteSingleItemsOrganisasi"];
-        options?: never;
-        head?: never;
-        /**
-         * Update an Item
-         * @description Update an existing organisasi item.
-         */
-        patch: operations["updateSingleItemsOrganisasi"];
-        trace?: never;
-    };
-    "/items/organisasi_jabatan_periode": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Items
-         * @description List the organisasi_jabatan_periode items.
-         */
-        get: operations["readItemsOrganisasiJabatanPeriode"];
-        put?: never;
-        /**
-         * Create an Item
-         * @description Create a new organisasi_jabatan_periode item.
-         */
-        post: operations["createItemsOrganisasiJabatanPeriode"];
-        /**
-         * Delete Multiple Items
-         * @description Delete multiple existing organisasi_jabatan_periode items.
-         */
-        delete: operations["deleteItemsOrganisasiJabatanPeriode"];
-        options?: never;
-        head?: never;
-        /**
-         * Update Multiple Items
-         * @description Update multiple organisasi_jabatan_periode items at the same time.
-         */
-        patch: operations["updateItemsOrganisasiJabatanPeriode"];
-        trace?: never;
-    };
-    "/items/organisasi_jabatan_periode/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieve an Item
-         * @description Retrieve a single organisasi_jabatan_periode item by unique identifier.
-         */
-        get: operations["readSingleItemsOrganisasiJabatanPeriode"];
-        put?: never;
-        post?: never;
-        /**
-         * Delete an Item
-         * @description Delete an existing organisasi_jabatan_periode item.
-         */
-        delete: operations["deleteSingleItemsOrganisasiJabatanPeriode"];
-        options?: never;
-        head?: never;
-        /**
-         * Update an Item
-         * @description Update an existing organisasi_jabatan_periode item.
-         */
-        patch: operations["updateSingleItemsOrganisasiJabatanPeriode"];
-        trace?: never;
-    };
-    "/items/organisasi_anggota": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Items
-         * @description List the organisasi_anggota items.
-         */
-        get: operations["readItemsOrganisasiAnggota"];
-        put?: never;
-        /**
-         * Create an Item
-         * @description Create a new organisasi_anggota item.
-         */
-        post: operations["createItemsOrganisasiAnggota"];
-        /**
-         * Delete Multiple Items
-         * @description Delete multiple existing organisasi_anggota items.
-         */
-        delete: operations["deleteItemsOrganisasiAnggota"];
-        options?: never;
-        head?: never;
-        /**
-         * Update Multiple Items
-         * @description Update multiple organisasi_anggota items at the same time.
-         */
-        patch: operations["updateItemsOrganisasiAnggota"];
-        trace?: never;
-    };
-    "/items/organisasi_anggota/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieve an Item
-         * @description Retrieve a single organisasi_anggota item by unique identifier.
-         */
-        get: operations["readSingleItemsOrganisasiAnggota"];
-        put?: never;
-        post?: never;
-        /**
-         * Delete an Item
-         * @description Delete an existing organisasi_anggota item.
-         */
-        delete: operations["deleteSingleItemsOrganisasiAnggota"];
-        options?: never;
-        head?: never;
-        /**
-         * Update an Item
-         * @description Update an existing organisasi_anggota item.
-         */
-        patch: operations["updateSingleItemsOrganisasiAnggota"];
-        trace?: never;
-    };
-    "/items/organisasi_jabatan": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Items
-         * @description List the organisasi_jabatan items.
-         */
-        get: operations["readItemsOrganisasiJabatan"];
-        put?: never;
-        /**
-         * Create an Item
-         * @description Create a new organisasi_jabatan item.
-         */
-        post: operations["createItemsOrganisasiJabatan"];
-        /**
-         * Delete Multiple Items
-         * @description Delete multiple existing organisasi_jabatan items.
-         */
-        delete: operations["deleteItemsOrganisasiJabatan"];
-        options?: never;
-        head?: never;
-        /**
-         * Update Multiple Items
-         * @description Update multiple organisasi_jabatan items at the same time.
-         */
-        patch: operations["updateItemsOrganisasiJabatan"];
-        trace?: never;
-    };
-    "/items/organisasi_jabatan/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieve an Item
-         * @description Retrieve a single organisasi_jabatan item by unique identifier.
-         */
-        get: operations["readSingleItemsOrganisasiJabatan"];
-        put?: never;
-        post?: never;
-        /**
-         * Delete an Item
-         * @description Delete an existing organisasi_jabatan item.
-         */
-        delete: operations["deleteSingleItemsOrganisasiJabatan"];
-        options?: never;
-        head?: never;
-        /**
-         * Update an Item
-         * @description Update an existing organisasi_jabatan item.
-         */
-        patch: operations["updateSingleItemsOrganisasiJabatan"];
-        trace?: never;
-    };
     "/items/organisasi_struktur": {
         parameters: {
             query?: never;
@@ -2792,7 +2912,7 @@ export interface paths {
         patch: operations["updateSingleItemsPageBlocks"];
         trace?: never;
     };
-    "/items/pendapatan": {
+    "/items/post": {
         parameters: {
             query?: never;
             header?: never;
@@ -2801,30 +2921,30 @@ export interface paths {
         };
         /**
          * List Items
-         * @description List the pendapatan items.
+         * @description List the post items.
          */
-        get: operations["readItemsPendapatan"];
+        get: operations["readItemsPost"];
         put?: never;
         /**
          * Create an Item
-         * @description Create a new pendapatan item.
+         * @description Create a new post item.
          */
-        post: operations["createItemsPendapatan"];
+        post: operations["createItemsPost"];
         /**
          * Delete Multiple Items
-         * @description Delete multiple existing pendapatan items.
+         * @description Delete multiple existing post items.
          */
-        delete: operations["deleteItemsPendapatan"];
+        delete: operations["deleteItemsPost"];
         options?: never;
         head?: never;
         /**
          * Update Multiple Items
-         * @description Update multiple pendapatan items at the same time.
+         * @description Update multiple post items at the same time.
          */
-        patch: operations["updateItemsPendapatan"];
+        patch: operations["updateItemsPost"];
         trace?: never;
     };
-    "/items/pendapatan/{id}": {
+    "/items/post/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -2833,83 +2953,23 @@ export interface paths {
         };
         /**
          * Retrieve an Item
-         * @description Retrieve a single pendapatan item by unique identifier.
+         * @description Retrieve a single post item by unique identifier.
          */
-        get: operations["readSingleItemsPendapatan"];
+        get: operations["readSingleItemsPost"];
         put?: never;
         post?: never;
         /**
          * Delete an Item
-         * @description Delete an existing pendapatan item.
+         * @description Delete an existing post item.
          */
-        delete: operations["deleteSingleItemsPendapatan"];
+        delete: operations["deleteSingleItemsPost"];
         options?: never;
         head?: never;
         /**
          * Update an Item
-         * @description Update an existing pendapatan item.
+         * @description Update an existing post item.
          */
-        patch: operations["updateSingleItemsPendapatan"];
-        trace?: never;
-    };
-    "/items/sumber_pendapatan": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * List Items
-         * @description List the sumber_pendapatan items.
-         */
-        get: operations["readItemsSumberPendapatan"];
-        put?: never;
-        /**
-         * Create an Item
-         * @description Create a new sumber_pendapatan item.
-         */
-        post: operations["createItemsSumberPendapatan"];
-        /**
-         * Delete Multiple Items
-         * @description Delete multiple existing sumber_pendapatan items.
-         */
-        delete: operations["deleteItemsSumberPendapatan"];
-        options?: never;
-        head?: never;
-        /**
-         * Update Multiple Items
-         * @description Update multiple sumber_pendapatan items at the same time.
-         */
-        patch: operations["updateItemsSumberPendapatan"];
-        trace?: never;
-    };
-    "/items/sumber_pendapatan/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieve an Item
-         * @description Retrieve a single sumber_pendapatan item by unique identifier.
-         */
-        get: operations["readSingleItemsSumberPendapatan"];
-        put?: never;
-        post?: never;
-        /**
-         * Delete an Item
-         * @description Delete an existing sumber_pendapatan item.
-         */
-        delete: operations["deleteSingleItemsSumberPendapatan"];
-        options?: never;
-        head?: never;
-        /**
-         * Update an Item
-         * @description Update an existing sumber_pendapatan item.
-         */
-        patch: operations["updateSingleItemsSumberPendapatan"];
+        patch: operations["updateSingleItemsPost"];
         trace?: never;
     };
     "/items/post_blocks": {
@@ -2972,6 +3032,186 @@ export interface paths {
         patch: operations["updateSingleItemsPostBlocks"];
         trace?: never;
     };
+    "/items/organisasi": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the organisasi items.
+         */
+        get: operations["readItemsOrganisasi"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new organisasi item.
+         */
+        post: operations["createItemsOrganisasi"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing organisasi items.
+         */
+        delete: operations["deleteItemsOrganisasi"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple organisasi items at the same time.
+         */
+        patch: operations["updateItemsOrganisasi"];
+        trace?: never;
+    };
+    "/items/organisasi/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single organisasi item by unique identifier.
+         */
+        get: operations["readSingleItemsOrganisasi"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing organisasi item.
+         */
+        delete: operations["deleteSingleItemsOrganisasi"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing organisasi item.
+         */
+        patch: operations["updateSingleItemsOrganisasi"];
+        trace?: never;
+    };
+    "/items/rapat_dokumen": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the rapat_dokumen items.
+         */
+        get: operations["readItemsRapatDokumen"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new rapat_dokumen item.
+         */
+        post: operations["createItemsRapatDokumen"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing rapat_dokumen items.
+         */
+        delete: operations["deleteItemsRapatDokumen"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple rapat_dokumen items at the same time.
+         */
+        patch: operations["updateItemsRapatDokumen"];
+        trace?: never;
+    };
+    "/items/rapat_dokumen/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single rapat_dokumen item by unique identifier.
+         */
+        get: operations["readSingleItemsRapatDokumen"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing rapat_dokumen item.
+         */
+        delete: operations["deleteSingleItemsRapatDokumen"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing rapat_dokumen item.
+         */
+        patch: operations["updateSingleItemsRapatDokumen"];
+        trace?: never;
+    };
+    "/items/kegiatan_rapat": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the kegiatan_rapat items.
+         */
+        get: operations["readItemsKegiatanRapat"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new kegiatan_rapat item.
+         */
+        post: operations["createItemsKegiatanRapat"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing kegiatan_rapat items.
+         */
+        delete: operations["deleteItemsKegiatanRapat"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple kegiatan_rapat items at the same time.
+         */
+        patch: operations["updateItemsKegiatanRapat"];
+        trace?: never;
+    };
+    "/items/kegiatan_rapat/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single kegiatan_rapat item by unique identifier.
+         */
+        get: operations["readSingleItemsKegiatanRapat"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing kegiatan_rapat item.
+         */
+        delete: operations["deleteSingleItemsKegiatanRapat"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing kegiatan_rapat item.
+         */
+        patch: operations["updateSingleItemsKegiatanRapat"];
+        trace?: never;
+    };
     "/items/post_images": {
         parameters: {
             query?: never;
@@ -3032,7 +3272,7 @@ export interface paths {
         patch: operations["updateSingleItemsPostImages"];
         trace?: never;
     };
-    "/items/user_role": {
+    "/items/pendapatan": {
         parameters: {
             query?: never;
             header?: never;
@@ -3041,30 +3281,30 @@ export interface paths {
         };
         /**
          * List Items
-         * @description List the user_role items.
+         * @description List the pendapatan items.
          */
-        get: operations["readItemsUserRole"];
+        get: operations["readItemsPendapatan"];
         put?: never;
         /**
          * Create an Item
-         * @description Create a new user_role item.
+         * @description Create a new pendapatan item.
          */
-        post: operations["createItemsUserRole"];
+        post: operations["createItemsPendapatan"];
         /**
          * Delete Multiple Items
-         * @description Delete multiple existing user_role items.
+         * @description Delete multiple existing pendapatan items.
          */
-        delete: operations["deleteItemsUserRole"];
+        delete: operations["deleteItemsPendapatan"];
         options?: never;
         head?: never;
         /**
          * Update Multiple Items
-         * @description Update multiple user_role items at the same time.
+         * @description Update multiple pendapatan items at the same time.
          */
-        patch: operations["updateItemsUserRole"];
+        patch: operations["updateItemsPendapatan"];
         trace?: never;
     };
-    "/items/user_role/{id}": {
+    "/items/pendapatan/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -3073,26 +3313,26 @@ export interface paths {
         };
         /**
          * Retrieve an Item
-         * @description Retrieve a single user_role item by unique identifier.
+         * @description Retrieve a single pendapatan item by unique identifier.
          */
-        get: operations["readSingleItemsUserRole"];
+        get: operations["readSingleItemsPendapatan"];
         put?: never;
         post?: never;
         /**
          * Delete an Item
-         * @description Delete an existing user_role item.
+         * @description Delete an existing pendapatan item.
          */
-        delete: operations["deleteSingleItemsUserRole"];
+        delete: operations["deleteSingleItemsPendapatan"];
         options?: never;
         head?: never;
         /**
          * Update an Item
-         * @description Update an existing user_role item.
+         * @description Update an existing pendapatan item.
          */
-        patch: operations["updateSingleItemsUserRole"];
+        patch: operations["updateSingleItemsPendapatan"];
         trace?: never;
     };
-    "/items/organisasi_anggota_organisasi": {
+    "/items/imam": {
         parameters: {
             query?: never;
             header?: never;
@@ -3101,30 +3341,30 @@ export interface paths {
         };
         /**
          * List Items
-         * @description List the organisasi_anggota_organisasi items.
+         * @description List the imam items.
          */
-        get: operations["readItemsOrganisasiAnggotaOrganisasi"];
+        get: operations["readItemsImam"];
         put?: never;
         /**
          * Create an Item
-         * @description Create a new organisasi_anggota_organisasi item.
+         * @description Create a new imam item.
          */
-        post: operations["createItemsOrganisasiAnggotaOrganisasi"];
+        post: operations["createItemsImam"];
         /**
          * Delete Multiple Items
-         * @description Delete multiple existing organisasi_anggota_organisasi items.
+         * @description Delete multiple existing imam items.
          */
-        delete: operations["deleteItemsOrganisasiAnggotaOrganisasi"];
+        delete: operations["deleteItemsImam"];
         options?: never;
         head?: never;
         /**
          * Update Multiple Items
-         * @description Update multiple organisasi_anggota_organisasi items at the same time.
+         * @description Update multiple imam items at the same time.
          */
-        patch: operations["updateItemsOrganisasiAnggotaOrganisasi"];
+        patch: operations["updateItemsImam"];
         trace?: never;
     };
-    "/items/organisasi_anggota_organisasi/{id}": {
+    "/items/imam/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -3133,26 +3373,26 @@ export interface paths {
         };
         /**
          * Retrieve an Item
-         * @description Retrieve a single organisasi_anggota_organisasi item by unique identifier.
+         * @description Retrieve a single imam item by unique identifier.
          */
-        get: operations["readSingleItemsOrganisasiAnggotaOrganisasi"];
+        get: operations["readSingleItemsImam"];
         put?: never;
         post?: never;
         /**
          * Delete an Item
-         * @description Delete an existing organisasi_anggota_organisasi item.
+         * @description Delete an existing imam item.
          */
-        delete: operations["deleteSingleItemsOrganisasiAnggotaOrganisasi"];
+        delete: operations["deleteSingleItemsImam"];
         options?: never;
         head?: never;
         /**
          * Update an Item
-         * @description Update an existing organisasi_anggota_organisasi item.
+         * @description Update an existing imam item.
          */
-        patch: operations["updateSingleItemsOrganisasiAnggotaOrganisasi"];
+        patch: operations["updateSingleItemsImam"];
         trace?: never;
     };
-    "/items/organisasi_user": {
+    "/items/sumber_pendapatan": {
         parameters: {
             query?: never;
             header?: never;
@@ -3161,30 +3401,30 @@ export interface paths {
         };
         /**
          * List Items
-         * @description List the organisasi_user items.
+         * @description List the sumber_pendapatan items.
          */
-        get: operations["readItemsOrganisasiUser"];
+        get: operations["readItemsSumberPendapatan"];
         put?: never;
         /**
          * Create an Item
-         * @description Create a new organisasi_user item.
+         * @description Create a new sumber_pendapatan item.
          */
-        post: operations["createItemsOrganisasiUser"];
+        post: operations["createItemsSumberPendapatan"];
         /**
          * Delete Multiple Items
-         * @description Delete multiple existing organisasi_user items.
+         * @description Delete multiple existing sumber_pendapatan items.
          */
-        delete: operations["deleteItemsOrganisasiUser"];
+        delete: operations["deleteItemsSumberPendapatan"];
         options?: never;
         head?: never;
         /**
          * Update Multiple Items
-         * @description Update multiple organisasi_user items at the same time.
+         * @description Update multiple sumber_pendapatan items at the same time.
          */
-        patch: operations["updateItemsOrganisasiUser"];
+        patch: operations["updateItemsSumberPendapatan"];
         trace?: never;
     };
-    "/items/organisasi_user/{id}": {
+    "/items/sumber_pendapatan/{id}": {
         parameters: {
             query?: never;
             header?: never;
@@ -3193,23 +3433,323 @@ export interface paths {
         };
         /**
          * Retrieve an Item
-         * @description Retrieve a single organisasi_user item by unique identifier.
+         * @description Retrieve a single sumber_pendapatan item by unique identifier.
          */
-        get: operations["readSingleItemsOrganisasiUser"];
+        get: operations["readSingleItemsSumberPendapatan"];
         put?: never;
         post?: never;
         /**
          * Delete an Item
-         * @description Delete an existing organisasi_user item.
+         * @description Delete an existing sumber_pendapatan item.
          */
-        delete: operations["deleteSingleItemsOrganisasiUser"];
+        delete: operations["deleteSingleItemsSumberPendapatan"];
         options?: never;
         head?: never;
         /**
          * Update an Item
-         * @description Update an existing organisasi_user item.
+         * @description Update an existing sumber_pendapatan item.
          */
-        patch: operations["updateSingleItemsOrganisasiUser"];
+        patch: operations["updateSingleItemsSumberPendapatan"];
+        trace?: never;
+    };
+    "/items/misa_dokumentasi": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the misa_dokumentasi items.
+         */
+        get: operations["readItemsMisaDokumentasi"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new misa_dokumentasi item.
+         */
+        post: operations["createItemsMisaDokumentasi"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing misa_dokumentasi items.
+         */
+        delete: operations["deleteItemsMisaDokumentasi"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple misa_dokumentasi items at the same time.
+         */
+        patch: operations["updateItemsMisaDokumentasi"];
+        trace?: never;
+    };
+    "/items/misa_dokumentasi/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single misa_dokumentasi item by unique identifier.
+         */
+        get: operations["readSingleItemsMisaDokumentasi"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing misa_dokumentasi item.
+         */
+        delete: operations["deleteSingleItemsMisaDokumentasi"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing misa_dokumentasi item.
+         */
+        patch: operations["updateSingleItemsMisaDokumentasi"];
+        trace?: never;
+    };
+    "/items/misa": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the misa items.
+         */
+        get: operations["readItemsMisa"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new misa item.
+         */
+        post: operations["createItemsMisa"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing misa items.
+         */
+        delete: operations["deleteItemsMisa"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple misa items at the same time.
+         */
+        patch: operations["updateItemsMisa"];
+        trace?: never;
+    };
+    "/items/misa/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single misa item by unique identifier.
+         */
+        get: operations["readSingleItemsMisa"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing misa item.
+         */
+        delete: operations["deleteSingleItemsMisa"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing misa item.
+         */
+        patch: operations["updateSingleItemsMisa"];
+        trace?: never;
+    };
+    "/items/organisasi_files": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the organisasi_files items.
+         */
+        get: operations["readItemsOrganisasiFiles"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new organisasi_files item.
+         */
+        post: operations["createItemsOrganisasiFiles"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing organisasi_files items.
+         */
+        delete: operations["deleteItemsOrganisasiFiles"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple organisasi_files items at the same time.
+         */
+        patch: operations["updateItemsOrganisasiFiles"];
+        trace?: never;
+    };
+    "/items/organisasi_files/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single organisasi_files item by unique identifier.
+         */
+        get: operations["readSingleItemsOrganisasiFiles"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing organisasi_files item.
+         */
+        delete: operations["deleteSingleItemsOrganisasiFiles"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing organisasi_files item.
+         */
+        patch: operations["updateSingleItemsOrganisasiFiles"];
+        trace?: never;
+    };
+    "/items/misa_organisasi": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the misa_organisasi items.
+         */
+        get: operations["readItemsMisaOrganisasi"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new misa_organisasi item.
+         */
+        post: operations["createItemsMisaOrganisasi"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing misa_organisasi items.
+         */
+        delete: operations["deleteItemsMisaOrganisasi"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple misa_organisasi items at the same time.
+         */
+        patch: operations["updateItemsMisaOrganisasi"];
+        trace?: never;
+    };
+    "/items/misa_organisasi/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single misa_organisasi item by unique identifier.
+         */
+        get: operations["readSingleItemsMisaOrganisasi"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing misa_organisasi item.
+         */
+        delete: operations["deleteSingleItemsMisaOrganisasi"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing misa_organisasi item.
+         */
+        patch: operations["updateSingleItemsMisaOrganisasi"];
+        trace?: never;
+    };
+    "/items/imam_riwayat": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * List Items
+         * @description List the imam_riwayat items.
+         */
+        get: operations["readItemsImamRiwayat"];
+        put?: never;
+        /**
+         * Create an Item
+         * @description Create a new imam_riwayat item.
+         */
+        post: operations["createItemsImamRiwayat"];
+        /**
+         * Delete Multiple Items
+         * @description Delete multiple existing imam_riwayat items.
+         */
+        delete: operations["deleteItemsImamRiwayat"];
+        options?: never;
+        head?: never;
+        /**
+         * Update Multiple Items
+         * @description Update multiple imam_riwayat items at the same time.
+         */
+        patch: operations["updateItemsImamRiwayat"];
+        trace?: never;
+    };
+    "/items/imam_riwayat/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve an Item
+         * @description Retrieve a single imam_riwayat item by unique identifier.
+         */
+        get: operations["readSingleItemsImamRiwayat"];
+        put?: never;
+        post?: never;
+        /**
+         * Delete an Item
+         * @description Delete an existing imam_riwayat item.
+         */
+        delete: operations["deleteSingleItemsImamRiwayat"];
+        options?: never;
+        head?: never;
+        /**
+         * Update an Item
+         * @description Update an existing imam_riwayat item.
+         */
+        patch: operations["updateSingleItemsImamRiwayat"];
         trace?: never;
     };
 }
@@ -3482,10 +4022,10 @@ export interface components {
             theme_light_overrides?: unknown;
             theme_dark_overrides?: unknown;
             nama?: string | null;
+            tempatLahir?: string | null;
             /** Format: date */
             tanggalLahir?: string | null;
-            tempatLahir?: string | null;
-            orgnisasi?: (number | components["schemas"]["ItemsOrganisasiUser"])[] | null;
+            organisasi?: (number | components["schemas"]["ItemsUserOrganisasi"])[] | null;
             policies?: unknown;
         };
         Query: {
@@ -3720,6 +4260,12 @@ export interface components {
             filter?: unknown;
             icon?: string | null;
             color?: string | null;
+        };
+        ItemsUserOrganisasi: {
+            id?: number;
+            user?: (string | components["schemas"]["Users"]) | null;
+            organisasi?: (string | components["schemas"]["ItemsOrganisasi"]) | null;
+            persetujuan?: boolean | null;
         };
         Relations: {
             /**
@@ -4163,6 +4709,147 @@ export interface components {
             /** Format: timestamp */
             created_at?: string | null;
         };
+        ItemsOrganisasiAnggotaOrganisasi: {
+            id?: number;
+            organisasi_anggota?: (string | components["schemas"]["ItemsOrganisasiAnggota"]) | null;
+            organisasi?: (string | components["schemas"]["ItemsOrganisasi"]) | null;
+            sort?: number | null;
+        };
+        ItemsIbadat: {
+            /** Format: uuid */
+            id?: string;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            organisasi?: (string | components["schemas"]["ItemsOrganisasi"]) | null;
+            nama?: string | null;
+            tempat?: string | null;
+            /** Format: date */
+            tanggal?: string | null;
+            /** Format: time */
+            jam?: string | null;
+            keterangan?: string | null;
+        };
+        ItemsOrganisasiJabatanPeriodeFiles: {
+            id?: number;
+            organisasi_jabatan_periode_id?: (string | components["schemas"]["ItemsOrganisasiJabatanPeriode"]) | null;
+            directus_files_id?: (string | components["schemas"]["Files"]) | null;
+        };
+        ItemsTimeline: {
+            /** Format: uuid */
+            id?: string;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            judul?: string | null;
+            /** Format: date */
+            tanggal?: string | null;
+            content?: string | null;
+            collection_id?: string | null;
+            collection?: string | null;
+        };
+        ItemsKegiatanRapatFiles: {
+            id?: number;
+            kegiatan_rapat_id?: (string | components["schemas"]["ItemsKegiatanRapat"]) | null;
+            directus_files_id?: (string | components["schemas"]["Files"]) | null;
+        };
+        ItemsPertemuan: {
+            /** Format: uuid */
+            id?: string;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            nama?: string | null;
+            tempat?: string | null;
+            organisasi?: (string | components["schemas"]["ItemsOrganisasi"]) | null;
+            /** Format: date */
+            tanggal?: string | null;
+            /** Format: time */
+            jam?: string | null;
+            catatan?: string | null;
+            cover?: (string | components["schemas"]["Files"]) | null;
+        };
+        ItemsKegiatanMisa: {
+            /** Format: uuid */
+            id?: string;
+            sort?: number | null;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            nama?: string | null;
+            /** Format: date */
+            tanggal?: string | null;
+            /** Format: time */
+            jam?: string | null;
+            tempat?: string | null;
+        };
+        ItemsOrganisasiJabatanPeriode: {
+            /** Format: date */
+            berakhirPada?: string | null;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: date */
+            dimulaiPada?: string;
+            /** Format: uuid */
+            id?: string;
+            nama?: string | null;
+            organisasi?: string | components["schemas"]["ItemsOrganisasi"];
+            sort?: number | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: date */
+            dilantikPada?: string | null;
+            dokumentasi?: (string | components["schemas"]["ItemsOrganisasi"])[] | null;
+            dokumen?: (number | components["schemas"]["ItemsOrganisasiJabatanPeriodeFiles"])[] | null;
+        };
+        ItemsOrganisasiAnggota: {
+            aktif?: boolean | null;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            foto?: (string | components["schemas"]["Files"]) | null;
+            gelarBelakang?: string | null;
+            gelarDepan?: string | null;
+            /** Format: uuid */
+            id?: string;
+            nama?: string | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            user?: (string | components["schemas"]["Users"]) | null;
+            menjabat?: (string | components["schemas"]["ItemsOrganisasiJabatan"])[] | null;
+            organisasi?: (number | components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"])[] | null;
+        };
+        ItemsOrganisasiJabatan: {
+            aktif?: boolean;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: uuid */
+            id?: string;
+            nama?: string | null;
+            periode?: (string | components["schemas"]["ItemsOrganisasiJabatanPeriode"]) | null;
+            sort?: number | null;
+            struktur?: (string | components["schemas"]["ItemsOrganisasiStruktur"]) | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            penjabat?: (string | components["schemas"]["ItemsOrganisasiAnggota"]) | null;
+        };
         ItemsBlockHero: {
             content?: string | null;
             /** Format: timestamp */
@@ -4244,158 +4931,6 @@ export interface components {
             id?: number;
             image?: (string | components["schemas"]["Files"]) | null;
         };
-        ItemsPost: {
-            category?: (string | components["schemas"]["ItemsCategory"]) | null;
-            cover?: (string | components["schemas"]["Files"]) | null;
-            /** Format: timestamp */
-            createdAt?: string | null;
-            createdBy?: (string | components["schemas"]["Users"]) | null;
-            customSummary?: boolean | null;
-            /** Format: uuid */
-            id?: string;
-            /** Format: date-time */
-            publishedAt?: string | null;
-            seo?: (string | components["schemas"]["ItemsSEO"]) | null;
-            slug?: string | null;
-            sort?: number | null;
-            status?: string;
-            summary?: string | null;
-            title?: string | null;
-            /** Format: timestamp */
-            updatedAt?: string | null;
-            updatedBy?: (string | components["schemas"]["Users"]) | null;
-            blocks?: (number | components["schemas"]["ItemsPostBlocks"])[] | null;
-            images?: (number | components["schemas"]["ItemsPostImages"])[] | null;
-        };
-        ItemsImam: {
-            aktif?: boolean | null;
-            artikelTerkait?: (string | components["schemas"]["ItemsPost"]) | null;
-            catatan?: string | null;
-            /** Format: timestamp */
-            createdAt?: string | null;
-            createdBy?: (string | components["schemas"]["Users"]) | null;
-            ditahbisDi?: string | null;
-            ditahbisOleh?: string | null;
-            /** Format: date */
-            ditahbisPada?: string | null;
-            gelarBelakang?: string | null;
-            gelarDepan?: string | null;
-            /** Format: uuid */
-            id?: string;
-            imamDiosesan?: boolean | null;
-            nama?: string | null;
-            sort?: number | null;
-            /** Format: date */
-            tanggalLahir?: string | null;
-            tarekat?: string | null;
-            tempatLahir?: string | null;
-            /** Format: timestamp */
-            updatedAt?: string | null;
-            updatedBy?: (string | components["schemas"]["Users"]) | null;
-            riwayat?: (string | components["schemas"]["ItemsImamRiwayat"])[] | null;
-        };
-        ItemsImamRiwayat: {
-            akurasiTanggal?: boolean | null;
-            /** Format: date */
-            berakhirPada?: string | null;
-            bertugasSebagai?: string | null;
-            /** Format: date */
-            dimulaiPada?: string | null;
-            /** Format: uuid */
-            id?: string;
-            imam?: (string | components["schemas"]["ItemsImam"]) | null;
-        };
-        ItemsMisa: {
-            /** Format: timestamp */
-            createdAt?: string | null;
-            createdBy?: (string | components["schemas"]["Users"]) | null;
-            /** Format: uuid */
-            id?: string;
-            perayaan?: string | null;
-            sort?: number | null;
-            /** Format: date */
-            tanggal?: string | null;
-            /** Format: timestamp */
-            updatedAt?: string | null;
-            updatedBy?: (string | components["schemas"]["Users"]) | null;
-            dokumentasi?: (number | components["schemas"]["ItemsMisaDokumentasi"])[] | null;
-            pendapatan?: (string | components["schemas"]["ItemsPendapatan"])[] | null;
-        };
-        ItemsMisaDokumentasi: {
-            dokumentasi?: (string | components["schemas"]["Files"]) | null;
-            id?: number;
-            misa?: (string | components["schemas"]["ItemsMisa"]) | null;
-        };
-        ItemsOrganisasi: {
-            /** Format: timestamp */
-            createdAt?: string | null;
-            createdBy?: (string | components["schemas"]["Users"]) | null;
-            /** Format: uuid */
-            id?: string;
-            images?: (string | components["schemas"]["Files"]) | null;
-            nama?: string | null;
-            /** @description periode aktif kepengurusan */
-            periode?: (string | components["schemas"]["ItemsOrganisasiJabatanPeriode"]) | null;
-            singkatan?: string | null;
-            sort?: number | null;
-            /** Format: timestamp */
-            updatedAt?: string | null;
-            updatedBy?: (string | components["schemas"]["Users"]) | null;
-        };
-        ItemsOrganisasiJabatanPeriode: {
-            /** Format: date */
-            berakhirPada?: string | null;
-            /** Format: timestamp */
-            createdAt?: string | null;
-            createdBy?: (string | components["schemas"]["Users"]) | null;
-            /** Format: date */
-            dilantikPada?: string | null;
-            /** Format: date */
-            dimulaiPada?: string;
-            /** Format: uuid */
-            id?: string;
-            nama?: string | null;
-            organisasi?: string | components["schemas"]["ItemsOrganisasi"];
-            sort?: number | null;
-            /** Format: timestamp */
-            updatedAt?: string | null;
-            updatedBy?: (string | components["schemas"]["Users"]) | null;
-            dokumentasi?: (string | components["schemas"]["ItemsOrganisasi"])[] | null;
-        };
-        ItemsOrganisasiAnggota: {
-            aktif?: boolean | null;
-            /** Format: timestamp */
-            createdAt?: string | null;
-            createdBy?: (string | components["schemas"]["Users"]) | null;
-            foto?: (string | components["schemas"]["Files"]) | null;
-            gelarBelakang?: string | null;
-            gelarDepan?: string | null;
-            /** Format: uuid */
-            id?: string;
-            nama?: string | null;
-            /** Format: timestamp */
-            updatedAt?: string | null;
-            updatedBy?: (string | components["schemas"]["Users"]) | null;
-            user?: (string | components["schemas"]["Users"]) | null;
-            menjabat?: (string | components["schemas"]["ItemsOrganisasiJabatan"])[] | null;
-            organisasi?: (number | components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"])[] | null;
-        };
-        ItemsOrganisasiJabatan: {
-            aktif?: boolean;
-            /** Format: timestamp */
-            createdAt?: string | null;
-            createdBy?: (string | components["schemas"]["Users"]) | null;
-            /** Format: uuid */
-            id?: string;
-            nama?: string | null;
-            penjabat?: (string | components["schemas"]["ItemsOrganisasiAnggota"]) | null;
-            periode?: (string | components["schemas"]["ItemsOrganisasiJabatanPeriode"]) | null;
-            sort?: number | null;
-            struktur?: (string | components["schemas"]["ItemsOrganisasiStruktur"]) | null;
-            /** Format: timestamp */
-            updatedAt?: string | null;
-            updatedBy?: (string | components["schemas"]["Users"]) | null;
-        };
         ItemsOrganisasiStruktur: {
             aktif?: boolean | null;
             /** Format: timestamp */
@@ -4435,63 +4970,193 @@ export interface components {
             item?: (string | components["schemas"]["ItemsBlockHero"] | components["schemas"]["ItemsBlockMarkdown"] | components["schemas"]["ItemsBlockRichtext"])[] | null;
             page?: (string | components["schemas"]["ItemsPage"]) | null;
         };
-        ItemsPendapatan: {
-            catatan?: string | null;
+        ItemsPost: {
+            category?: (string | components["schemas"]["ItemsCategory"]) | null;
+            cover?: (string | components["schemas"]["Files"]) | null;
             /** Format: timestamp */
             createdAt?: string | null;
             createdBy?: (string | components["schemas"]["Users"]) | null;
+            customSummary?: boolean | null;
             /** Format: uuid */
             id?: string;
-            jumlah?: number | null;
-            misa?: (string | components["schemas"]["ItemsMisa"]) | null;
+            /** Format: date-time */
+            publishedAt?: string | null;
+            seo?: (string | components["schemas"]["ItemsSEO"]) | null;
+            slug?: string | null;
             sort?: number | null;
-            sumber?: (string | components["schemas"]["ItemsSumberPendapatan"]) | null;
-            /** Format: date */
-            tanggal?: string | null;
+            status?: string;
+            summary?: string | null;
+            title?: string | null;
             /** Format: timestamp */
             updatedAt?: string | null;
             updatedBy?: (string | components["schemas"]["Users"]) | null;
-        };
-        ItemsSumberPendapatan: {
-            /** Format: timestamp */
-            createdAt?: string | null;
-            createdBy?: (string | components["schemas"]["Users"]) | null;
-            /** Format: uuid */
-            id?: string;
-            sort?: number | null;
-            sumber?: string | null;
-            /** Format: timestamp */
-            updatedAt?: string | null;
-            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            blocks?: (number | components["schemas"]["ItemsPostBlocks"])[] | null;
+            images?: (number | components["schemas"]["ItemsPostImages"])[] | null;
         };
         ItemsPostBlocks: {
             collection?: string | null;
             id?: number;
-            item?: (string | components["schemas"]["ItemsBlockHero"] | components["schemas"]["ItemsBlockMarkdown"] | components["schemas"]["ItemsBlockRichtext"])[] | null;
+            item?: (string | components["schemas"]["ItemsBlockHero"] | components["schemas"]["ItemsBlockMarkdown"])[] | null;
             post?: (string | components["schemas"]["ItemsPost"]) | null;
+        };
+        ItemsOrganisasi: {
+            /** Format: timestamp */
+            createdAt?: string | null;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: uuid */
+            id?: string;
+            nama?: string | null;
+            singkatan?: string | null;
+            sort?: number | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            /** @description periode aktif kepengurusan */
+            periode?: (string | components["schemas"]["ItemsOrganisasiJabatanPeriode"]) | null;
+            images?: (string | components["schemas"]["Files"]) | null;
+            dokumen?: (number | components["schemas"]["ItemsOrganisasiFiles"])[] | null;
+        };
+        ItemsRapatDokumen: {
+            id?: number;
+            dokumen?: (string | components["schemas"]["Files"]) | null;
+        };
+        ItemsKegiatanRapat: {
+            /** Format: uuid */
+            id?: string;
+            sort?: number | null;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            organisasi?: (string | components["schemas"]["ItemsOrganisasi"]) | null;
+            nama?: string | null;
+            /** Format: date */
+            tanggal?: string | null;
+            /** Format: time */
+            jam?: string | null;
+            agenda?: string | null;
+            notulen?: string | null;
+            dokumen?: (number | components["schemas"]["ItemsKegiatanRapatFiles"])[] | null;
         };
         ItemsPostImages: {
             id?: number;
             image?: (string | components["schemas"]["Files"]) | null;
             post?: (string | components["schemas"]["ItemsPost"]) | null;
         };
-        ItemsUserRole: {
-            description?: string | null;
+        ItemsPendapatan: {
             /** Format: uuid */
             id?: string;
-            name?: string | null;
-            users?: (string | components["schemas"]["Users"]) | null;
-        };
-        ItemsOrganisasiAnggotaOrganisasi: {
-            id?: number;
-            organisasi?: (string | components["schemas"]["ItemsOrganisasi"]) | null;
-            organisasi_anggota?: (string | components["schemas"]["ItemsOrganisasiAnggota"]) | null;
             sort?: number | null;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            jumlah?: number | null;
+            catatan?: string | null;
+            /** Format: date */
+            tanggal?: string | null;
+            misa?: (string | components["schemas"]["ItemsMisa"]) | null;
+            sumber?: (string | components["schemas"]["ItemsSumberPendapatan"]) | null;
         };
-        ItemsOrganisasiUser: {
+        ItemsImam: {
+            /** Format: uuid */
+            id?: string;
+            sort?: number | null;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            nama?: string | null;
+            gelarBelakang?: string | null;
+            gelarDepan?: string | null;
+            tempatLahir?: string | null;
+            /** Format: date */
+            tanggalLahir?: string | null;
+            /** Format: date */
+            ditahbisPada?: string | null;
+            ditahbisOleh?: string | null;
+            ditahbisDi?: string | null;
+            catatan?: string | null;
+            aktif?: boolean | null;
+            imamDiosesan?: boolean | null;
+            tarekat?: string | null;
+            artikelTerkait?: (string | components["schemas"]["ItemsPost"]) | null;
+            foto?: (string | components["schemas"]["Files"]) | null;
+            riwayat?: (string | components["schemas"]["ItemsImamRiwayat"])[] | null;
+        };
+        ItemsSumberPendapatan: {
+            /** Format: uuid */
+            id?: string;
+            sort?: number | null;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            sumber?: string | null;
+        };
+        ItemsMisaDokumentasi: {
             id?: number;
+            misa?: (string | components["schemas"]["ItemsMisa"]) | null;
+            dokumentasi?: (string | components["schemas"]["Files"]) | null;
+        };
+        ItemsMisa: {
+            /** Format: uuid */
+            id?: string;
+            sort?: number | null;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            /** Format: date */
+            tanggal?: string | null;
+            perayaan?: string | null;
+            pendapatan?: (string | components["schemas"]["ItemsPendapatan"])[] | null;
+            dokumentasi?: (number | components["schemas"]["ItemsMisaDokumentasi"])[] | null;
+        };
+        ItemsOrganisasiFiles: {
+            id?: number;
+            organisasi_id?: (string | components["schemas"]["ItemsOrganisasi"]) | null;
+            directus_files_id?: (string | components["schemas"]["Files"]) | null;
+        };
+        ItemsMisaOrganisasi: {
+            /** Format: uuid */
+            id?: string;
+            createdBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            createdAt?: string | null;
+            updatedBy?: (string | components["schemas"]["Users"]) | null;
+            /** Format: timestamp */
+            updatedAt?: string | null;
+            nama?: string | null;
             organisasi?: (string | components["schemas"]["ItemsOrganisasi"]) | null;
-            user?: (string | components["schemas"]["Users"]) | null;
+            tempat?: string | null;
+            /** Format: date */
+            tanggal?: string | null;
+            /** Format: time */
+            jam?: string | null;
+            imam?: string | null;
+            imam_id?: (string | components["schemas"]["ItemsImam"]) | null;
+        };
+        ItemsImamRiwayat: {
+            /** Format: uuid */
+            id?: string;
+            /** Format: date */
+            dimulaiPada?: string | null;
+            /** Format: date */
+            berakhirPada?: string | null;
+            bertugasSebagai?: string | null;
+            imam?: (string | components["schemas"]["ItemsImam"]) | null;
+            akurasiTanggal?: boolean | null;
         };
     };
     responses: {
@@ -5176,6 +5841,426 @@ export interface operations {
                     };
                 };
             };
+        };
+    };
+    getUsers: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["Users"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    createUser: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["Users"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["Users"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteUsers: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateUsers: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": {
+                    data?: components["schemas"]["Users"];
+                    keys?: string[];
+                };
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["Users"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    getUser: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Unique identifier for the object. */
+                id: components["parameters"]["UUId"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["Users"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteUser: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Unique identifier for the object. */
+                id: components["parameters"]["UUId"];
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateUser: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Unique identifier for the object. */
+                id: components["parameters"]["UUId"];
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["Users"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: Record<string, never>;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    invite: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": {
+                    /** @description Email address or array of email addresses of the to-be-invited user(s). */
+                    email?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["Users"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    acceptInvite: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": {
+                    /**
+                     * @description Accept invite token.
+                     * @example eyJh...KmUk
+                     */
+                    token?: string;
+                    /**
+                     * Format: password
+                     * @description Password of the user.
+                     * @example d1r3ctu5
+                     */
+                    password?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["Users"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    getMe: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["Users"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateMe: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["Users"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateLastUsedPageMe: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": {
+                    /** @description Path of the page you used last. */
+                    last_page?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    meTfaEnable: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    meTfaDisable: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
         };
     };
     getActivities: {
@@ -7667,98 +8752,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    getUsers: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["Users"][];
-                        meta?: components["schemas"]["x-metadata"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    createUser: {
-        parameters: {
-            query?: {
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["Users"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["Users"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    deleteUsers: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    updateUsers: {
+    readItemsUserOrganisasi: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -7781,14 +8775,7 @@ export interface operations {
             path?: never;
             cookie?: never;
         };
-        requestBody?: {
-            content: {
-                "application/json": {
-                    data?: components["schemas"]["Users"];
-                    keys?: string[];
-                };
-            };
-        };
+        requestBody?: never;
         responses: {
             /** @description Successful request */
             200: {
@@ -7797,7 +8784,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["Users"][];
+                        data?: components["schemas"]["ItemsUserOrganisasi"][];
                         meta?: components["schemas"]["x-metadata"];
                     };
                 };
@@ -7805,7 +8792,156 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    getUser: {
+    createItemsUserOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsUserOrganisasi"][] | components["schemas"]["ItemsUserOrganisasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsUserOrganisasi: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsUserOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsUserOrganisasi"][] | components["schemas"]["ItemsUserOrganisasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsUserOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsUserOrganisasi"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsUserOrganisasi: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsUserOrganisasi: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -7815,69 +8951,14 @@ export interface operations {
             };
             header?: never;
             path: {
-                /** @description Unique identifier for the object. */
-                id: components["parameters"]["UUId"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["Users"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    deleteUser: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Unique identifier for the object. */
-                id: components["parameters"]["UUId"];
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateUser: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path: {
-                /** @description Unique identifier for the object. */
-                id: components["parameters"]["UUId"];
+                /** @description Index of the item. */
+                id: number | string;
             };
             cookie?: never;
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["Users"];
+                "application/json": components["schemas"]["ItemsUserOrganisasi"];
             };
         };
         responses: {
@@ -7888,200 +8969,9 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: Record<string, never>;
+                        data?: components["schemas"]["ItemsUserOrganisasi"];
                     };
                 };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    invite: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": {
-                    /** @description Email address or array of email addresses of the to-be-invited user(s). */
-                    email?: string;
-                };
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["Users"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    acceptInvite: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "application/json": {
-                    /**
-                     * @description Accept invite token.
-                     * @example eyJh...KmUk
-                     */
-                    token?: string;
-                    /**
-                     * Format: password
-                     * @description Password of the user.
-                     * @example d1r3ctu5
-                     */
-                    password?: string;
-                };
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["Users"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    getMe: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["Users"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateMe: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["Users"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateLastUsedPageMe: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": {
-                    /** @description Path of the page you used last. */
-                    last_page?: string;
-                };
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    meTfaEnable: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    meTfaDisable: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
             };
             401: components["responses"]["UnauthorizedError"];
             404: components["responses"]["NotFoundError"];
@@ -9811,6 +10701,2256 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
+    readItemsOrganisasiAnggotaOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsOrganisasiAnggotaOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"][] | components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsOrganisasiAnggotaOrganisasi: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsOrganisasiAnggotaOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"][] | components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsOrganisasiAnggotaOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsOrganisasiAnggotaOrganisasi: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsOrganisasiAnggotaOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsIbadat: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsIbadat"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsIbadat: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsIbadat"][] | components["schemas"]["ItemsIbadat"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsIbadat: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsIbadat: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsIbadat"][] | components["schemas"]["ItemsIbadat"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsIbadat: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsIbadat"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsIbadat: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsIbadat: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsIbadat"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsIbadat"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsOrganisasiJabatanPeriodeFiles: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiJabatanPeriodeFiles"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsOrganisasiJabatanPeriodeFiles: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiJabatanPeriodeFiles"][] | components["schemas"]["ItemsOrganisasiJabatanPeriodeFiles"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsOrganisasiJabatanPeriodeFiles: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsOrganisasiJabatanPeriodeFiles: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiJabatanPeriodeFiles"][] | components["schemas"]["ItemsOrganisasiJabatanPeriodeFiles"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsOrganisasiJabatanPeriodeFiles: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiJabatanPeriodeFiles"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsOrganisasiJabatanPeriodeFiles: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsOrganisasiJabatanPeriodeFiles: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiJabatanPeriodeFiles"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiJabatanPeriodeFiles"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsTimeline: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsTimeline"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsTimeline: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsTimeline"][] | components["schemas"]["ItemsTimeline"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsTimeline: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsTimeline: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsTimeline"][] | components["schemas"]["ItemsTimeline"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsTimeline: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsTimeline"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsTimeline: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsTimeline: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsTimeline"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsTimeline"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsKegiatanRapatFiles: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsKegiatanRapatFiles"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsKegiatanRapatFiles: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsKegiatanRapatFiles"][] | components["schemas"]["ItemsKegiatanRapatFiles"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsKegiatanRapatFiles: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsKegiatanRapatFiles: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsKegiatanRapatFiles"][] | components["schemas"]["ItemsKegiatanRapatFiles"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsKegiatanRapatFiles: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsKegiatanRapatFiles"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsKegiatanRapatFiles: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsKegiatanRapatFiles: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsKegiatanRapatFiles"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsKegiatanRapatFiles"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsPertemuan: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsPertemuan"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsPertemuan: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsPertemuan"][] | components["schemas"]["ItemsPertemuan"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsPertemuan: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsPertemuan: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsPertemuan"][] | components["schemas"]["ItemsPertemuan"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsPertemuan: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsPertemuan"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsPertemuan: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsPertemuan: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsPertemuan"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsPertemuan"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsKegiatanMisa: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsKegiatanMisa"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsKegiatanMisa: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsKegiatanMisa"][] | components["schemas"]["ItemsKegiatanMisa"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsKegiatanMisa: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsKegiatanMisa: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsKegiatanMisa"][] | components["schemas"]["ItemsKegiatanMisa"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsKegiatanMisa: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsKegiatanMisa"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsKegiatanMisa: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsKegiatanMisa: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsKegiatanMisa"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsKegiatanMisa"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsOrganisasiJabatanPeriode: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiJabatanPeriode"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsOrganisasiJabatanPeriode: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiJabatanPeriode"][] | components["schemas"]["ItemsOrganisasiJabatanPeriode"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsOrganisasiJabatanPeriode: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsOrganisasiJabatanPeriode: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiJabatanPeriode"][] | components["schemas"]["ItemsOrganisasiJabatanPeriode"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsOrganisasiJabatanPeriode: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiJabatanPeriode"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsOrganisasiJabatanPeriode: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsOrganisasiJabatanPeriode: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiJabatanPeriode"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiJabatanPeriode"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsOrganisasiAnggota: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiAnggota"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsOrganisasiAnggota: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiAnggota"][] | components["schemas"]["ItemsOrganisasiAnggota"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsOrganisasiAnggota: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsOrganisasiAnggota: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiAnggota"][] | components["schemas"]["ItemsOrganisasiAnggota"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsOrganisasiAnggota: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiAnggota"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsOrganisasiAnggota: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsOrganisasiAnggota: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiAnggota"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiAnggota"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsOrganisasiJabatan: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiJabatan"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsOrganisasiJabatan: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiJabatan"][] | components["schemas"]["ItemsOrganisasiJabatan"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsOrganisasiJabatan: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsOrganisasiJabatan: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiJabatan"][] | components["schemas"]["ItemsOrganisasiJabatan"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsOrganisasiJabatan: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiJabatan"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsOrganisasiJabatan: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsOrganisasiJabatan: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiJabatan"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiJabatan"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
     readItemsBlockHero: {
         parameters: {
             query?: {
@@ -11386,2031 +14526,6 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    readItemsPost: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsPost"][];
-                        meta?: components["schemas"]["x-metadata"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    createItemsPost: {
-        parameters: {
-            query?: {
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsPost"][] | components["schemas"]["ItemsPost"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    deleteItemsPost: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    updateItemsPost: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsPost"][] | components["schemas"]["ItemsPost"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-        };
-    };
-    readSingleItemsPost: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
-                 *      */
-                version?: components["parameters"]["Version"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsPost"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    deleteSingleItemsPost: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateSingleItemsPost: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsPost"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsPost"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    readItemsImam: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsImam"][];
-                        meta?: components["schemas"]["x-metadata"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    createItemsImam: {
-        parameters: {
-            query?: {
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsImam"][] | components["schemas"]["ItemsImam"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    deleteItemsImam: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    updateItemsImam: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsImam"][] | components["schemas"]["ItemsImam"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-        };
-    };
-    readSingleItemsImam: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
-                 *      */
-                version?: components["parameters"]["Version"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsImam"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    deleteSingleItemsImam: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateSingleItemsImam: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsImam"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsImam"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    readItemsImamRiwayat: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsImamRiwayat"][];
-                        meta?: components["schemas"]["x-metadata"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    createItemsImamRiwayat: {
-        parameters: {
-            query?: {
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsImamRiwayat"][] | components["schemas"]["ItemsImamRiwayat"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    deleteItemsImamRiwayat: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    updateItemsImamRiwayat: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsImamRiwayat"][] | components["schemas"]["ItemsImamRiwayat"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-        };
-    };
-    readSingleItemsImamRiwayat: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
-                 *      */
-                version?: components["parameters"]["Version"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsImamRiwayat"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    deleteSingleItemsImamRiwayat: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateSingleItemsImamRiwayat: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsImamRiwayat"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsImamRiwayat"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    readItemsMisa: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsMisa"][];
-                        meta?: components["schemas"]["x-metadata"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    createItemsMisa: {
-        parameters: {
-            query?: {
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsMisa"][] | components["schemas"]["ItemsMisa"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    deleteItemsMisa: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    updateItemsMisa: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsMisa"][] | components["schemas"]["ItemsMisa"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-        };
-    };
-    readSingleItemsMisa: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
-                 *      */
-                version?: components["parameters"]["Version"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsMisa"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    deleteSingleItemsMisa: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateSingleItemsMisa: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsMisa"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsMisa"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    readItemsMisaDokumentasi: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsMisaDokumentasi"][];
-                        meta?: components["schemas"]["x-metadata"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    createItemsMisaDokumentasi: {
-        parameters: {
-            query?: {
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsMisaDokumentasi"][] | components["schemas"]["ItemsMisaDokumentasi"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    deleteItemsMisaDokumentasi: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    updateItemsMisaDokumentasi: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsMisaDokumentasi"][] | components["schemas"]["ItemsMisaDokumentasi"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-        };
-    };
-    readSingleItemsMisaDokumentasi: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
-                 *      */
-                version?: components["parameters"]["Version"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsMisaDokumentasi"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    deleteSingleItemsMisaDokumentasi: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateSingleItemsMisaDokumentasi: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsMisaDokumentasi"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsMisaDokumentasi"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    readItemsOrganisasi: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasi"][];
-                        meta?: components["schemas"]["x-metadata"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    createItemsOrganisasi: {
-        parameters: {
-            query?: {
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsOrganisasi"][] | components["schemas"]["ItemsOrganisasi"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    deleteItemsOrganisasi: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    updateItemsOrganisasi: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsOrganisasi"][] | components["schemas"]["ItemsOrganisasi"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-        };
-    };
-    readSingleItemsOrganisasi: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
-                 *      */
-                version?: components["parameters"]["Version"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasi"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    deleteSingleItemsOrganisasi: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateSingleItemsOrganisasi: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsOrganisasi"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasi"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    readItemsOrganisasiJabatanPeriode: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiJabatanPeriode"][];
-                        meta?: components["schemas"]["x-metadata"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    createItemsOrganisasiJabatanPeriode: {
-        parameters: {
-            query?: {
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsOrganisasiJabatanPeriode"][] | components["schemas"]["ItemsOrganisasiJabatanPeriode"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    deleteItemsOrganisasiJabatanPeriode: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    updateItemsOrganisasiJabatanPeriode: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsOrganisasiJabatanPeriode"][] | components["schemas"]["ItemsOrganisasiJabatanPeriode"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-        };
-    };
-    readSingleItemsOrganisasiJabatanPeriode: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
-                 *      */
-                version?: components["parameters"]["Version"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiJabatanPeriode"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    deleteSingleItemsOrganisasiJabatanPeriode: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateSingleItemsOrganisasiJabatanPeriode: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsOrganisasiJabatanPeriode"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiJabatanPeriode"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    readItemsOrganisasiAnggota: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiAnggota"][];
-                        meta?: components["schemas"]["x-metadata"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    createItemsOrganisasiAnggota: {
-        parameters: {
-            query?: {
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsOrganisasiAnggota"][] | components["schemas"]["ItemsOrganisasiAnggota"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    deleteItemsOrganisasiAnggota: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    updateItemsOrganisasiAnggota: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsOrganisasiAnggota"][] | components["schemas"]["ItemsOrganisasiAnggota"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-        };
-    };
-    readSingleItemsOrganisasiAnggota: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
-                 *      */
-                version?: components["parameters"]["Version"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiAnggota"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    deleteSingleItemsOrganisasiAnggota: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateSingleItemsOrganisasiAnggota: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsOrganisasiAnggota"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiAnggota"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    readItemsOrganisasiJabatan: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiJabatan"][];
-                        meta?: components["schemas"]["x-metadata"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    createItemsOrganisasiJabatan: {
-        parameters: {
-            query?: {
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsOrganisasiJabatan"][] | components["schemas"]["ItemsOrganisasiJabatan"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    deleteItemsOrganisasiJabatan: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    updateItemsOrganisasiJabatan: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsOrganisasiJabatan"][] | components["schemas"]["ItemsOrganisasiJabatan"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-        };
-    };
-    readSingleItemsOrganisasiJabatan: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
-                 *      */
-                version?: components["parameters"]["Version"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiJabatan"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    deleteSingleItemsOrganisasiJabatan: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateSingleItemsOrganisasiJabatan: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsOrganisasiJabatan"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiJabatan"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
     readItemsOrganisasiStruktur: {
         parameters: {
             query?: {
@@ -14086,7 +15201,7 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    readItemsPendapatan: {
+    readItemsPost: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -14118,7 +15233,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["ItemsPendapatan"][];
+                        data?: components["schemas"]["ItemsPost"][];
                         meta?: components["schemas"]["x-metadata"];
                     };
                 };
@@ -14126,7 +15241,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    createItemsPendapatan: {
+    createItemsPost: {
         parameters: {
             query?: {
                 /** @description What metadata to return in the response. */
@@ -14138,7 +15253,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["ItemsPendapatan"][] | components["schemas"]["ItemsPendapatan"];
+                "application/json": components["schemas"]["ItemsPost"][] | components["schemas"]["ItemsPost"];
             };
         };
         responses: {
@@ -14156,7 +15271,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    deleteItemsPendapatan: {
+    deleteItemsPost: {
         parameters: {
             query?: never;
             header?: never;
@@ -14175,7 +15290,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    updateItemsPendapatan: {
+    updateItemsPost: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -14200,7 +15315,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["ItemsPendapatan"][] | components["schemas"]["ItemsPendapatan"];
+                "application/json": components["schemas"]["ItemsPost"][] | components["schemas"]["ItemsPost"];
             };
         };
         responses: {
@@ -14217,7 +15332,7 @@ export interface operations {
             };
         };
     };
-    readSingleItemsPendapatan: {
+    readSingleItemsPost: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -14244,7 +15359,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["ItemsPendapatan"];
+                        data?: components["schemas"]["ItemsPost"];
                     };
                 };
             };
@@ -14252,7 +15367,7 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    deleteSingleItemsPendapatan: {
+    deleteSingleItemsPost: {
         parameters: {
             query?: never;
             header?: never;
@@ -14275,7 +15390,7 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    updateSingleItemsPendapatan: {
+    updateSingleItemsPost: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -14292,7 +15407,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["ItemsPendapatan"];
+                "application/json": components["schemas"]["ItemsPost"];
             };
         };
         responses: {
@@ -14303,232 +15418,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["ItemsPendapatan"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    readItemsSumberPendapatan: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsSumberPendapatan"][];
-                        meta?: components["schemas"]["x-metadata"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    createItemsSumberPendapatan: {
-        parameters: {
-            query?: {
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsSumberPendapatan"][] | components["schemas"]["ItemsSumberPendapatan"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    deleteItemsSumberPendapatan: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-        };
-    };
-    updateItemsSumberPendapatan: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description A limit on the number of objects that are returned. */
-                limit?: components["parameters"]["Limit"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description How many items to skip when fetching data. */
-                offset?: components["parameters"]["Offset"];
-                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
-                 *      */
-                sort?: components["parameters"]["Sort"];
-                /** @description Select items in collection by given conditions. */
-                filter?: components["parameters"]["Filter"];
-                /** @description Filter by items that contain the given search query in one of their fields. */
-                search?: components["parameters"]["Search"];
-            };
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsSumberPendapatan"][] | components["schemas"]["ItemsSumberPendapatan"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: unknown;
-                    };
-                };
-            };
-        };
-    };
-    readSingleItemsSumberPendapatan: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
-                 *      */
-                version?: components["parameters"]["Version"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsSumberPendapatan"];
-                    };
-                };
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    deleteSingleItemsSumberPendapatan: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            401: components["responses"]["UnauthorizedError"];
-            404: components["responses"]["NotFoundError"];
-        };
-    };
-    updateSingleItemsSumberPendapatan: {
-        parameters: {
-            query?: {
-                /** @description Control what fields are being returned in the object. */
-                fields?: components["parameters"]["Fields"];
-                /** @description What metadata to return in the response. */
-                meta?: components["parameters"]["Meta"];
-            };
-            header?: never;
-            path: {
-                /** @description Index of the item. */
-                id: number | string;
-            };
-            cookie?: never;
-        };
-        requestBody?: {
-            content: {
-                "application/json": components["schemas"]["ItemsSumberPendapatan"];
-            };
-        };
-        responses: {
-            /** @description Successful request */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": {
-                        data?: components["schemas"]["ItemsSumberPendapatan"];
+                        data?: components["schemas"]["ItemsPost"];
                     };
                 };
             };
@@ -14761,6 +15651,681 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
+    readItemsOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasi"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasi"][] | components["schemas"]["ItemsOrganisasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsOrganisasi: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasi"][] | components["schemas"]["ItemsOrganisasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasi"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsOrganisasi: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasi"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsRapatDokumen: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsRapatDokumen"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsRapatDokumen: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsRapatDokumen"][] | components["schemas"]["ItemsRapatDokumen"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsRapatDokumen: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsRapatDokumen: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsRapatDokumen"][] | components["schemas"]["ItemsRapatDokumen"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsRapatDokumen: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsRapatDokumen"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsRapatDokumen: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsRapatDokumen: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsRapatDokumen"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsRapatDokumen"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsKegiatanRapat: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsKegiatanRapat"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsKegiatanRapat: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsKegiatanRapat"][] | components["schemas"]["ItemsKegiatanRapat"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsKegiatanRapat: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsKegiatanRapat: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsKegiatanRapat"][] | components["schemas"]["ItemsKegiatanRapat"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsKegiatanRapat: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsKegiatanRapat"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsKegiatanRapat: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsKegiatanRapat: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsKegiatanRapat"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsKegiatanRapat"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
     readItemsPostImages: {
         parameters: {
             query?: {
@@ -14986,7 +16551,7 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    readItemsUserRole: {
+    readItemsPendapatan: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -15018,7 +16583,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["ItemsUserRole"][];
+                        data?: components["schemas"]["ItemsPendapatan"][];
                         meta?: components["schemas"]["x-metadata"];
                     };
                 };
@@ -15026,7 +16591,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    createItemsUserRole: {
+    createItemsPendapatan: {
         parameters: {
             query?: {
                 /** @description What metadata to return in the response. */
@@ -15038,7 +16603,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["ItemsUserRole"][] | components["schemas"]["ItemsUserRole"];
+                "application/json": components["schemas"]["ItemsPendapatan"][] | components["schemas"]["ItemsPendapatan"];
             };
         };
         responses: {
@@ -15056,7 +16621,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    deleteItemsUserRole: {
+    deleteItemsPendapatan: {
         parameters: {
             query?: never;
             header?: never;
@@ -15075,7 +16640,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    updateItemsUserRole: {
+    updateItemsPendapatan: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -15100,7 +16665,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["ItemsUserRole"][] | components["schemas"]["ItemsUserRole"];
+                "application/json": components["schemas"]["ItemsPendapatan"][] | components["schemas"]["ItemsPendapatan"];
             };
         };
         responses: {
@@ -15117,7 +16682,7 @@ export interface operations {
             };
         };
     };
-    readSingleItemsUserRole: {
+    readSingleItemsPendapatan: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -15144,7 +16709,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["ItemsUserRole"];
+                        data?: components["schemas"]["ItemsPendapatan"];
                     };
                 };
             };
@@ -15152,7 +16717,7 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    deleteSingleItemsUserRole: {
+    deleteSingleItemsPendapatan: {
         parameters: {
             query?: never;
             header?: never;
@@ -15175,7 +16740,7 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    updateSingleItemsUserRole: {
+    updateSingleItemsPendapatan: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -15192,7 +16757,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["ItemsUserRole"];
+                "application/json": components["schemas"]["ItemsPendapatan"];
             };
         };
         responses: {
@@ -15203,7 +16768,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["ItemsUserRole"];
+                        data?: components["schemas"]["ItemsPendapatan"];
                     };
                 };
             };
@@ -15211,7 +16776,7 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    readItemsOrganisasiAnggotaOrganisasi: {
+    readItemsImam: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -15243,7 +16808,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"][];
+                        data?: components["schemas"]["ItemsImam"][];
                         meta?: components["schemas"]["x-metadata"];
                     };
                 };
@@ -15251,7 +16816,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    createItemsOrganisasiAnggotaOrganisasi: {
+    createItemsImam: {
         parameters: {
             query?: {
                 /** @description What metadata to return in the response. */
@@ -15263,7 +16828,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"][] | components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"];
+                "application/json": components["schemas"]["ItemsImam"][] | components["schemas"]["ItemsImam"];
             };
         };
         responses: {
@@ -15281,7 +16846,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    deleteItemsOrganisasiAnggotaOrganisasi: {
+    deleteItemsImam: {
         parameters: {
             query?: never;
             header?: never;
@@ -15300,7 +16865,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    updateItemsOrganisasiAnggotaOrganisasi: {
+    updateItemsImam: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -15325,7 +16890,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"][] | components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"];
+                "application/json": components["schemas"]["ItemsImam"][] | components["schemas"]["ItemsImam"];
             };
         };
         responses: {
@@ -15342,7 +16907,7 @@ export interface operations {
             };
         };
     };
-    readSingleItemsOrganisasiAnggotaOrganisasi: {
+    readSingleItemsImam: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -15369,7 +16934,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"];
+                        data?: components["schemas"]["ItemsImam"];
                     };
                 };
             };
@@ -15377,7 +16942,7 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    deleteSingleItemsOrganisasiAnggotaOrganisasi: {
+    deleteSingleItemsImam: {
         parameters: {
             query?: never;
             header?: never;
@@ -15400,7 +16965,7 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    updateSingleItemsOrganisasiAnggotaOrganisasi: {
+    updateSingleItemsImam: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -15417,7 +16982,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"];
+                "application/json": components["schemas"]["ItemsImam"];
             };
         };
         responses: {
@@ -15428,7 +16993,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiAnggotaOrganisasi"];
+                        data?: components["schemas"]["ItemsImam"];
                     };
                 };
             };
@@ -15436,7 +17001,7 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    readItemsOrganisasiUser: {
+    readItemsSumberPendapatan: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -15468,7 +17033,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiUser"][];
+                        data?: components["schemas"]["ItemsSumberPendapatan"][];
                         meta?: components["schemas"]["x-metadata"];
                     };
                 };
@@ -15476,7 +17041,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    createItemsOrganisasiUser: {
+    createItemsSumberPendapatan: {
         parameters: {
             query?: {
                 /** @description What metadata to return in the response. */
@@ -15488,7 +17053,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["ItemsOrganisasiUser"][] | components["schemas"]["ItemsOrganisasiUser"];
+                "application/json": components["schemas"]["ItemsSumberPendapatan"][] | components["schemas"]["ItemsSumberPendapatan"];
             };
         };
         responses: {
@@ -15506,7 +17071,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    deleteItemsOrganisasiUser: {
+    deleteItemsSumberPendapatan: {
         parameters: {
             query?: never;
             header?: never;
@@ -15525,7 +17090,7 @@ export interface operations {
             401: components["responses"]["UnauthorizedError"];
         };
     };
-    updateItemsOrganisasiUser: {
+    updateItemsSumberPendapatan: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -15550,7 +17115,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["ItemsOrganisasiUser"][] | components["schemas"]["ItemsOrganisasiUser"];
+                "application/json": components["schemas"]["ItemsSumberPendapatan"][] | components["schemas"]["ItemsSumberPendapatan"];
             };
         };
         responses: {
@@ -15567,7 +17132,7 @@ export interface operations {
             };
         };
     };
-    readSingleItemsOrganisasiUser: {
+    readSingleItemsSumberPendapatan: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -15594,7 +17159,7 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiUser"];
+                        data?: components["schemas"]["ItemsSumberPendapatan"];
                     };
                 };
             };
@@ -15602,7 +17167,7 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    deleteSingleItemsOrganisasiUser: {
+    deleteSingleItemsSumberPendapatan: {
         parameters: {
             query?: never;
             header?: never;
@@ -15625,7 +17190,7 @@ export interface operations {
             404: components["responses"]["NotFoundError"];
         };
     };
-    updateSingleItemsOrganisasiUser: {
+    updateSingleItemsSumberPendapatan: {
         parameters: {
             query?: {
                 /** @description Control what fields are being returned in the object. */
@@ -15642,7 +17207,7 @@ export interface operations {
         };
         requestBody?: {
             content: {
-                "application/json": components["schemas"]["ItemsOrganisasiUser"];
+                "application/json": components["schemas"]["ItemsSumberPendapatan"];
             };
         };
         responses: {
@@ -15653,7 +17218,1132 @@ export interface operations {
                 };
                 content: {
                     "application/json": {
-                        data?: components["schemas"]["ItemsOrganisasiUser"];
+                        data?: components["schemas"]["ItemsSumberPendapatan"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsMisaDokumentasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsMisaDokumentasi"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsMisaDokumentasi: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsMisaDokumentasi"][] | components["schemas"]["ItemsMisaDokumentasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsMisaDokumentasi: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsMisaDokumentasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsMisaDokumentasi"][] | components["schemas"]["ItemsMisaDokumentasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsMisaDokumentasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsMisaDokumentasi"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsMisaDokumentasi: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsMisaDokumentasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsMisaDokumentasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsMisaDokumentasi"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsMisa: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsMisa"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsMisa: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsMisa"][] | components["schemas"]["ItemsMisa"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsMisa: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsMisa: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsMisa"][] | components["schemas"]["ItemsMisa"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsMisa: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsMisa"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsMisa: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsMisa: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsMisa"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsMisa"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsOrganisasiFiles: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiFiles"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsOrganisasiFiles: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiFiles"][] | components["schemas"]["ItemsOrganisasiFiles"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsOrganisasiFiles: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsOrganisasiFiles: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiFiles"][] | components["schemas"]["ItemsOrganisasiFiles"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsOrganisasiFiles: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiFiles"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsOrganisasiFiles: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsOrganisasiFiles: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsOrganisasiFiles"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsOrganisasiFiles"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsMisaOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsMisaOrganisasi"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsMisaOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsMisaOrganisasi"][] | components["schemas"]["ItemsMisaOrganisasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsMisaOrganisasi: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsMisaOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsMisaOrganisasi"][] | components["schemas"]["ItemsMisaOrganisasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsMisaOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsMisaOrganisasi"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsMisaOrganisasi: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsMisaOrganisasi: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsMisaOrganisasi"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsMisaOrganisasi"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    readItemsImamRiwayat: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsImamRiwayat"][];
+                        meta?: components["schemas"]["x-metadata"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    createItemsImamRiwayat: {
+        parameters: {
+            query?: {
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsImamRiwayat"][] | components["schemas"]["ItemsImamRiwayat"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    deleteItemsImamRiwayat: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+        };
+    };
+    updateItemsImamRiwayat: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description A limit on the number of objects that are returned. */
+                limit?: components["parameters"]["Limit"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description How many items to skip when fetching data. */
+                offset?: components["parameters"]["Offset"];
+                /** @description How to sort the returned items. `sort` is a CSV of fields used to sort the fetched items. Sorting defaults to ascending (ASC) order but a minus sign (` - `) can be used to reverse this to descending (DESC) order. Fields are prioritized by their order in the CSV. You can also use a ` ? ` to sort randomly.
+                 *      */
+                sort?: components["parameters"]["Sort"];
+                /** @description Select items in collection by given conditions. */
+                filter?: components["parameters"]["Filter"];
+                /** @description Filter by items that contain the given search query in one of their fields. */
+                search?: components["parameters"]["Search"];
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsImamRiwayat"][] | components["schemas"]["ItemsImamRiwayat"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: unknown;
+                    };
+                };
+            };
+        };
+    };
+    readSingleItemsImamRiwayat: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+                /** @description Retrieve an item's state from a specific Content Version. The value corresponds to the "key" of the Content Version.
+                 *      */
+                version?: components["parameters"]["Version"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsImamRiwayat"];
+                    };
+                };
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    deleteSingleItemsImamRiwayat: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            401: components["responses"]["UnauthorizedError"];
+            404: components["responses"]["NotFoundError"];
+        };
+    };
+    updateSingleItemsImamRiwayat: {
+        parameters: {
+            query?: {
+                /** @description Control what fields are being returned in the object. */
+                fields?: components["parameters"]["Fields"];
+                /** @description What metadata to return in the response. */
+                meta?: components["parameters"]["Meta"];
+            };
+            header?: never;
+            path: {
+                /** @description Index of the item. */
+                id: number | string;
+            };
+            cookie?: never;
+        };
+        requestBody?: {
+            content: {
+                "application/json": components["schemas"]["ItemsImamRiwayat"];
+            };
+        };
+        responses: {
+            /** @description Successful request */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["ItemsImamRiwayat"];
                     };
                 };
             };

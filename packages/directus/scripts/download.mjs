@@ -1,4 +1,3 @@
-import { authentication, createDirectus } from "@directus/sdk";
 import dotenv from "dotenv";
 import { writeFileSync } from "fs";
 import { exit } from "process";
@@ -11,13 +10,7 @@ const OAS = `${process.env.DIRECTUS_URL}/server/specs/oas`;
 const SCHEMA_FILE = "./scripts/downloads/openapi.json";
 
 async function downloadSchema() {
-  const directus = createDirectus(process.env.DIRECTUS_URL).with(
-    authentication("json"),
-  );
-  const { access_token } = await directus.login(
-    process.env.DIRECTUS_ADMIN_EMAIL,
-    process.env.DIRECTUS_ADMIN_PASSWORD,
-  );
+  const access_token = process.env.DIRECTUS_TOKEN;
 
   const data = await fetch(OAS, {
     headers: {

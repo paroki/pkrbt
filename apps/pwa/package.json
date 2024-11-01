@@ -5,7 +5,7 @@
   "scripts": {
     "pwa": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start:pwa": "next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -13,6 +13,7 @@
     "@hookform/resolvers": "^3.9.1",
     "@pkrbt/directus": "workspace:*",
     "@pkrbt/ui": "workspace:*",
+    "lucide-react": "^0.454.0",
     "next": "14.2.16",
     "next-auth": "5.0.0-beta.25",
     "react": "^18",

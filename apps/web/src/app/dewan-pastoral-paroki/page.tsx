@@ -24,9 +24,22 @@ const customFont = DM_Serif_Text({
 export default async function Page() {
   const { items, error } = await directus.organisasi.jabatan.search({
     filter: {
-      struktur: {
-        sort: 1100,
-      },
+      _and: [
+        {
+          penjabat: {
+            _nnull: true,
+          },
+        },
+        {
+          struktur: {
+            organisasi: {
+              id: {
+                _eq: "9382514f-f85b-49fc-bfc4-bd203c70513b",
+              },
+            },
+          },
+        },
+      ],
     },
     fields: [
       "*",
@@ -38,7 +51,11 @@ export default async function Page() {
           { foto: ["id", "title", "width", "height", "description"] },
         ],
       },
+      {
+        struktur: ["nama"],
+      },
     ],
+    sort: ["sort"],
   });
 
   if (!items) {
@@ -108,7 +125,12 @@ export default async function Page() {
                     ? `, ${item.penjabat.gelarBelakang}`
                     : ""}
                 </span>
-                <span className="lg:text-lg">{item.nama}</span>
+                <span className="text-sm">
+                  {item.nama}{" "}
+                  {item.struktur &&
+                    item.struktur.nama !== "Pengurus Harian" &&
+                    item.struktur.nama}
+                </span>
               </div>
             </div>
           ))}

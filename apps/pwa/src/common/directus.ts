@@ -1,9 +1,9 @@
 import { Directus } from "@pkrbt/directus";
-import { DIRECTUS_TOKEN_NAME, DIRECTUS_URL } from "./config";
-import { cookies } from "next/headers";
+import { DIRECTUS_URL } from "./config";
+import { getSessionToken } from "./auth";
 
-export function createDirectus() {
-  const token = cookies().get(DIRECTUS_TOKEN_NAME)?.value;
+export async function createDirectus() {
+  const token = await getSessionToken();
   return new Directus({
     baseUrl: DIRECTUS_URL,
     token,

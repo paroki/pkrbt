@@ -7,7 +7,6 @@ import {
   RestItemPartial,
   RestResponse,
 } from "./types";
-import invariant from "tiny-invariant";
 
 export function restMethods<T>(
   directus: Directus<Schema>,
@@ -50,12 +49,14 @@ export function restMethods<T>(
     return { item: data as T, error };
   }
 
-  async function update(item: RestItemPartial): Promise<RestResponse<T>> {
+  async function update(
+    id: string,
+    item: RestItemPartial,
+  ): Promise<RestResponse<T>> {
     let error = undefined;
     let data = undefined;
     try {
-      invariant(item.id, "id undefined");
-      data = await rest.request(updateItem(collection, item.id, item));
+      data = await rest.request(updateItem(collection, id, item));
     } catch (e) {
       error = e as Error;
     }

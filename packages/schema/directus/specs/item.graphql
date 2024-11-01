@@ -77,6 +77,14 @@ type Query {
   post_images_by_id(id: ID!, version: String): post_images
   post_images_aggregated(groupBy: [String], filter: post_images_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [post_images_aggregated!]!
   post_images_by_version(version: String!, id: ID!): version_post_images
+  pendapatan(filter: pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [pendapatan!]!
+  pendapatan_by_id(id: ID!, version: String): pendapatan
+  pendapatan_aggregated(groupBy: [String], filter: pendapatan_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [pendapatan_aggregated!]!
+  pendapatan_by_version(version: String!, id: ID!): version_pendapatan
+  imam(filter: imam_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [imam!]!
+  imam_by_id(id: ID!, version: String): imam
+  imam_aggregated(groupBy: [String], filter: imam_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [imam_aggregated!]!
+  imam_by_version(version: String!, id: ID!): version_imam
   sumber_pendapatan(filter: sumber_pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [sumber_pendapatan!]!
   sumber_pendapatan_by_id(id: ID!, version: String): sumber_pendapatan
   sumber_pendapatan_aggregated(groupBy: [String], filter: sumber_pendapatan_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [sumber_pendapatan_aggregated!]!
@@ -85,10 +93,6 @@ type Query {
   misa_dokumentasi_by_id(id: ID!, version: String): misa_dokumentasi
   misa_dokumentasi_aggregated(groupBy: [String], filter: misa_dokumentasi_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [misa_dokumentasi_aggregated!]!
   misa_dokumentasi_by_version(version: String!, id: ID!): version_misa_dokumentasi
-  pendapatan(filter: pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [pendapatan!]!
-  pendapatan_by_id(id: ID!, version: String): pendapatan
-  pendapatan_aggregated(groupBy: [String], filter: pendapatan_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [pendapatan_aggregated!]!
-  pendapatan_by_version(version: String!, id: ID!): version_pendapatan
   misa(filter: misa_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [misa!]!
   misa_by_id(id: ID!, version: String): misa
   misa_aggregated(groupBy: [String], filter: misa_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [misa_aggregated!]!
@@ -97,10 +101,6 @@ type Query {
   imam_riwayat_by_id(id: ID!, version: String): imam_riwayat
   imam_riwayat_aggregated(groupBy: [String], filter: imam_riwayat_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [imam_riwayat_aggregated!]!
   imam_riwayat_by_version(version: String!, id: ID!): version_imam_riwayat
-  imam(filter: imam_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [imam!]!
-  imam_by_id(id: ID!, version: String): imam
-  imam_aggregated(groupBy: [String], filter: imam_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [imam_aggregated!]!
-  imam_by_version(version: String!, id: ID!): version_imam
 }
 
 type Mutation {
@@ -142,18 +142,18 @@ type Mutation {
   create_post_blocks_item(data: create_post_blocks_input!): post_blocks
   create_post_images_items(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_post_images_input!]): [post_images!]!
   create_post_images_item(data: create_post_images_input!): post_images
+  create_pendapatan_items(filter: pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_pendapatan_input!]): [pendapatan!]!
+  create_pendapatan_item(data: create_pendapatan_input!): pendapatan
+  create_imam_items(filter: imam_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_imam_input!]): [imam!]!
+  create_imam_item(data: create_imam_input!): imam
   create_sumber_pendapatan_items(filter: sumber_pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_sumber_pendapatan_input!]): [sumber_pendapatan!]!
   create_sumber_pendapatan_item(data: create_sumber_pendapatan_input!): sumber_pendapatan
   create_misa_dokumentasi_items(filter: misa_dokumentasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_misa_dokumentasi_input!]): [misa_dokumentasi!]!
   create_misa_dokumentasi_item(data: create_misa_dokumentasi_input!): misa_dokumentasi
-  create_pendapatan_items(filter: pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_pendapatan_input!]): [pendapatan!]!
-  create_pendapatan_item(data: create_pendapatan_input!): pendapatan
   create_misa_items(filter: misa_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_misa_input!]): [misa!]!
   create_misa_item(data: create_misa_input!): misa
   create_imam_riwayat_items(filter: imam_riwayat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_imam_riwayat_input!]): [imam_riwayat!]!
   create_imam_riwayat_item(data: create_imam_riwayat_input!): imam_riwayat
-  create_imam_items(filter: imam_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_imam_input!]): [imam!]!
-  create_imam_item(data: create_imam_input!): imam
   update_organisasi_user_items(filter: organisasi_user_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_user_input!): [organisasi_user!]!
   update_organisasi_user_batch(filter: organisasi_user_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_user_input!]): [organisasi_user!]!
   update_organisasi_user_item(id: ID!, data: update_organisasi_user_input!): organisasi_user
@@ -212,24 +212,24 @@ type Mutation {
   update_post_images_items(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_post_images_input!): [post_images!]!
   update_post_images_batch(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_post_images_input!]): [post_images!]!
   update_post_images_item(id: ID!, data: update_post_images_input!): post_images
+  update_pendapatan_items(filter: pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_pendapatan_input!): [pendapatan!]!
+  update_pendapatan_batch(filter: pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_pendapatan_input!]): [pendapatan!]!
+  update_pendapatan_item(id: ID!, data: update_pendapatan_input!): pendapatan
+  update_imam_items(filter: imam_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_imam_input!): [imam!]!
+  update_imam_batch(filter: imam_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_imam_input!]): [imam!]!
+  update_imam_item(id: ID!, data: update_imam_input!): imam
   update_sumber_pendapatan_items(filter: sumber_pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_sumber_pendapatan_input!): [sumber_pendapatan!]!
   update_sumber_pendapatan_batch(filter: sumber_pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_sumber_pendapatan_input!]): [sumber_pendapatan!]!
   update_sumber_pendapatan_item(id: ID!, data: update_sumber_pendapatan_input!): sumber_pendapatan
   update_misa_dokumentasi_items(filter: misa_dokumentasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_misa_dokumentasi_input!): [misa_dokumentasi!]!
   update_misa_dokumentasi_batch(filter: misa_dokumentasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_misa_dokumentasi_input!]): [misa_dokumentasi!]!
   update_misa_dokumentasi_item(id: ID!, data: update_misa_dokumentasi_input!): misa_dokumentasi
-  update_pendapatan_items(filter: pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_pendapatan_input!): [pendapatan!]!
-  update_pendapatan_batch(filter: pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_pendapatan_input!]): [pendapatan!]!
-  update_pendapatan_item(id: ID!, data: update_pendapatan_input!): pendapatan
   update_misa_items(filter: misa_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_misa_input!): [misa!]!
   update_misa_batch(filter: misa_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_misa_input!]): [misa!]!
   update_misa_item(id: ID!, data: update_misa_input!): misa
   update_imam_riwayat_items(filter: imam_riwayat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_imam_riwayat_input!): [imam_riwayat!]!
   update_imam_riwayat_batch(filter: imam_riwayat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_imam_riwayat_input!]): [imam_riwayat!]!
   update_imam_riwayat_item(id: ID!, data: update_imam_riwayat_input!): imam_riwayat
-  update_imam_items(filter: imam_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_imam_input!): [imam!]!
-  update_imam_batch(filter: imam_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_imam_input!]): [imam!]!
-  update_imam_item(id: ID!, data: update_imam_input!): imam
   delete_organisasi_user_items(ids: [ID]!): delete_many
   delete_organisasi_user_item(id: ID!): delete_one
   delete_directus_sync_id_map_items(ids: [ID]!): delete_many
@@ -268,18 +268,18 @@ type Mutation {
   delete_post_blocks_item(id: ID!): delete_one
   delete_post_images_items(ids: [ID]!): delete_many
   delete_post_images_item(id: ID!): delete_one
+  delete_pendapatan_items(ids: [ID]!): delete_many
+  delete_pendapatan_item(id: ID!): delete_one
+  delete_imam_items(ids: [ID]!): delete_many
+  delete_imam_item(id: ID!): delete_one
   delete_sumber_pendapatan_items(ids: [ID]!): delete_many
   delete_sumber_pendapatan_item(id: ID!): delete_one
   delete_misa_dokumentasi_items(ids: [ID]!): delete_many
   delete_misa_dokumentasi_item(id: ID!): delete_one
-  delete_pendapatan_items(ids: [ID]!): delete_many
-  delete_pendapatan_item(id: ID!): delete_one
   delete_misa_items(ids: [ID]!): delete_many
   delete_misa_item(id: ID!): delete_one
   delete_imam_riwayat_items(ids: [ID]!): delete_many
   delete_imam_riwayat_item(id: ID!): delete_one
-  delete_imam_items(ids: [ID]!): delete_many
-  delete_imam_item(id: ID!): delete_one
 }
 
 type Subscription {
@@ -323,12 +323,12 @@ type Subscription {
   post_mutated(event: EventEnum): post_mutated
   post_blocks_mutated(event: EventEnum): post_blocks_mutated
   post_images_mutated(event: EventEnum): post_images_mutated
+  pendapatan_mutated(event: EventEnum): pendapatan_mutated
+  imam_mutated(event: EventEnum): imam_mutated
   sumber_pendapatan_mutated(event: EventEnum): sumber_pendapatan_mutated
   misa_dokumentasi_mutated(event: EventEnum): misa_dokumentasi_mutated
-  pendapatan_mutated(event: EventEnum): pendapatan_mutated
   misa_mutated(event: EventEnum): misa_mutated
   imam_riwayat_mutated(event: EventEnum): imam_riwayat_mutated
-  imam_mutated(event: EventEnum): imam_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -1227,6 +1227,7 @@ type imam {
   imamDiosesan: Boolean
   tarekat: String
   artikelTerkait(filter: post_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): post
+  foto(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
   riwayat(filter: imam_riwayat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [imam_riwayat]
   riwayat_func: count_functions
 }
@@ -1264,6 +1265,7 @@ type imam_aggregated_count {
   imamDiosesan: Int
   tarekat: Int
   artikelTerkait: Int
+  foto: Int
   riwayat: Int
 }
 
@@ -2202,6 +2204,7 @@ type version_imam {
   imamDiosesan: Boolean
   tarekat: String
   artikelTerkait: JSON
+  foto: JSON
   riwayat: JSON
 }
 
@@ -2709,6 +2712,7 @@ input create_imam_input {
   imamDiosesan: Boolean
   tarekat: String
   artikelTerkait: create_post_input
+  foto: create_directus_files_input
   riwayat: [create_imam_riwayat_input]
 }
 
@@ -3273,6 +3277,7 @@ input imam_filter {
   imamDiosesan: boolean_filter_operators
   tarekat: string_filter_operators
   artikelTerkait: post_filter
+  foto: directus_files_filter
   riwayat: imam_riwayat_filter
   riwayat_func: count_function_filter_operators
   _and: [imam_filter]
@@ -3799,6 +3804,7 @@ input update_imam_input {
   imamDiosesan: Boolean
   tarekat: String
   artikelTerkait: update_post_input
+  foto: update_directus_files_input
   riwayat: [update_imam_riwayat_input]
 }
 
