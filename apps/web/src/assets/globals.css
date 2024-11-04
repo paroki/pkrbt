@@ -90,11 +90,11 @@ h4 {
 }
 
 .markdown h2 {
-  @apply text-3xl pb-4;
+  @apply text-3xl pb-4 pt-8;
 }
 
 .markdown h3 {
-  @apply text-2xl pb-4;
+  @apply text-2xl pb-4 pt-8;
 }
 
 .markdown h4 {
@@ -103,4 +103,12 @@ h4 {
 
 .markdown p {
   @apply pb-4 leading-normal lg:leading-relaxed;
+}
+
+.markdown ol {
+  list-style: decimal;
+}
+
+.markdown ul {
+  list-style: inside;
 }

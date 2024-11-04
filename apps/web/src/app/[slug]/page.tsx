@@ -139,7 +139,6 @@ export default async function Page(props: Props) {
     );
   }
 
-  console.log(post);
   return (
     <Container>
       <div className="max-w-screen-lg mx-auto">
