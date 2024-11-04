@@ -122,6 +122,50 @@
     "_syncId": "d87caf59-f580-46e2-8eba-9d6c99c107d0"
   },
   {
+    "collection": "imam_riwayat",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id",
+      "bertugasSebagai",
+      "dimulaiPada",
+      "berakhirPada",
+      "akurasiTanggal",
+      "imam"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "aa396c81-70d1-47f5-ac1f-6b253de537ea"
+  },
+  {
+    "collection": "imam",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id",
+      "sort",
+      "createdBy",
+      "createdAt",
+      "updatedBy",
+      "updatedAt",
+      "foto",
+      "nama",
+      "aktif",
+      "imamDiosesan",
+      "tarekat",
+      "riwayat",
+      "gelarDepan",
+      "gelarBelakang",
+      "catatan",
+      "artikelTerkait"
+    ],
+    "policy": "177a76e2-95c3-45b1-9299-f6a34fa9eb73",
+    "_syncId": "220d9148-6f79-4651-8e1d-3e7faff199de"
+  },
+  {
     "collection": "organisasi_anggota",
     "action": "read",
     "permissions": null,
@@ -421,6 +465,54 @@
     "_syncId": "f5a38c08-19c8-462b-83df-f939911a0f09"
   },
   {
+    "collection": "organisasi_anggota_organisasi",
+    "action": "create",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "97d8a9fd-ef91-4389-ab6e-d4b66600c287",
+    "_syncId": "fe45d77e-b419-425a-ba78-5607c2eaaf5d"
+  },
+  {
+    "collection": "organisasi_anggota_organisasi",
+    "action": "delete",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "97d8a9fd-ef91-4389-ab6e-d4b66600c287",
+    "_syncId": "2ab60d88-5c0b-4276-9099-4c4e988d4b03"
+  },
+  {
+    "collection": "organisasi_anggota_organisasi",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "97d8a9fd-ef91-4389-ab6e-d4b66600c287",
+    "_syncId": "25cc2691-bd1e-489d-864e-67063eaa434c"
+  },
+  {
+    "collection": "organisasi_anggota_organisasi",
+    "action": "update",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "97d8a9fd-ef91-4389-ab6e-d4b66600c287",
+    "_syncId": "485d7d1e-7b1c-40c8-913a-b5f994ecb890"
+  },
+  {
     "collection": "organisasi_anggota",
     "action": "create",
     "permissions": null,
@@ -639,17 +731,7 @@
   {
     "collection": "organisasi",
     "action": "update",
-    "permissions": {
-      "_and": [
-        {
-          "id": {
-            "_in": [
-              "$CURRENT_USER.organisasi"
-            ]
-          }
-        }
-      ]
-    },
+    "permissions": null,
     "validation": null,
     "presets": null,
     "fields": [
@@ -657,6 +739,54 @@
     ],
     "policy": "97d8a9fd-ef91-4389-ab6e-d4b66600c287",
     "_syncId": "d1b4572e-2dca-45df-93e1-2e4ca656182f"
+  },
+  {
+    "collection": "user_organisasi",
+    "action": "create",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "97d8a9fd-ef91-4389-ab6e-d4b66600c287",
+    "_syncId": "0474bfaa-86d8-41bc-b5ef-c962ec3a3e81"
+  },
+  {
+    "collection": "user_organisasi",
+    "action": "delete",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "97d8a9fd-ef91-4389-ab6e-d4b66600c287",
+    "_syncId": "6f55e228-d21a-4d11-aeb8-de25d11959e0"
+  },
+  {
+    "collection": "user_organisasi",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "97d8a9fd-ef91-4389-ab6e-d4b66600c287",
+    "_syncId": "ed0148d4-7464-493c-bad3-da7f26c2a20c"
+  },
+  {
+    "collection": "user_organisasi",
+    "action": "update",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "97d8a9fd-ef91-4389-ab6e-d4b66600c287",
+    "_syncId": "51f78b26-dec5-4474-95c5-7831cf3ea9ca"
   },
   {
     "collection": "block_hero",

@@ -15,7 +15,7 @@
     "_syncId": "333439ce-f543-471a-b0b9-865559f3789d"
   },
   {
-    "name": "20240922",
+    "name": "20241031",
     "parent": "965eac50-1867-496c-b180-afe049774bc4",
     "_syncId": "4bce67dc-7864-4a85-a03a-110826725bdd"
   },
@@ -48,6 +48,11 @@
     "name": "2024-2027",
     "parent": "9159a897-7182-4234-9bd3-7cee648eaf56",
     "_syncId": "d1c9e27e-9d51-4142-b743-7816e4bddf5d"
+  },
+  {
+    "name": "homili",
+    "parent": null,
+    "_syncId": "e74a98d7-b677-490d-8c1c-e10af6d606c7"
   },
   {
     "name": "organisasi",

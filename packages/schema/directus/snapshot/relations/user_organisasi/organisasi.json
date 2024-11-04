@@ -1,0 +1,25 @@
+{
+  "collection": "user_organisasi",
+  "field": "organisasi",
+  "related_collection": "organisasi",
+  "meta": {
+    "junction_field": "user",
+    "many_collection": "user_organisasi",
+    "many_field": "organisasi",
+    "one_allowed_collections": null,
+    "one_collection": "organisasi",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": null,
+    "sort_field": null
+  },
+  "schema": {
+    "table": "user_organisasi",
+    "column": "organisasi",
+    "foreign_key_table": "organisasi",
+    "foreign_key_column": "id",
+    "constraint_name": "user_organisasi_organisasi_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "NO ACTION"
+  }
+}

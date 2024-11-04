@@ -1,0 +1,25 @@
+{
+  "collection": "misa_organisasi",
+  "field": "imam_id",
+  "related_collection": "imam",
+  "meta": {
+    "junction_field": null,
+    "many_collection": "misa_organisasi",
+    "many_field": "imam_id",
+    "one_allowed_collections": null,
+    "one_collection": "imam",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": null,
+    "sort_field": null
+  },
+  "schema": {
+    "table": "misa_organisasi",
+    "column": "imam_id",
+    "foreign_key_table": "imam",
+    "foreign_key_column": "id",
+    "constraint_name": "misa_organisasi_imam_id_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "NO ACTION"
+  }
+}

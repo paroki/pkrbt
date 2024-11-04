@@ -1,0 +1,25 @@
+{
+  "collection": "kegiatan_rapat_files",
+  "field": "kegiatan_rapat_id",
+  "related_collection": "kegiatan_rapat",
+  "meta": {
+    "junction_field": "directus_files_id",
+    "many_collection": "kegiatan_rapat_files",
+    "many_field": "kegiatan_rapat_id",
+    "one_allowed_collections": null,
+    "one_collection": "kegiatan_rapat",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": "dokumen",
+    "sort_field": null
+  },
+  "schema": {
+    "table": "kegiatan_rapat_files",
+    "column": "kegiatan_rapat_id",
+    "foreign_key_table": "kegiatan_rapat",
+    "foreign_key_column": "id",
+    "constraint_name": "kegiatan_rapat_files_kegiatan_rapat_id_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "SET NULL"
+  }
+}

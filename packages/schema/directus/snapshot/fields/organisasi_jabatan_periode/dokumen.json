@@ -1,0 +1,29 @@
+{
+  "collection": "organisasi_jabatan_periode",
+  "field": "dokumen",
+  "type": "alias",
+  "meta": {
+    "collection": "organisasi_jabatan_periode",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "dokumen",
+    "group": null,
+    "hidden": false,
+    "interface": "files",
+    "note": null,
+    "options": {
+      "folder": "f889565e-cf89-49cc-a5ad-d2153abca8cd"
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 13,
+    "special": [
+      "files"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

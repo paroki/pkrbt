@@ -38,7 +38,7 @@
     "name": "bertugasSebagai",
     "table": "imam_riwayat",
     "data_type": "character varying",
-    "default_value": "2",
+    "default_value": null,
     "max_length": 255,
     "numeric_precision": null,
     "numeric_scale": null,

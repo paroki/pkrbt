@@ -1,8 +1,8 @@
 type Query {
-  organisasi_user(filter: organisasi_user_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_user!]!
-  organisasi_user_by_id(id: ID!, version: String): organisasi_user
-  organisasi_user_aggregated(groupBy: [String], filter: organisasi_user_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_user_aggregated!]!
-  organisasi_user_by_version(version: String!, id: ID!): version_organisasi_user
+  user_organisasi(filter: user_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [user_organisasi!]!
+  user_organisasi_by_id(id: ID!, version: String): user_organisasi
+  user_organisasi_aggregated(groupBy: [String], filter: user_organisasi_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [user_organisasi_aggregated!]!
+  user_organisasi_by_version(version: String!, id: ID!): version_user_organisasi
   directus_sync_id_map(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_sync_id_map!]!
   directus_sync_id_map_by_id(id: ID!, version: String): directus_sync_id_map
   directus_sync_id_map_aggregated(groupBy: [String], filter: directus_sync_id_map_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [directus_sync_id_map_aggregated!]!
@@ -11,6 +11,30 @@ type Query {
   organisasi_anggota_organisasi_by_id(id: ID!, version: String): organisasi_anggota_organisasi
   organisasi_anggota_organisasi_aggregated(groupBy: [String], filter: organisasi_anggota_organisasi_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_anggota_organisasi_aggregated!]!
   organisasi_anggota_organisasi_by_version(version: String!, id: ID!): version_organisasi_anggota_organisasi
+  ibadat(filter: ibadat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [ibadat!]!
+  ibadat_by_id(id: ID!, version: String): ibadat
+  ibadat_aggregated(groupBy: [String], filter: ibadat_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [ibadat_aggregated!]!
+  ibadat_by_version(version: String!, id: ID!): version_ibadat
+  organisasi_jabatan_periode_files(filter: organisasi_jabatan_periode_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_jabatan_periode_files!]!
+  organisasi_jabatan_periode_files_by_id(id: ID!, version: String): organisasi_jabatan_periode_files
+  organisasi_jabatan_periode_files_aggregated(groupBy: [String], filter: organisasi_jabatan_periode_files_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_jabatan_periode_files_aggregated!]!
+  organisasi_jabatan_periode_files_by_version(version: String!, id: ID!): version_organisasi_jabatan_periode_files
+  timeline(filter: timeline_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [timeline!]!
+  timeline_by_id(id: ID!, version: String): timeline
+  timeline_aggregated(groupBy: [String], filter: timeline_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [timeline_aggregated!]!
+  timeline_by_version(version: String!, id: ID!): version_timeline
+  kegiatan_rapat_files(filter: kegiatan_rapat_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [kegiatan_rapat_files!]!
+  kegiatan_rapat_files_by_id(id: ID!, version: String): kegiatan_rapat_files
+  kegiatan_rapat_files_aggregated(groupBy: [String], filter: kegiatan_rapat_files_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [kegiatan_rapat_files_aggregated!]!
+  kegiatan_rapat_files_by_version(version: String!, id: ID!): version_kegiatan_rapat_files
+  pertemuan(filter: pertemuan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [pertemuan!]!
+  pertemuan_by_id(id: ID!, version: String): pertemuan
+  pertemuan_aggregated(groupBy: [String], filter: pertemuan_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [pertemuan_aggregated!]!
+  pertemuan_by_version(version: String!, id: ID!): version_pertemuan
+  kegiatan_misa(filter: kegiatan_misa_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [kegiatan_misa!]!
+  kegiatan_misa_by_id(id: ID!, version: String): kegiatan_misa
+  kegiatan_misa_aggregated(groupBy: [String], filter: kegiatan_misa_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [kegiatan_misa_aggregated!]!
+  kegiatan_misa_by_version(version: String!, id: ID!): version_kegiatan_misa
   organisasi_jabatan_periode(filter: organisasi_jabatan_periode_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_jabatan_periode!]!
   organisasi_jabatan_periode_by_id(id: ID!, version: String): organisasi_jabatan_periode
   organisasi_jabatan_periode_aggregated(groupBy: [String], filter: organisasi_jabatan_periode_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_jabatan_periode_aggregated!]!
@@ -23,10 +47,6 @@ type Query {
   organisasi_jabatan_by_id(id: ID!, version: String): organisasi_jabatan
   organisasi_jabatan_aggregated(groupBy: [String], filter: organisasi_jabatan_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_jabatan_aggregated!]!
   organisasi_jabatan_by_version(version: String!, id: ID!): version_organisasi_jabatan
-  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi!]!
-  organisasi_by_id(id: ID!, version: String): organisasi
-  organisasi_aggregated(groupBy: [String], filter: organisasi_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_aggregated!]!
-  organisasi_by_version(version: String!, id: ID!): version_organisasi
   block_hero(filter: block_hero_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [block_hero!]!
   block_hero_by_id(id: ID!, version: String): block_hero
   block_hero_aggregated(groupBy: [String], filter: block_hero_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [block_hero_aggregated!]!
@@ -73,6 +93,18 @@ type Query {
   post_blocks_by_id(id: ID!, version: String): post_blocks
   post_blocks_aggregated(groupBy: [String], filter: post_blocks_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [post_blocks_aggregated!]!
   post_blocks_by_version(version: String!, id: ID!): version_post_blocks
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi!]!
+  organisasi_by_id(id: ID!, version: String): organisasi
+  organisasi_aggregated(groupBy: [String], filter: organisasi_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_aggregated!]!
+  organisasi_by_version(version: String!, id: ID!): version_organisasi
+  rapat_dokumen(filter: rapat_dokumen_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [rapat_dokumen!]!
+  rapat_dokumen_by_id(id: ID!, version: String): rapat_dokumen
+  rapat_dokumen_aggregated(groupBy: [String], filter: rapat_dokumen_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [rapat_dokumen_aggregated!]!
+  rapat_dokumen_by_version(version: String!, id: ID!): version_rapat_dokumen
+  kegiatan_rapat(filter: kegiatan_rapat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [kegiatan_rapat!]!
+  kegiatan_rapat_by_id(id: ID!, version: String): kegiatan_rapat
+  kegiatan_rapat_aggregated(groupBy: [String], filter: kegiatan_rapat_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [kegiatan_rapat_aggregated!]!
+  kegiatan_rapat_by_version(version: String!, id: ID!): version_kegiatan_rapat
   post_images(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [post_images!]!
   post_images_by_id(id: ID!, version: String): post_images
   post_images_aggregated(groupBy: [String], filter: post_images_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [post_images_aggregated!]!
@@ -97,6 +129,14 @@ type Query {
   misa_by_id(id: ID!, version: String): misa
   misa_aggregated(groupBy: [String], filter: misa_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [misa_aggregated!]!
   misa_by_version(version: String!, id: ID!): version_misa
+  organisasi_files(filter: organisasi_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_files!]!
+  organisasi_files_by_id(id: ID!, version: String): organisasi_files
+  organisasi_files_aggregated(groupBy: [String], filter: organisasi_files_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_files_aggregated!]!
+  organisasi_files_by_version(version: String!, id: ID!): version_organisasi_files
+  misa_organisasi(filter: misa_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [misa_organisasi!]!
+  misa_organisasi_by_id(id: ID!, version: String): misa_organisasi
+  misa_organisasi_aggregated(groupBy: [String], filter: misa_organisasi_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [misa_organisasi_aggregated!]!
+  misa_organisasi_by_version(version: String!, id: ID!): version_misa_organisasi
   imam_riwayat(filter: imam_riwayat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [imam_riwayat!]!
   imam_riwayat_by_id(id: ID!, version: String): imam_riwayat
   imam_riwayat_aggregated(groupBy: [String], filter: imam_riwayat_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [imam_riwayat_aggregated!]!
@@ -104,20 +144,30 @@ type Query {
 }
 
 type Mutation {
-  create_organisasi_user_items(filter: organisasi_user_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_user_input!]): [organisasi_user!]!
-  create_organisasi_user_item(data: create_organisasi_user_input!): organisasi_user
+  create_user_organisasi_items(filter: user_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_user_organisasi_input!]): [user_organisasi!]!
+  create_user_organisasi_item(data: create_user_organisasi_input!): user_organisasi
   create_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_sync_id_map_input!]): [directus_sync_id_map!]!
   create_directus_sync_id_map_item(data: create_directus_sync_id_map_input!): directus_sync_id_map
   create_organisasi_anggota_organisasi_items(filter: organisasi_anggota_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_anggota_organisasi_input!]): [organisasi_anggota_organisasi!]!
   create_organisasi_anggota_organisasi_item(data: create_organisasi_anggota_organisasi_input!): organisasi_anggota_organisasi
+  create_ibadat_items(filter: ibadat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_ibadat_input!]): [ibadat!]!
+  create_ibadat_item(data: create_ibadat_input!): ibadat
+  create_organisasi_jabatan_periode_files_items(filter: organisasi_jabatan_periode_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_jabatan_periode_files_input!]): [organisasi_jabatan_periode_files!]!
+  create_organisasi_jabatan_periode_files_item(data: create_organisasi_jabatan_periode_files_input!): organisasi_jabatan_periode_files
+  create_timeline_items(filter: timeline_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_timeline_input!]): [timeline!]!
+  create_timeline_item(data: create_timeline_input!): timeline
+  create_kegiatan_rapat_files_items(filter: kegiatan_rapat_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_kegiatan_rapat_files_input!]): [kegiatan_rapat_files!]!
+  create_kegiatan_rapat_files_item(data: create_kegiatan_rapat_files_input!): kegiatan_rapat_files
+  create_pertemuan_items(filter: pertemuan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_pertemuan_input!]): [pertemuan!]!
+  create_pertemuan_item(data: create_pertemuan_input!): pertemuan
+  create_kegiatan_misa_items(filter: kegiatan_misa_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_kegiatan_misa_input!]): [kegiatan_misa!]!
+  create_kegiatan_misa_item(data: create_kegiatan_misa_input!): kegiatan_misa
   create_organisasi_jabatan_periode_items(filter: organisasi_jabatan_periode_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_jabatan_periode_input!]): [organisasi_jabatan_periode!]!
   create_organisasi_jabatan_periode_item(data: create_organisasi_jabatan_periode_input!): organisasi_jabatan_periode
   create_organisasi_anggota_items(filter: organisasi_anggota_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_anggota_input!]): [organisasi_anggota!]!
   create_organisasi_anggota_item(data: create_organisasi_anggota_input!): organisasi_anggota
   create_organisasi_jabatan_items(filter: organisasi_jabatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_jabatan_input!]): [organisasi_jabatan!]!
   create_organisasi_jabatan_item(data: create_organisasi_jabatan_input!): organisasi_jabatan
-  create_organisasi_items(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_input!]): [organisasi!]!
-  create_organisasi_item(data: create_organisasi_input!): organisasi
   create_block_hero_items(filter: block_hero_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_block_hero_input!]): [block_hero!]!
   create_block_hero_item(data: create_block_hero_input!): block_hero
   create_block_markdown_items(filter: block_markdown_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_block_markdown_input!]): [block_markdown!]!
@@ -140,6 +190,12 @@ type Mutation {
   create_post_item(data: create_post_input!): post
   create_post_blocks_items(filter: post_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_post_blocks_input!]): [post_blocks!]!
   create_post_blocks_item(data: create_post_blocks_input!): post_blocks
+  create_organisasi_items(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_input!]): [organisasi!]!
+  create_organisasi_item(data: create_organisasi_input!): organisasi
+  create_rapat_dokumen_items(filter: rapat_dokumen_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_rapat_dokumen_input!]): [rapat_dokumen!]!
+  create_rapat_dokumen_item(data: create_rapat_dokumen_input!): rapat_dokumen
+  create_kegiatan_rapat_items(filter: kegiatan_rapat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_kegiatan_rapat_input!]): [kegiatan_rapat!]!
+  create_kegiatan_rapat_item(data: create_kegiatan_rapat_input!): kegiatan_rapat
   create_post_images_items(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_post_images_input!]): [post_images!]!
   create_post_images_item(data: create_post_images_input!): post_images
   create_pendapatan_items(filter: pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_pendapatan_input!]): [pendapatan!]!
@@ -152,17 +208,39 @@ type Mutation {
   create_misa_dokumentasi_item(data: create_misa_dokumentasi_input!): misa_dokumentasi
   create_misa_items(filter: misa_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_misa_input!]): [misa!]!
   create_misa_item(data: create_misa_input!): misa
+  create_organisasi_files_items(filter: organisasi_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_files_input!]): [organisasi_files!]!
+  create_organisasi_files_item(data: create_organisasi_files_input!): organisasi_files
+  create_misa_organisasi_items(filter: misa_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_misa_organisasi_input!]): [misa_organisasi!]!
+  create_misa_organisasi_item(data: create_misa_organisasi_input!): misa_organisasi
   create_imam_riwayat_items(filter: imam_riwayat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_imam_riwayat_input!]): [imam_riwayat!]!
   create_imam_riwayat_item(data: create_imam_riwayat_input!): imam_riwayat
-  update_organisasi_user_items(filter: organisasi_user_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_user_input!): [organisasi_user!]!
-  update_organisasi_user_batch(filter: organisasi_user_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_user_input!]): [organisasi_user!]!
-  update_organisasi_user_item(id: ID!, data: update_organisasi_user_input!): organisasi_user
+  update_user_organisasi_items(filter: user_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_user_organisasi_input!): [user_organisasi!]!
+  update_user_organisasi_batch(filter: user_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_user_organisasi_input!]): [user_organisasi!]!
+  update_user_organisasi_item(id: ID!, data: update_user_organisasi_input!): user_organisasi
   update_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_directus_sync_id_map_input!): [directus_sync_id_map!]!
   update_directus_sync_id_map_batch(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_directus_sync_id_map_input!]): [directus_sync_id_map!]!
   update_directus_sync_id_map_item(id: ID!, data: update_directus_sync_id_map_input!): directus_sync_id_map
   update_organisasi_anggota_organisasi_items(filter: organisasi_anggota_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_anggota_organisasi_input!): [organisasi_anggota_organisasi!]!
   update_organisasi_anggota_organisasi_batch(filter: organisasi_anggota_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_anggota_organisasi_input!]): [organisasi_anggota_organisasi!]!
   update_organisasi_anggota_organisasi_item(id: ID!, data: update_organisasi_anggota_organisasi_input!): organisasi_anggota_organisasi
+  update_ibadat_items(filter: ibadat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_ibadat_input!): [ibadat!]!
+  update_ibadat_batch(filter: ibadat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_ibadat_input!]): [ibadat!]!
+  update_ibadat_item(id: ID!, data: update_ibadat_input!): ibadat
+  update_organisasi_jabatan_periode_files_items(filter: organisasi_jabatan_periode_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_jabatan_periode_files_input!): [organisasi_jabatan_periode_files!]!
+  update_organisasi_jabatan_periode_files_batch(filter: organisasi_jabatan_periode_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_jabatan_periode_files_input!]): [organisasi_jabatan_periode_files!]!
+  update_organisasi_jabatan_periode_files_item(id: ID!, data: update_organisasi_jabatan_periode_files_input!): organisasi_jabatan_periode_files
+  update_timeline_items(filter: timeline_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_timeline_input!): [timeline!]!
+  update_timeline_batch(filter: timeline_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_timeline_input!]): [timeline!]!
+  update_timeline_item(id: ID!, data: update_timeline_input!): timeline
+  update_kegiatan_rapat_files_items(filter: kegiatan_rapat_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_kegiatan_rapat_files_input!): [kegiatan_rapat_files!]!
+  update_kegiatan_rapat_files_batch(filter: kegiatan_rapat_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_kegiatan_rapat_files_input!]): [kegiatan_rapat_files!]!
+  update_kegiatan_rapat_files_item(id: ID!, data: update_kegiatan_rapat_files_input!): kegiatan_rapat_files
+  update_pertemuan_items(filter: pertemuan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_pertemuan_input!): [pertemuan!]!
+  update_pertemuan_batch(filter: pertemuan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_pertemuan_input!]): [pertemuan!]!
+  update_pertemuan_item(id: ID!, data: update_pertemuan_input!): pertemuan
+  update_kegiatan_misa_items(filter: kegiatan_misa_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_kegiatan_misa_input!): [kegiatan_misa!]!
+  update_kegiatan_misa_batch(filter: kegiatan_misa_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_kegiatan_misa_input!]): [kegiatan_misa!]!
+  update_kegiatan_misa_item(id: ID!, data: update_kegiatan_misa_input!): kegiatan_misa
   update_organisasi_jabatan_periode_items(filter: organisasi_jabatan_periode_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_jabatan_periode_input!): [organisasi_jabatan_periode!]!
   update_organisasi_jabatan_periode_batch(filter: organisasi_jabatan_periode_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_jabatan_periode_input!]): [organisasi_jabatan_periode!]!
   update_organisasi_jabatan_periode_item(id: ID!, data: update_organisasi_jabatan_periode_input!): organisasi_jabatan_periode
@@ -172,9 +250,6 @@ type Mutation {
   update_organisasi_jabatan_items(filter: organisasi_jabatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_jabatan_input!): [organisasi_jabatan!]!
   update_organisasi_jabatan_batch(filter: organisasi_jabatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_jabatan_input!]): [organisasi_jabatan!]!
   update_organisasi_jabatan_item(id: ID!, data: update_organisasi_jabatan_input!): organisasi_jabatan
-  update_organisasi_items(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_input!): [organisasi!]!
-  update_organisasi_batch(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_input!]): [organisasi!]!
-  update_organisasi_item(id: ID!, data: update_organisasi_input!): organisasi
   update_block_hero_items(filter: block_hero_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_block_hero_input!): [block_hero!]!
   update_block_hero_batch(filter: block_hero_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_block_hero_input!]): [block_hero!]!
   update_block_hero_item(id: ID!, data: update_block_hero_input!): block_hero
@@ -209,6 +284,15 @@ type Mutation {
   update_post_blocks_items(filter: post_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_post_blocks_input!): [post_blocks!]!
   update_post_blocks_batch(filter: post_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_post_blocks_input!]): [post_blocks!]!
   update_post_blocks_item(id: ID!, data: update_post_blocks_input!): post_blocks
+  update_organisasi_items(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_input!): [organisasi!]!
+  update_organisasi_batch(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_input!]): [organisasi!]!
+  update_organisasi_item(id: ID!, data: update_organisasi_input!): organisasi
+  update_rapat_dokumen_items(filter: rapat_dokumen_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_rapat_dokumen_input!): [rapat_dokumen!]!
+  update_rapat_dokumen_batch(filter: rapat_dokumen_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_rapat_dokumen_input!]): [rapat_dokumen!]!
+  update_rapat_dokumen_item(id: ID!, data: update_rapat_dokumen_input!): rapat_dokumen
+  update_kegiatan_rapat_items(filter: kegiatan_rapat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_kegiatan_rapat_input!): [kegiatan_rapat!]!
+  update_kegiatan_rapat_batch(filter: kegiatan_rapat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_kegiatan_rapat_input!]): [kegiatan_rapat!]!
+  update_kegiatan_rapat_item(id: ID!, data: update_kegiatan_rapat_input!): kegiatan_rapat
   update_post_images_items(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_post_images_input!): [post_images!]!
   update_post_images_batch(filter: post_images_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_post_images_input!]): [post_images!]!
   update_post_images_item(id: ID!, data: update_post_images_input!): post_images
@@ -227,23 +311,39 @@ type Mutation {
   update_misa_items(filter: misa_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_misa_input!): [misa!]!
   update_misa_batch(filter: misa_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_misa_input!]): [misa!]!
   update_misa_item(id: ID!, data: update_misa_input!): misa
+  update_organisasi_files_items(filter: organisasi_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_files_input!): [organisasi_files!]!
+  update_organisasi_files_batch(filter: organisasi_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_files_input!]): [organisasi_files!]!
+  update_organisasi_files_item(id: ID!, data: update_organisasi_files_input!): organisasi_files
+  update_misa_organisasi_items(filter: misa_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_misa_organisasi_input!): [misa_organisasi!]!
+  update_misa_organisasi_batch(filter: misa_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_misa_organisasi_input!]): [misa_organisasi!]!
+  update_misa_organisasi_item(id: ID!, data: update_misa_organisasi_input!): misa_organisasi
   update_imam_riwayat_items(filter: imam_riwayat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_imam_riwayat_input!): [imam_riwayat!]!
   update_imam_riwayat_batch(filter: imam_riwayat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_imam_riwayat_input!]): [imam_riwayat!]!
   update_imam_riwayat_item(id: ID!, data: update_imam_riwayat_input!): imam_riwayat
-  delete_organisasi_user_items(ids: [ID]!): delete_many
-  delete_organisasi_user_item(id: ID!): delete_one
+  delete_user_organisasi_items(ids: [ID]!): delete_many
+  delete_user_organisasi_item(id: ID!): delete_one
   delete_directus_sync_id_map_items(ids: [ID]!): delete_many
   delete_directus_sync_id_map_item(id: ID!): delete_one
   delete_organisasi_anggota_organisasi_items(ids: [ID]!): delete_many
   delete_organisasi_anggota_organisasi_item(id: ID!): delete_one
+  delete_ibadat_items(ids: [ID]!): delete_many
+  delete_ibadat_item(id: ID!): delete_one
+  delete_organisasi_jabatan_periode_files_items(ids: [ID]!): delete_many
+  delete_organisasi_jabatan_periode_files_item(id: ID!): delete_one
+  delete_timeline_items(ids: [ID]!): delete_many
+  delete_timeline_item(id: ID!): delete_one
+  delete_kegiatan_rapat_files_items(ids: [ID]!): delete_many
+  delete_kegiatan_rapat_files_item(id: ID!): delete_one
+  delete_pertemuan_items(ids: [ID]!): delete_many
+  delete_pertemuan_item(id: ID!): delete_one
+  delete_kegiatan_misa_items(ids: [ID]!): delete_many
+  delete_kegiatan_misa_item(id: ID!): delete_one
   delete_organisasi_jabatan_periode_items(ids: [ID]!): delete_many
   delete_organisasi_jabatan_periode_item(id: ID!): delete_one
   delete_organisasi_anggota_items(ids: [ID]!): delete_many
   delete_organisasi_anggota_item(id: ID!): delete_one
   delete_organisasi_jabatan_items(ids: [ID]!): delete_many
   delete_organisasi_jabatan_item(id: ID!): delete_one
-  delete_organisasi_items(ids: [ID]!): delete_many
-  delete_organisasi_item(id: ID!): delete_one
   delete_block_hero_items(ids: [ID]!): delete_many
   delete_block_hero_item(id: ID!): delete_one
   delete_block_markdown_items(ids: [ID]!): delete_many
@@ -266,6 +366,12 @@ type Mutation {
   delete_post_item(id: ID!): delete_one
   delete_post_blocks_items(ids: [ID]!): delete_many
   delete_post_blocks_item(id: ID!): delete_one
+  delete_organisasi_items(ids: [ID]!): delete_many
+  delete_organisasi_item(id: ID!): delete_one
+  delete_rapat_dokumen_items(ids: [ID]!): delete_many
+  delete_rapat_dokumen_item(id: ID!): delete_one
+  delete_kegiatan_rapat_items(ids: [ID]!): delete_many
+  delete_kegiatan_rapat_item(id: ID!): delete_one
   delete_post_images_items(ids: [ID]!): delete_many
   delete_post_images_item(id: ID!): delete_one
   delete_pendapatan_items(ids: [ID]!): delete_many
@@ -278,6 +384,10 @@ type Mutation {
   delete_misa_dokumentasi_item(id: ID!): delete_one
   delete_misa_items(ids: [ID]!): delete_many
   delete_misa_item(id: ID!): delete_one
+  delete_organisasi_files_items(ids: [ID]!): delete_many
+  delete_organisasi_files_item(id: ID!): delete_one
+  delete_misa_organisasi_items(ids: [ID]!): delete_many
+  delete_misa_organisasi_item(id: ID!): delete_one
   delete_imam_riwayat_items(ids: [ID]!): delete_many
   delete_imam_riwayat_item(id: ID!): delete_one
 }
@@ -288,9 +398,9 @@ type Subscription {
   directus_permissions_mutated(event: EventEnum): directus_permissions_mutated
   directus_files_mutated(event: EventEnum): directus_files_mutated
   directus_folders_mutated(event: EventEnum): directus_folders_mutated
-  organisasi_user_mutated(event: EventEnum): organisasi_user_mutated
   directus_roles_mutated(event: EventEnum): directus_roles_mutated
   directus_presets_mutated(event: EventEnum): directus_presets_mutated
+  user_organisasi_mutated(event: EventEnum): user_organisasi_mutated
   directus_revisions_mutated(event: EventEnum): directus_revisions_mutated
   directus_panels_mutated(event: EventEnum): directus_panels_mutated
   directus_notifications_mutated(event: EventEnum): directus_notifications_mutated
@@ -306,10 +416,15 @@ type Subscription {
   directus_access_mutated(event: EventEnum): directus_access_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
   organisasi_anggota_organisasi_mutated(event: EventEnum): organisasi_anggota_organisasi_mutated
+  ibadat_mutated(event: EventEnum): ibadat_mutated
+  organisasi_jabatan_periode_files_mutated(event: EventEnum): organisasi_jabatan_periode_files_mutated
+  timeline_mutated(event: EventEnum): timeline_mutated
+  kegiatan_rapat_files_mutated(event: EventEnum): kegiatan_rapat_files_mutated
+  pertemuan_mutated(event: EventEnum): pertemuan_mutated
+  kegiatan_misa_mutated(event: EventEnum): kegiatan_misa_mutated
   organisasi_jabatan_periode_mutated(event: EventEnum): organisasi_jabatan_periode_mutated
   organisasi_anggota_mutated(event: EventEnum): organisasi_anggota_mutated
   organisasi_jabatan_mutated(event: EventEnum): organisasi_jabatan_mutated
-  organisasi_mutated(event: EventEnum): organisasi_mutated
   block_hero_mutated(event: EventEnum): block_hero_mutated
   block_markdown_mutated(event: EventEnum): block_markdown_mutated
   block_richtext_mutated(event: EventEnum): block_richtext_mutated
@@ -322,12 +437,17 @@ type Subscription {
   page_blocks_mutated(event: EventEnum): page_blocks_mutated
   post_mutated(event: EventEnum): post_mutated
   post_blocks_mutated(event: EventEnum): post_blocks_mutated
+  organisasi_mutated(event: EventEnum): organisasi_mutated
+  rapat_dokumen_mutated(event: EventEnum): rapat_dokumen_mutated
+  kegiatan_rapat_mutated(event: EventEnum): kegiatan_rapat_mutated
   post_images_mutated(event: EventEnum): post_images_mutated
   pendapatan_mutated(event: EventEnum): pendapatan_mutated
   imam_mutated(event: EventEnum): imam_mutated
   sumber_pendapatan_mutated(event: EventEnum): sumber_pendapatan_mutated
   misa_dokumentasi_mutated(event: EventEnum): misa_dokumentasi_mutated
   misa_mutated(event: EventEnum): misa_mutated
+  organisasi_files_mutated(event: EventEnum): organisasi_files_mutated
+  misa_organisasi_mutated(event: EventEnum): misa_organisasi_mutated
   imam_riwayat_mutated(event: EventEnum): imam_riwayat_mutated
 }
 
@@ -1095,8 +1215,8 @@ type directus_users {
   tempatLahir: String
   tanggalLahir: Date
   tanggalLahir_func: date_functions
-  orgnisasi(filter: organisasi_user_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_user]
-  orgnisasi_func: count_functions
+  organisasi(filter: user_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [user_organisasi]
+  organisasi_func: count_functions
   policies(filter: directus_access_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_access]
   policies_func: count_functions
 }
@@ -1201,6 +1321,51 @@ type hero_images_mutated {
   key: ID!
   event: EventEnum
   data: hero_images
+}
+
+type ibadat {
+  id: ID!
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  nama: String
+  tempat: String
+  tanggal: Date
+  tanggal_func: date_functions
+  jam: Date
+  jam_func: time_functions
+  keterangan: String
+}
+
+type ibadat_aggregated {
+  group: JSON
+  countAll: Int
+  count: ibadat_aggregated_count
+  countDistinct: ibadat_aggregated_count
+}
+
+type ibadat_aggregated_count {
+  id: Int
+  createdBy: Int
+  createdAt: Int
+  updatedBy: Int
+  updatedAt: Int
+  organisasi: Int
+  nama: Int
+  tempat: Int
+  tanggal: Int
+  jam: Int
+  keterangan: Int
+}
+
+type ibadat_mutated {
+  key: ID!
+  event: EventEnum
+  data: ibadat
 }
 
 type imam {
@@ -1312,6 +1477,154 @@ type imam_riwayat_mutated {
   data: imam_riwayat
 }
 
+type kegiatan_misa {
+  id: ID!
+  sort: Int
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  nama: String
+  tanggal: Date
+  tanggal_func: date_functions
+  jam: Date
+  jam_func: time_functions
+  tempat: String
+}
+
+type kegiatan_misa_aggregated {
+  group: JSON
+  countAll: Int
+  count: kegiatan_misa_aggregated_count
+  countDistinct: kegiatan_misa_aggregated_count
+  avg: kegiatan_misa_aggregated_fields
+  sum: kegiatan_misa_aggregated_fields
+  avgDistinct: kegiatan_misa_aggregated_fields
+  sumDistinct: kegiatan_misa_aggregated_fields
+  min: kegiatan_misa_aggregated_fields
+  max: kegiatan_misa_aggregated_fields
+}
+
+type kegiatan_misa_aggregated_count {
+  id: Int
+  sort: Int
+  createdBy: Int
+  createdAt: Int
+  updatedBy: Int
+  updatedAt: Int
+  nama: Int
+  tanggal: Int
+  jam: Int
+  tempat: Int
+}
+
+type kegiatan_misa_aggregated_fields {
+  sort: Float
+}
+
+type kegiatan_misa_mutated {
+  key: ID!
+  event: EventEnum
+  data: kegiatan_misa
+}
+
+type kegiatan_rapat {
+  id: ID!
+  sort: Int
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  nama: String
+  tanggal: Date
+  tanggal_func: date_functions
+  jam: Date
+  jam_func: time_functions
+  agenda: String
+  notulen: String
+  dokumen(filter: kegiatan_rapat_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [kegiatan_rapat_files]
+  dokumen_func: count_functions
+}
+
+type kegiatan_rapat_aggregated {
+  group: JSON
+  countAll: Int
+  count: kegiatan_rapat_aggregated_count
+  countDistinct: kegiatan_rapat_aggregated_count
+  avg: kegiatan_rapat_aggregated_fields
+  sum: kegiatan_rapat_aggregated_fields
+  avgDistinct: kegiatan_rapat_aggregated_fields
+  sumDistinct: kegiatan_rapat_aggregated_fields
+  min: kegiatan_rapat_aggregated_fields
+  max: kegiatan_rapat_aggregated_fields
+}
+
+type kegiatan_rapat_aggregated_count {
+  id: Int
+  sort: Int
+  createdBy: Int
+  createdAt: Int
+  updatedBy: Int
+  updatedAt: Int
+  organisasi: Int
+  nama: Int
+  tanggal: Int
+  jam: Int
+  agenda: Int
+  notulen: Int
+  dokumen: Int
+}
+
+type kegiatan_rapat_aggregated_fields {
+  sort: Float
+}
+
+type kegiatan_rapat_files {
+  id: ID!
+  kegiatan_rapat_id(filter: kegiatan_rapat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): kegiatan_rapat
+  directus_files_id(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+}
+
+type kegiatan_rapat_files_aggregated {
+  group: JSON
+  countAll: Int
+  count: kegiatan_rapat_files_aggregated_count
+  countDistinct: kegiatan_rapat_files_aggregated_count
+  avg: kegiatan_rapat_files_aggregated_fields
+  sum: kegiatan_rapat_files_aggregated_fields
+  avgDistinct: kegiatan_rapat_files_aggregated_fields
+  sumDistinct: kegiatan_rapat_files_aggregated_fields
+  min: kegiatan_rapat_files_aggregated_fields
+  max: kegiatan_rapat_files_aggregated_fields
+}
+
+type kegiatan_rapat_files_aggregated_count {
+  id: Int
+  kegiatan_rapat_id: Int
+  directus_files_id: Int
+}
+
+type kegiatan_rapat_files_aggregated_fields {
+  id: Float
+}
+
+type kegiatan_rapat_files_mutated {
+  key: ID!
+  event: EventEnum
+  data: kegiatan_rapat_files
+}
+
+type kegiatan_rapat_mutated {
+  key: ID!
+  event: EventEnum
+  data: kegiatan_rapat
+}
+
 type misa {
   id: ID!
   sort: Int
@@ -1401,6 +1714,53 @@ type misa_mutated {
   data: misa
 }
 
+type misa_organisasi {
+  id: ID!
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  nama: String
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  tempat: String
+  tanggal: Date
+  tanggal_func: date_functions
+  jam: Date
+  jam_func: time_functions
+  imam: String
+  imam_id(filter: imam_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): imam
+}
+
+type misa_organisasi_aggregated {
+  group: JSON
+  countAll: Int
+  count: misa_organisasi_aggregated_count
+  countDistinct: misa_organisasi_aggregated_count
+}
+
+type misa_organisasi_aggregated_count {
+  id: Int
+  createdBy: Int
+  createdAt: Int
+  updatedBy: Int
+  updatedAt: Int
+  nama: Int
+  organisasi: Int
+  tempat: Int
+  tanggal: Int
+  jam: Int
+  imam: Int
+  imam_id: Int
+}
+
+type misa_organisasi_mutated {
+  key: ID!
+  event: EventEnum
+  data: misa_organisasi
+}
+
 type organisasi {
   createdAt: Date
   createdAt_func: datetime_functions
@@ -1414,6 +1774,8 @@ type organisasi {
   updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   periode(filter: organisasi_jabatan_periode_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi_jabatan_periode
   images(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  dokumen(filter: organisasi_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_files]
+  dokumen_func: count_functions
 }
 
 type organisasi_aggregated {
@@ -1442,6 +1804,7 @@ type organisasi_aggregated_count {
   """periode aktif kepengurusan"""
   periode: Int
   images: Int
+  dokumen: Int
 }
 
 type organisasi_aggregated_fields {
@@ -1535,6 +1898,41 @@ type organisasi_anggota_organisasi_mutated {
   data: organisasi_anggota_organisasi
 }
 
+type organisasi_files {
+  id: ID!
+  organisasi_id(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  directus_files_id(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+}
+
+type organisasi_files_aggregated {
+  group: JSON
+  countAll: Int
+  count: organisasi_files_aggregated_count
+  countDistinct: organisasi_files_aggregated_count
+  avg: organisasi_files_aggregated_fields
+  sum: organisasi_files_aggregated_fields
+  avgDistinct: organisasi_files_aggregated_fields
+  sumDistinct: organisasi_files_aggregated_fields
+  min: organisasi_files_aggregated_fields
+  max: organisasi_files_aggregated_fields
+}
+
+type organisasi_files_aggregated_count {
+  id: Int
+  organisasi_id: Int
+  directus_files_id: Int
+}
+
+type organisasi_files_aggregated_fields {
+  id: Float
+}
+
+type organisasi_files_mutated {
+  key: ID!
+  event: EventEnum
+  data: organisasi_files
+}
+
 type organisasi_jabatan {
   aktif: Boolean
   createdAt: Date
@@ -1607,6 +2005,8 @@ type organisasi_jabatan_periode {
   dilantikPada_func: date_functions
   dokumentasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi]
   dokumentasi_func: count_functions
+  dokumen(filter: organisasi_jabatan_periode_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_jabatan_periode_files]
+  dokumen_func: count_functions
 }
 
 type organisasi_jabatan_periode_aggregated {
@@ -1635,10 +2035,46 @@ type organisasi_jabatan_periode_aggregated_count {
   updatedBy: Int
   dilantikPada: Int
   dokumentasi: Int
+  dokumen: Int
 }
 
 type organisasi_jabatan_periode_aggregated_fields {
   sort: Float
+}
+
+type organisasi_jabatan_periode_files {
+  id: ID!
+  organisasi_jabatan_periode_id(filter: organisasi_jabatan_periode_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi_jabatan_periode
+  directus_files_id(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+}
+
+type organisasi_jabatan_periode_files_aggregated {
+  group: JSON
+  countAll: Int
+  count: organisasi_jabatan_periode_files_aggregated_count
+  countDistinct: organisasi_jabatan_periode_files_aggregated_count
+  avg: organisasi_jabatan_periode_files_aggregated_fields
+  sum: organisasi_jabatan_periode_files_aggregated_fields
+  avgDistinct: organisasi_jabatan_periode_files_aggregated_fields
+  sumDistinct: organisasi_jabatan_periode_files_aggregated_fields
+  min: organisasi_jabatan_periode_files_aggregated_fields
+  max: organisasi_jabatan_periode_files_aggregated_fields
+}
+
+type organisasi_jabatan_periode_files_aggregated_count {
+  id: Int
+  organisasi_jabatan_periode_id: Int
+  directus_files_id: Int
+}
+
+type organisasi_jabatan_periode_files_aggregated_fields {
+  id: Float
+}
+
+type organisasi_jabatan_periode_files_mutated {
+  key: ID!
+  event: EventEnum
+  data: organisasi_jabatan_periode_files
 }
 
 type organisasi_jabatan_periode_mutated {
@@ -1702,41 +2138,6 @@ type organisasi_struktur_mutated {
   key: ID!
   event: EventEnum
   data: organisasi_struktur
-}
-
-type organisasi_user {
-  id: ID!
-  user(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
-  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
-}
-
-type organisasi_user_aggregated {
-  group: JSON
-  countAll: Int
-  count: organisasi_user_aggregated_count
-  countDistinct: organisasi_user_aggregated_count
-  avg: organisasi_user_aggregated_fields
-  sum: organisasi_user_aggregated_fields
-  avgDistinct: organisasi_user_aggregated_fields
-  sumDistinct: organisasi_user_aggregated_fields
-  min: organisasi_user_aggregated_fields
-  max: organisasi_user_aggregated_fields
-}
-
-type organisasi_user_aggregated_count {
-  id: Int
-  user: Int
-  organisasi: Int
-}
-
-type organisasi_user_aggregated_fields {
-  id: Float
-}
-
-type organisasi_user_mutated {
-  key: ID!
-  event: EventEnum
-  data: organisasi_user
 }
 
 type page {
@@ -1889,6 +2290,53 @@ type pendapatan_mutated {
   data: pendapatan
 }
 
+type pertemuan {
+  id: ID!
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  nama: String
+  tempat: String
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  tanggal: Date
+  tanggal_func: date_functions
+  jam: Date
+  jam_func: time_functions
+  catatan: String
+  cover(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+}
+
+type pertemuan_aggregated {
+  group: JSON
+  countAll: Int
+  count: pertemuan_aggregated_count
+  countDistinct: pertemuan_aggregated_count
+}
+
+type pertemuan_aggregated_count {
+  id: Int
+  createdBy: Int
+  createdAt: Int
+  updatedBy: Int
+  updatedAt: Int
+  nama: Int
+  tempat: Int
+  organisasi: Int
+  tanggal: Int
+  jam: Int
+  catatan: Int
+  cover: Int
+}
+
+type pertemuan_mutated {
+  key: ID!
+  event: EventEnum
+  data: pertemuan
+}
+
 type post {
   category(filter: category_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): category
   cover(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
@@ -2029,6 +2477,39 @@ type post_mutated {
   data: post
 }
 
+type rapat_dokumen {
+  id: ID!
+  dokumen(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+}
+
+type rapat_dokumen_aggregated {
+  group: JSON
+  countAll: Int
+  count: rapat_dokumen_aggregated_count
+  countDistinct: rapat_dokumen_aggregated_count
+  avg: rapat_dokumen_aggregated_fields
+  sum: rapat_dokumen_aggregated_fields
+  avgDistinct: rapat_dokumen_aggregated_fields
+  sumDistinct: rapat_dokumen_aggregated_fields
+  min: rapat_dokumen_aggregated_fields
+  max: rapat_dokumen_aggregated_fields
+}
+
+type rapat_dokumen_aggregated_count {
+  id: Int
+  dokumen: Int
+}
+
+type rapat_dokumen_aggregated_fields {
+  id: Float
+}
+
+type rapat_dokumen_mutated {
+  key: ID!
+  event: EventEnum
+  data: rapat_dokumen
+}
+
 type seo {
   description: String
   id: ID!
@@ -2101,6 +2582,91 @@ type sumber_pendapatan_mutated {
   key: ID!
   event: EventEnum
   data: sumber_pendapatan
+}
+
+type time_functions {
+  hour: Int
+  minute: Int
+  second: Int
+}
+
+type timeline {
+  id: ID!
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  judul: String
+  tanggal: Date
+  tanggal_func: date_functions
+  content: String
+  collection_id: String
+  collection: String
+}
+
+type timeline_aggregated {
+  group: JSON
+  countAll: Int
+  count: timeline_aggregated_count
+  countDistinct: timeline_aggregated_count
+}
+
+type timeline_aggregated_count {
+  id: Int
+  createdBy: Int
+  createdAt: Int
+  updatedBy: Int
+  updatedAt: Int
+  judul: Int
+  tanggal: Int
+  content: Int
+  collection_id: Int
+  collection: Int
+}
+
+type timeline_mutated {
+  key: ID!
+  event: EventEnum
+  data: timeline
+}
+
+type user_organisasi {
+  id: ID!
+  user(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  persetujuan: Boolean
+}
+
+type user_organisasi_aggregated {
+  group: JSON
+  countAll: Int
+  count: user_organisasi_aggregated_count
+  countDistinct: user_organisasi_aggregated_count
+  avg: user_organisasi_aggregated_fields
+  sum: user_organisasi_aggregated_fields
+  avgDistinct: user_organisasi_aggregated_fields
+  sumDistinct: user_organisasi_aggregated_fields
+  min: user_organisasi_aggregated_fields
+  max: user_organisasi_aggregated_fields
+}
+
+type user_organisasi_aggregated_count {
+  id: Int
+  user: Int
+  organisasi: Int
+  persetujuan: Int
+}
+
+type user_organisasi_aggregated_fields {
+  id: Float
+}
+
+type user_organisasi_mutated {
+  key: ID!
+  event: EventEnum
+  data: user_organisasi
 }
 
 """"""
@@ -2184,6 +2750,21 @@ type version_hero_images {
 }
 
 """"""
+type version_ibadat {
+  id: ID
+  createdBy: JSON
+  createdAt: Date
+  updatedBy: JSON
+  updatedAt: Date
+  organisasi: JSON
+  nama: String
+  tempat: String
+  tanggal: Date
+  jam: Date
+  keterangan: String
+}
+
+""""""
 type version_imam {
   id: ID
   sort: Int
@@ -2219,6 +2800,44 @@ type version_imam_riwayat {
 }
 
 """"""
+type version_kegiatan_misa {
+  id: ID
+  sort: Int
+  createdBy: JSON
+  createdAt: Date
+  updatedBy: JSON
+  updatedAt: Date
+  nama: String
+  tanggal: Date
+  jam: Date
+  tempat: String
+}
+
+""""""
+type version_kegiatan_rapat {
+  id: ID
+  sort: Int
+  createdBy: JSON
+  createdAt: Date
+  updatedBy: JSON
+  updatedAt: Date
+  organisasi: JSON
+  nama: String
+  tanggal: Date
+  jam: Date
+  agenda: String
+  notulen: String
+  dokumen: JSON
+}
+
+""""""
+type version_kegiatan_rapat_files {
+  id: ID
+  kegiatan_rapat_id: JSON
+  directus_files_id: JSON
+}
+
+""""""
 type version_misa {
   id: ID
   sort: Int
@@ -2240,6 +2859,22 @@ type version_misa_dokumentasi {
 }
 
 """"""
+type version_misa_organisasi {
+  id: ID
+  createdBy: JSON
+  createdAt: Date
+  updatedBy: JSON
+  updatedAt: Date
+  nama: String
+  organisasi: JSON
+  tempat: String
+  tanggal: Date
+  jam: Date
+  imam: String
+  imam_id: JSON
+}
+
+""""""
 type version_organisasi {
   createdAt: Date
   createdBy: JSON
@@ -2251,6 +2886,7 @@ type version_organisasi {
   updatedBy: JSON
   periode: JSON
   images: JSON
+  dokumen: JSON
 }
 
 """"""
@@ -2276,6 +2912,13 @@ type version_organisasi_anggota_organisasi {
   organisasi_anggota: JSON
   organisasi: JSON
   sort: Int
+}
+
+""""""
+type version_organisasi_files {
+  id: ID
+  organisasi_id: JSON
+  directus_files_id: JSON
 }
 
 """"""
@@ -2307,6 +2950,14 @@ type version_organisasi_jabatan_periode {
   updatedBy: JSON
   dilantikPada: Date
   dokumentasi: JSON
+  dokumen: JSON
+}
+
+""""""
+type version_organisasi_jabatan_periode_files {
+  id: ID
+  organisasi_jabatan_periode_id: JSON
+  directus_files_id: JSON
 }
 
 """"""
@@ -2321,13 +2972,6 @@ type version_organisasi_struktur {
   sort: Int
   updatedAt: Date
   updatedBy: JSON
-}
-
-""""""
-type version_organisasi_user {
-  id: ID
-  user: JSON
-  organisasi: JSON
 }
 
 """"""
@@ -2371,6 +3015,22 @@ type version_pendapatan {
 }
 
 """"""
+type version_pertemuan {
+  id: ID
+  createdBy: JSON
+  createdAt: Date
+  updatedBy: JSON
+  updatedAt: Date
+  nama: String
+  tempat: String
+  organisasi: JSON
+  tanggal: Date
+  jam: Date
+  catatan: String
+  cover: JSON
+}
+
+""""""
 type version_post {
   category: JSON
   cover: JSON
@@ -2407,6 +3067,12 @@ type version_post_images {
 }
 
 """"""
+type version_rapat_dokumen {
+  id: ID
+  dokumen: JSON
+}
+
+""""""
 type version_seo {
   description: String
   id: ID
@@ -2424,6 +3090,28 @@ type version_sumber_pendapatan {
   updatedBy: JSON
   updatedAt: Date
   sumber: String
+}
+
+""""""
+type version_timeline {
+  id: ID
+  createdBy: JSON
+  createdAt: Date
+  updatedBy: JSON
+  updatedAt: Date
+  judul: String
+  tanggal: Date
+  content: String
+  collection_id: String
+  collection: String
+}
+
+""""""
+type version_user_organisasi {
+  id: ID
+  user: JSON
+  organisasi: JSON
+  persetujuan: Boolean
 }
 
 input big_int_filter_operators {
@@ -2682,7 +3370,7 @@ input create_directus_users_input {
   nama: String
   tempatLahir: String
   tanggalLahir: Date
-  orgnisasi: [create_organisasi_user_input]
+  organisasi: [create_user_organisasi_input]
   policies: [create_directus_access_input]
 }
 
@@ -2690,6 +3378,20 @@ input create_hero_images_input {
   hero: create_block_hero_input
   id: ID
   image: create_directus_files_input
+}
+
+input create_ibadat_input {
+  id: ID
+  createdBy: create_directus_users_input
+  createdAt: Date
+  updatedBy: create_directus_users_input
+  updatedAt: Date
+  organisasi: create_organisasi_input
+  nama: String
+  tempat: String
+  tanggal: Date
+  jam: Date
+  keterangan: String
 }
 
 input create_imam_input {
@@ -2725,6 +3427,41 @@ input create_imam_riwayat_input {
   akurasiTanggal: Boolean
 }
 
+input create_kegiatan_misa_input {
+  id: ID
+  sort: Int
+  createdBy: create_directus_users_input
+  createdAt: Date
+  updatedBy: create_directus_users_input
+  updatedAt: Date
+  nama: String
+  tanggal: Date
+  jam: Date
+  tempat: String
+}
+
+input create_kegiatan_rapat_files_input {
+  id: ID
+  kegiatan_rapat_id: create_kegiatan_rapat_input
+  directus_files_id: create_directus_files_input
+}
+
+input create_kegiatan_rapat_input {
+  id: ID
+  sort: Int
+  createdBy: create_directus_users_input
+  createdAt: Date
+  updatedBy: create_directus_users_input
+  updatedAt: Date
+  organisasi: create_organisasi_input
+  nama: String
+  tanggal: Date
+  jam: Date
+  agenda: String
+  notulen: String
+  dokumen: [create_kegiatan_rapat_files_input]
+}
+
 input create_misa_dokumentasi_input {
   id: ID
   misa: create_misa_input
@@ -2742,6 +3479,21 @@ input create_misa_input {
   perayaan: String
   pendapatan: [create_pendapatan_input]
   dokumentasi: [create_misa_dokumentasi_input]
+}
+
+input create_misa_organisasi_input {
+  id: ID
+  createdBy: create_directus_users_input
+  createdAt: Date
+  updatedBy: create_directus_users_input
+  updatedAt: Date
+  nama: String
+  organisasi: create_organisasi_input
+  tempat: String
+  tanggal: Date
+  jam: Date
+  imam: String
+  imam_id: create_imam_input
 }
 
 input create_organisasi_anggota_input {
@@ -2767,6 +3519,12 @@ input create_organisasi_anggota_organisasi_input {
   sort: Int
 }
 
+input create_organisasi_files_input {
+  id: ID
+  organisasi_id: create_organisasi_input
+  directus_files_id: create_directus_files_input
+}
+
 input create_organisasi_input {
   createdAt: Date
   createdBy: create_directus_users_input
@@ -2778,6 +3536,7 @@ input create_organisasi_input {
   updatedBy: create_directus_users_input
   periode: create_organisasi_jabatan_periode_input
   images: create_directus_files_input
+  dokumen: [create_organisasi_files_input]
 }
 
 input create_organisasi_jabatan_input {
@@ -2794,6 +3553,12 @@ input create_organisasi_jabatan_input {
   penjabat: create_organisasi_anggota_input
 }
 
+input create_organisasi_jabatan_periode_files_input {
+  id: ID
+  organisasi_jabatan_periode_id: create_organisasi_jabatan_periode_input
+  directus_files_id: create_directus_files_input
+}
+
 input create_organisasi_jabatan_periode_input {
   berakhirPada: Date
   createdAt: Date
@@ -2807,6 +3572,7 @@ input create_organisasi_jabatan_periode_input {
   updatedBy: create_directus_users_input
   dilantikPada: Date
   dokumentasi: [create_organisasi_input]
+  dokumen: [create_organisasi_jabatan_periode_files_input]
 }
 
 input create_organisasi_struktur_input {
@@ -2820,12 +3586,6 @@ input create_organisasi_struktur_input {
   sort: Int
   updatedAt: Date
   updatedBy: create_directus_users_input
-}
-
-input create_organisasi_user_input {
-  id: ID
-  user: create_directus_users_input
-  organisasi: create_organisasi_input
 }
 
 input create_page_blocks_input {
@@ -2865,6 +3625,21 @@ input create_pendapatan_input {
   sumber: create_sumber_pendapatan_input
 }
 
+input create_pertemuan_input {
+  id: ID
+  createdBy: create_directus_users_input
+  createdAt: Date
+  updatedBy: create_directus_users_input
+  updatedAt: Date
+  nama: String
+  tempat: String
+  organisasi: create_organisasi_input
+  tanggal: Date
+  jam: Date
+  catatan: String
+  cover: create_directus_files_input
+}
+
 input create_post_blocks_input {
   collection: String
   id: ID
@@ -2898,6 +3673,11 @@ input create_post_input {
   images: [create_post_images_input]
 }
 
+input create_rapat_dokumen_input {
+  id: ID
+  dokumen: create_directus_files_input
+}
+
 input create_seo_input {
   description: String
   id: ID
@@ -2914,6 +3694,26 @@ input create_sumber_pendapatan_input {
   updatedBy: create_directus_users_input
   updatedAt: Date
   sumber: String
+}
+
+input create_timeline_input {
+  id: ID
+  createdBy: create_directus_users_input
+  createdAt: Date
+  updatedBy: create_directus_users_input
+  updatedAt: Date
+  judul: String
+  tanggal: Date
+  content: String
+  collection_id: String
+  collection: String
+}
+
+input create_user_organisasi_input {
+  id: ID
+  user: create_directus_users_input
+  organisasi: create_organisasi_input
+  persetujuan: Boolean
 }
 
 input date_filter_operators {
@@ -3213,8 +4013,8 @@ input directus_users_filter {
   tempatLahir: string_filter_operators
   tanggalLahir: date_filter_operators
   tanggalLahir_func: date_function_filter_operators
-  orgnisasi: organisasi_user_filter
-  orgnisasi_func: count_function_filter_operators
+  organisasi: user_organisasi_filter
+  organisasi_func: count_function_filter_operators
   policies: directus_access_filter
   policies_func: count_function_filter_operators
   _and: [directus_users_filter]
@@ -3251,6 +4051,26 @@ input hero_images_filter {
   image: directus_files_filter
   _and: [hero_images_filter]
   _or: [hero_images_filter]
+}
+
+input ibadat_filter {
+  id: string_filter_operators
+  createdBy: directus_users_filter
+  createdAt: date_filter_operators
+  createdAt_func: datetime_function_filter_operators
+  updatedBy: directus_users_filter
+  updatedAt: date_filter_operators
+  updatedAt_func: datetime_function_filter_operators
+  organisasi: organisasi_filter
+  nama: string_filter_operators
+  tempat: string_filter_operators
+  tanggal: date_filter_operators
+  tanggal_func: date_function_filter_operators
+  jam: date_filter_operators
+  jam_func: time_function_filter_operators
+  keterangan: string_filter_operators
+  _and: [ibadat_filter]
+  _or: [ibadat_filter]
 }
 
 input imam_filter {
@@ -3297,6 +4117,56 @@ input imam_riwayat_filter {
   _or: [imam_riwayat_filter]
 }
 
+input kegiatan_misa_filter {
+  id: string_filter_operators
+  sort: number_filter_operators
+  createdBy: directus_users_filter
+  createdAt: date_filter_operators
+  createdAt_func: datetime_function_filter_operators
+  updatedBy: directus_users_filter
+  updatedAt: date_filter_operators
+  updatedAt_func: datetime_function_filter_operators
+  nama: string_filter_operators
+  tanggal: date_filter_operators
+  tanggal_func: date_function_filter_operators
+  jam: date_filter_operators
+  jam_func: time_function_filter_operators
+  tempat: string_filter_operators
+  _and: [kegiatan_misa_filter]
+  _or: [kegiatan_misa_filter]
+}
+
+input kegiatan_rapat_files_filter {
+  id: number_filter_operators
+  kegiatan_rapat_id: kegiatan_rapat_filter
+  directus_files_id: directus_files_filter
+  _and: [kegiatan_rapat_files_filter]
+  _or: [kegiatan_rapat_files_filter]
+}
+
+input kegiatan_rapat_filter {
+  id: string_filter_operators
+  sort: number_filter_operators
+  createdBy: directus_users_filter
+  createdAt: date_filter_operators
+  createdAt_func: datetime_function_filter_operators
+  updatedBy: directus_users_filter
+  updatedAt: date_filter_operators
+  updatedAt_func: datetime_function_filter_operators
+  organisasi: organisasi_filter
+  nama: string_filter_operators
+  tanggal: date_filter_operators
+  tanggal_func: date_function_filter_operators
+  jam: date_filter_operators
+  jam_func: time_function_filter_operators
+  agenda: string_filter_operators
+  notulen: string_filter_operators
+  dokumen: kegiatan_rapat_files_filter
+  dokumen_func: count_function_filter_operators
+  _and: [kegiatan_rapat_filter]
+  _or: [kegiatan_rapat_filter]
+}
+
 input misa_dokumentasi_filter {
   id: number_filter_operators
   misa: misa_filter
@@ -3323,6 +4193,27 @@ input misa_filter {
   dokumentasi_func: count_function_filter_operators
   _and: [misa_filter]
   _or: [misa_filter]
+}
+
+input misa_organisasi_filter {
+  id: string_filter_operators
+  createdBy: directus_users_filter
+  createdAt: date_filter_operators
+  createdAt_func: datetime_function_filter_operators
+  updatedBy: directus_users_filter
+  updatedAt: date_filter_operators
+  updatedAt_func: datetime_function_filter_operators
+  nama: string_filter_operators
+  organisasi: organisasi_filter
+  tempat: string_filter_operators
+  tanggal: date_filter_operators
+  tanggal_func: date_function_filter_operators
+  jam: date_filter_operators
+  jam_func: time_function_filter_operators
+  imam: string_filter_operators
+  imam_id: imam_filter
+  _and: [misa_organisasi_filter]
+  _or: [misa_organisasi_filter]
 }
 
 input number_filter_operators {
@@ -3371,6 +4262,14 @@ input organisasi_anggota_organisasi_filter {
   _or: [organisasi_anggota_organisasi_filter]
 }
 
+input organisasi_files_filter {
+  id: number_filter_operators
+  organisasi_id: organisasi_filter
+  directus_files_id: directus_files_filter
+  _and: [organisasi_files_filter]
+  _or: [organisasi_files_filter]
+}
+
 input organisasi_filter {
   createdAt: date_filter_operators
   createdAt_func: datetime_function_filter_operators
@@ -3384,6 +4283,8 @@ input organisasi_filter {
   updatedBy: directus_users_filter
   periode: organisasi_jabatan_periode_filter
   images: directus_files_filter
+  dokumen: organisasi_files_filter
+  dokumen_func: count_function_filter_operators
   _and: [organisasi_filter]
   _or: [organisasi_filter]
 }
@@ -3406,6 +4307,14 @@ input organisasi_jabatan_filter {
   _or: [organisasi_jabatan_filter]
 }
 
+input organisasi_jabatan_periode_files_filter {
+  id: number_filter_operators
+  organisasi_jabatan_periode_id: organisasi_jabatan_periode_filter
+  directus_files_id: directus_files_filter
+  _and: [organisasi_jabatan_periode_files_filter]
+  _or: [organisasi_jabatan_periode_files_filter]
+}
+
 input organisasi_jabatan_periode_filter {
   berakhirPada: date_filter_operators
   berakhirPada_func: date_function_filter_operators
@@ -3425,6 +4334,8 @@ input organisasi_jabatan_periode_filter {
   dilantikPada_func: date_function_filter_operators
   dokumentasi: organisasi_filter
   dokumentasi_func: count_function_filter_operators
+  dokumen: organisasi_jabatan_periode_files_filter
+  dokumen_func: count_function_filter_operators
   _and: [organisasi_jabatan_periode_filter]
   _or: [organisasi_jabatan_periode_filter]
 }
@@ -3444,14 +4355,6 @@ input organisasi_struktur_filter {
   updatedBy: directus_users_filter
   _and: [organisasi_struktur_filter]
   _or: [organisasi_struktur_filter]
-}
-
-input organisasi_user_filter {
-  id: number_filter_operators
-  user: directus_users_filter
-  organisasi: organisasi_filter
-  _and: [organisasi_user_filter]
-  _or: [organisasi_user_filter]
 }
 
 input page_blocks_filter {
@@ -3505,6 +4408,27 @@ input pendapatan_filter {
   _or: [pendapatan_filter]
 }
 
+input pertemuan_filter {
+  id: string_filter_operators
+  createdBy: directus_users_filter
+  createdAt: date_filter_operators
+  createdAt_func: datetime_function_filter_operators
+  updatedBy: directus_users_filter
+  updatedAt: date_filter_operators
+  updatedAt_func: datetime_function_filter_operators
+  nama: string_filter_operators
+  tempat: string_filter_operators
+  organisasi: organisasi_filter
+  tanggal: date_filter_operators
+  tanggal_func: date_function_filter_operators
+  jam: date_filter_operators
+  jam_func: time_function_filter_operators
+  catatan: string_filter_operators
+  cover: directus_files_filter
+  _and: [pertemuan_filter]
+  _or: [pertemuan_filter]
+}
+
 input post_blocks_filter {
   collection: string_filter_operators
   id: number_filter_operators
@@ -3548,6 +4472,13 @@ input post_images_filter {
   post: post_filter
   _and: [post_images_filter]
   _or: [post_images_filter]
+}
+
+input rapat_dokumen_filter {
+  id: number_filter_operators
+  dokumen: directus_files_filter
+  _and: [rapat_dokumen_filter]
+  _or: [rapat_dokumen_filter]
 }
 
 input seo_filter {
@@ -3594,6 +4525,30 @@ input sumber_pendapatan_filter {
   sumber: string_filter_operators
   _and: [sumber_pendapatan_filter]
   _or: [sumber_pendapatan_filter]
+}
+
+input time_function_filter_operators {
+  hour: number_filter_operators
+  minute: number_filter_operators
+  second: number_filter_operators
+}
+
+input timeline_filter {
+  id: string_filter_operators
+  createdBy: directus_users_filter
+  createdAt: date_filter_operators
+  createdAt_func: datetime_function_filter_operators
+  updatedBy: directus_users_filter
+  updatedAt: date_filter_operators
+  updatedAt_func: datetime_function_filter_operators
+  judul: string_filter_operators
+  tanggal: date_filter_operators
+  tanggal_func: date_function_filter_operators
+  content: string_filter_operators
+  collection_id: string_filter_operators
+  collection: string_filter_operators
+  _and: [timeline_filter]
+  _or: [timeline_filter]
 }
 
 input update_block_hero_input {
@@ -3762,7 +4717,7 @@ input update_directus_users_input {
   nama: String
   tempatLahir: String
   tanggalLahir: Date
-  orgnisasi: [update_organisasi_user_input]
+  organisasi: [update_user_organisasi_input]
   policies: [update_directus_access_input]
 }
 
@@ -3782,6 +4737,20 @@ input update_hero_images_input {
   hero: update_block_hero_input
   id: ID
   image: update_directus_files_input
+}
+
+input update_ibadat_input {
+  id: ID
+  createdBy: update_directus_users_input
+  createdAt: Date
+  updatedBy: update_directus_users_input
+  updatedAt: Date
+  organisasi: update_organisasi_input
+  nama: String
+  tempat: String
+  tanggal: Date
+  jam: Date
+  keterangan: String
 }
 
 input update_imam_input {
@@ -3817,6 +4786,41 @@ input update_imam_riwayat_input {
   akurasiTanggal: Boolean
 }
 
+input update_kegiatan_misa_input {
+  id: ID
+  sort: Int
+  createdBy: update_directus_users_input
+  createdAt: Date
+  updatedBy: update_directus_users_input
+  updatedAt: Date
+  nama: String
+  tanggal: Date
+  jam: Date
+  tempat: String
+}
+
+input update_kegiatan_rapat_files_input {
+  id: ID
+  kegiatan_rapat_id: update_kegiatan_rapat_input
+  directus_files_id: update_directus_files_input
+}
+
+input update_kegiatan_rapat_input {
+  id: ID
+  sort: Int
+  createdBy: update_directus_users_input
+  createdAt: Date
+  updatedBy: update_directus_users_input
+  updatedAt: Date
+  organisasi: update_organisasi_input
+  nama: String
+  tanggal: Date
+  jam: Date
+  agenda: String
+  notulen: String
+  dokumen: [update_kegiatan_rapat_files_input]
+}
+
 input update_misa_dokumentasi_input {
   id: ID
   misa: update_misa_input
@@ -3834,6 +4838,21 @@ input update_misa_input {
   perayaan: String
   pendapatan: [update_pendapatan_input]
   dokumentasi: [update_misa_dokumentasi_input]
+}
+
+input update_misa_organisasi_input {
+  id: ID
+  createdBy: update_directus_users_input
+  createdAt: Date
+  updatedBy: update_directus_users_input
+  updatedAt: Date
+  nama: String
+  organisasi: update_organisasi_input
+  tempat: String
+  tanggal: Date
+  jam: Date
+  imam: String
+  imam_id: update_imam_input
 }
 
 input update_organisasi_anggota_input {
@@ -3859,6 +4878,12 @@ input update_organisasi_anggota_organisasi_input {
   sort: Int
 }
 
+input update_organisasi_files_input {
+  id: ID
+  organisasi_id: update_organisasi_input
+  directus_files_id: update_directus_files_input
+}
+
 input update_organisasi_input {
   createdAt: Date
   createdBy: update_directus_users_input
@@ -3870,6 +4895,7 @@ input update_organisasi_input {
   updatedBy: update_directus_users_input
   periode: update_organisasi_jabatan_periode_input
   images: update_directus_files_input
+  dokumen: [update_organisasi_files_input]
 }
 
 input update_organisasi_jabatan_input {
@@ -3886,6 +4912,12 @@ input update_organisasi_jabatan_input {
   penjabat: update_organisasi_anggota_input
 }
 
+input update_organisasi_jabatan_periode_files_input {
+  id: ID
+  organisasi_jabatan_periode_id: update_organisasi_jabatan_periode_input
+  directus_files_id: update_directus_files_input
+}
+
 input update_organisasi_jabatan_periode_input {
   berakhirPada: Date
   createdAt: Date
@@ -3899,6 +4931,7 @@ input update_organisasi_jabatan_periode_input {
   updatedBy: update_directus_users_input
   dilantikPada: Date
   dokumentasi: [update_organisasi_input]
+  dokumen: [update_organisasi_jabatan_periode_files_input]
 }
 
 input update_organisasi_struktur_input {
@@ -3912,12 +4945,6 @@ input update_organisasi_struktur_input {
   sort: Int
   updatedAt: Date
   updatedBy: update_directus_users_input
-}
-
-input update_organisasi_user_input {
-  id: ID
-  user: update_directus_users_input
-  organisasi: update_organisasi_input
 }
 
 input update_page_blocks_input {
@@ -3957,6 +4984,21 @@ input update_pendapatan_input {
   sumber: update_sumber_pendapatan_input
 }
 
+input update_pertemuan_input {
+  id: ID
+  createdBy: update_directus_users_input
+  createdAt: Date
+  updatedBy: update_directus_users_input
+  updatedAt: Date
+  nama: String
+  tempat: String
+  organisasi: update_organisasi_input
+  tanggal: Date
+  jam: Date
+  catatan: String
+  cover: update_directus_files_input
+}
+
 input update_post_blocks_input {
   collection: String
   id: ID
@@ -3990,6 +5032,11 @@ input update_post_input {
   images: [update_post_images_input]
 }
 
+input update_rapat_dokumen_input {
+  id: ID
+  dokumen: update_directus_files_input
+}
+
 input update_seo_input {
   description: String
   id: ID
@@ -4006,4 +5053,33 @@ input update_sumber_pendapatan_input {
   updatedBy: update_directus_users_input
   updatedAt: Date
   sumber: String
+}
+
+input update_timeline_input {
+  id: ID
+  createdBy: update_directus_users_input
+  createdAt: Date
+  updatedBy: update_directus_users_input
+  updatedAt: Date
+  judul: String
+  tanggal: Date
+  content: String
+  collection_id: String
+  collection: String
+}
+
+input update_user_organisasi_input {
+  id: ID
+  user: update_directus_users_input
+  organisasi: update_organisasi_input
+  persetujuan: Boolean
+}
+
+input user_organisasi_filter {
+  id: number_filter_operators
+  user: directus_users_filter
+  organisasi: organisasi_filter
+  persetujuan: boolean_filter_operators
+  _and: [user_organisasi_filter]
+  _or: [user_organisasi_filter]
 }

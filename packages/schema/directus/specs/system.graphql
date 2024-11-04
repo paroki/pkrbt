@@ -239,9 +239,9 @@ type Subscription {
   directus_permissions_mutated(event: EventEnum): directus_permissions_mutated
   directus_files_mutated(event: EventEnum): directus_files_mutated
   directus_folders_mutated(event: EventEnum): directus_folders_mutated
-  organisasi_user_mutated(event: EventEnum): organisasi_user_mutated
   directus_roles_mutated(event: EventEnum): directus_roles_mutated
   directus_presets_mutated(event: EventEnum): directus_presets_mutated
+  user_organisasi_mutated(event: EventEnum): user_organisasi_mutated
   directus_revisions_mutated(event: EventEnum): directus_revisions_mutated
   directus_panels_mutated(event: EventEnum): directus_panels_mutated
   directus_notifications_mutated(event: EventEnum): directus_notifications_mutated
@@ -257,10 +257,15 @@ type Subscription {
   directus_access_mutated(event: EventEnum): directus_access_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
   organisasi_anggota_organisasi_mutated(event: EventEnum): organisasi_anggota_organisasi_mutated
+  ibadat_mutated(event: EventEnum): ibadat_mutated
+  organisasi_jabatan_periode_files_mutated(event: EventEnum): organisasi_jabatan_periode_files_mutated
+  timeline_mutated(event: EventEnum): timeline_mutated
+  kegiatan_rapat_files_mutated(event: EventEnum): kegiatan_rapat_files_mutated
+  pertemuan_mutated(event: EventEnum): pertemuan_mutated
+  kegiatan_misa_mutated(event: EventEnum): kegiatan_misa_mutated
   organisasi_jabatan_periode_mutated(event: EventEnum): organisasi_jabatan_periode_mutated
   organisasi_anggota_mutated(event: EventEnum): organisasi_anggota_mutated
   organisasi_jabatan_mutated(event: EventEnum): organisasi_jabatan_mutated
-  organisasi_mutated(event: EventEnum): organisasi_mutated
   block_hero_mutated(event: EventEnum): block_hero_mutated
   block_markdown_mutated(event: EventEnum): block_markdown_mutated
   block_richtext_mutated(event: EventEnum): block_richtext_mutated
@@ -273,12 +278,17 @@ type Subscription {
   page_blocks_mutated(event: EventEnum): page_blocks_mutated
   post_mutated(event: EventEnum): post_mutated
   post_blocks_mutated(event: EventEnum): post_blocks_mutated
+  organisasi_mutated(event: EventEnum): organisasi_mutated
+  rapat_dokumen_mutated(event: EventEnum): rapat_dokumen_mutated
+  kegiatan_rapat_mutated(event: EventEnum): kegiatan_rapat_mutated
   post_images_mutated(event: EventEnum): post_images_mutated
   pendapatan_mutated(event: EventEnum): pendapatan_mutated
   imam_mutated(event: EventEnum): imam_mutated
   sumber_pendapatan_mutated(event: EventEnum): sumber_pendapatan_mutated
   misa_dokumentasi_mutated(event: EventEnum): misa_dokumentasi_mutated
   misa_mutated(event: EventEnum): misa_mutated
+  organisasi_files_mutated(event: EventEnum): organisasi_files_mutated
+  misa_organisasi_mutated(event: EventEnum): misa_organisasi_mutated
   imam_riwayat_mutated(event: EventEnum): imam_riwayat_mutated
 }
 
@@ -1537,8 +1547,8 @@ type directus_users {
   tempatLahir: String
   tanggalLahir: Date
   tanggalLahir_func: date_functions
-  orgnisasi(filter: organisasi_user_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_user]
-  orgnisasi_func: count_functions
+  organisasi(filter: user_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [user_organisasi]
+  organisasi_func: count_functions
   policies(filter: directus_access_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_access]
   policies_func: count_functions
 }
@@ -1580,7 +1590,7 @@ type directus_users_aggregated_count {
   nama: Int
   tempatLahir: Int
   tanggalLahir: Int
-  orgnisasi: Int
+  organisasi: Int
   policies: Int
 }
 
@@ -1714,6 +1724,30 @@ type hero_images_mutated {
   data: hero_images
 }
 
+type ibadat {
+  id: ID!
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  nama: String
+  tempat: String
+  tanggal: Date
+  tanggal_func: date_functions
+  jam: Date
+  jam_func: time_functions
+  keterangan: String
+}
+
+type ibadat_mutated {
+  key: ID!
+  event: EventEnum
+  data: ibadat
+}
+
 type imam {
   id: ID!
   sort: Int
@@ -1766,6 +1800,68 @@ type imam_riwayat_mutated {
   data: imam_riwayat
 }
 
+type kegiatan_misa {
+  id: ID!
+  sort: Int
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  nama: String
+  tanggal: Date
+  tanggal_func: date_functions
+  jam: Date
+  jam_func: time_functions
+  tempat: String
+}
+
+type kegiatan_misa_mutated {
+  key: ID!
+  event: EventEnum
+  data: kegiatan_misa
+}
+
+type kegiatan_rapat {
+  id: ID!
+  sort: Int
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  nama: String
+  tanggal: Date
+  tanggal_func: date_functions
+  jam: Date
+  jam_func: time_functions
+  agenda: String
+  notulen: String
+  dokumen(filter: kegiatan_rapat_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [kegiatan_rapat_files]
+  dokumen_func: count_functions
+}
+
+type kegiatan_rapat_files {
+  id: ID!
+  kegiatan_rapat_id(filter: kegiatan_rapat_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): kegiatan_rapat
+  directus_files_id(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+}
+
+type kegiatan_rapat_files_mutated {
+  key: ID!
+  event: EventEnum
+  data: kegiatan_rapat_files
+}
+
+type kegiatan_rapat_mutated {
+  key: ID!
+  event: EventEnum
+  data: kegiatan_rapat
+}
+
 type misa {
   id: ID!
   sort: Int
@@ -1802,6 +1898,31 @@ type misa_mutated {
   data: misa
 }
 
+type misa_organisasi {
+  id: ID!
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  nama: String
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  tempat: String
+  tanggal: Date
+  tanggal_func: date_functions
+  jam: Date
+  jam_func: time_functions
+  imam: String
+  imam_id(filter: imam_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): imam
+}
+
+type misa_organisasi_mutated {
+  key: ID!
+  event: EventEnum
+  data: misa_organisasi
+}
+
 type organisasi {
   createdAt: Date
   createdAt_func: datetime_functions
@@ -1815,6 +1936,8 @@ type organisasi {
   updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   periode(filter: organisasi_jabatan_periode_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi_jabatan_periode
   images(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  dokumen(filter: organisasi_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_files]
+  dokumen_func: count_functions
 }
 
 type organisasi_anggota {
@@ -1854,6 +1977,18 @@ type organisasi_anggota_organisasi_mutated {
   key: ID!
   event: EventEnum
   data: organisasi_anggota_organisasi
+}
+
+type organisasi_files {
+  id: ID!
+  organisasi_id(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  directus_files_id(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+}
+
+type organisasi_files_mutated {
+  key: ID!
+  event: EventEnum
+  data: organisasi_files
 }
 
 type organisasi_jabatan {
@@ -1897,6 +2032,20 @@ type organisasi_jabatan_periode {
   dilantikPada_func: date_functions
   dokumentasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi]
   dokumentasi_func: count_functions
+  dokumen(filter: organisasi_jabatan_periode_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_jabatan_periode_files]
+  dokumen_func: count_functions
+}
+
+type organisasi_jabatan_periode_files {
+  id: ID!
+  organisasi_jabatan_periode_id(filter: organisasi_jabatan_periode_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi_jabatan_periode
+  directus_files_id(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+}
+
+type organisasi_jabatan_periode_files_mutated {
+  key: ID!
+  event: EventEnum
+  data: organisasi_jabatan_periode_files
 }
 
 type organisasi_jabatan_periode_mutated {
@@ -1930,18 +2079,6 @@ type organisasi_struktur_mutated {
   key: ID!
   event: EventEnum
   data: organisasi_struktur
-}
-
-type organisasi_user {
-  id: ID!
-  user(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
-  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
-}
-
-type organisasi_user_mutated {
-  key: ID!
-  event: EventEnum
-  data: organisasi_user
 }
 
 type page {
@@ -2005,6 +2142,31 @@ type pendapatan_mutated {
   data: pendapatan
 }
 
+type pertemuan {
+  id: ID!
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  nama: String
+  tempat: String
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  tanggal: Date
+  tanggal_func: date_functions
+  jam: Date
+  jam_func: time_functions
+  catatan: String
+  cover(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+}
+
+type pertemuan_mutated {
+  key: ID!
+  event: EventEnum
+  data: pertemuan
+}
+
 type policy_me_globals_type {
   enforce_tfa: Boolean
   app_access: Boolean
@@ -2065,6 +2227,17 @@ type post_mutated {
   key: ID!
   event: EventEnum
   data: post
+}
+
+type rapat_dokumen {
+  id: ID!
+  dokumen(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+}
+
+type rapat_dokumen_mutated {
+  key: ID!
+  event: EventEnum
+  data: rapat_dokumen
 }
 
 type seo {
@@ -2140,6 +2313,47 @@ type sumber_pendapatan_mutated {
   key: ID!
   event: EventEnum
   data: sumber_pendapatan
+}
+
+type time_functions {
+  hour: Int
+  minute: Int
+  second: Int
+}
+
+type timeline {
+  id: ID!
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  judul: String
+  tanggal: Date
+  tanggal_func: date_functions
+  content: String
+  collection_id: String
+  collection: String
+}
+
+type timeline_mutated {
+  key: ID!
+  event: EventEnum
+  data: timeline
+}
+
+type user_organisasi {
+  id: ID!
+  user(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  persetujuan: Boolean
+}
+
+type user_organisasi_mutated {
+  key: ID!
+  event: EventEnum
+  data: user_organisasi
 }
 
 type users_me_tfa_generate_data {
@@ -2497,7 +2711,7 @@ input create_directus_users_input {
   nama: String
   tempatLahir: String
   tanggalLahir: Date
-  orgnisasi: [create_organisasi_user_input]
+  organisasi: [create_user_organisasi_input]
   policies: [create_directus_access_input]
 }
 
@@ -2528,6 +2742,12 @@ input create_directus_webhooks_input {
   migrated_flow: create_directus_flows_input
 }
 
+input create_organisasi_files_input {
+  id: ID
+  organisasi_id: create_organisasi_input
+  directus_files_id: create_directus_files_input
+}
+
 input create_organisasi_input {
   createdAt: Date
   createdBy: create_directus_users_input
@@ -2539,6 +2759,13 @@ input create_organisasi_input {
   updatedBy: create_directus_users_input
   periode: create_organisasi_jabatan_periode_input
   images: create_directus_files_input
+  dokumen: [create_organisasi_files_input]
+}
+
+input create_organisasi_jabatan_periode_files_input {
+  id: ID
+  organisasi_jabatan_periode_id: create_organisasi_jabatan_periode_input
+  directus_files_id: create_directus_files_input
 }
 
 input create_organisasi_jabatan_periode_input {
@@ -2554,12 +2781,14 @@ input create_organisasi_jabatan_periode_input {
   updatedBy: create_directus_users_input
   dilantikPada: Date
   dokumentasi: [create_organisasi_input]
+  dokumen: [create_organisasi_jabatan_periode_files_input]
 }
 
-input create_organisasi_user_input {
+input create_user_organisasi_input {
   id: ID
   user: create_directus_users_input
   organisasi: create_organisasi_input
+  persetujuan: Boolean
 }
 
 input date_filter_operators {
@@ -3003,8 +3232,8 @@ input directus_users_filter {
   tempatLahir: string_filter_operators
   tanggalLahir: date_filter_operators
   tanggalLahir_func: date_function_filter_operators
-  orgnisasi: organisasi_user_filter
-  orgnisasi_func: count_function_filter_operators
+  organisasi: user_organisasi_filter
+  organisasi_func: count_function_filter_operators
   policies: directus_access_filter
   policies_func: count_function_filter_operators
   _and: [directus_users_filter]
@@ -3104,6 +3333,37 @@ input imam_riwayat_filter {
   _or: [imam_riwayat_filter]
 }
 
+input kegiatan_rapat_files_filter {
+  id: number_filter_operators
+  kegiatan_rapat_id: kegiatan_rapat_filter
+  directus_files_id: directus_files_filter
+  _and: [kegiatan_rapat_files_filter]
+  _or: [kegiatan_rapat_files_filter]
+}
+
+input kegiatan_rapat_filter {
+  id: string_filter_operators
+  sort: number_filter_operators
+  createdBy: directus_users_filter
+  createdAt: date_filter_operators
+  createdAt_func: datetime_function_filter_operators
+  updatedBy: directus_users_filter
+  updatedAt: date_filter_operators
+  updatedAt_func: datetime_function_filter_operators
+  organisasi: organisasi_filter
+  nama: string_filter_operators
+  tanggal: date_filter_operators
+  tanggal_func: date_function_filter_operators
+  jam: date_filter_operators
+  jam_func: time_function_filter_operators
+  agenda: string_filter_operators
+  notulen: string_filter_operators
+  dokumen: kegiatan_rapat_files_filter
+  dokumen_func: count_function_filter_operators
+  _and: [kegiatan_rapat_filter]
+  _or: [kegiatan_rapat_filter]
+}
+
 input misa_dokumentasi_filter {
   id: number_filter_operators
   misa: misa_filter
@@ -3178,6 +3438,14 @@ input organisasi_anggota_organisasi_filter {
   _or: [organisasi_anggota_organisasi_filter]
 }
 
+input organisasi_files_filter {
+  id: number_filter_operators
+  organisasi_id: organisasi_filter
+  directus_files_id: directus_files_filter
+  _and: [organisasi_files_filter]
+  _or: [organisasi_files_filter]
+}
+
 input organisasi_filter {
   createdAt: date_filter_operators
   createdAt_func: datetime_function_filter_operators
@@ -3191,6 +3459,8 @@ input organisasi_filter {
   updatedBy: directus_users_filter
   periode: organisasi_jabatan_periode_filter
   images: directus_files_filter
+  dokumen: organisasi_files_filter
+  dokumen_func: count_function_filter_operators
   _and: [organisasi_filter]
   _or: [organisasi_filter]
 }
@@ -3213,6 +3483,14 @@ input organisasi_jabatan_filter {
   _or: [organisasi_jabatan_filter]
 }
 
+input organisasi_jabatan_periode_files_filter {
+  id: number_filter_operators
+  organisasi_jabatan_periode_id: organisasi_jabatan_periode_filter
+  directus_files_id: directus_files_filter
+  _and: [organisasi_jabatan_periode_files_filter]
+  _or: [organisasi_jabatan_periode_files_filter]
+}
+
 input organisasi_jabatan_periode_filter {
   berakhirPada: date_filter_operators
   berakhirPada_func: date_function_filter_operators
@@ -3232,6 +3510,8 @@ input organisasi_jabatan_periode_filter {
   dilantikPada_func: date_function_filter_operators
   dokumentasi: organisasi_filter
   dokumentasi_func: count_function_filter_operators
+  dokumen: organisasi_jabatan_periode_files_filter
+  dokumen_func: count_function_filter_operators
   _and: [organisasi_jabatan_periode_filter]
   _or: [organisasi_jabatan_periode_filter]
 }
@@ -3251,14 +3531,6 @@ input organisasi_struktur_filter {
   updatedBy: directus_users_filter
   _and: [organisasi_struktur_filter]
   _or: [organisasi_struktur_filter]
-}
-
-input organisasi_user_filter {
-  id: number_filter_operators
-  user: directus_users_filter
-  organisasi: organisasi_filter
-  _and: [organisasi_user_filter]
-  _or: [organisasi_user_filter]
 }
 
 input page_blocks_filter {
@@ -3401,6 +3673,12 @@ input sumber_pendapatan_filter {
   sumber: string_filter_operators
   _and: [sumber_pendapatan_filter]
   _or: [sumber_pendapatan_filter]
+}
+
+input time_function_filter_operators {
+  hour: number_filter_operators
+  minute: number_filter_operators
+  second: number_filter_operators
 }
 
 input update_directus_access_input {
@@ -3704,7 +3982,7 @@ input update_directus_users_input {
   nama: String
   tempatLahir: String
   tanggalLahir: Date
-  orgnisasi: [update_organisasi_user_input]
+  organisasi: [update_user_organisasi_input]
   policies: [update_directus_access_input]
 }
 
@@ -3735,6 +4013,12 @@ input update_directus_webhooks_input {
   migrated_flow: update_directus_flows_input
 }
 
+input update_organisasi_files_input {
+  id: ID
+  organisasi_id: update_organisasi_input
+  directus_files_id: update_directus_files_input
+}
+
 input update_organisasi_input {
   createdAt: Date
   createdBy: update_directus_users_input
@@ -3746,6 +4030,13 @@ input update_organisasi_input {
   updatedBy: update_directus_users_input
   periode: update_organisasi_jabatan_periode_input
   images: update_directus_files_input
+  dokumen: [update_organisasi_files_input]
+}
+
+input update_organisasi_jabatan_periode_files_input {
+  id: ID
+  organisasi_jabatan_periode_id: update_organisasi_jabatan_periode_input
+  directus_files_id: update_directus_files_input
 }
 
 input update_organisasi_jabatan_periode_input {
@@ -3761,10 +4052,21 @@ input update_organisasi_jabatan_periode_input {
   updatedBy: update_directus_users_input
   dilantikPada: Date
   dokumentasi: [update_organisasi_input]
+  dokumen: [update_organisasi_jabatan_periode_files_input]
 }
 
-input update_organisasi_user_input {
+input update_user_organisasi_input {
   id: ID
   user: update_directus_users_input
   organisasi: update_organisasi_input
+  persetujuan: Boolean
+}
+
+input user_organisasi_filter {
+  id: number_filter_operators
+  user: directus_users_filter
+  organisasi: organisasi_filter
+  persetujuan: boolean_filter_operators
+  _and: [user_organisasi_filter]
+  _or: [user_organisasi_filter]
 }
