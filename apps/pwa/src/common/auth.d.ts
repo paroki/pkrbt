@@ -1,17 +1,19 @@
 import { DefaultSession } from "next-auth";
+import { UserR } from "./types";
 
 declare module "@auth/core/jwt" {
   interface JWT {
     id?: string;
-    user?: DefaultSession["user"];
+    user?: UserR;
   }
 }
 
 declare module "next-auth" {
   interface Session {
-    user: {
-      emailVerified: boolean;
-      id: string;
-    } & DefaultSession["user"];
+    user: DefaultSession["user"] &
+      UserR & {
+        id: string;
+      };
+    policies: string[];
   }
 }

@@ -1,0 +1,29 @@
+{
+  "collection": "organisasi",
+  "field": "foto",
+  "type": "alias",
+  "meta": {
+    "collection": "organisasi",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "foto",
+    "group": null,
+    "hidden": false,
+    "interface": "files",
+    "note": null,
+    "options": {
+      "template": null
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 10,
+    "special": [
+      "files"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

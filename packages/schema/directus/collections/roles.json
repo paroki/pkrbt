@@ -7,31 +7,31 @@
     "_syncId": "_sync_default_admin_role"
   },
   {
-    "name": "Author",
-    "icon": "supervised_user_circle",
-    "description": "Pengarang Artikel",
-    "parent": null,
-    "_syncId": "64eeff11-901c-4dd9-b773-b5310b96912f"
-  },
-  {
     "name": "Organisasi Admin",
     "icon": "supervised_user_circle",
     "description": "Administrator Organisasi",
     "parent": null,
-    "_syncId": "d1ab7769-5476-4925-8585-53f0eaaab6c1"
+    "_syncId": "431273d0-0d71-4ed8-ba75-dc342804598e"
+  },
+  {
+    "name": "Author",
+    "icon": "supervised_user_circle",
+    "description": "Pengarang Artikel",
+    "parent": null,
+    "_syncId": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51"
   },
   {
     "name": "Guest",
     "icon": "supervised_user_circle",
     "description": "Guest User Roles",
     "parent": null,
-    "_syncId": "e689734c-f563-49ce-8e38-c79a993fa5a7"
+    "_syncId": "8fc9d95a-746a-44d9-a1ad-b14b5056b0e9"
   },
   {
     "name": "Registered",
     "icon": "supervised_user_circle",
     "description": "Registered Users",
     "parent": null,
-    "_syncId": "fe856227-d8ae-46f4-9cf9-b540fa85297b"
+    "_syncId": "a084b012-6f4c-4481-9062-1f817eb454ef"
   }
 ]

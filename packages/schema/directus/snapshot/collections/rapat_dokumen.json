@@ -9,7 +9,7 @@
     "collection": "rapat_dokumen",
     "color": null,
     "display_template": null,
-    "group": null,
+    "group": "kegiatan_rapat",
     "hidden": true,
     "icon": "import_export",
     "item_duplication_fields": null,

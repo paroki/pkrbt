@@ -1,8 +1,8 @@
+"use server";
 import { Schema, User } from "@pkrbt/directus";
 import { redirect } from "next/navigation";
 import { auth } from "@/common/auth";
 import { DirectusRole } from "@directus/sdk";
-
 export type LoggedInUser = User & {
   role: DirectusRole<Schema>;
 };

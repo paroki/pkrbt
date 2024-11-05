@@ -9,10 +9,9 @@ import {
 import { redirect } from "next/navigation";
 import { Button } from "@pkrbt/ui/shadcn/button";
 
-import { User2Icon } from "lucide-react";
+import { CircleDollarSignIcon, LogOutIcon, User2Icon } from "lucide-react";
 import Link from "next/link";
 import { userSignOut } from "@/pkg/user/actions";
-import SignOutForm from "@/pkg/auth/components/sign-out";
 
 export const feeds = [
   {
@@ -63,10 +62,6 @@ export default async function HomePage() {
   }
 
   const user = session.user;
-
-  const doSignOut = async () => {
-    await userSignOut();
-  };
 
   return (
     <DefaultLayout>
@@ -119,16 +114,30 @@ export default async function HomePage() {
               ))}
             </div>
           </TabsContent>
-          <TabsContent value="layanan" className="grid">
-            <Button asChild className="flex-col w-16 h-16">
-              <Link href={`/user/${user.id}/profile`}>
-                <User2Icon />
-                <span>Profil</span>
+          <TabsContent value="layanan" className="flex flex-row gap-4">
+            <Button asChild className="flex-col w-20 h-20">
+              <Link href={`/paroki/pendapatan`}>
+                <CircleDollarSignIcon />
+                <span className="text-xs">Pendapatan</span>
               </Link>
             </Button>
-            <Button asChild className="flex-col w-16 h-16" onClick={doSignOut}>
-              <SignOutForm />
+            <Button asChild className="flex-col w-20 h-20">
+              <Link href={`/user/${user.id}/profile`}>
+                <User2Icon />
+                <span className="text-xs">Profil</span>
+              </Link>
             </Button>
+            <form
+              action={async () => {
+                "use server";
+                await userSignOut();
+              }}
+            >
+              <Button className="flex-col w-20 h-20">
+                <LogOutIcon />
+                <span className="text-xs">Sign Out</span>
+              </Button>
+            </form>
           </TabsContent>
         </Tabs>
       </div>

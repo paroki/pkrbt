@@ -7,13 +7,14 @@ import {
   FormItem,
   FormLabel,
 } from "@pkrbt/ui/shadcn/form";
-import { updateProfile } from "../actions";
+import { updateProfile, UserPayload } from "../actions";
 import { UserR } from "../types";
 import { Input } from "@pkrbt/ui/shadcn/input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@pkrbt/ui/shadcn/button";
+import { useState } from "react";
 
 type Props = {
   user: UserR;
@@ -24,21 +25,21 @@ export const schema = z.object({
   tempatLahir: z.string(),
 });
 
-export default function ProfileForm({ user }: Props) {
+export default function ProfileForm({ user: initialUser }: Props) {
+  const [user, setUser] = useState<UserR>(initialUser);
   const updateProfileId = updateProfile.bind(null, user.id);
-  const nama = user.nama ? user.nama : `${user.first_name} ${user.last_name}`;
+
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: {
-      nama,
-      tempatLahir: user.tempatLahir ?? "",
+      nama: user.nama as string | undefined,
+      tempatLahir: user.tempatLahir as string | undefined,
     },
   });
 
-  console.log(user.role);
-
   const onSubmit = async (values: z.infer<typeof schema>) => {
-    await updateProfileId(values);
+    const item = await updateProfileId(values as UserPayload);
+    setUser(item);
   };
 
   return (

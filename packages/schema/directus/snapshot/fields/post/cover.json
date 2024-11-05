@@ -13,11 +13,11 @@
     "interface": "file-image",
     "note": null,
     "options": {
-      "folder": "312b8231-476c-43d1-b0dd-8b3a22d8f8f9"
+      "folder": null
     },
     "readonly": false,
     "required": false,
-    "sort": 15,
+    "sort": 14,
     "special": [
       "file"
     ],
@@ -36,6 +36,7 @@
     "numeric_scale": null,
     "is_nullable": true,
     "is_unique": false,
+    "is_indexed": false,
     "is_primary_key": false,
     "is_generated": false,
     "generation_expression": null,

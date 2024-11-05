@@ -17,7 +17,7 @@
         "organisasi_anggota"
       ]
     },
-    "operation": "6aafffee-a40f-4741-9c3b-ec8d5161cedb",
+    "operation": "45c8bdaf-96ae-408c-a15e-758d8dc38edf",
     "_syncId": "3bf6e876-4bed-4afb-935e-f73efce54f26"
   },
   {
@@ -39,7 +39,7 @@
         "post"
       ]
     },
-    "operation": "e998e1fc-2174-44fd-9175-238d652c9b99",
+    "operation": "6b7e6536-c16a-4659-afd0-a76c41776354",
     "_syncId": "5f3afd9d-98ea-4b19-bd88-fb41c0495269"
   },
   {
@@ -47,7 +47,7 @@
     "icon": "bolt",
     "color": null,
     "description": "Generate SEO For Post, Category, and Page",
-    "status": "active",
+    "status": "inactive",
     "trigger": "event",
     "accountability": "all",
     "options": {
@@ -62,7 +62,7 @@
         "category"
       ]
     },
-    "operation": "44ced322-e701-411e-9f47-6c86e10ec0a7",
+    "operation": "46f226db-0156-4c0c-bc5d-8df0834b0e41",
     "_syncId": "a9c018d8-4a61-4391-b28c-10301341a0ac"
   },
   {
@@ -70,7 +70,7 @@
     "icon": "bolt",
     "color": null,
     "description": "Update summary on markdown/richtext blocks changed",
-    "status": "active",
+    "status": "inactive",
     "trigger": "event",
     "accountability": "all",
     "options": {
@@ -85,7 +85,7 @@
         "post"
       ]
     },
-    "operation": "93cd8f52-a288-4d82-bcbc-4990ed9719f5",
+    "operation": "7fac973f-12c2-4551-ac8a-7626e8e2dcb8",
     "_syncId": "e3898473-c8f7-4e18-924e-b472c1e91f56"
   },
   {
@@ -93,7 +93,7 @@
     "icon": "bolt",
     "color": null,
     "description": null,
-    "status": "active",
+    "status": "inactive",
     "trigger": "event",
     "accountability": "all",
     "options": {
@@ -107,7 +107,7 @@
         "category"
       ]
     },
-    "operation": "11b42ae8-407d-4b94-b490-f6b487a17e07",
+    "operation": "b313ebe9-28c4-48ea-b3af-ffe9d49d2506",
     "_syncId": "eb9f6032-6fc3-480c-adfb-392d643721b2"
   }
 ]

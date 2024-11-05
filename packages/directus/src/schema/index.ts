@@ -1,4 +1,4 @@
-export * from "./openapi";
+export * from "../user/openapi";
 export * from "./system";
 import {
   AnggotaOrganisasi,
@@ -9,9 +9,12 @@ import {
   Category,
   Page,
   Post,
+  Imam,
+  Pendapatan,
+  SumberPendapatan,
+  User,
+  Misa,
 } from "..";
-import { User } from "..";
-import { Imam } from "../paroki";
 
 export type Schema = {
   page: Page[];
@@ -24,4 +27,8 @@ export type Schema = {
   organisasi_anggota: AnggotaOrganisasi[];
   user: User[];
   imam: Imam[];
+  // paroki
+  sumber_pendapatan: SumberPendapatan[];
+  pendapatan: Pendapatan[];
+  misa: Misa[];
 };
