@@ -30,7 +30,7 @@ services:
 
   directus:
     container_name: pkrbt-api
-    image: directus/directus:11.1.1
+    image: directus/directus:11.2.1
     # image: tractr/directus-sync:latest
     ports:
       - 8055:8055
