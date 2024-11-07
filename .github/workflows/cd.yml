@@ -51,4 +51,4 @@ jobs:
     with:
       environment: development
       web: ${{ needs.changes.outputs.web }}
-      pwa: ${{ needs.changes.outputs.pwa }}
+      pwa: "true"
