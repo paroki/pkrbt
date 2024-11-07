@@ -24,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       web: ${{ steps.vars.outputs.web }}
+      pwa: ${{ steps.vars.outputs.pwa }}
 
     steps:
       - name: Checkout
@@ -50,3 +51,4 @@ jobs:
     with:
       environment: development
       web: ${{ needs.changes.outputs.web }}
+      pwa: ${{ needs.changes.outputs.pwa }}
