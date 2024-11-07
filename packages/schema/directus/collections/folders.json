@@ -1,67 +1,72 @@
 [
   {
-    "name": "globals",
-    "parent": null,
-    "_syncId": "05529bb1-44b2-4673-a53d-e4729fc46986"
+    "name": "2024-10-31",
+    "parent": "205079fa-f4a8-41c2-ae8e-39e0ea00b75e",
+    "_syncId": "026b29e9-6621-4828-84ef-aa2ce780a5b9"
   },
   {
     "name": "artikel",
     "parent": null,
-    "_syncId": "312b8231-476c-43d1-b0dd-8b3a22d8f8f9"
-  },
-  {
-    "name": "dokumentasi",
-    "parent": null,
-    "_syncId": "333439ce-f543-471a-b0b9-865559f3789d"
-  },
-  {
-    "name": "20241031",
-    "parent": "965eac50-1867-496c-b180-afe049774bc4",
-    "_syncId": "4bce67dc-7864-4a85-a03a-110826725bdd"
-  },
-  {
-    "name": "avatar",
-    "parent": null,
-    "_syncId": "595e977e-2dbf-4438-9e6b-be0037d81f33"
-  },
-  {
-    "name": "imam",
-    "parent": null,
-    "_syncId": "7fd5726b-8494-4f6f-8712-fd7faa63992e"
-  },
-  {
-    "name": "dpp",
-    "parent": "f889565e-cf89-49cc-a5ad-d2153abca8cd",
-    "_syncId": "9159a897-7182-4234-9bd3-7cee648eaf56"
-  },
-  {
-    "name": "2024",
-    "parent": "333439ce-f543-471a-b0b9-865559f3789d",
-    "_syncId": "965eac50-1867-496c-b180-afe049774bc4"
-  },
-  {
-    "name": "santo-pio",
-    "parent": "312b8231-476c-43d1-b0dd-8b3a22d8f8f9",
-    "_syncId": "ba4cf541-e1c2-42ef-82e6-a1be65b1abfb"
-  },
-  {
-    "name": "2024-2027",
-    "parent": "9159a897-7182-4234-9bd3-7cee648eaf56",
-    "_syncId": "d1c9e27e-9d51-4142-b743-7816e4bddf5d"
-  },
-  {
-    "name": "homili",
-    "parent": null,
-    "_syncId": "e74a98d7-b677-490d-8c1c-e10af6d606c7"
+    "_syncId": "205079fa-f4a8-41c2-ae8e-39e0ea00b75e"
   },
   {
     "name": "organisasi",
     "parent": null,
-    "_syncId": "f889565e-cf89-49cc-a5ad-d2153abca8cd"
+    "_syncId": "3446f998-96c1-4560-9259-f63730dfad75"
   },
   {
-    "name": "20241031",
-    "parent": "312b8231-476c-43d1-b0dd-8b3a22d8f8f9",
-    "_syncId": "fefe58cf-fc0b-4068-ad7b-f665af315b3a"
+    "name": "imam",
+    "parent": null,
+    "_syncId": "522ee921-38e1-4f68-a381-a293e24a347c"
+  },
+  {
+    "name": "avatar",
+    "parent": null,
+    "_syncId": "56f14165-2e5a-459f-93e2-c3c56513c088"
+  },
+  {
+    "name": "dokumentasi",
+    "parent": null,
+    "_syncId": "77875fac-ee6a-48f6-915a-5fe98ce34e81"
+  },
+  {
+    "name": "santo-pio",
+    "parent": "205079fa-f4a8-41c2-ae8e-39e0ea00b75e",
+    "_syncId": "7ae9e6bf-c178-4a5a-8faf-cbd8e1730e6c"
+  },
+  {
+    "name": "2024-2027",
+    "parent": "e2013e9d-ac55-49f4-bfcf-31ad5580ce1c",
+    "_syncId": "87393a03-ad66-4c7a-b223-5f44a22c0ec9"
+  },
+  {
+    "name": "komsos",
+    "parent": "3446f998-96c1-4560-9259-f63730dfad75",
+    "_syncId": "8fde748e-b6cb-4b75-83ce-424a668ac14a"
+  },
+  {
+    "name": "kronik",
+    "parent": null,
+    "_syncId": "ae0ccc20-526a-4340-9116-f63bb5175eec"
+  },
+  {
+    "name": "profil",
+    "parent": null,
+    "_syncId": "c2375c46-3faf-419b-9c6b-288141468d2d"
+  },
+  {
+    "name": "natal-hut-2024",
+    "parent": "3446f998-96c1-4560-9259-f63730dfad75",
+    "_syncId": "d6c18e19-acb5-4b38-83de-b30e66c4d43c"
+  },
+  {
+    "name": "dpp",
+    "parent": "3446f998-96c1-4560-9259-f63730dfad75",
+    "_syncId": "e2013e9d-ac55-49f4-bfcf-31ad5580ce1c"
+  },
+  {
+    "name": "globals",
+    "parent": null,
+    "_syncId": "e3412832-3842-4487-94c6-a8ecb8be9018"
   }
 ]

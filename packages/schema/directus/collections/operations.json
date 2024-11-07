@@ -14,10 +14,10 @@
         }
       }
     },
-    "resolve": "b7c3477f-ec27-4b15-8f6a-b920bc0f4199",
+    "resolve": "71f7f50d-43ad-40ac-aa32-9d80f31789a5",
     "reject": null,
     "flow": "e3898473-c8f7-4e18-924e-b472c1e91f56",
-    "_syncId": "24eb384f-ab47-4598-bc44-6ce18cdc545c"
+    "_syncId": "312f0287-52c6-4690-8abe-6c8d1171cc12"
   },
   {
     "name": "Content Payload",
@@ -28,10 +28,10 @@
     "options": {
       "code": "function generateSummary(blocks){\n    const regex = /^(?:([*_`]|\\*\\*|\\[){0,1}[a-z]+)(.*)/gim;\n    for(let i=0; i<blocks.length;i++){\n        block=blocks[i];\n        if(block.collection == 'block_markdown'){\n            const body = block.item.body;\n            const matches = body.match(regex);\n            if(null !== matches){\n                return matches[0]\n            }\n            return block.item.body;\n        }\n        if(block.collection == 'block_hero'){\n            const content = block.item.content;\n            const matches = content.match(regex);\n            if(null !== matches){\n                return matches[0]\n            }\n            return content;\n        }\n    }\n    return null;\n}\n\nmodule.exports = async function(data) {\n    const payload = data.$trigger.payload;\n\tlet summary = null;\n   \t\n    if(Object.keys(payload.blocks).includes(\"create\")){\n        summary = generateSummary(payload.blocks.create);\n    }\n    \n    if(null == summary && Object.keys(payload.blocks).includes(\"update\")){\n        summary = generateSummary(payload.blocks.update);\n    }\n    \n    const keys = data.$trigger.keys ?? [data.$trigger.key];\n\treturn {summary, keys};\n}"
     },
-    "resolve": "24eb384f-ab47-4598-bc44-6ce18cdc545c",
+    "resolve": "312f0287-52c6-4690-8abe-6c8d1171cc12",
     "reject": null,
     "flow": "e3898473-c8f7-4e18-924e-b472c1e91f56",
-    "_syncId": "93cd8f52-a288-4d82-bcbc-4990ed9719f5"
+    "_syncId": "7fac973f-12c2-4551-ac8a-7626e8e2dcb8"
   },
   {
     "name": "Delete Data",
@@ -53,7 +53,7 @@
     "resolve": null,
     "reject": null,
     "flow": "eb9f6032-6fc3-480c-adfb-392d643721b2",
-    "_syncId": "11b42ae8-407d-4b94-b490-f6b487a17e07"
+    "_syncId": "b313ebe9-28c4-48ea-b3af-ffe9d49d2506"
   },
   {
     "name": "Read Data",
@@ -68,7 +68,7 @@
     "resolve": null,
     "reject": null,
     "flow": "3bf6e876-4bed-4afb-935e-f73efce54f26",
-    "_syncId": "6aafffee-a40f-4741-9c3b-ec8d5161cedb"
+    "_syncId": "45c8bdaf-96ae-408c-a15e-758d8dc38edf"
   },
   {
     "name": "Update Data",
@@ -86,7 +86,7 @@
     "resolve": null,
     "reject": null,
     "flow": "5f3afd9d-98ea-4b19-bd88-fb41c0495269",
-    "_syncId": "69c9a0a6-bc44-4f7d-b728-8476d5de3191"
+    "_syncId": "23040ab6-3b46-412a-9215-a65eadef53cf"
   },
   {
     "name": "Gather Item Data",
@@ -98,10 +98,10 @@
       "collection": "{{$trigger.collection}}",
       "key": "{{set_trigger_key[0]}}"
     },
-    "resolve": "7b12db7a-df07-4931-bec3-3947fa1d5946",
+    "resolve": "c4ce8ab4-2f02-4751-a094-57bb1edf56b1",
     "reject": null,
     "flow": "a9c018d8-4a61-4391-b28c-10301341a0ac",
-    "_syncId": "ae4c5b61-ea28-4cd2-accc-b74237301c5c"
+    "_syncId": "5553fa55-9d75-4d84-92f6-9f608aff8b6a"
   },
   {
     "name": "SEO Payload",
@@ -112,10 +112,10 @@
     "options": {
       "code": "function generateSummary(blocks){\n    const regex = /^(?:([*_`]|\\*\\*|\\[){0,1}[a-z]+)(.*)/gim;\n    for(let i=0; i<blocks.length;i++){\n        block=blocks[i];\n        if(block.collection == 'block_markdown'){\n            const matches = block.item.body.match(regex);\n            if(null !== matches){\n                return matches[0]\n            }\n            return block.item.body;\n        }\n    }\n    return null;\n}\n\nmodule.exports = async function(data) {\n    const item = data.seo_item_data;\n    const payload = data.$trigger.payload;\n    \n\tlet seo = {};\n    let key = item.id;\n    if(item.seo){\n        seo.id = item.seo;\n    }\n    seo.title = item.title;\n    seo.image = item.cover;\n    seo.owner = item.id;\n    \n    if(payload.blocks){\n        if(payload.blocks.update){\n        let update = generateSummary(payload.blocks.update);\n        if(null !== update){\n            seo.description = update;\n        }\n    }\n    \n        if(payload.blocks.create){\n            let create = generateSummary(payload.blocks.create);\n            if(null !== create){\n                seo.description = create;\n            }\n        }\n    }\n        \n    if(item.summary && null != item.summary){\n        seo.description = item.summary;\n    }\n    \n\treturn {seo, key};\n}"
     },
-    "resolve": "3617e226-bbcd-4559-a162-346a6852398c",
+    "resolve": "b1c425dc-24ac-4d79-95b4-c17bba44a770",
     "reject": null,
     "flow": "a9c018d8-4a61-4391-b28c-10301341a0ac",
-    "_syncId": "7b12db7a-df07-4931-bec3-3947fa1d5946"
+    "_syncId": "c4ce8ab4-2f02-4751-a094-57bb1edf56b1"
   },
   {
     "name": "SEO Payload not empty",
@@ -132,10 +132,10 @@
         }
       }
     },
-    "resolve": "b3fd295f-bfaf-4453-90c1-a53b91e91c72",
+    "resolve": "9198987f-f3a1-4af2-a4ad-7052daf3f737",
     "reject": null,
     "flow": "a9c018d8-4a61-4391-b28c-10301341a0ac",
-    "_syncId": "3617e226-bbcd-4559-a162-346a6852398c"
+    "_syncId": "b1c425dc-24ac-4d79-95b4-c17bba44a770"
   },
   {
     "name": "Update Data",
@@ -153,7 +153,7 @@
     "resolve": null,
     "reject": null,
     "flow": "a9c018d8-4a61-4391-b28c-10301341a0ac",
-    "_syncId": "b3fd295f-bfaf-4453-90c1-a53b91e91c72"
+    "_syncId": "9198987f-f3a1-4af2-a4ad-7052daf3f737"
   },
   {
     "name": "Set Trigger key",
@@ -164,10 +164,10 @@
     "options": {
       "code": "module.exports = async function(data) {\n\treturn data.$trigger.keys ?? [data.$trigger.key];\n}"
     },
-    "resolve": "ae4c5b61-ea28-4cd2-accc-b74237301c5c",
+    "resolve": "5553fa55-9d75-4d84-92f6-9f608aff8b6a",
     "reject": null,
     "flow": "a9c018d8-4a61-4391-b28c-10301341a0ac",
-    "_syncId": "44ced322-e701-411e-9f47-6c86e10ec0a7"
+    "_syncId": "46f226db-0156-4c0c-bc5d-8df0834b0e41"
   },
   {
     "name": "Slug Update Payload",
@@ -178,10 +178,10 @@
     "options": {
       "code": "module.exports = async function(data) {\n\tlet keys = data.$trigger.keys ?? [data.$trigger.key];\n    let slug = data.$trigger.payload.title\n\t\t.toLowerCase()\n\t\t.trim()\n\t\t.replace(/[^\\w\\s-]/g, '')\n\t\t.replace(/[\\s_-]+/g, '-')\n\t\t.replace(/^-+|-+$/g, '');\n    let title = data.$trigger.payload.title\n    return {keys, slug, title}\n}"
     },
-    "resolve": "69c9a0a6-bc44-4f7d-b728-8476d5de3191",
+    "resolve": "23040ab6-3b46-412a-9215-a65eadef53cf",
     "reject": null,
     "flow": "5f3afd9d-98ea-4b19-bd88-fb41c0495269",
-    "_syncId": "c92ee469-ed53-46d6-befd-8a53406c89c5"
+    "_syncId": "c6d4e57b-b927-46f5-ab0e-42e9f74e89d4"
   },
   {
     "name": "Title Payload Changed",
@@ -200,10 +200,10 @@
         }
       }
     },
-    "resolve": "c92ee469-ed53-46d6-befd-8a53406c89c5",
+    "resolve": "c6d4e57b-b927-46f5-ab0e-42e9f74e89d4",
     "reject": null,
     "flow": "5f3afd9d-98ea-4b19-bd88-fb41c0495269",
-    "_syncId": "e998e1fc-2174-44fd-9175-238d652c9b99"
+    "_syncId": "6b7e6536-c16a-4659-afd0-a76c41776354"
   },
   {
     "name": "update summary",
@@ -222,6 +222,6 @@
     "resolve": null,
     "reject": null,
     "flow": "e3898473-c8f7-4e18-924e-b472c1e91f56",
-    "_syncId": "b7c3477f-ec27-4b15-8f6a-b920bc0f4199"
+    "_syncId": "71f7f50d-43ad-40ac-aa32-9d80f31789a5"
   }
 ]

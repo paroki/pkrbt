@@ -19,7 +19,7 @@
     },
     "readonly": false,
     "required": true,
-    "sort": 8,
+    "sort": 9,
     "special": [
       "m2o"
     ],
@@ -38,6 +38,7 @@
     "numeric_scale": null,
     "is_nullable": true,
     "is_unique": false,
+    "is_indexed": false,
     "is_primary_key": false,
     "is_generated": false,
     "generation_expression": null,

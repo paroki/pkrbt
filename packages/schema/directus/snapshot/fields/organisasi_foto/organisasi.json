@@ -1,21 +1,21 @@
 {
-  "collection": "organisasi",
-  "field": "images",
+  "collection": "organisasi_foto",
+  "field": "organisasi",
   "type": "uuid",
   "meta": {
-    "collection": "organisasi",
+    "collection": "organisasi_foto",
     "conditions": null,
     "display": null,
     "display_options": null,
-    "field": "images",
+    "field": "organisasi",
     "group": null,
-    "hidden": false,
+    "hidden": true,
     "interface": null,
     "note": null,
     "options": null,
     "readonly": false,
     "required": false,
-    "sort": 10,
+    "sort": 2,
     "special": null,
     "translations": null,
     "validation": null,
@@ -23,8 +23,8 @@
     "width": "full"
   },
   "schema": {
-    "name": "images",
-    "table": "organisasi",
+    "name": "organisasi",
+    "table": "organisasi_foto",
     "data_type": "uuid",
     "default_value": null,
     "max_length": null,
@@ -32,11 +32,12 @@
     "numeric_scale": null,
     "is_nullable": true,
     "is_unique": false,
+    "is_indexed": false,
     "is_primary_key": false,
     "is_generated": false,
     "generation_expression": null,
     "has_auto_increment": false,
-    "foreign_key_table": "directus_files",
+    "foreign_key_table": "organisasi",
     "foreign_key_column": "id"
   }
 }

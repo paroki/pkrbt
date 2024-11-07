@@ -1,6 +1,9 @@
-import { User } from "@pkrbt/directus";
+import { DirectusUser } from "@directus/sdk";
+import { Schema, User } from "@pkrbt/directus";
 
 /**
  * User response type
  */
-export type UserR = Omit<User, "id"> & Pick<Required<User>, "id">;
+export type UserR = DirectusUser<Schema> &
+  Omit<User, "id" | "email"> &
+  Pick<Required<User>, "id" | "email">;

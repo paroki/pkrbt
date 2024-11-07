@@ -1,6 +1,6 @@
 [
   {
-    "dashboard": "88c1d5f2-6fdb-43af-ad7d-f10a91c8bd66",
+    "dashboard": "f212f961-aa83-4d1a-91c5-e71e64ad64e4",
     "name": null,
     "icon": null,
     "color": null,
@@ -18,6 +18,6 @@
       "function": "sum",
       "horizontal": true
     },
-    "_syncId": "cfce226e-a9c3-440c-9931-2f259235b7ab"
+    "_syncId": "f9116f5a-ffb5-4968-8cc9-887c77abd588"
   }
 ]

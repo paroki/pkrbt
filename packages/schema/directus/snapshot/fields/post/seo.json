@@ -9,13 +9,13 @@
     "display_options": null,
     "field": "seo",
     "group": null,
-    "hidden": false,
+    "hidden": true,
     "interface": "select-dropdown-m2o",
     "note": null,
     "options": null,
     "readonly": false,
     "required": false,
-    "sort": 18,
+    "sort": 17,
     "special": [
       "m2o"
     ],
@@ -34,6 +34,7 @@
     "numeric_scale": null,
     "is_nullable": true,
     "is_unique": false,
+    "is_indexed": false,
     "is_primary_key": false,
     "is_generated": false,
     "generation_expression": null,

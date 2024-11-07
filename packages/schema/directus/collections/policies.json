@@ -16,84 +16,26 @@
     "_syncId": "_sync_default_admin_policy"
   },
   {
-    "name": "$t:public_label",
-    "icon": "public",
-    "description": "$t:public_description",
+    "name": "Imam",
+    "icon": "badge",
+    "description": "Hak Akses untuk Database Imam",
     "ip_access": null,
     "enforce_tfa": false,
     "admin_access": false,
     "app_access": false,
-    "roles": [
-      {
-        "role": null,
-        "sort": 1
-      }
-    ],
+    "roles": [],
     "_syncId": "_sync_default_public_policy"
   },
   {
-    "name": "Guest",
-    "icon": "badge",
-    "description": "Guest Users Policy",
-    "ip_access": null,
-    "enforce_tfa": false,
-    "admin_access": false,
-    "app_access": false,
-    "roles": [
-      {
-        "role": "e689734c-f563-49ce-8e38-c79a993fa5a7",
-        "sort": 1
-      },
-      {
-        "role": "fe856227-d8ae-46f4-9cf9-b540fa85297b",
-        "sort": 2
-      }
-    ],
-    "_syncId": "177a76e2-95c3-45b1-9299-f6a34fa9eb73"
-  },
-  {
-    "name": "File Manager",
+    "name": "Organisasi Viewer",
     "icon": "badge",
     "description": null,
     "ip_access": null,
     "enforce_tfa": false,
     "admin_access": false,
     "app_access": false,
-    "roles": [
-      {
-        "role": "64eeff11-901c-4dd9-b773-b5310b96912f",
-        "sort": 1
-      },
-      {
-        "role": "d1ab7769-5476-4925-8585-53f0eaaab6c1",
-        "sort": 2
-      }
-    ],
-    "_syncId": "4b4ca43f-52d2-4a18-bb46-22e891336090"
-  },
-  {
-    "name": "Registered",
-    "icon": "badge",
-    "description": "Registered Users Policy",
-    "ip_access": null,
-    "enforce_tfa": false,
-    "admin_access": false,
-    "app_access": true,
-    "roles": [
-      {
-        "role": "fe856227-d8ae-46f4-9cf9-b540fa85297b",
-        "sort": 1
-      },
-      {
-        "role": "64eeff11-901c-4dd9-b773-b5310b96912f",
-        "sort": 3
-      },
-      {
-        "role": "d1ab7769-5476-4925-8585-53f0eaaab6c1",
-        "sort": 3
-      }
-    ],
-    "_syncId": "94a06577-4a5a-41b1-bdd3-51f39e1fdc82"
+    "roles": [],
+    "_syncId": "004ae4e1-4c80-4d15-a79a-85a9ef24c14f"
   },
   {
     "name": "Organisasi Admin",
@@ -113,11 +55,31 @@
         "sort": 1
       },
       {
-        "role": "d1ab7769-5476-4925-8585-53f0eaaab6c1",
+        "role": "431273d0-0d71-4ed8-ba75-dc342804598e",
         "sort": 5
       }
     ],
-    "_syncId": "97d8a9fd-ef91-4389-ab6e-d4b66600c287"
+    "_syncId": "05cd0d39-3c1c-4d2c-a5f5-eb1f0dacb8dc"
+  },
+  {
+    "name": "File Manager",
+    "icon": "badge",
+    "description": null,
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false,
+    "roles": [
+      {
+        "role": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51",
+        "sort": 1
+      },
+      {
+        "role": "431273d0-0d71-4ed8-ba75-dc342804598e",
+        "sort": 2
+      }
+    ],
+    "_syncId": "2370ea90-698e-4a2b-88ad-69dc21d0b11b"
   },
   {
     "name": "Author",
@@ -129,14 +91,121 @@
     "app_access": false,
     "roles": [
       {
-        "role": "64eeff11-901c-4dd9-b773-b5310b96912f",
+        "role": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51",
         "sort": 2
       },
       {
-        "role": "d1ab7769-5476-4925-8585-53f0eaaab6c1",
+        "role": "431273d0-0d71-4ed8-ba75-dc342804598e",
         "sort": 4
       }
     ],
-    "_syncId": "9ce6c818-dc32-42de-9700-e8af79ad0128"
+    "_syncId": "2cd95aee-9f70-40ac-9fdd-fb96f4583da8"
+  },
+  {
+    "name": "Bendahara DPP",
+    "icon": "badge",
+    "description": "Bendahara DPP Policy",
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false,
+    "roles": [
+      {
+        "role": null,
+        "sort": null
+      }
+    ],
+    "_syncId": "38777743-1de8-4d66-b517-828cae9e75f2"
+  },
+  {
+    "name": "Misa Administrator",
+    "icon": "badge",
+    "description": null,
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false,
+    "roles": [],
+    "_syncId": "6f6d24ea-1c18-44a0-a334-74fa3038202f"
+  },
+  {
+    "name": "Registered",
+    "icon": "badge",
+    "description": "Registered Users Policy",
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": true,
+    "roles": [
+      {
+        "role": "a084b012-6f4c-4481-9062-1f817eb454ef",
+        "sort": 1
+      },
+      {
+        "role": "431273d0-0d71-4ed8-ba75-dc342804598e",
+        "sort": 3
+      },
+      {
+        "role": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51",
+        "sort": 3
+      }
+    ],
+    "_syncId": "a3e83f08-942a-46d4-a8b0-3906736315f8"
+  },
+  {
+    "name": "$t:public_label",
+    "icon": "public",
+    "description": "$t:public_description",
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false,
+    "roles": [
+      {
+        "role": null,
+        "sort": 1
+      }
+    ],
+    "_syncId": "bbee10ec-a4bf-4283-b683-f9066e96933d"
+  },
+  {
+    "name": "Guest",
+    "icon": "badge",
+    "description": "Guest Users Policy",
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false,
+    "roles": [
+      {
+        "role": "8fc9d95a-746a-44d9-a1ad-b14b5056b0e9",
+        "sort": 1
+      },
+      {
+        "role": "a084b012-6f4c-4481-9062-1f817eb454ef",
+        "sort": 2
+      }
+    ],
+    "_syncId": "d801b318-1d81-4443-9404-6c681fc10acd"
+  },
+  {
+    "name": "Pengurus Harian DPP",
+    "icon": "badge",
+    "description": "Pengurus Harian DPP",
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false,
+    "roles": [
+      {
+        "role": null,
+        "sort": null
+      },
+      {
+        "role": null,
+        "sort": null
+      }
+    ],
+    "_syncId": "ed3d0880-32cc-482f-b460-ff2679ace783"
   }
 ]

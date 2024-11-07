@@ -1,4 +1,4 @@
-import { components } from "./openapi";
+import { components } from "../user/openapi";
 
 export type File = components["schemas"]["Files"];
 

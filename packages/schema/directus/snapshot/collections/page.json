@@ -18,7 +18,20 @@
     "singleton": false,
     "sort": 2,
     "sort_field": "sort",
-    "translations": null,
+    "translations": [
+      {
+        "language": "id-ID",
+        "plural": "Halaman",
+        "singular": "Halaman",
+        "translation": "Halaman"
+      },
+      {
+        "language": "en-US",
+        "plural": "Halaman",
+        "singular": "Halaman",
+        "translation": "Halaman"
+      }
+    ],
     "unarchive_value": "draft",
     "versioning": false
   },

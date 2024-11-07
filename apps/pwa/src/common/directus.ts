@@ -1,3 +1,4 @@
+"use server";
 import { Directus } from "@pkrbt/directus";
 import { DIRECTUS_URL } from "./config";
 import { getSessionToken } from "./auth";

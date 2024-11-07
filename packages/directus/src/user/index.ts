@@ -1,10 +1,23 @@
 import { Directus } from "@pkrbt/directus-core";
 import { restMethods, Schema, User } from "..";
-import { Query, readItem, readItems } from "@directus/sdk";
+import {
+  DirectusUser,
+  Query,
+  readItem,
+  readItems,
+  updateUser,
+} from "@directus/sdk";
 
 export * from "./types";
 
+export type UserUpdatePayload = Pick<
+  User,
+  "nama" | "tempatLahir" | "tanggalLahir"
+>;
+
 export function user(directus: Directus<Schema>) {
+  const rest = directus.rest;
+
   return {
     user: {
       ...restMethods(directus, "user"),
@@ -18,6 +31,17 @@ export function user(directus: Directus<Schema>) {
         }
 
         return { error, items };
+      },
+      async update(id: string, item: DirectusUser) {
+        let error = undefined;
+        let data = undefined;
+        try {
+          data = (await rest.request(updateUser(id, item))) as DirectusUser;
+        } catch (e) {
+          error = e as Error;
+        }
+
+        return { item: data, error };
       },
       async read(id: string, query: Query<Schema, User>) {
         let error: Error | undefined;
