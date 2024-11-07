@@ -105,7 +105,7 @@ jobs:
       #NEXT_PUBLIC_DIRECTUS_URL: ${{ secrets.NEXT_PUBLIC_DIRECTUS_URL }}
       NEXT_PUBLIC_DIRECTUS_URL: "https://api.pkrbt.id"
       NEXT_PUBLIC_URL: "https://pwa.pkrbt.id"
-      AUTH_SECRET: "aJI95UYkXLt6PISmLruIkjVos9LSQXuyxwhTE9+FOMA="
+      AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
     steps:
       - name: setup vars
         id: vars
