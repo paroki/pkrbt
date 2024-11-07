@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@pkrbt/typescript-config": "workspace:*",
-    "@types/node": "^20",
+    "@types/node": "^22.0.0",
     "@types/react": "^18",
     "autoprefixer": "^10",
     "postcss": "^8",
