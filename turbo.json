@@ -11,7 +11,8 @@
     "DIRECTUS_URL",
     "DIRECTUS_ADMIN_EMAIL",
     "DIRECTUS_ADMIN_PASSWORD",
-    "DIRECTUS_TOKEN_NAME"
+    "DIRECTUS_TOKEN_NAME",
+    "AUTH_SECRET"
   ],
   "tasks": {
     "build": {
