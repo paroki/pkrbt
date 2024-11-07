@@ -148,7 +148,7 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: 1
         run: |
-          pnpm build --filter=@pkrbt/web
+          pnpm build --filter=@pkrbt/pwa
           ${{ steps.vars.outputs.vercel_build }} --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
