@@ -10,7 +10,8 @@
     "SENTRY_AUTH_TOKEN",
     "DIRECTUS_URL",
     "DIRECTUS_ADMIN_EMAIL",
-    "DIRECTUS_ADMIN_PASSWORD"
+    "DIRECTUS_ADMIN_PASSWORD",
+    "DIRECTUS_TOKEN_NAME"
   ],
   "tasks": {
     "build": {
