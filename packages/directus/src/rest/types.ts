@@ -12,7 +12,9 @@ export type RestCollection = keyof Schema;
 /**
  * Partial rest item
  */
-export type RestItemPartial = Partial<UnpackList<Schema[RestCollection]>>;
+export type RestItemPartial = Partial<UnpackList<Schema[RestCollection]>> & {
+  id?: any;
+};
 
 export type RestResponse<T> = {
   error?: Error;

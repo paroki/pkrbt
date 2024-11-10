@@ -8,7 +8,7 @@ type Props = {
 
 export default function Navigation({}: Props) {
   const logo = {
-    url: "https://api.pkrbt.id/assets/702a302e-cddb-463a-8b80-24820d0e2f6b",
+    url: "https://api.pkrbt.id/assets/baf5b5fb-12fd-43c3-aa34-b6a3d06ac8d1",
     width: 512,
     height: 512,
   };

@@ -8,8 +8,12 @@ import {
 } from "@pkrbt/ui/shadcn/card";
 import { PropsWithChildren } from "react";
 import Nav from "./Nav";
+import { ensurePengurusHarianDPP } from "@/common/user";
 
-export default function PendapatanLayout({ children }: PropsWithChildren) {
+export default async function PendapatanLayout({
+  children,
+}: PropsWithChildren) {
+  await ensurePengurusHarianDPP();
   return (
     <DefaultLayout>
       <Card>

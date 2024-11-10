@@ -1,3 +1,3 @@
-import LoginPage from "@/pkg/auth/pages/login";
+import LoginPage from "@/pkg/auth/pages/LoginPage";
 
 export default LoginPage;

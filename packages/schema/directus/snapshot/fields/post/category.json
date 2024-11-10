@@ -19,7 +19,7 @@
     },
     "readonly": false,
     "required": false,
-    "sort": 13,
+    "sort": 12,
     "special": [
       "m2o"
     ],

@@ -28,7 +28,7 @@ tasks:
   schema:sync:
     desc: sync schema from api.pkrbt.id to local docker container
     cmds:
-      - task: schema:pull
+      #- task: schema:pull
       - task: schema:push
 
   schema:sync:dev:

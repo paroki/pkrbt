@@ -1,0 +1,25 @@
+{
+  "collection": "kegiatan_files",
+  "field": "foto",
+  "related_collection": "directus_files",
+  "meta": {
+    "junction_field": "kegiatan",
+    "many_collection": "kegiatan_files",
+    "many_field": "foto",
+    "one_allowed_collections": null,
+    "one_collection": "directus_files",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": null,
+    "sort_field": null
+  },
+  "schema": {
+    "table": "kegiatan_files",
+    "column": "foto",
+    "foreign_key_table": "directus_files",
+    "foreign_key_column": "id",
+    "constraint_name": "kegiatan_files_foto_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "CASCADE"
+  }
+}

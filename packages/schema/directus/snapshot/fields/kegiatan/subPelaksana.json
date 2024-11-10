@@ -1,0 +1,27 @@
+{
+  "collection": "kegiatan",
+  "field": "subPelaksana",
+  "type": "alias",
+  "meta": {
+    "collection": "kegiatan",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "subPelaksana",
+    "group": null,
+    "hidden": false,
+    "interface": "list-o2m",
+    "note": null,
+    "options": null,
+    "readonly": false,
+    "required": false,
+    "sort": 8,
+    "special": [
+      "o2m"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

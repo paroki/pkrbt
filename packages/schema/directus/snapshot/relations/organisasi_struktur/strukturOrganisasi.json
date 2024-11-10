@@ -1,0 +1,25 @@
+{
+  "collection": "organisasi_struktur",
+  "field": "strukturOrganisasi",
+  "related_collection": "kegiatan",
+  "meta": {
+    "junction_field": null,
+    "many_collection": "organisasi_struktur",
+    "many_field": "strukturOrganisasi",
+    "one_allowed_collections": null,
+    "one_collection": "kegiatan",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": "subPelaksana",
+    "sort_field": "sort"
+  },
+  "schema": {
+    "table": "organisasi_struktur",
+    "column": "strukturOrganisasi",
+    "foreign_key_table": "kegiatan",
+    "foreign_key_column": "id",
+    "constraint_name": "organisasi_struktur_strukturorganisasi_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "SET NULL"
+  }
+}

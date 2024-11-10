@@ -1,0 +1,25 @@
+{
+  "collection": "kegiatan",
+  "field": "pelaksana",
+  "related_collection": "organisasi",
+  "meta": {
+    "junction_field": null,
+    "many_collection": "kegiatan",
+    "many_field": "pelaksana",
+    "one_allowed_collections": null,
+    "one_collection": "organisasi",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": null,
+    "sort_field": null
+  },
+  "schema": {
+    "table": "kegiatan",
+    "column": "pelaksana",
+    "foreign_key_table": "organisasi",
+    "foreign_key_column": "id",
+    "constraint_name": "kegiatan_pelaksana_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "NO ACTION"
+  }
+}

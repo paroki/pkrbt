@@ -5,6 +5,7 @@ import { PlusCircleIcon } from "lucide-react";
 
 export default async function HarianPage() {
   const items = await listHarian();
+
   return (
     <div className="flex flex-col gap-y-4 mt-8">
       <div className="flex flex-row gap-4 align-middle">

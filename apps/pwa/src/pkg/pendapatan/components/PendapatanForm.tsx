@@ -1,6 +1,6 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Pendapatan } from "@pkrbt/directus";
+import { Pendapatan, PendapatanR } from "@pkrbt/directus";
 import {
   Form,
   FormControl,
@@ -12,7 +12,7 @@ import { Input } from "@pkrbt/ui/shadcn/input";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { SumberPendapatanR } from "../types";
+import { PendapatanP, SumberPendapatanR } from "../types";
 import {
   Select,
   SelectContent,
@@ -28,6 +28,7 @@ import { SaveIcon } from "lucide-react";
 type Props = {
   pendapatan?: Pendapatan;
   sumberPendapatan: SumberPendapatanR[];
+  saveAction: (payload: PendapatanP) => Promise<PendapatanR>;
 };
 
 const schema = z.object({
@@ -35,15 +36,15 @@ const schema = z.object({
   uraian: z.string(),
   jumlah: z.number(),
   sumber: z.string(),
-  catatan: z.string(),
+  catatan: z.string().nullable(),
 });
 
 export default function PendapatanForm({
   pendapatan: initial,
   sumberPendapatan,
+  saveAction,
 }: Props) {
   const [pendapatan, setPendapatan] = useState<Pendapatan | undefined>(initial);
-
   const form = useForm<z.infer<typeof schema>>({
     resolver: zodResolver(schema),
     defaultValues: {
@@ -51,7 +52,7 @@ export default function PendapatanForm({
       uraian: pendapatan?.uraian ?? "",
       jumlah: pendapatan?.jumlah ?? undefined,
       sumber: pendapatan?.sumber?.id ?? undefined,
-      catatan: pendapatan?.catatan ?? undefined,
+      catatan: pendapatan?.catatan ?? "",
     },
   });
 
@@ -59,10 +60,23 @@ export default function PendapatanForm({
     setPendapatan(initial);
   }, [initial]);
 
+  const onSubmit = async (values: z.infer<typeof schema>) => {
+    const payload: PendapatanP = { ...values };
+    if (pendapatan?.id) {
+      payload.id = pendapatan.id;
+    }
+    const item = await saveAction(payload);
+    setPendapatan(item);
+  };
+
   return (
     <div className="sm:w-full lg:w-3/4 items-center content-center">
       <Form {...form}>
-        <form className="flex flex-col gap-y-4" method="post">
+        <form
+          className="flex flex-col gap-y-4"
+          method="post"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
           <FormField
             name="tanggal"
             render={({ field }) => (

@@ -5,6 +5,11 @@
     "_syncId": "026b29e9-6621-4828-84ef-aa2ce780a5b9"
   },
   {
+    "name": "2024-11-07 Rapat Kerja Komsos",
+    "parent": "77875fac-ee6a-48f6-915a-5fe98ce34e81",
+    "_syncId": "116898e5-ec81-4c81-bb8d-905bf9ee5897"
+  },
+  {
     "name": "artikel",
     "parent": null,
     "_syncId": "205079fa-f4a8-41c2-ae8e-39e0ea00b75e"
@@ -13,6 +18,11 @@
     "name": "organisasi",
     "parent": null,
     "_syncId": "3446f998-96c1-4560-9259-f63730dfad75"
+  },
+  {
+    "name": "sejarah",
+    "parent": null,
+    "_syncId": "366281c4-971a-4d08-a84c-d301de5d27b2"
   },
   {
     "name": "imam",
@@ -45,6 +55,16 @@
     "_syncId": "8fde748e-b6cb-4b75-83ce-424a668ac14a"
   },
   {
+    "name": "2024-11-10 Rapat Panitia Natal-HUT",
+    "parent": "77875fac-ee6a-48f6-915a-5fe98ce34e81",
+    "_syncId": "a078846b-6100-4b05-b296-001f5e046ae8"
+  },
+  {
+    "name": "omk",
+    "parent": "3446f998-96c1-4560-9259-f63730dfad75",
+    "_syncId": "a0a206c0-fd49-4853-b88f-9c6a75cc61f6"
+  },
+  {
     "name": "kronik",
     "parent": null,
     "_syncId": "ae0ccc20-526a-4340-9116-f63bb5175eec"
@@ -68,5 +88,10 @@
     "name": "globals",
     "parent": null,
     "_syncId": "e3412832-3842-4487-94c6-a8ecb8be9018"
+  },
+  {
+    "name": "2024-11-01 Rapat Panitia HUT",
+    "parent": "77875fac-ee6a-48f6-915a-5fe98ce34e81",
+    "_syncId": "ff1abeb3-a267-4bfd-ae57-2e3bf591a7cf"
   }
 ]

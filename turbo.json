@@ -47,6 +47,10 @@
       "cache": false,
       "persistent": true
     },
+    "pwa:https": {
+      "cache": false,
+      "persistent": true
+    },
     "api": {
       "dependsOn": ["^build"],
       "cache": true

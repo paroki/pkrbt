@@ -1,4 +1,4 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, Suspense } from "react";
 import Navigation from "./navigation";
 import menus from "@/common/menus";
 
@@ -8,7 +8,7 @@ export default function DefaultLayout({ children }: PropsWithChildren) {
       <Navigation menus={menus} />
       <main className="mx-auto min-h-[90vh] lg:w-3/4 sm:w-full p-4">
         {/* navigation here */}
-        {children}
+        <Suspense fallback={<p>Loading</p>}>{children}</Suspense>
       </main>
     </div>
   );

@@ -5,14 +5,17 @@
   "meta": {
     "collection": "post",
     "conditions": null,
-    "display": null,
-    "display_options": null,
+    "display": "image",
+    "display_options": {
+      "circle": true
+    },
     "field": "cover",
     "group": null,
     "hidden": false,
     "interface": "file-image",
     "note": null,
     "options": {
+      "crop": false,
       "folder": null
     },
     "readonly": false,
