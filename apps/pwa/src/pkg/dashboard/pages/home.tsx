@@ -65,18 +65,18 @@ export default async function HomePage() {
 
   return (
     <DefaultLayout>
-      <div className="flex w-full">
-        <Tabs defaultValue="layanan" className="w-full p-2">
+      <div className="flex w-full h-screen">
+        <Tabs defaultValue="layanan" className="w-full">
           <TabsList>
             <TabsTrigger value="timeline">Timeline</TabsTrigger>
             <TabsTrigger value="layanan">Layanan</TabsTrigger>
           </TabsList>
           <TabsContent value="timeline">
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 w-full h-full gap-4">
+            <div className="w-full h-screen">
               {feeds.map((item, index) => (
                 <div
                   key={index}
-                  className="flex flex-row bg-white rounded-sm drop-shadow-md p-2 gap-4 content-center align-middle"
+                  className="flex flex-row bg-white rounded-sm drop-shadow-md p-2 gap-4 mb-4 content-center align-middle"
                 >
                   <div
                     style={{ width: 72, height: 72 }}

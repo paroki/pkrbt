@@ -1,9 +1,18 @@
-import { DirectusUser } from "@directus/sdk";
-import { Schema, User } from "@pkrbt/directus";
+import { OrganisasiR, User } from "@pkrbt/directus";
+import { FileWithPath } from "react-dropzone";
+
+export type FileWithPreview = FileWithPath & {
+  preview: string;
+};
 
 /**
  * User response type
  */
-export type UserR = DirectusUser<Schema> &
-  Omit<User, "id" | "email"> &
-  Pick<Required<User>, "id" | "email">;
+export type UserR = User &
+  Omit<User, "id" | "email" | "organisasi" | "user" | "avatar"> &
+  Pick<Required<User>, "id" | "email" | "avatar"> & {
+    organisasi: {
+      id?: number | undefined;
+      organisasi?: OrganisasiR;
+    }[];
+  };

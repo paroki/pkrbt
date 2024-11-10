@@ -14,6 +14,7 @@ import {
   SumberPendapatan,
   User,
   Misa,
+  OrganisasiUser,
 } from "..";
 
 export type Schema = {
@@ -26,6 +27,7 @@ export type Schema = {
   organisasi_jabatan_periode: PeriodeJabatan[];
   organisasi_anggota: AnggotaOrganisasi[];
   user: User[];
+  user_organisasi: OrganisasiUser[];
   imam: Imam[];
   // paroki
   sumber_pendapatan: SumberPendapatan[];

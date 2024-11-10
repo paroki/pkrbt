@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "pwa": "next dev",
+    "pwa:https": "next dev --experimental-https",
     "build": "next build",
     "start:pwa": "next start",
     "lint": "next lint"
@@ -19,12 +20,14 @@
     "next-auth": "5.0.0-beta.25",
     "react": "^18",
     "react-dom": "^18",
+    "react-dropzone": "^14.3.5",
     "react-hook-form": "^7.53.1",
+    "react-image-crop": "^11.0.7",
     "react-number-format": "^5.4.2",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^20.16.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",

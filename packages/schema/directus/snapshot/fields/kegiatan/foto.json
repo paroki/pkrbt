@@ -1,0 +1,27 @@
+{
+  "collection": "kegiatan",
+  "field": "foto",
+  "type": "alias",
+  "meta": {
+    "collection": "kegiatan",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "foto",
+    "group": null,
+    "hidden": false,
+    "interface": "files",
+    "note": null,
+    "options": null,
+    "readonly": false,
+    "required": false,
+    "sort": 16,
+    "special": [
+      "files"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

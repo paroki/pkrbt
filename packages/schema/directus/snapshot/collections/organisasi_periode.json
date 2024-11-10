@@ -1,0 +1,35 @@
+{
+  "collection": "organisasi_periode",
+  "meta": {
+    "accountability": "all",
+    "archive_app_filter": true,
+    "archive_field": null,
+    "archive_value": null,
+    "collapse": "open",
+    "collection": "organisasi_periode",
+    "color": null,
+    "display_template": null,
+    "group": "administrasi_organisasi",
+    "hidden": false,
+    "icon": null,
+    "item_duplication_fields": null,
+    "note": null,
+    "preview_url": null,
+    "singleton": false,
+    "sort": 4,
+    "sort_field": "sort",
+    "translations": [
+      {
+        "language": "id-ID",
+        "plural": "Periode",
+        "singular": "Periode",
+        "translation": "Periode"
+      }
+    ],
+    "unarchive_value": null,
+    "versioning": false
+  },
+  "schema": {
+    "name": "organisasi_periode"
+  }
+}

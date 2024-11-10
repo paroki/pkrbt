@@ -50,7 +50,7 @@ export function restMethods<T>(
   }
 
   async function update(
-    id: string,
+    id: string | number,
     item: RestItemPartial,
   ): Promise<RestResponse<T>> {
     let error = undefined;

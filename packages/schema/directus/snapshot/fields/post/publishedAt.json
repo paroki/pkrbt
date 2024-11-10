@@ -11,7 +11,7 @@
     },
     "field": "publishedAt",
     "group": null,
-    "hidden": true,
+    "hidden": false,
     "interface": "datetime",
     "note": null,
     "options": {
@@ -19,7 +19,7 @@
     },
     "readonly": false,
     "required": false,
-    "sort": 4,
+    "sort": 3,
     "special": null,
     "translations": null,
     "validation": null,

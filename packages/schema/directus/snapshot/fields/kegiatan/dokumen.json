@@ -1,0 +1,27 @@
+{
+  "collection": "kegiatan",
+  "field": "dokumen",
+  "type": "alias",
+  "meta": {
+    "collection": "kegiatan",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "dokumen",
+    "group": null,
+    "hidden": false,
+    "interface": "files",
+    "note": null,
+    "options": null,
+    "readonly": false,
+    "required": false,
+    "sort": 17,
+    "special": [
+      "files"
+    ],
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  }
+}

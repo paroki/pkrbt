@@ -34,28 +34,6 @@
     "_syncId": "7fac973f-12c2-4551-ac8a-7626e8e2dcb8"
   },
   {
-    "name": "Delete Data",
-    "key": "delete_seo_item",
-    "type": "item-delete",
-    "position_x": 19,
-    "position_y": 1,
-    "options": {
-      "collection": "seo",
-      "query": {
-        "filter": {
-          "owner": {
-            "_in": "{{$trigger.payload}}"
-          }
-        }
-      },
-      "emitEvents": true
-    },
-    "resolve": null,
-    "reject": null,
-    "flow": "eb9f6032-6fc3-480c-adfb-392d643721b2",
-    "_syncId": "b313ebe9-28c4-48ea-b3af-ffe9d49d2506"
-  },
-  {
     "name": "Read Data",
     "key": "item_read_xfr7k",
     "type": "item-read",

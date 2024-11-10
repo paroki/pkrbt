@@ -47,7 +47,7 @@
     "icon": "bolt",
     "color": null,
     "description": "Generate SEO For Post, Category, and Page",
-    "status": "inactive",
+    "status": "active",
     "trigger": "event",
     "accountability": "all",
     "options": {
@@ -70,7 +70,7 @@
     "icon": "bolt",
     "color": null,
     "description": "Update summary on markdown/richtext blocks changed",
-    "status": "inactive",
+    "status": "active",
     "trigger": "event",
     "accountability": "all",
     "options": {
@@ -87,27 +87,5 @@
     },
     "operation": "7fac973f-12c2-4551-ac8a-7626e8e2dcb8",
     "_syncId": "e3898473-c8f7-4e18-924e-b472c1e91f56"
-  },
-  {
-    "name": "[Website]  SEO Owner Deleted",
-    "icon": "bolt",
-    "color": null,
-    "description": null,
-    "status": "inactive",
-    "trigger": "event",
-    "accountability": "all",
-    "options": {
-      "type": "filter",
-      "scope": [
-        "items.delete"
-      ],
-      "collections": [
-        "post",
-        "page",
-        "category"
-      ]
-    },
-    "operation": "b313ebe9-28c4-48ea-b3af-ffe9d49d2506",
-    "_syncId": "eb9f6032-6fc3-480c-adfb-392d643721b2"
   }
 ]

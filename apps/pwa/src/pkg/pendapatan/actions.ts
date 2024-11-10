@@ -1,6 +1,9 @@
+"use server";
 import { createDirectus } from "@/common/directus";
 import { MisaR, PendapatanR } from "@pkrbt/directus";
-import { SumberPendapatanR } from "./types";
+import { PendapatanP, SumberPendapatanR } from "./types";
+import { revalidatePath } from "next/cache";
+import { getCurrentUser } from "@/common/user";
 
 export async function listHarian() {
   const directus = await createDirectus();
@@ -80,16 +83,36 @@ export async function pendapatanById(id: string) {
       "tanggal",
       "uraian",
       {
-        sumber: ["id", "sumber"],
+        sumber: ["id", "sort", "sumber"],
       },
       "jumlah",
+      "catatan",
+      "updatedBy",
     ],
     filter: {
       id: {
         _eq: id,
       },
     },
+    sort: ["sumber.sort"],
   });
 
   return items ? (items[0] as PendapatanR) : undefined;
+}
+
+export async function update(payload: PendapatanP) {
+  const directus = await createDirectus();
+
+  const { item } = await directus.pendapatan.update(
+    payload.id as string,
+    payload,
+  );
+
+  revalidatePath(`/paroki/pendapatan/${payload.id}`);
+  return item as PendapatanR;
+}
+
+export async function authorizePengurusHarian() {
+  const user = await getCurrentUser();
+  console.log(user);
 }

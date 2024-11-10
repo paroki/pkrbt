@@ -3,8 +3,8 @@ import { restMethods, Schema, User } from "..";
 import {
   DirectusUser,
   Query,
-  readItem,
   readItems,
+  readUser,
   updateUser,
 } from "@directus/sdk";
 
@@ -32,23 +32,29 @@ export function user(directus: Directus<Schema>) {
 
         return { error, items };
       },
-      async update(id: string, item: DirectusUser) {
+      async update(id: string, item: Partial<User>) {
         let error = undefined;
         let data = undefined;
         try {
-          data = (await rest.request(updateUser(id, item))) as DirectusUser;
+          const payload = item as unknown as DirectusUser;
+          data = (await rest.request(
+            updateUser(id, payload),
+          )) as unknown as User;
         } catch (e) {
           error = e as Error;
         }
 
-        return { item: data, error };
+        return { item: data as User, error };
       },
       async read(id: string, query: Query<Schema, User>) {
         let error: Error | undefined;
         let item;
 
         try {
-          item = await directus.rest.request(readItem("user", id, query));
+          const q = query as unknown as Query<Schema, DirectusUser>;
+          item = (await directus.rest.request(
+            readUser(id, q),
+          )) as unknown as User;
         } catch (e) {
           error = e as Error;
         }

@@ -1,10 +1,3 @@
-import { PropsWithChildren } from "react";
+import LoginLayout from "@/pkg/auth/components/LoginLayout";
 
-export default function LoginLayout({ children }: PropsWithChildren) {
-  return (
-    <div>
-      Layout Login
-      <div>{children}</div>
-    </div>
-  );
-}
+export default LoginLayout;

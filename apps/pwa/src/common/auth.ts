@@ -1,11 +1,18 @@
 import NextAuth, { DefaultSession } from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { cookies } from "next/headers";
-import { DIRECTUS_TOKEN_NAME, DIRECTUS_URL } from "./config";
-import { createDirectus, readMe, rest, staticToken } from "@directus/sdk";
+import { DEVELOPMENT, DIRECTUS_TOKEN_NAME, DIRECTUS_URL } from "./config";
+import {
+  authentication,
+  createDirectus,
+  readMe,
+  readPolicies,
+  rest,
+  staticToken,
+} from "@directus/sdk";
 import { Schema } from "@pkrbt/directus";
 import { UserR } from "@/pkg/user/types";
-import { UserPolicy } from "./types";
+import { Policies, UserPolicy } from "./types";
 
 declare module "next-auth" {
   interface Session {
@@ -13,7 +20,8 @@ declare module "next-auth" {
       UserR & {
         id: string;
       };
-    policies: string[];
+    userPolicies: string[];
+    policies: Policies;
   }
 }
 
@@ -60,19 +68,75 @@ export function extractPolicy(user: UserR) {
   return policies;
 }
 
+export async function login(email: string, password: string) {
+  const client = createDirectus<Schema>(DIRECTUS_URL)
+    .with(authentication("json"))
+    .with(rest());
+
+  const result = await client.login(email, password);
+
+  const store = cookies();
+  store.set({
+    name: DIRECTUS_TOKEN_NAME,
+    value: result.access_token as string,
+    secure: true,
+    httpOnly: true,
+    path: "/",
+    sameSite: "lax",
+  });
+
+  return await getAuthenticatedUser();
+}
+
+async function getPolicies() {
+  const token = await getSessionToken();
+  const client = createDirectus<Schema>(DIRECTUS_URL)
+    .with(staticToken(token))
+    .with(rest());
+
+  const result = await client.request(
+    readPolicies({
+      fields: ["id", "name"],
+    }),
+  );
+
+  const policies: Partial<Policies> = {};
+
+  result.map((item) => {
+    if (item.name == "Pengurus Harian DPP") {
+      policies.PengurusHarianDPP = item.id;
+    }
+    if (item.name == "Administrator") {
+      policies.Administrator = item.id;
+    }
+    if (item.name == "Author") {
+      policies.Author = item.id;
+    }
+  });
+
+  return policies as Required<Policies>;
+}
+
 export const { handlers, signIn, signOut, auth } = NextAuth({
+  debug: DEVELOPMENT,
+  pages: {
+    signIn: "/login",
+  },
   providers: [
     Credentials({
       credentials: {
         email: {},
         password: {},
       },
-      async authorize() {
-        const currentUser = await getAuthenticatedUser();
+      async authorize(credentials) {
+        const { email, password } = credentials;
 
-        return {
-          ...currentUser,
-        };
+        if (!email && !password) {
+          return await getAuthenticatedUser();
+        }
+        const user = await login(email as string, password as string);
+
+        return { ...user };
       },
     }),
   ],
@@ -96,7 +160,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
           emailVerified: null,
         };
 
-        session.policies = extractPolicy(authUser);
+        session.userPolicies = extractPolicy(authUser);
+        session.policies = await getPolicies();
       }
       return session;
     },

@@ -13,3 +13,9 @@ export type UserPolicy = {
   id: string;
   policy: string;
 };
+
+export type Policies = {
+  Administrator: string;
+  Author: string;
+  PengurusHarianDPP: string;
+};

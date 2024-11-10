@@ -1,4 +1,4 @@
-import { listSumberPendapatan, pendapatanById } from "../actions";
+import { listSumberPendapatan, pendapatanById, update } from "../actions";
 import PendapatanForm from "../components/PendapatanForm";
 
 type Props = {
@@ -13,7 +13,11 @@ export default async function EditPage({ params }: Props) {
   return (
     <div>
       <h3 className="text-xl font-bold">Edit Pendapatan</h3>
-      <PendapatanForm pendapatan={pendapatan} sumberPendapatan={sumber} />
+      <PendapatanForm
+        pendapatan={pendapatan}
+        sumberPendapatan={sumber}
+        saveAction={update}
+      />
     </div>
   );
 }
