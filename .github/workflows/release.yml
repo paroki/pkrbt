@@ -71,3 +71,4 @@ jobs:
       ref_name: ${{ needs.release.outputs.version }}
       environment: production
       web: "true"
+      pwa: "true"
