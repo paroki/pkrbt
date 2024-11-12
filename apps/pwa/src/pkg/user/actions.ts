@@ -83,7 +83,7 @@ export async function updateAvatar({
 
   const result = (await directus.rest.request(
     uploadFiles(formData),
-  )) as ImageType;
+  )) as unknown as ImageType;
 
   await directus.user.update(userId, {
     avatar: result,
