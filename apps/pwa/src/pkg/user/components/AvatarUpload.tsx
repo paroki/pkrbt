@@ -64,11 +64,10 @@ export default function AvatarUpload({ user }: Props) {
   const onCrop = async (cropped: string) => {
     const currentAvatarId = initial?.id ?? undefined;
     const formData = new FormData();
-    const image = cropped.replace(/^data:image\/png;base64,/, "");
+    const image = cropped.replace(/^data:image\/jpeg;base64,/, "");
 
-    console.log(image);
     const file = new Blob([Buffer.from(image, "base64")], {
-      type: "image/png",
+      type: "image/jpeg",
     });
     formData.append("folder", DIRECTUS_FOLDER_AVATAR);
     formData.append(`title`, `${user.id}-avatar`);

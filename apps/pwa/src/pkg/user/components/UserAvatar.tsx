@@ -89,7 +89,7 @@ export default function UserAvatar({
       );
     }
 
-    return canvas.toDataURL("image/png", 1.0);
+    return canvas.toDataURL("image/jpeg", 1.0);
   }
 
   async function onCrop() {
@@ -141,7 +141,7 @@ export default function UserAvatar({
             </Avatar>
           </ReactCrop>
         </div>
-        <DialogFooter className="p-6 pt-0 justify-center shrink-0">
+        <DialogFooter className="p-6 justify-center shrink-0 flex flex-row gap-x-2 pt-2">
           <DialogClose asChild>
             <Button
               size={"sm"}
@@ -158,7 +158,7 @@ export default function UserAvatar({
           </DialogClose>
           <Button type="submit" size={"sm"} className="w-fit" onClick={onCrop}>
             <CropIcon className="mr-1.5 size-4" />
-            Crop
+            Simpan Foto
           </Button>
         </DialogFooter>
       </DialogContent>

@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export default function Custom403() {
   return (
-    <div className="flex h-screen w-full items-center justify-center">
+    <div className="flex h-screen w-full items-center justify-center p-4">
       <Card className="mx-auto max-w-sm">
         <CardHeader>
           <CardTitle>Oops!</CardTitle>
