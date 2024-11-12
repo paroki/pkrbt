@@ -14,7 +14,7 @@
     "@hookform/resolvers": "^3.9.1",
     "@pkrbt/directus": "workspace:*",
     "@pkrbt/ui": "workspace:*",
-    "lucide-react": "^0.454.0",
+    "lucide-react": "^0.456.0",
     "moment": "^2.30.1",
     "next": "14.2.17",
     "next-auth": "5.0.0-beta.25",
