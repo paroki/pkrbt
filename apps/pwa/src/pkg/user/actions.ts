@@ -51,7 +51,7 @@ export async function updateFoto({
 
   const result = (await directus.rest.request(
     uploadFiles(formData),
-  )) as ImageType;
+  )) as unknown as ImageType;
 
   await directus.user.update(userId, {
     foto: result,
