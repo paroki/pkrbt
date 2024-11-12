@@ -94,7 +94,7 @@ export async function pendapatanById(id: string) {
         _eq: id,
       },
     },
-    sort: ["sumber.sort"],
+    sort: ["sumber"],
   });
 
   return items ? (items[0] as PendapatanR) : undefined;
