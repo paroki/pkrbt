@@ -112,6 +112,14 @@ export async function update(payload: PendapatanP) {
   return item as PendapatanR;
 }
 
+export async function create(payload: PendapatanP) {
+  const directus = await createDirectus();
+
+  const { item } = await directus.pendapatan.create(payload);
+
+  return item as PendapatanR;
+}
+
 export async function authorizePengurusHarian() {
   const user = await getCurrentUser();
   console.log(user);
