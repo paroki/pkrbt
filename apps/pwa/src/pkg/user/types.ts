@@ -1,4 +1,3 @@
-import { UserPolicy } from "@/common/types";
 import { OrganisasiR, User } from "@pkrbt/directus";
 import { FileWithPath } from "react-dropzone";
 
@@ -16,8 +15,4 @@ export type UserR = User &
       id?: number | undefined;
       organisasi?: OrganisasiR;
     }[];
-    policies: UserPolicy[];
-    role: {
-      policies: UserPolicy[];
-    };
   };
