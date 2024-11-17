@@ -1,7 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MisaR } from "@pkrbt/directus";
-import { Form } from "@remix-run/react";
-import { LucideSave } from "lucide-react";
+import { Form, Link } from "@remix-run/react";
+import { LucideSave, SkipBackIcon } from "lucide-react";
 import { FormEvent } from "react";
 import { useRemixForm } from "remix-hook-form";
 import { z } from "zod";
@@ -66,10 +66,16 @@ export default function MisaForm({ misa }: Props) {
             <Input {...register("perayaan")} id="perayaan" name="perayaan" />
             <FormMessage error={formState.errors.perayaan} />
           </FormItem>
-          <div>
+          <div className="flex gap-x-2">
             <Button type="submit">
               <LucideSave />
               Simpan
+            </Button>
+            <Button asChild>
+              <Link to="/pendapatan/misa">
+                <SkipBackIcon />
+                Kembali
+              </Link>
             </Button>
           </div>
         </Form>

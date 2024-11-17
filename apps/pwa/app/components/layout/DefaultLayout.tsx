@@ -3,6 +3,7 @@ import Header from "./Header";
 import { useNavigation, useOutletContext } from "@remix-run/react";
 import { Progress } from "../shadcn/progress";
 import { RootOutletContext } from "~/root";
+import { cn } from "~/common/utils";
 
 type Props = PropsWithChildren;
 
@@ -38,7 +39,13 @@ export default function DefaultLayout({ children }: Props) {
           <Progress value={progress} className="w-[100%] h-1" />
         </div>
       )}
-      <main className="container mx-auto mt-4 items-center justify-center">
+      <main
+        className={cn(
+          "flex mx-2 items-center justify-center mt-4",
+          "sm:mx-4",
+          "lg:mx-auto",
+        )}
+      >
         {children}
       </main>
     </div>

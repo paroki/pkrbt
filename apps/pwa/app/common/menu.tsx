@@ -1,15 +1,14 @@
-import { DollarSignIcon, User2Icon } from "lucide-react";
-import { Menu } from "~/common/types";
+import { LucideHome, Settings2Icon } from "lucide-react";
 
-export const mainMenu: Menu[] = [
+export const mainMenu = [
   {
-    label: "Pendapatan",
-    route: "/pendapatan",
-    icon: <DollarSignIcon />,
+    label: "home",
+    route: "/dashboard/kegiatan",
+    icon: LucideHome,
   },
   {
-    label: "Profil",
-    route: "/profil",
-    icon: <User2Icon />,
+    label: "layanan",
+    route: "/dashboard/layanan",
+    icon: Settings2Icon,
   },
 ];

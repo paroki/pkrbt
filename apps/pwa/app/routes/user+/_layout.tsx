@@ -1,7 +1,7 @@
 import { json } from "@remix-pwa/sw";
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { Outlet, useLoaderData, useOutletContext } from "@remix-run/react";
-import DefaultLayout from "~/components/layout/Default";
+import DefaultLayout from "~/components/layout/DefaultLayout";
 import { RootOutletContext, UserContext } from "~/root";
 import {
   AuthenticatedUser,

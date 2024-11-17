@@ -1,10 +1,7 @@
 "use client";
 import { clsx, type ClassValue } from "clsx";
-import moment from "moment";
-import "moment/locale/id";
+import moment from "moment/min/moment-with-locales";
 import { twMerge } from "tailwind-merge";
-
-moment.locale("id");
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -44,9 +41,10 @@ export function toMoney(num: number): string {
 }
 
 export function toLocalDate(str: string | null, format = "DD-MM") {
+  moment.locale("id");
   if (null === str) {
     return "N/A";
   }
-  const date = moment(str);
+  const date = moment(str, "YYYY-MM-DD");
   return date.format(format);
 }

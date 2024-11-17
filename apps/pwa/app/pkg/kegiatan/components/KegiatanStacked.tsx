@@ -12,7 +12,7 @@ function KegiatanRow({ kegiatan }: { kegiatan: KegiatanR }) {
   const tanggal = moment(kegiatan.tanggal);
 
   return (
-    <div className="flex flex-row gap-x-2">
+    <div className="flex flex-row gap-x-2 min-w-[200px]">
       <div className="flex-col w-16 h-16 border rounded-md top-0">
         <div className="bg-black h-6 rounded-t-md text-white text-center p-1 text-sm">
           <span>{tanggal.format("MMM")}</span>
@@ -22,11 +22,11 @@ function KegiatanRow({ kegiatan }: { kegiatan: KegiatanR }) {
         </div>
       </div>
       <div className="flex flex-col gap-y-1">
-        <span className="text-xs lg:text-sm">
+        <span className="text-sm font-semibold">
           {kegiatan.pelaksana.singkatan ?? kegiatan.pelaksana.nama}
         </span>
-        <span className="text-xs lg:text-sm">{kegiatan.namaKegiatan}</span>
-        <span className="text-xs lg:text-sm">
+        <span className="text-sm lg:text-balance">{kegiatan.namaKegiatan}</span>
+        <span className="text-sm lg:text-balance">
           Jenis: {kegiatan.jenisKegiatan.jenisKegiatan}
         </span>
         <div>
@@ -44,15 +44,15 @@ function KegiatanRow({ kegiatan }: { kegiatan: KegiatanR }) {
 
 export default function KegiatanStacked({ kegiatan }: Props) {
   return (
-    <ul className="flex flex-col gap-y-2">
+    <div className="flex flex-col gap-y-2">
       {kegiatan.map((item) => (
-        <li
+        <div
           key={item.id}
           className="flex bg-white border rounded-sm drop-shadow-md p-2"
         >
           <KegiatanRow kegiatan={item} />
-        </li>
+        </div>
       ))}
-    </ul>
+    </div>
   );
 }

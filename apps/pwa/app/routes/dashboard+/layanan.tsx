@@ -1,7 +1,19 @@
 import { Link, useOutletContext } from "@remix-run/react";
-import { BadgeDollarSignIcon, LucideLogOut, UserCog2Icon } from "lucide-react";
+import {
+  BadgeDollarSignIcon,
+  LucideLogOut,
+  LucideUniversity,
+  UserCog2Icon,
+  Users2Icon,
+} from "lucide-react";
 import { isGranted } from "~/common/utils";
 import { Button } from "~/components/shadcn/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "~/components/shadcn/card";
 import { RootOutletContext } from "~/root";
 
 export type MenuItem = {
@@ -20,10 +32,25 @@ export default function Page() {
       icon: UserCog2Icon,
     },
     {
+      label: "Kegiatan",
+      to: "/under-construction",
+      icon: Users2Icon,
+    },
+    {
       label: "Pendapatan",
       to: "/pendapatan/misa",
       icon: BadgeDollarSignIcon,
       policy: [userPolicies.pengurusHarianDPP],
+    },
+    {
+      label: "Organisasi",
+      to: "/under-construction",
+      icon: LucideUniversity,
+    },
+    {
+      label: "User",
+      to: "/under-construction",
+      icon: Users2Icon,
     },
     {
       label: "Keluar",
@@ -32,23 +59,30 @@ export default function Page() {
     },
   ];
   return (
-    <div className="flex bg-white rounded-md drop-shadow-md border p-2 gap-x-2 gap-y-2">
-      {menu.map((item, index) => (
-        <div key={index}>
-          {isGranted(user.policies, item.policy) && (
-            <Button asChild variant={"outline"}>
-              <Link
-                to={item.to}
-                className="w-24 h-24 flex-col text-xs"
-                viewTransition
-              >
-                <item.icon />
-                {item.label}
-              </Link>
-            </Button>
-          )}
+    <Card className="min-w-sm">
+      <CardHeader>
+        <CardTitle>Daftar Layanan</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="flex flex-wrap gap-x-2">
+          {menu.map((item, index) => (
+            <div key={index}>
+              {isGranted(user.policies, item.policy) && (
+                <Button asChild variant={"outline"}>
+                  <Link
+                    to={item.to}
+                    className="w-24 h-24 flex-col"
+                    viewTransition
+                  >
+                    <item.icon className="w-12 h-12" />
+                    <span className="text-balance">{item.label}</span>
+                  </Link>
+                </Button>
+              )}
+            </div>
+          ))}
         </div>
-      ))}
-    </div>
+      </CardContent>
+    </Card>
   );
 }

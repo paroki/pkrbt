@@ -1,5 +1,5 @@
 "use client";
-import { Await } from "@remix-run/react";
+import { Await, Link } from "@remix-run/react";
 import { Dispatch, SetStateAction, Suspense, useState } from "react";
 import {
   Card,
@@ -16,7 +16,7 @@ import { useRootOutletContext } from "~/hooks/outlets";
 import { Separator } from "~/components/shadcn/separator";
 import { sortPendapatan, sumTotalPendapatan } from "../utils";
 import { Button } from "~/components/shadcn/button";
-import { LucideFilePlus, LucideSearch } from "lucide-react";
+import { LucideFilePlus, LucideSearch, SkipBackIcon } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -136,6 +136,12 @@ function MisaCard({ misa }: { misa: MisaR }) {
         </div>
       </CardContent>
       <CardFooter className="flex gap-x-2">
+        <Button asChild>
+          <Link to="/pendapatan/misa">
+            <SkipBackIcon />
+            Kembali
+          </Link>
+        </Button>
         <Button onClick={() => addPendapatan()}>
           <LucideFilePlus />
           Tambah

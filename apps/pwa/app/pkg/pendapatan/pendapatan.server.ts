@@ -1,4 +1,10 @@
-import { Query } from "@directus/sdk";
+import {
+  aggregate,
+  Query,
+  rest,
+  createDirectus as sdkCreateDirectus,
+  staticToken,
+} from "@directus/sdk";
 import { Misa, PendapatanR, Schema } from "@pkrbt/directus";
 import { Params } from "@remix-run/react";
 import invariant from "tiny-invariant";
@@ -8,6 +14,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { getValidatedFormData } from "remix-hook-form";
 import { json } from "@remix-pwa/sw";
 import { z } from "zod";
+import { getAuthenticatedUser } from "~/services/auth.server";
+import { DIRECTUS_URL } from "~/services/config.server";
+import moment from "moment";
+import { generateSumberPendapatanMap } from "./utils";
+import { MonthlyReport } from "./types";
 
 const misaDefaultFields = {
   fields: [
@@ -137,4 +148,68 @@ export async function updatePendapatan(request: Request) {
   }
 
   throw new Error("Unknown form action intent!");
+}
+
+type SumByMonth = {
+  sumber: string;
+  tanggal_month: number;
+  sum: {
+    jumlah: number;
+  };
+};
+export async function sumByMonth(request: Request) {
+  const user = await getAuthenticatedUser(request);
+  const directus = sdkCreateDirectus<Schema>(DIRECTUS_URL)
+    .with(staticToken(user.token))
+    .with(rest());
+
+  const sumberList = await sumberPendapatanList(request);
+  let sumByMonth: SumByMonth[];
+  try {
+    const y = moment().format("YYYY");
+    const result = await directus.request(
+      aggregate("pendapatan", {
+        aggregate: { sum: "jumlah" },
+        // @ts-expect-error ts-2322
+        groupBy: ["sumber", "month(tanggal)"],
+        query: {
+          // @ts-expect-error ts-2322
+          sort: ["-month(tanggal)"],
+          filter: {
+            // @ts-expect-error ts-2322
+            "year(tanggal)": {
+              _eq: Number(y),
+            },
+          },
+        },
+      }),
+    );
+    sumByMonth = result as unknown as SumByMonth[];
+  } catch (e) {
+    console.error(JSON.stringify(e, null, 2));
+    throw new Error("Error while creating results", { cause: e });
+  }
+
+  if (!sumByMonth) {
+    throw new Error("Data pendapatan tidak ditemukan");
+  }
+
+  const sumberMap = generateSumberPendapatanMap(sumberList);
+  const monthly: MonthlyReport = {};
+
+  sumByMonth.map((item) => {
+    const { id, sumber, sort } = sumberMap[item.sumber];
+    const { sum, tanggal_month } = item;
+    if (!monthly[tanggal_month]) {
+      monthly[tanggal_month] = [];
+    }
+    monthly[tanggal_month].push({
+      id,
+      sumber,
+      sort,
+      jumlah: Number(sum.jumlah),
+    });
+  });
+
+  return { monthly };
 }

@@ -1,3 +1,5 @@
+import UnderConstruction from "~/components/under-construction";
+
 export default function Page() {
-  return <div>Pendapatan Harian</div>;
+  return <UnderConstruction />;
 }

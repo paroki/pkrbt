@@ -1,6 +1,7 @@
 import { PendapatanR, SumberPendapatanR } from "@pkrbt/directus";
 import { useEffect, useState } from "react";
 import localforage from "localforage";
+import { ReportItem, SumberPendapatanMap } from "./types";
 
 export function sumTotalPendapatan(pendapatan: PendapatanR[]) {
   let total = 0;
@@ -60,4 +61,34 @@ export function sortPendapatan(pendapatan: PendapatanR[]) {
     sorted[index] = item;
   });
   return sorted;
+}
+
+export function sortReport(report: ReportItem[]) {
+  const sorted: ReportItem[] = [];
+
+  report.map((item) => {
+    const index = item.sort - 1;
+    sorted[index] = item;
+  });
+
+  return sorted;
+}
+
+export function sumReports(reports: ReportItem[]) {
+  let total = 0;
+  reports.map((item) => {
+    total += Number(item.jumlah);
+  });
+
+  return total;
+}
+
+export function generateSumberPendapatanMap(sumberList: SumberPendapatanR[]) {
+  const data: SumberPendapatanMap = {};
+
+  sumberList.map((item) => {
+    data[item.id] = item;
+  });
+
+  return data;
 }
