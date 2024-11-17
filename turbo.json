@@ -12,13 +12,26 @@
     "DIRECTUS_ADMIN_EMAIL",
     "DIRECTUS_ADMIN_PASSWORD",
     "DIRECTUS_TOKEN_NAME",
-    "AUTH_SECRET"
+    "AUTH_SECRET",
+    "AUTH_DIRECTUS_SESSION_NAME",
+    "DIRECTUS_FOLDER_AVATAR",
+    "POLICY_ADMINISTRATOR",
+    "POLICY_PENGURUS_HARIAN_DPP",
+    "POLICY_BENDAHARA_DPP"
   ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**", "dist", ".strapi"]
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "dist/**",
+        ".strapi",
+        "public/build/**",
+        "build/**",
+        ".cache"
+      ]
     },
     "seed:sample": {
       "dependsOn": ["^build"],

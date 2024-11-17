@@ -8,6 +8,7 @@ import {
   Pendapatan,
   PendapatanR,
   SumberPendapatan,
+  SumberPendapatanR,
 } from "./types";
 
 export * from "./types";
@@ -32,15 +33,13 @@ export default function paroki(directus: Directus<Schema>) {
     },
     sumberPendapatan: {
       ...restMethods(directus, "sumber_pendapatan"),
-      async search(
-        query: Query<Schema, SumberPendapatan>,
-      ): Promise<{ items?: SumberPendapatan[]; error?: Error }> {
+      async search(query?: Query<Schema, SumberPendapatan>) {
         let error;
         let items;
         try {
-          items = await directus.rest.request(
+          items = (await directus.rest.request(
             readItems("sumber_pendapatan", query),
-          );
+          )) as unknown as SumberPendapatanR[];
         } catch (e) {
           error = e as Error;
         }
@@ -50,14 +49,14 @@ export default function paroki(directus: Directus<Schema>) {
     },
     pendapatan: {
       ...restMethods(directus, "pendapatan"),
-      async search(query: Query<Schema, Pendapatan>) {
+      async search(query?: Query<Schema, Pendapatan>) {
         let error;
         let items;
         try {
           const data = await directus.rest.request(
             readItems("pendapatan", query),
           );
-          items = data as PendapatanR[];
+          items = data as unknown as PendapatanR[];
         } catch (e) {
           error = e as Error;
         }
@@ -67,7 +66,7 @@ export default function paroki(directus: Directus<Schema>) {
     },
     misa: {
       ...restMethods(directus, "misa"),
-      async search(query: Query<Schema, Misa>) {
+      async search(query?: Query<Schema, Misa>) {
         let error;
         let items;
         try {

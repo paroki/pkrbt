@@ -56,7 +56,9 @@ export function restMethods<T>(
     let error = undefined;
     let data = undefined;
     try {
-      data = await rest.request(updateItem(collection, id, item));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const i = item as unknown as any;
+      data = await rest.request(updateItem(collection, id, i));
     } catch (e) {
       error = e as Error;
     }

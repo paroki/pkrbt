@@ -1,4 +1,4 @@
-import { components } from "../user/openapi";
+import { components } from "..";
 import { File, ImageType } from "../schema/system";
 import { User } from "..";
 export type SEO = components["schemas"]["ItemsSEO"];

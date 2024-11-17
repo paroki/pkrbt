@@ -8,13 +8,20 @@ export type Imam = Omit<schema["ItemsImam"], "foto" | "riwayat"> & {
   riwayat?: RiwayatImam[] | null;
 };
 
-export type Misa = Omit<schema["ItemsMisa"], "dokumentasi">;
+export type Misa = Omit<schema["ItemsMisa"], "pendapatan"> & {
+  pendapatan?: PendapatanR[];
+};
+
 export type MisaR = Required<Misa>;
 
 export type SumberPendapatan = Omit<
   schema["ItemsSumberPendapatan"],
   "createdBy" | "updatedBy"
 >;
+export type SumberPendapatanR = Omit<Required<SumberPendapatan>, "sort"> & {
+  sort: number;
+};
+
 export type Pendapatan = Omit<schema["ItemsPendapatan"], "sumber"> & {
   sumber?: SumberPendapatan;
 };
@@ -22,4 +29,6 @@ export type Pendapatan = Omit<schema["ItemsPendapatan"], "sumber"> & {
 /**
  * Pendapatan Response
  */
-export type PendapatanR = Required<Pendapatan>;
+export type PendapatanR = Omit<Required<Pendapatan>, "sumber"> & {
+  sumber: SumberPendapatanR;
+};

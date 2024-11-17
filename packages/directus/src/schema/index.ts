@@ -1,4 +1,4 @@
-export * from "../user/openapi";
+export * from "./openapi";
 export * from "./system";
 import {
   AnggotaOrganisasi,
@@ -16,6 +16,7 @@ import {
   Misa,
   OrganisasiUser,
 } from "..";
+import { JenisKegiatan, Kegiatan } from "../kegiatan/types";
 
 export type Schema = {
   page: Page[];
@@ -26,6 +27,7 @@ export type Schema = {
   organisasi_jabatan: JabatanOrganisasi[];
   organisasi_jabatan_periode: PeriodeJabatan[];
   organisasi_anggota: AnggotaOrganisasi[];
+  directus_user: User[];
   user: User[];
   user_organisasi: OrganisasiUser[];
   imam: Imam[];
@@ -33,4 +35,8 @@ export type Schema = {
   sumber_pendapatan: SumberPendapatan[];
   pendapatan: Pendapatan[];
   misa: Misa[];
+
+  // kegiatan
+  jenis_kegiatan: JenisKegiatan[];
+  kegiatan: Kegiatan[];
 };

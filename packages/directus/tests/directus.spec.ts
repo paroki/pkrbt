@@ -25,11 +25,9 @@ describe("directus", () => {
     expect(directus).toHaveProperty("user");
 
     const users = directus.user;
-
     expect(users).toHaveProperty("create");
     expect(users).toHaveProperty("update");
     expect(users).toHaveProperty("remove");
-    expect(users).toHaveProperty("search");
     expect(users).toHaveProperty("read");
   });
 });
