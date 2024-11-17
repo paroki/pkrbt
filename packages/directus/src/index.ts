@@ -1,4 +1,5 @@
 export * from "./graphql";
+export * from "./kegiatan";
 export * from "./organisasi";
 export * from "./paroki";
 export * from "./rest";
