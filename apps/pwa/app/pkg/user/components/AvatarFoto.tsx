@@ -37,24 +37,27 @@ export default function AvatarFoto() {
     if (user.foto) {
       await directus.rest.request(deleteFile(user.foto.id));
     }
+    try {
+      const result = await directus.rest.request(uploadFiles(data));
+      fetcher.submit(
+        {
+          userId: user.id,
+          fileId: result.id,
+          intent: "foto",
+        },
+        {
+          method: "POST",
+          action: "/user/update",
+          encType: "application/json",
+        },
+      );
+      setImageSrc(`${directusUrl}/assets/${result.id}`);
+      setDialogOpen(true);
+    } catch (e) {
+      console.log(e);
+    }
 
-    const result = await directus.rest.request(uploadFiles(data));
-    fetcher.submit(
-      {
-        userId: user.id,
-        fileId: result.id,
-        intent: "foto",
-      },
-      {
-        method: "POST",
-        action: "/user/update",
-        encType: "application/json",
-      },
-    );
     setLoading(false);
-
-    setImageSrc(`${directusUrl}/assets/${result.id}`);
-    setDialogOpen(true);
   }
 
   async function handleFotoCropped(cropped: string) {

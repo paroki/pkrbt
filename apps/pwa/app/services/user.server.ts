@@ -36,10 +36,12 @@ function extractPolicy(user: User) {
       policies.push(item.policy.id);
     }
   });
+
   user.policies.map((item) => {
     policies.push(item.policy.id);
   });
 
+  console.log(policies);
   return policies;
 }
 

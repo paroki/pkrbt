@@ -4,12 +4,15 @@ import { json } from "@remix-run/node";
 export const loader = () => {
   return json(
     {
+      id: "/",
       short_name: "PKRBT",
       name: "PKRBT",
+      description:
+        "Aplikasi Layanan Informasi Paroki Kristus Raja Barong Tongkok",
       start_url: "/",
       display: "standalone",
-      background_color: "#d3d7dd",
-      theme_color: "#c34138",
+      background_color: "#FFFFFF",
+      theme_color: "#000000",
       icons: [
         {
           src: "/192x192.png",

@@ -35,7 +35,6 @@ export function useSumberPendapatanList() {
         if (cached.length > 0) {
           await localforage.setItem(sumberPendapatanCacheKey, cached);
         }
-        console.log(cached);
       }
 
       if (cached.length > 0) {

@@ -2063,6 +2063,188 @@
     "_syncId": "30d46888-09fa-4fad-9301-abb26c65ddc1"
   },
   {
+    "collection": "directus_access",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "95274f8d-6fbc-409c-a8c1-adf4a421a235"
+  },
+  {
+    "collection": "directus_files",
+    "action": "create",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "2f4e9868-b515-4a49-9b2d-cd9c5490ea0d"
+  },
+  {
+    "collection": "directus_files",
+    "action": "delete",
+    "permissions": {
+      "_and": [
+        {
+          "uploaded_by": {
+            "id": {
+              "_eq": "$CURRENT_USER"
+            }
+          }
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": null,
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "27a496f5-3254-475f-bfd4-5318bb90d87a"
+  },
+  {
+    "collection": "directus_files",
+    "action": "read",
+    "permissions": {
+      "_and": [
+        {
+          "folder": {
+            "name": {
+              "_ncontains": "\"dpp\""
+            }
+          }
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": null,
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "feed062a-d88d-4d63-af25-171dfde488d1"
+  },
+  {
+    "collection": "directus_files",
+    "action": "update",
+    "permissions": {
+      "_and": [
+        {
+          "uploaded_by": {
+            "id": {
+              "_eq": "$CURRENT_USER"
+            }
+          }
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "title",
+      "filename_download",
+      "description"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "c56650b4-0732-4e88-a1b5-bfb6581d3b64"
+  },
+  {
+    "collection": "directus_policies",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "d8143ebe-88ae-4548-9dad-705f259fe127"
+  },
+  {
+    "collection": "directus_users",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "nama",
+      "tempatLahir",
+      "tanggalLahir",
+      "organisasi",
+      "foto",
+      "policies",
+      "last_access",
+      "token",
+      "provider",
+      "auth_data"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "ad0e7882-9b54-4963-a0f4-4951f96effc5"
+  },
+  {
+    "collection": "directus_users",
+    "action": "update",
+    "permissions": {
+      "_and": [
+        {
+          "id": {
+            "_eq": "$CURRENT_USER"
+          }
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "nama",
+      "tempatLahir",
+      "tanggalLahir",
+      "organisasi",
+      "last_name",
+      "first_name",
+      "avatar",
+      "foto"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "3037d940-5deb-457e-9977-9ca57f45e306"
+  },
+  {
+    "collection": "jenis_kegiatan",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "b44320a2-fd78-4a61-8444-164d03ae2e5e"
+  },
+  {
+    "collection": "kegiatan",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id",
+      "sort",
+      "subPelaksana",
+      "pelaksana",
+      "jenisKegiatan",
+      "keterangan",
+      "tempat",
+      "dimulaiPada",
+      "berakhirPada",
+      "tanggal",
+      "namaKegiatan"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "28da21bf-a2cd-4081-ae52-ac9357355fc3"
+  },
+  {
     "collection": "organisasi",
     "action": "read",
     "permissions": null,
@@ -2087,6 +2269,68 @@
     ],
     "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
     "_syncId": "039f36d9-2c82-4e14-92ca-be203a029410"
+  },
+  {
+    "collection": "user_organisasi",
+    "action": "read",
+    "permissions": {
+      "_and": [
+        {
+          "user": {
+            "id": {
+              "_eq": "$CURRENT_USER"
+            }
+          }
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id",
+      "user",
+      "organisasi",
+      "persetujuan"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "6ac267d4-e49f-4488-b9da-f5a309c91bd3"
+  },
+  {
+    "collection": "user_organisasi",
+    "action": "update",
+    "permissions": {
+      "_and": [
+        {
+          "user": {
+            "id": {
+              "_eq": "$CURRENT_USER"
+            }
+          }
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id",
+      "user",
+      "organisasi",
+      "persetujuan"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "025b82ba-72c7-4e82-b393-a4a6558bec28"
+  },
+  {
+    "collection": "directus_files",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "bbee10ec-a4bf-4283-b683-f9066e96933d",
+    "_syncId": "778145b8-725d-4026-befd-ce03bae55201"
   },
   {
     "collection": "block_hero",
@@ -2147,6 +2391,28 @@
     ],
     "policy": "d801b318-1d81-4443-9404-6c681fc10acd",
     "_syncId": "055fc123-bc12-4b92-b30e-15d2ce95bc41"
+  },
+  {
+    "collection": "directus_folders",
+    "action": "read",
+    "permissions": {
+      "_and": [
+        {
+          "name": {
+            "_ncontains": "\"dpp\""
+          }
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "id",
+      "parent",
+      "name"
+    ],
+    "policy": "d801b318-1d81-4443-9404-6c681fc10acd",
+    "_syncId": "5735d51d-7287-49b7-86fc-a2332d35d629"
   },
   {
     "collection": "directus_users",

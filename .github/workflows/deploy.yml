@@ -102,10 +102,6 @@ jobs:
     environment: ${{ inputs.environment }}
     env:
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PWA_ID }}
-      #NEXT_PUBLIC_DIRECTUS_URL: ${{ secrets.NEXT_PUBLIC_DIRECTUS_URL }}
-      NEXT_PUBLIC_DIRECTUS_URL: "https://api.pkrbt.id"
-      NEXT_PUBLIC_URL: "https://pwa.pkrbt.id"
-      AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
     steps:
       - name: setup vars
         id: vars

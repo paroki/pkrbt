@@ -1,5 +1,5 @@
 import { KegiatanR } from "@pkrbt/directus";
-import createDirectus, { DirectusError } from "~/services/directus.server";
+import createDirectus from "~/services/directus.server";
 
 export async function listKegiatanByUser(
   request: Request,
@@ -20,7 +20,7 @@ export async function listKegiatanByUser(
   });
 
   if (error) {
-    throw new DirectusError(error);
+    throw error;
   }
 
   return items ?? [];

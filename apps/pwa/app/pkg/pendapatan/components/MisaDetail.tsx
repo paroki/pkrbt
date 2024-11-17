@@ -44,6 +44,10 @@ function MisaDialog({
   misa: MisaR;
   intent: Intent;
 }) {
+  function onFormSubmitted() {
+    setDialogOpen(false);
+    pendapatan = undefined;
+  }
   return (
     <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
       <DialogContent>
@@ -61,7 +65,7 @@ function MisaDialog({
         </DialogHeader>
         <div>
           <PendapatanForm
-            onFormSubmitted={() => setDialogOpen(false)}
+            onFormSubmitted={onFormSubmitted}
             pendapatan={pendapatan}
             intent={intent}
             misa={misa}

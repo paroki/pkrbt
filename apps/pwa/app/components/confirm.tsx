@@ -29,7 +29,7 @@ export default function ConfirmDialog({
 }: Props) {
   return (
     <AlertDialog>
-      <AlertDialogTrigger>
+      <AlertDialogTrigger asChild>
         <Button
           variant={confirmIntent === "delete" ? "destructive" : "default"}
         >

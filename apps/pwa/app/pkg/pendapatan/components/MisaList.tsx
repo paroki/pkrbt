@@ -25,20 +25,21 @@ function MisaDetail({ misa }: { misa: MisaR }) {
     >
       <div className="flex-1">
         <div className="block overflow-hidden h-full">
-          <div
-            className={cn(
-              "flex text-sm font-semibold mb-2 gap-x-2",
-              "border-b",
-            )}
-          >
-            <span>{toLocalDate(misa.tanggal)}</span>
-            <span>{misa.perayaan}</span>
-            <Link
-              to={`/pendapatan/misa/${misa.id}`}
-              className={cn("flex text-xs items-center gap-x-2")}
-            >
-              <LucideSearch />
-            </Link>
+          <div className={cn("flex flex-row text-sm mb-2 gap-x-2", "border-b")}>
+            <div className="flex flex-col items-start justify-center">
+              <span className="text-xs">
+                {toLocalDate(misa.tanggal, "dddd, DD MMMM YYYY")}
+              </span>
+              <span className="font-bold">{misa.perayaan}</span>
+            </div>
+            <div>
+              <Link
+                to={`/pendapatan/misa/${misa.id}`}
+                className={cn("flex text-xs items-center gap-x-2")}
+              >
+                <LucideSearch />
+              </Link>
+            </div>
           </div>
           <div className="flex flex-col text-sm">
             {sortPendapatan(misa.pendapatan).map((pendapatan, index) => (

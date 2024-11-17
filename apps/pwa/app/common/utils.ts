@@ -4,6 +4,8 @@ import moment from "moment";
 import "moment/locale/id";
 import { twMerge } from "tailwind-merge";
 
+moment.locale("id");
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

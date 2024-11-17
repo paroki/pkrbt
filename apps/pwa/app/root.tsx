@@ -7,7 +7,8 @@ import {
   useLoaderData,
   useLocation,
 } from "@remix-run/react";
-import { json, ManifestLink } from "@remix-pwa/sw";
+import { json, useSWEffect } from "@remix-pwa/sw";
+
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 
 import styles from "./tailwind.css?url";
@@ -38,7 +39,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
-        <ManifestLink />
+        <link rel="manifest" href="/manifest.webmanifest" />
         <Links />
       </head>
       <body>
@@ -102,6 +103,7 @@ export type RootOutletContext = {
 };
 
 export default function App() {
+  useSWEffect();
   const {
     user: initialUser,
     directusUrl,
