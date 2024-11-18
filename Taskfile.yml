@@ -8,6 +8,10 @@ tasks:
   test:
     cmd: echo "{{.DIRECTUS_PULL_TOKEN}}"
 
+  pwa:
+    desc: start pwa server
+    cmd: pnpm pwa
+
   schema:pull:
     desc: pull directus schema from api.pkrbt.id
     cmd: pnpm schema:pull

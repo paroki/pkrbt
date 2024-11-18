@@ -16,7 +16,6 @@ const SumberSelect = React.forwardRef<
   // eslint-disable-next-line react/prop-types
 >(({ children, defaultValue, ...props }, ref) => {
   const data = useSumberPendapatanList();
-
   return (
     <Select {...props} defaultValue={defaultValue}>
       <SelectTrigger ref={ref}>

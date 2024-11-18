@@ -1,7 +1,7 @@
 import { PendapatanR, SumberPendapatanR } from "@pkrbt/directus";
 import { useEffect, useState } from "react";
 import localforage from "localforage";
-import { ReportItem, SumberPendapatanMap } from "./types";
+import { ReportItem, SumberPendapatanMap, SumPendapatanYearly } from "./types";
 
 export function sumTotalPendapatan(pendapatan: PendapatanR[]) {
   let total = 0;
@@ -55,11 +55,20 @@ export function useSumberPendapatanList() {
 export function sortPendapatan(pendapatan: PendapatanR[]) {
   const sorted: PendapatanR[] = [];
 
-  pendapatan.map((item) => {
-    const index = item.sumber.sort - 1;
+  let c = true;
+  let i = 1;
 
-    sorted[index] = item;
-  });
+  do {
+    pendapatan.map((item) => {
+      if (item.sumber.sort === i) {
+        sorted.push(item);
+      }
+    });
+    i += 1;
+    if (sorted.length === pendapatan.length) {
+      c = false;
+    }
+  } while (c);
   return sorted;
 }
 
@@ -91,4 +100,29 @@ export function generateSumberPendapatanMap(sumberList: SumberPendapatanR[]) {
   });
 
   return data;
+}
+
+export function sumYearlyTotal(
+  items: { bulan: string; report: ReportItem[] }[],
+) {
+  const sum: SumPendapatanYearly[] = [];
+
+  items.map((item) => {
+    const { report } = item;
+    report.map((r) => {
+      const { id, sort, sumber, jumlah } = r;
+
+      if (!sum[sort]) {
+        sum[sort] = {
+          id,
+          sort,
+          sumber,
+          total: 0,
+        };
+      }
+      const total = sum[sort].total + jumlah;
+      sum[sort].total = total;
+    });
+  });
+  return sum;
 }

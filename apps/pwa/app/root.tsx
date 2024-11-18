@@ -1,4 +1,5 @@
 import {
+  isRouteErrorResponse,
   Links,
   Meta,
   Outlet,
@@ -6,17 +7,19 @@ import {
   ScrollRestoration,
   useLoaderData,
   useLocation,
+  useRouteError,
 } from "@remix-run/react";
 import { json, useSWEffect } from "@remix-pwa/sw";
 
 import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
 
 import styles from "./tailwind.css?url";
-import { AuthenticatedUser, authenticator } from "./services/auth.server";
+import { verifyUser } from "./services/auth.server";
 import { Toaster } from "./components/shadcn/toaster";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ImageType } from "@pkrbt/directus";
 import { DIRECTUS_URL, policies } from "./services/config.server";
+import ErrorLayout from "./components/layout/error";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -56,13 +59,13 @@ export async function loader({ request }: LoaderFunctionArgs) {
   const location = request.url;
   let user: UserContext | undefined;
   let directusToken = "";
+  let h: Headers | undefined;
 
   if (!location.includes("login")) {
-    const authUser = (await authenticator.isAuthenticated(request, {
-      failureRedirect: "/login",
-    })) as AuthenticatedUser;
+    const { authUser, headers } = await verifyUser(request);
     const { nama, avatar, foto } = authUser.profile;
     const { id, policies, token } = authUser;
+    h = headers;
     directusToken = token;
     user = {
       id,
@@ -75,7 +78,10 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   const userPolicies: UserPolicies = policies;
 
-  return json({ user, directusUrl: DIRECTUS_URL, directusToken, userPolicies });
+  return json(
+    { user, directusUrl: DIRECTUS_URL, directusToken, userPolicies },
+    { headers: h ? h : {} },
+  );
 }
 
 export type UserContext = {
@@ -133,4 +139,21 @@ export default function App() {
       }
     />
   );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    return (
+      <ErrorLayout
+        title={`${error.status} - ${error.statusText}`}
+        type="error"
+      />
+    );
+  } else if (error instanceof Error) {
+    return <ErrorLayout title="Error" type="error" />;
+  } else {
+    return <ErrorLayout title="Kutu Ditemukan!" type="bug" />;
+  }
 }

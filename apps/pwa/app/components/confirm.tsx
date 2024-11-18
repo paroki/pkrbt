@@ -1,5 +1,4 @@
-import { AlertDialogCancel } from "@radix-ui/react-alert-dialog";
-import { LucideTrash, XIcon } from "lucide-react";
+import { LoaderCircleIcon, LucideTrash, XIcon } from "lucide-react";
 import { PropsWithChildren } from "react";
 import {
   AlertDialog,
@@ -9,31 +8,33 @@ import {
   AlertDialogTrigger,
   AlertDialogFooter,
   AlertDialogAction,
+  AlertDialogCancel,
 } from "~/components/shadcn/alert-dialog";
 import { Button } from "./shadcn/button";
-import { Link } from "@remix-run/react";
 
 type Props = PropsWithChildren & {
   title: string;
-  description: string;
-  confirmLink: string;
-  intent: "delete";
+  description?: string;
+  onDelete: () => void;
+  loading: boolean;
 };
 
 export default function ConfirmDialog({
   title,
   description,
-  intent: confirmIntent,
-  confirmLink,
   children,
+  onDelete,
+  loading,
 }: Props) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button
-          variant={confirmIntent === "delete" ? "destructive" : "default"}
-        >
-          <LucideTrash />
+        <Button variant={"destructive"} disabled={loading}>
+          {loading ? (
+            <LoaderCircleIcon className="animate-spin" />
+          ) : (
+            <LucideTrash />
+          )}
           Hapus
         </Button>
       </AlertDialogTrigger>
@@ -41,21 +42,17 @@ export default function ConfirmDialog({
         <AlertDialogTitle>{title}</AlertDialogTitle>
         <AlertDialogDescription>{description}</AlertDialogDescription>
         {children}
-        <AlertDialogFooter>
+        <AlertDialogFooter className="flex flex-row gap-x-2">
           <AlertDialogCancel>
-            <Button>
-              <XIcon />
-              Batal
-            </Button>
+            <XIcon />
+            Batal
           </AlertDialogCancel>
           <AlertDialogAction
-            asChild
             className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
+            onClick={onDelete}
           >
-            <Link to={confirmLink}>
-              <LucideTrash />
-              Ya, Hapus data!
-            </Link>
+            <LucideTrash />
+            Ya, Hapus Data!
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

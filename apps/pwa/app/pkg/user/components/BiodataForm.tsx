@@ -11,10 +11,11 @@ import {
   FormMessage,
 } from "~/components/form";
 import { Button } from "~/components/shadcn/button";
-import { HomeIcon, SaveIcon } from "lucide-react";
+import { HomeIcon, LucideLoader2, LucideSave } from "lucide-react";
 import { Checkbox } from "~/components/shadcn/checkbox";
-import { FormEvent } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { toast } from "~/hooks/shadcn/use-toast";
+import { cn } from "~/common/utils";
 
 export const BiodataFormSchema = z.object({
   nama: z.string().min(3),
@@ -30,8 +31,9 @@ type Props = {
 
 export default function BiodataForm({ profil, organisasiList }: Props) {
   const resolver = zodResolver(BiodataFormSchema);
-
   const userOrganisasi: string[] = [];
+  const [loading, setLoading] = useState(false);
+  const [showToast, setShowToast] = useState(false);
 
   if (profil.organisasi && profil.organisasi.length > 0) {
     profil.organisasi.map((item) => {
@@ -54,11 +56,27 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
 
   async function doSubmit(e?: FormEvent<HTMLFormElement>) {
     await handleSubmit(e);
-    toast({
-      title: "Biodata",
-      description: "Perubahan biodata telah disimpan!",
-    });
   }
+
+  useEffect(() => {
+    if (formState.isSubmitting) {
+      setLoading(true);
+      setShowToast(true);
+    } else {
+      setLoading(false);
+    }
+  }, [formState]);
+
+  useEffect(() => {
+    if (showToast && !loading) {
+      toast({
+        title: "Perubahan Data",
+        description: "Perubahan profil telah disimpan",
+        className: cn("fixed top-[48px] right-0 max-w-sm mr-2"),
+      });
+      setShowToast(false);
+    }
+  }, [showToast, loading]);
 
   return (
     <Form method="POST" onSubmit={doSubmit} className="flex flex-col gap-y-4">
@@ -115,7 +133,11 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
 
       <div className="flex gap-x-4">
         <Button type="submit">
-          <SaveIcon />
+          {loading ? (
+            <LucideLoader2 className="animate-spin" />
+          ) : (
+            <LucideSave />
+          )}
           Simpan
         </Button>
         <Button asChild>

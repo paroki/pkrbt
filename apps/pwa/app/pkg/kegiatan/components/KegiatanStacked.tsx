@@ -2,6 +2,7 @@ import { KegiatanR } from "@pkrbt/directus";
 import { Link } from "@remix-run/react";
 import { CalendarClockIcon } from "lucide-react";
 import moment from "moment";
+import { cn } from "~/common/utils";
 import { Button } from "~/components/shadcn/button";
 
 type Props = {
@@ -44,11 +45,15 @@ function KegiatanRow({ kegiatan }: { kegiatan: KegiatanR }) {
 
 export default function KegiatanStacked({ kegiatan }: Props) {
   return (
-    <div className="flex flex-col gap-y-2">
+    <div className="flex flex-wrap gap-4 w-full">
       {kegiatan.map((item) => (
         <div
           key={item.id}
-          className="flex bg-white border rounded-sm drop-shadow-md p-2"
+          className={cn(
+            "p-4",
+            "bg-white border rounded-md drop-shadow-md",
+            "w-full md:w-auto lg:w-auto",
+          )}
         >
           <KegiatanRow kegiatan={item} />
         </div>

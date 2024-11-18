@@ -1,4 +1,5 @@
-import { LoaderFunctionArgs, redirect } from "@remix-run/node";
+import { json } from "@remix-pwa/sw";
+import { LoaderFunctionArgs } from "@remix-run/node";
 import invariant from "tiny-invariant";
 import { deleteMisa } from "~/pkg/misa/misa.server";
 
@@ -9,5 +10,5 @@ export async function loader({ params, request }: LoaderFunctionArgs) {
 
   await deleteMisa(request, params.id as string);
 
-  return redirect(`/pendapatan/misa`);
+  return json({ success: true });
 }

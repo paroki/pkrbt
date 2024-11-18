@@ -1,7 +1,6 @@
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "~/components/shadcn/card";
@@ -9,6 +8,7 @@ import { Label } from "~/components/shadcn/label";
 import { Input } from "~/components/shadcn/input";
 import { Button } from "~/components/shadcn/button";
 import { Link } from "@remix-run/react";
+import { Separator } from "~/components/shadcn/separator";
 
 type Props = {
   directusUrl: string;
@@ -16,19 +16,21 @@ type Props = {
 };
 
 export default function LoginForm({ directusUrl, development = true }: Props) {
+  const googleLogoUrl =
+    "https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA";
   return (
-    <div className="flex h-screen w-full items-center justify-center">
-      <Card className="mx-auto max-w-sm">
+    <div className="flex flex-wrap w-full min-h-screen items-center justify-center p-2 lg:p-4 bg-primary-foreground">
+      <Card className="max-w-sm lg:min-w-[400px] lg:w-auto drop-shadow-md">
         <CardHeader>
-          <CardTitle className="text-2xl">PKRBT Login</CardTitle>
-          <CardDescription>
-            Gunakanlah akun Google yang anda pakai di ponsel android/iphone
-            anda!
-          </CardDescription>
+          <CardTitle className="text-2xl flex flex-row items-center justify-center w-full gap-x-4">
+            <img src="/192x192.png" alt="@pkrbt" className="w-12 h-12" />
+            <span>Aplikasi PKRBT</span>
+          </CardTitle>
         </CardHeader>
         <CardContent>
+          <Separator className="mb-4" />
           <form>
-            <div className="grid gap-4">
+            <div className="flex flex-col flex-wrap gap-4">
               {development && (
                 <>
                   <div className="grid gap-2">
@@ -59,9 +61,15 @@ export default function LoginForm({ directusUrl, development = true }: Props) {
                   </Button>
                 </>
               )}
-
-              <Button asChild variant="outline" className="w-full">
-                <Link to={directusUrl}>Login dengan Google</Link>
+              <p>
+                Gunakanlah akun google yang anda gunakan di ponsel
+                android/iphone anda!
+              </p>
+              <Button asChild className="w-full">
+                <Link to={directusUrl}>
+                  <img src={googleLogoUrl} alt="google" className="w-6 h-6" />
+                  Login dengan Google
+                </Link>
               </Button>
             </div>
           </form>

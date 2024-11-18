@@ -41,9 +41,7 @@ export default function DefaultLayout({ children }: Props) {
       )}
       <main
         className={cn(
-          "flex mx-2 items-center justify-center mt-4",
-          "sm:mx-4",
-          "lg:mx-auto",
+          "flex flex-col mx-2 md:mx-4 lg:mx-4 items-center justify-center mt-4 min-h-full",
         )}
       >
         {children}

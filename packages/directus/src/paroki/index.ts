@@ -52,6 +52,7 @@ export default function paroki(directus: Directus<Schema>) {
       async search(query?: Query<Schema, Pendapatan>) {
         let error;
         let items;
+
         try {
           const data = await directus.rest.request(
             readItems("pendapatan", query),

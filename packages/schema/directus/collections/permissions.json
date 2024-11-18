@@ -2163,22 +2163,25 @@
     "_syncId": "d8143ebe-88ae-4548-9dad-705f259fe127"
   },
   {
+    "collection": "directus_roles",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "6d4b2c8e-cf72-45b4-9c0e-92ebbb77d081"
+  },
+  {
     "collection": "directus_users",
     "action": "read",
     "permissions": null,
     "validation": null,
     "presets": null,
     "fields": [
-      "nama",
-      "tempatLahir",
-      "tanggalLahir",
-      "organisasi",
-      "foto",
-      "policies",
-      "last_access",
-      "token",
-      "provider",
-      "auth_data"
+      "*"
     ],
     "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
     "_syncId": "ad0e7882-9b54-4963-a0f4-4951f96effc5"
@@ -2272,6 +2275,38 @@
   },
   {
     "collection": "user_organisasi",
+    "action": "create",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "7f97efd3-60c2-4b83-8879-f693feb84f56"
+  },
+  {
+    "collection": "user_organisasi",
+    "action": "delete",
+    "permissions": {
+      "_and": [
+        {
+          "user": {
+            "id": {
+              "_eq": "$CURRENT_USER"
+            }
+          }
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": null,
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "0b993c37-0206-4b18-bc73-d3d809f01029"
+  },
+  {
+    "collection": "user_organisasi",
     "action": "read",
     "permissions": {
       "_and": [
@@ -2314,8 +2349,7 @@
     "fields": [
       "id",
       "user",
-      "organisasi",
-      "persetujuan"
+      "organisasi"
     ],
     "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
     "_syncId": "025b82ba-72c7-4e82-b393-a4a6558bec28"

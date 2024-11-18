@@ -1,10 +1,6 @@
 import { Separator } from "@radix-ui/react-select";
 import { Link, Outlet, useLocation } from "@remix-run/react";
-import {
-  LucideCalendarDays,
-  LucideChurch,
-  TableOfContents,
-} from "lucide-react";
+import { LucideCalendar, LucideChurch, LucideSigmaSquare } from "lucide-react";
 import { cn } from "~/common/utils";
 import DefaultLayout from "~/components/layout/DefaultLayout";
 import { useRootOutletContext } from "~/hooks/outlets";
@@ -18,12 +14,12 @@ const menu = [
   {
     label: "Harian",
     to: "/pendapatan/harian",
-    icon: LucideCalendarDays,
+    icon: LucideCalendar,
   },
   {
-    label: "Laporan",
+    label: "Rekap",
     to: "/pendapatan/laporan",
-    icon: TableOfContents,
+    icon: LucideSigmaSquare,
   },
 ];
 
@@ -45,7 +41,7 @@ export default function Page() {
                 className={cn(
                   "flex gap-x-2 p-2",
                   isActive(item.to) &&
-                    "bg-primary text-primary-foreground rounded-t-md border-b-4 border-b-blue-600",
+                    "bg-primary text-primary-foreground rounded-t-md border-b-4 border-b-orange-400",
                 )}
               >
                 <item.icon />

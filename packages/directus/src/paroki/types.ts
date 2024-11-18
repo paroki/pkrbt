@@ -1,4 +1,5 @@
 import { components, ImageType } from "../schema";
+import { UserR } from "../user";
 
 type schema = components["schemas"];
 
@@ -23,7 +24,10 @@ export type SumberPendapatanR = Omit<Required<SumberPendapatan>, "sort"> & {
 };
 
 export type Pendapatan = Omit<schema["ItemsPendapatan"], "sumber"> & {
+  misa?: Misa;
   sumber?: SumberPendapatan;
+  createdBy?: UserR;
+  updatedBy?: UserR;
 };
 
 /**

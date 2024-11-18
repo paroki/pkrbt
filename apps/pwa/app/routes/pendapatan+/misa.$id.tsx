@@ -14,7 +14,15 @@ export type LoaderType = {
 };
 
 export async function action({ request }: ActionFunctionArgs) {
-  return await updatePendapatan(request);
+  try {
+    return await updatePendapatan(request);
+  } catch (e) {
+    console.log(JSON.stringify(e, null, 2));
+    throw new Response("Sepertinya terjadi kesalahan.", {
+      status: 404,
+      statusText: "Error",
+    });
+  }
 }
 
 export async function loader({ params, request }: LoaderFunctionArgs) {

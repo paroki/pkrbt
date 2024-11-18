@@ -160,11 +160,15 @@
       },
       {
         "role": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51",
-        "sort": 3
+        "sort": null
+      },
+      {
+        "role": "_sync_default_admin_role",
+        "sort": null
       },
       {
         "role": "431273d0-0d71-4ed8-ba75-dc342804598e",
-        "sort": 3
+        "sort": null
       }
     ],
     "_syncId": "a3e83f08-942a-46d4-a8b0-3906736315f8"

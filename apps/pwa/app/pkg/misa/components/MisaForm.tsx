@@ -1,10 +1,11 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MisaR } from "@pkrbt/directus";
-import { Form, Link } from "@remix-run/react";
-import { LucideSave, SkipBackIcon } from "lucide-react";
-import { FormEvent } from "react";
+import { Form, Link, useNavigate } from "@remix-run/react";
+import { Loader2, LucideSave, SkipBackIcon } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useRemixForm } from "remix-hook-form";
 import { z } from "zod";
+import { toastCreated } from "~/common/toaster";
 import { cn } from "~/common/utils";
 import { FormItem, FormMessage } from "~/components/form";
 import { Button } from "~/components/shadcn/button";
@@ -18,15 +19,19 @@ import { Input } from "~/components/shadcn/input";
 import { Label } from "~/components/shadcn/label";
 
 export const MisaSchema = z.object({
-  tanggal: z.string(),
+  tanggal: z.string().min(1, "tanggal harus diisi"),
   perayaan: z.string().min(5, "perayaan harus di isi"),
 });
 
 type Props = {
   misa?: MisaR;
+  created?: MisaR;
 };
 
-export default function MisaForm({ misa }: Props) {
+export default function MisaForm({ misa, created }: Props) {
+  const [submitted, setSubmitted] = useState(false);
+  const navigate = useNavigate();
+
   const resolver = zodResolver(MisaSchema);
   const { register, handleSubmit, formState } = useRemixForm<
     z.infer<typeof MisaSchema>
@@ -39,11 +44,19 @@ export default function MisaForm({ misa }: Props) {
     },
   });
 
-  async function doSubmit(e: FormEvent<HTMLFormElement>) {
-    await handleSubmit(e);
+  useEffect(() => {
+    if (formState.isSubmitting) {
+      setSubmitted(true);
+    }
+  }, [formState.isSubmitting]);
 
-    console.log(formState);
-  }
+  useEffect(() => {
+    if (created && submitted) {
+      toastCreated();
+      setSubmitted(false);
+      navigate(`/pendapatan/misa/${created.id}`);
+    }
+  }, [created, navigate, submitted]);
 
   return (
     <Card>
@@ -52,7 +65,7 @@ export default function MisaForm({ misa }: Props) {
       </CardHeader>
       <CardContent>
         <Form
-          onSubmit={(e) => doSubmit(e)}
+          onSubmit={handleSubmit}
           method="POST"
           className={cn("flex flex-col gap-y-4")}
         >
@@ -67,8 +80,15 @@ export default function MisaForm({ misa }: Props) {
             <FormMessage error={formState.errors.perayaan} />
           </FormItem>
           <div className="flex gap-x-2">
-            <Button type="submit">
-              <LucideSave />
+            <Button
+              type="submit"
+              disabled={formState.isSubmitting || formState.isLoading}
+            >
+              {formState.isSubmitting ? (
+                <Loader2 className="animate-spin" />
+              ) : (
+                <LucideSave />
+              )}
               Simpan
             </Button>
             <Button asChild>

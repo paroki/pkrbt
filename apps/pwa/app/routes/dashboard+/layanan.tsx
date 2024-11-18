@@ -14,6 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from "~/components/shadcn/card";
+import { Separator } from "~/components/shadcn/separator";
 import { RootOutletContext } from "~/root";
 
 export type MenuItem = {
@@ -63,8 +64,9 @@ export default function Page() {
       <CardHeader>
         <CardTitle>Daftar Layanan</CardTitle>
       </CardHeader>
-      <CardContent>
-        <div className="flex flex-wrap gap-x-2">
+      <CardContent className="px-2">
+        <Separator className="mb-4" />
+        <div className="flex flex-wrap items-center justify-center gap-2">
           {menu.map((item, index) => (
             <div key={index}>
               {isGranted(user.policies, item.policy) && (

@@ -20,6 +20,7 @@
     "@radix-ui/react-avatar": "^1.1.1",
     "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-dropdown-menu": "^2.1.2",
     "@radix-ui/react-label": "^2.1.0",
     "@radix-ui/react-navigation-menu": "^1.2.0",
     "@radix-ui/react-progress": "^1.1.0",
@@ -36,6 +37,7 @@
     "@remix-run/serve": "^2.14.0",
     "@rvf/remix": "^6.3.0",
     "@rvf/zod": "^6.0.3",
+    "axios": "^1.7.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cookie": "^1.0.1",
@@ -64,6 +66,7 @@
   "devDependencies": {
     "@remix-pwa/dev": "^3.1.0",
     "@remix-run/dev": "^2.14.0",
+    "@types/axios": "^0.14.4",
     "@types/cookie": "^1.0.0",
     "@types/lodash": "^4.17.9",
     "@types/moment": "^2.13.0",

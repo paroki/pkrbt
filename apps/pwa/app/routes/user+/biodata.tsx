@@ -3,6 +3,7 @@ import { defer } from "@remix-pwa/sw";
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import { Await, useLoaderData } from "@remix-run/react";
 import { Suspense } from "react";
+import Container from "~/components/layout/Container";
 import {
   Card,
   CardContent,
@@ -43,31 +44,33 @@ export default function UserBiodata() {
   const { result } = useLoaderData<Loader>();
 
   return (
-    <Card className="min-w-full min-h-[400px]">
-      <CardHeader>
-        <CardTitle>Biodata</CardTitle>
-        <CardDescription>Biodata Pengguna</CardDescription>
-        <Separator />
-      </CardHeader>
-      <CardContent className="mt-0">
-        <Suspense fallback={<BiodataSkeleton />}>
-          <Await resolve={result}>
-            {(result) => (
-              <div className="flex flex-wrap gap-x-8 gap-y-8">
-                <div className="flex items-start">
-                  <AvatarFoto />
+    <Container>
+      <Card>
+        <CardHeader>
+          <CardTitle>Biodata</CardTitle>
+          <CardDescription>Biodata Pengguna</CardDescription>
+          <Separator />
+        </CardHeader>
+        <CardContent>
+          <Suspense fallback={<BiodataSkeleton />}>
+            <Await resolve={result}>
+              {(result) => (
+                <div className="flex flex-wrap gap-8">
+                  <div className="flex items-start justify-center">
+                    <AvatarFoto />
+                  </div>
+                  <div className="flex">
+                    <BiodataForm
+                      profil={result.profil}
+                      organisasiList={result.organisasi}
+                    />
+                  </div>
                 </div>
-                <div className="flex">
-                  <BiodataForm
-                    profil={result.profil}
-                    organisasiList={result.organisasi}
-                  />
-                </div>
-              </div>
-            )}
-          </Await>
-        </Suspense>
-      </CardContent>
-    </Card>
+              )}
+            </Await>
+          </Suspense>
+        </CardContent>
+      </Card>
+    </Container>
   );
 }

@@ -1,4 +1,10 @@
-import { SumberPendapatanR } from "@pkrbt/directus";
+import { MisaR, SumberPendapatanR } from "@pkrbt/directus";
+
+export type MisaPendapatanSearchResponse = {
+  items: MisaR[];
+  page: number;
+  rows: number;
+};
 
 export type SumberPendapatanMap = {
   [key: string]: SumberPendapatanR;
@@ -14,4 +20,11 @@ export type MonthlyReport = {
 
 export type SumByMonth = {
   monthly: MonthlyReport;
+};
+
+export type SumPendapatanYearly = Pick<
+  SumberPendapatanR,
+  "id" | "sort" | "sumber"
+> & {
+  total: number;
 };

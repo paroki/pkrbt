@@ -5,7 +5,7 @@ import {
   createDirectus as sdkCreateDirectus,
   staticToken,
 } from "@directus/sdk";
-import { Misa, PendapatanR, Schema } from "@pkrbt/directus";
+import { Misa, Pendapatan, PendapatanR, Schema } from "@pkrbt/directus";
 import { Params } from "@remix-run/react";
 import invariant from "tiny-invariant";
 import createDirectus, { DirectusError } from "~/services/directus.server";
@@ -20,6 +20,7 @@ import moment from "moment";
 import { generateSumberPendapatanMap } from "./utils";
 import { MonthlyReport } from "./types";
 
+type MisaQuery = Query<Schema, Misa>;
 const misaDefaultFields = {
   fields: [
     "id",
@@ -57,12 +58,32 @@ export async function sumberPendapatanList(request: Request) {
   return items;
 }
 
-export async function listByMisa(request: Request, params: Params) {
+export async function listByMisa(request: Request) {
   const directus = await createDirectus(request);
-  const limit = params.limit ? Number(params.limit) : 6;
+  const { searchParams } = new URL(request.url);
+  let filter: MisaQuery["filter"] = {};
+  const month = searchParams.has("month")
+    ? Number(searchParams.get("month"))
+    : 0;
+  const limit = searchParams.has("limit")
+    ? Number(searchParams.get("limit"))
+    : 6;
+  const page = searchParams.has("page") ? Number(searchParams.get("page")) : 1;
+
+  if (month > 0) {
+    filter = {
+      // @ts-expect-error 2353
+      "month(tanggal)": {
+        _eq: Number(month),
+      },
+    };
+  }
+  const fields = misaDefaultFields as Query<Schema, Misa>;
   const { items, error } = await directus.misa.search({
-    ...misaDefaultFields,
+    ...fields,
     limit,
+    filter,
+    page,
   });
 
   if (error) {
@@ -77,8 +98,9 @@ export async function readMisaById(request: Request, params: Params) {
   const id = params.id;
   invariant(id, "Misa ID should be defined!");
 
+  const fields = misaDefaultFields as Query<Schema, Misa>;
   const { items, error } = await directus.misa.search({
-    ...misaDefaultFields,
+    ...fields,
     filter: {
       id: {
         _eq: id,
@@ -88,7 +110,7 @@ export async function readMisaById(request: Request, params: Params) {
   });
 
   if (error) {
-    throw new DirectusError(error.message, { cause: error });
+    throw error;
   }
 
   return items ? items[0] : undefined;
@@ -106,12 +128,23 @@ export async function updatePendapatan(request: Request) {
 
   if (errors) return json({ errors, defaultValues });
 
-  const { id, sumber, jumlah, catatan, misa, intent, tanggal } = data;
+  const {
+    id,
+    sumber,
+    jumlah,
+    catatan,
+    misa: misaId,
+    intent,
+    tanggal,
+    uraian,
+  } = data;
+
   const directus = await createDirectus(request);
   const realValue = Number(jumlah.replace(/\./g, ""));
 
   if ("update" === intent) {
     const { item, error } = await directus.pendapatan.update(id, {
+      uraian,
       sumber,
       jumlah: realValue,
       catatan,
@@ -122,18 +155,24 @@ export async function updatePendapatan(request: Request) {
 
     return json({ pendapatan: item as PendapatanR });
   } else if ("create" === intent) {
+    let misa = undefined;
+    if (misaId) {
+      misa = { id: misaId };
+    }
+    const sort = Number(moment("YYYYMMDDhhmmss"));
     const payload = {
+      tanggal,
+      uraian,
       sumber,
       jumlah: realValue,
       catatan,
-      misa: { id: misa },
-      tanggal,
+      misa,
+      sort,
     };
 
     const { item, error } = await directus.pendapatan.create(payload);
     if (error) {
-      console.log(JSON.stringify(error, null, 2));
-      throw new DirectusError(error.message, { cause: error });
+      throw error;
     }
 
     return json({ pendapatan: item as PendapatanR });
@@ -157,6 +196,7 @@ type SumByMonth = {
     jumlah: number;
   };
 };
+
 export async function sumByMonth(request: Request) {
   const user = await getAuthenticatedUser(request);
   const directus = sdkCreateDirectus<Schema>(DIRECTUS_URL)
@@ -171,10 +211,10 @@ export async function sumByMonth(request: Request) {
       aggregate("pendapatan", {
         aggregate: { sum: "jumlah" },
         // @ts-expect-error ts-2322
-        groupBy: ["sumber", "month(tanggal)"],
+        groupBy: ["month(tanggal)", "sumber"],
         query: {
           // @ts-expect-error ts-2322
-          sort: ["-month(tanggal)"],
+          sort: ["month(tanggal)"],
           filter: {
             // @ts-expect-error ts-2322
             "year(tanggal)": {
@@ -212,4 +252,146 @@ export async function sumByMonth(request: Request) {
   });
 
   return { monthly };
+}
+
+type PendapatanQuery = Query<Schema, Pendapatan>;
+
+export async function fetchHarianList(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const directus = await createDirectus(request);
+  const limit = searchParams.has("limit")
+    ? Number(searchParams.get("limit"))
+    : 6;
+  const sort = searchParams.has("sort")
+    ? [searchParams.get("sort") as "tanggal" | "-tanggal"]
+    : ["-tanggal", "sumber.sort"];
+  const { items, error } = await directus.pendapatan.search({
+    fields: [
+      "id",
+      "tanggal",
+      "uraian",
+      "jumlah",
+      { misa: ["id", "perayaan"] },
+      { sumber: ["id", "sort", "sumber"] },
+      { updatedBy: ["id", "first_name", "nama", "avatar"] },
+      "updatedAt",
+      { createdBy: ["id", "last_name", "nama", "avatar"] },
+      "createdAt",
+    ],
+    limit,
+    sort: sort as PendapatanQuery["sort"],
+    filter: {
+      _and: [
+        {
+          misa: {
+            _null: true,
+          },
+        },
+      ],
+    },
+  });
+
+  if (error) {
+    throw error;
+  }
+
+  return items?.length ? items : [];
+}
+
+export async function fetchPendapatan(request: Request, id: string) {
+  const directus = await createDirectus(request);
+  const { items, error } = await directus.pendapatan.search({
+    fields: [
+      "id",
+      "tanggal",
+      "uraian",
+      "jumlah",
+      "catatan",
+      "createdAt",
+      { createdBy: ["id", "nama", "avatar"] },
+      "updatedAt",
+      { updatedBy: ["id", "nama", "avatar"] },
+      { misa: ["id", "perayaan", "tanggal"] },
+      { sumber: ["id", "sumber"] },
+    ],
+    filter: {
+      id: {
+        _eq: id,
+      },
+    },
+  });
+
+  if (error) {
+    throw error;
+  }
+
+  if (!items || items.length === 0) {
+    throw new Response("Pendapatan tidak ditemukan", {
+      status: 404,
+      statusText: "Not Found",
+    });
+  }
+  return items[0];
+}
+
+export async function resolveForm(request: Request) {
+  const resolver = zodResolver(PendapatanFormSchema);
+  const {
+    errors,
+    data,
+    receivedValues: defaultValues,
+  } = await getValidatedFormData<z.infer<typeof PendapatanFormSchema>>(
+    request,
+    resolver,
+  );
+
+  if (errors) return json({ errors, defaultValues });
+
+  const { id, sumber, jumlah, catatan, misa: misaId, tanggal, uraian } = data;
+  const realValue = Number(jumlah.replace(/\./g, ""));
+  let misa = undefined;
+  if (misaId) {
+    misa = { id: misaId };
+  }
+
+  return {
+    pendapatanId: id,
+    errors,
+    defaultValues,
+    payload: {
+      sumber,
+      jumlah: realValue,
+      catatan,
+      tanggal,
+      uraian,
+      misa,
+    },
+  };
+}
+export async function createPendapatan(request: Request) {
+  const data = await resolveForm(request);
+
+  if (data instanceof Response) {
+    return data;
+  }
+
+  const { payload } = data;
+
+  const directus = await createDirectus(request);
+  const { item, error } = await directus.pendapatan.create(payload);
+
+  if (error) {
+    throw error;
+  }
+
+  return json({ pendapatan: item as PendapatanR });
+}
+
+export async function removePendapatan(request: Request, id: string) {
+  const directus = await createDirectus(request);
+  const { error } = await directus.pendapatan.remove(id);
+
+  if (error) {
+    throw error;
+  }
 }
