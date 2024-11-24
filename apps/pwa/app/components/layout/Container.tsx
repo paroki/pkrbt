@@ -10,11 +10,7 @@ export default function Container({
   ...props
 }: Props) {
   return (
-    <div
-      ref={ref}
-      className={cn("min-h-screen md:w-full md:mx-4", className)}
-      {...props}
-    >
+    <div ref={ref} className={cn("min-h-screen md:mx-4", className)} {...props}>
       {children}
     </div>
   );

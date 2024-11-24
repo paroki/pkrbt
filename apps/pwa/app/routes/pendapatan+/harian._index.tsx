@@ -4,7 +4,7 @@ import { LoaderFunctionArgs } from "@remix-run/node";
 import { Await, useLoaderData } from "@remix-run/react";
 import { Suspense } from "react";
 import Loading from "~/components/Loading";
-
+import { ensureUserPolicy } from "~/pkg/auth/auth.server";
 import HarianList from "~/pkg/pendapatan/components/HarianList";
 import { fetchHarianList } from "~/pkg/pendapatan/pendapatan.server";
 
@@ -13,6 +13,7 @@ type LoaderType = {
 };
 
 export async function loader({ request }: LoaderFunctionArgs) {
+  await ensureUserPolicy(request, "PengurusHarian");
   const items = fetchHarianList(request);
   return defer({ items });
 }

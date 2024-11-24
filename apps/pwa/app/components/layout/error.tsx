@@ -59,7 +59,7 @@ export default function ErrorLayout({
           </div>
 
           <Button asChild>
-            <Link to="/dashboard/layanan">
+            <Link to="/">
               <LucideHome />
               Kembali
             </Link>

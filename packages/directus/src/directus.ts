@@ -7,8 +7,10 @@ import { Schema, user } from ".";
 import { organisasi } from "./organisasi";
 import paroki from "./paroki";
 import kegiatan from "./kegiatan";
+import { wilayah } from "./referensi";
 
 export const Directus = DirectusCore.plugin(
+  wilayah,
   website,
   organisasi,
   user,

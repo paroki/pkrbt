@@ -16,31 +16,9 @@
     "_syncId": "_sync_default_admin_policy"
   },
   {
-    "name": "Imam",
+    "name": "Organisator",
     "icon": "badge",
-    "description": "Hak Akses untuk Database Imam",
-    "ip_access": null,
-    "enforce_tfa": false,
-    "admin_access": false,
-    "app_access": false,
-    "roles": [],
-    "_syncId": "_sync_default_public_policy"
-  },
-  {
-    "name": "Organisasi Viewer",
-    "icon": "badge",
-    "description": null,
-    "ip_access": null,
-    "enforce_tfa": false,
-    "admin_access": false,
-    "app_access": false,
-    "roles": [],
-    "_syncId": "004ae4e1-4c80-4d15-a79a-85a9ef24c14f"
-  },
-  {
-    "name": "Organisasi Admin",
-    "icon": "badge",
-    "description": null,
+    "description": "Hak akses untuk organisator",
     "ip_access": null,
     "enforce_tfa": false,
     "admin_access": false,
@@ -58,27 +36,7 @@
     "_syncId": "05cd0d39-3c1c-4d2c-a5f5-eb1f0dacb8dc"
   },
   {
-    "name": "File Manager",
-    "icon": "badge",
-    "description": null,
-    "ip_access": null,
-    "enforce_tfa": false,
-    "admin_access": false,
-    "app_access": false,
-    "roles": [
-      {
-        "role": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51",
-        "sort": 1
-      },
-      {
-        "role": "431273d0-0d71-4ed8-ba75-dc342804598e",
-        "sort": 2
-      }
-    ],
-    "_syncId": "2370ea90-698e-4a2b-88ad-69dc21d0b11b"
-  },
-  {
-    "name": "Author",
+    "name": "Pengarang",
     "icon": "badge",
     "description": "Pengarang Artikel",
     "ip_access": null,
@@ -89,23 +47,23 @@
       {
         "role": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51",
         "sort": 2
-      },
-      {
-        "role": "431273d0-0d71-4ed8-ba75-dc342804598e",
-        "sort": 4
       }
     ],
     "_syncId": "2cd95aee-9f70-40ac-9fdd-fb96f4583da8"
   },
   {
-    "name": "Bendahara DPP",
+    "name": "Bendahara",
     "icon": "badge",
-    "description": "Bendahara DPP Policy",
+    "description": "Memiliki hak akses khusus untuk data keuangan paroki",
     "ip_access": null,
     "enforce_tfa": false,
     "admin_access": false,
     "app_access": false,
     "roles": [
+      {
+        "role": null,
+        "sort": 2
+      },
       {
         "role": null,
         "sort": null
@@ -114,64 +72,36 @@
     "_syncId": "38777743-1de8-4d66-b517-828cae9e75f2"
   },
   {
-    "name": "Kegiatan",
+    "name": "User",
     "icon": "badge",
-    "description": "Kegiatan Policy",
+    "description": "Hak akses untuk user",
     "ip_access": null,
     "enforce_tfa": false,
     "admin_access": false,
     "app_access": false,
-    "roles": [
-      {
-        "role": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51",
-        "sort": 4
-      }
-    ],
-    "_syncId": "389ef5b7-0396-4765-8c1c-d9ba7eecc796"
-  },
-  {
-    "name": "Misa Administrator",
-    "icon": "badge",
-    "description": null,
-    "ip_access": null,
-    "enforce_tfa": false,
-    "admin_access": false,
-    "app_access": false,
-    "roles": [
-      {
-        "role": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51",
-        "sort": 5
-      }
-    ],
-    "_syncId": "6f6d24ea-1c18-44a0-a334-74fa3038202f"
-  },
-  {
-    "name": "Registered",
-    "icon": "badge",
-    "description": "Registered Users Policy",
-    "ip_access": null,
-    "enforce_tfa": false,
-    "admin_access": false,
-    "app_access": true,
     "roles": [
       {
         "role": "a084b012-6f4c-4481-9062-1f817eb454ef",
         "sort": 1
-      },
-      {
-        "role": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51",
-        "sort": null
-      },
-      {
-        "role": "_sync_default_admin_role",
-        "sort": null
-      },
-      {
-        "role": "431273d0-0d71-4ed8-ba75-dc342804598e",
-        "sort": null
       }
     ],
     "_syncId": "a3e83f08-942a-46d4-a8b0-3906736315f8"
+  },
+  {
+    "name": "Admin",
+    "icon": "badge",
+    "description": "Hak akses untuk admin",
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false,
+    "roles": [
+      {
+        "role": "6abf3dcb-e194-4c15-8f14-624490de8370",
+        "sort": 1
+      }
+    ],
+    "_syncId": "ad18a6c3-ce2a-42a5-bf51-c83b7293b0d3"
   },
   {
     "name": "$t:public_label",
@@ -201,23 +131,39 @@
       {
         "role": "8fc9d95a-746a-44d9-a1ad-b14b5056b0e9",
         "sort": 1
-      },
-      {
-        "role": "a084b012-6f4c-4481-9062-1f817eb454ef",
-        "sort": 2
       }
     ],
     "_syncId": "d801b318-1d81-4443-9404-6c681fc10acd"
   },
   {
-    "name": "Pengurus Harian DPP",
+    "name": "Penerbit",
     "icon": "badge",
-    "description": "Pengurus Harian DPP",
+    "description": "Hak akses untuk penerbit",
     "ip_access": null,
     "enforce_tfa": false,
     "admin_access": false,
     "app_access": false,
     "roles": [
+      {
+        "role": "ecdb67ef-79fa-4a32-a2ad-f3e13b182147",
+        "sort": 1
+      }
+    ],
+    "_syncId": "e2f7f476-9b0d-4fdf-a79a-6dd620f9accb"
+  },
+  {
+    "name": "Pengurus Harian",
+    "icon": "badge",
+    "description": "Memiliki hak akses khusus sebagai Pengurus Harian DPP",
+    "ip_access": null,
+    "enforce_tfa": false,
+    "admin_access": false,
+    "app_access": false,
+    "roles": [
+      {
+        "role": null,
+        "sort": 1
+      },
       {
         "role": null,
         "sort": null

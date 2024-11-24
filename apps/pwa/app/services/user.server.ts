@@ -6,6 +6,10 @@ import {
 import { Directus, User } from "@pkrbt/directus";
 import { jwtDecode } from "jwt-decode";
 import { AuthenticatedUser } from "./auth.server";
+import { sdkCreateClient } from "./directus.server";
+import { readPolicies, readUserPermissions } from "@directus/sdk";
+import { Permissions } from "~/common/types";
+import { UserRole } from "~/pkg/auth/types";
 
 export type DecodedJWT = {
   id: string;
@@ -31,15 +35,11 @@ export function getSessionToken(request: Request) {
 function extractPolicy(user: User) {
   const policies: string[] = [];
 
-  user.role?.policies.map((item) => {
-    if (!policies.includes(item.policy.id)) {
-      policies.push(item.policy.id);
-    }
-  });
-
-  user.policies.map((item) => {
-    policies.push(item.policy.id);
-  });
+  if (user.policies.length > 0) {
+    user.policies.map((item) => {
+      policies.push(item.policy.name);
+    });
+  }
 
   return policies;
 }
@@ -89,6 +89,8 @@ export async function getSessionUser(request: Request) {
 
     const policies = extractPolicy(item);
     const { nama, foto, avatar } = item;
+    const role: UserRole =
+      (item.role?.name?.toLocaleLowerCase() as UserRole) ?? "user";
     user = {
       id: item.id,
       profile: {
@@ -97,10 +99,43 @@ export async function getSessionUser(request: Request) {
         avatar,
       },
       expiredAt: jwt.exp,
+      role: role,
       policies,
       token,
     };
   }
 
   return user;
+}
+
+export async function getUserPermissions(request: Request) {
+  const directus = await sdkCreateClient(request);
+  const permissions = await directus.request(readUserPermissions());
+
+  return permissions as unknown as Permissions;
+}
+
+export async function getUserPolicies(request: Request) {
+  const directus = await sdkCreateClient(request);
+  const policies = await directus.request(
+    readPolicies({
+      fields: ["id", "name", "description"],
+      filter: {
+        _or: [
+          {
+            name: {
+              _contains: "Pengurus Harian",
+            },
+          },
+          {
+            name: {
+              _contains: "Bendahara",
+            },
+          },
+        ],
+      },
+    }),
+  );
+
+  return policies;
 }

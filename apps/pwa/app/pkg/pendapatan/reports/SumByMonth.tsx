@@ -67,23 +67,23 @@ function MonthlyDetail({
 }
 
 export function sortMonthlyReport(
-  monthy: SumByMonthType["monthly"],
+  monthly: SumByMonthType["monthly"],
   direction: SortDirection = "desc",
 ) {
   const sorted: { bulan: string; report: ReportItem[] }[] = [];
 
   if ("desc" === direction) {
-    for (let i = 12; i > 0; i--) {
-      const month = String(i + 1);
-      if (Object.keys(monthy).includes(month)) {
-        sorted.push({ bulan: month, report: monthy[month] });
+    for (let i = 12; i >= 1; i--) {
+      const month = String(i);
+      if (Object.keys(monthly).includes(month)) {
+        sorted.push({ bulan: month, report: monthly[month] });
       }
     }
   } else {
-    for (let i = 0; i < 12; i++) {
-      const month = String(i + 1);
-      if (Object.keys(monthy).includes(month)) {
-        const item = { bulan: month, report: monthy[month] };
+    for (let i = 1; i <= 12; i++) {
+      const month = String(i);
+      if (Object.keys(monthly).includes(month)) {
+        const item = { bulan: month, report: monthly[month] };
         sorted.push(item);
       }
     }

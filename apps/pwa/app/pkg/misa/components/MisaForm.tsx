@@ -1,14 +1,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { MisaR } from "@pkrbt/directus";
-import { Form, Link, useNavigate } from "@remix-run/react";
-import { Loader2, LucideSave, SkipBackIcon } from "lucide-react";
+import { Form, useNavigate } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { useRemixForm } from "remix-hook-form";
 import { z } from "zod";
 import { toastCreated } from "~/common/toaster";
 import { cn } from "~/common/utils";
+import BackButton from "~/components/buttons/BackButton";
+import SaveButton from "~/components/buttons/SaveButton";
 import { FormItem, FormMessage } from "~/components/form";
-import { Button } from "~/components/shadcn/button";
 import {
   Card,
   CardContent,
@@ -80,23 +80,8 @@ export default function MisaForm({ misa, created }: Props) {
             <FormMessage error={formState.errors.perayaan} />
           </FormItem>
           <div className="flex gap-x-2">
-            <Button
-              type="submit"
-              disabled={formState.isSubmitting || formState.isLoading}
-            >
-              {formState.isSubmitting ? (
-                <Loader2 className="animate-spin" />
-              ) : (
-                <LucideSave />
-              )}
-              Simpan
-            </Button>
-            <Button asChild>
-              <Link to="/pendapatan/misa">
-                <SkipBackIcon />
-                Kembali
-              </Link>
-            </Button>
+            <SaveButton />
+            <BackButton to="/pendapatan/misa" />
           </div>
         </Form>
       </CardContent>

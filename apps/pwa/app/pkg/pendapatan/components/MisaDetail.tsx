@@ -1,5 +1,5 @@
 "use client";
-import { Await, Link, useFetcher, useNavigate } from "@remix-run/react";
+import { Await, useFetcher, useNavigate } from "@remix-run/react";
 import { Suspense, useEffect, useState } from "react";
 import {
   Card,
@@ -11,25 +11,24 @@ import {
 } from "~/components/shadcn/card";
 import MisaSkeleton from "./MisaSkeleton";
 import { MisaR } from "@pkrbt/directus";
-import { cn, isGranted, toMoney } from "~/common/utils";
-import { useRootOutletContext } from "~/hooks/outlets";
+import { cn, toMoney } from "~/common/utils";
 import { Separator } from "~/components/shadcn/separator";
 import { sortPendapatan, sumTotalPendapatan } from "../utils";
-import { Button } from "~/components/shadcn/button";
-import { LucideFilePlus, LucideSearch, SkipBackIcon } from "lucide-react";
-import ConfirmDialog from "~/components/confirm";
 import { toastRemoved } from "~/common/toaster";
+import RemoveButton from "~/components/buttons/RemoveButton";
+import BackButton from "~/components/buttons/BackButton";
+import CreateButton from "~/components/buttons/CreateButton";
+import IconButton from "~/components/buttons/IconButton";
 
 type Props = {
   misa: Promise<MisaR>;
 };
 
 function MisaCard({ misa }: { misa: MisaR }) {
-  const { user, userPolicies } = useRootOutletContext();
-  const isBendaharaDPP = isGranted(user.policies, [userPolicies.bendaharaDPP]);
   const [deleting, setDeleting] = useState(false);
   const fetcher = useFetcher();
   const navigate = useNavigate();
+
   function onDelete() {
     const url = `/pendapatan/misa/${misa.id}/delete`;
     fetcher.load(url);
@@ -57,19 +56,17 @@ function MisaCard({ misa }: { misa: MisaR }) {
         <Separator />
       </CardHeader>
       <CardContent>
-        <div className={cn("flex flex-col")}>
+        <div className={cn("flex flex-col grow basis-1")}>
           {sortPendapatan(misa.pendapatan).map((item) => (
             <div
               key={item.id}
               className={cn("flex flex-row border-b items-center gap-x-2 py-2")}
             >
-              {isBendaharaDPP && (
-                <Button size={"icon"} asChild>
-                  <Link to={`/pendapatan/${item.id}`}>
-                    <LucideSearch />
-                  </Link>
-                </Button>
-              )}
+              <IconButton
+                actionUrl={`/pendapatan/${item.id}`}
+                iconStyle={"edit"}
+                policy="Bendahara"
+              />
               <div className="w-36">{item.sumber.sumber}</div>
               <span className="w-24 text-right">
                 {toMoney(item.jumlah ?? 0)}
@@ -77,41 +74,26 @@ function MisaCard({ misa }: { misa: MisaR }) {
             </div>
           ))}
           <div className="flex flex-row font-semibold gap-x-2">
-            <Button size={"icon"} className="invisible" />
+            <IconButton
+              actionUrl={`/pendapatan`}
+              iconStyle={"edit"}
+              className="invisible"
+              policy="PengurusHarian"
+            />
             <span className="w-36">Total</span>
-            <span className="w-24 text-right">
+            <span className="w-24 text-right items-end">
               {toMoney(sumTotalPendapatan(misa.pendapatan))}
             </span>
           </div>
         </div>
       </CardContent>
       <CardFooter className="flex gap-x-2">
-        <Button asChild size={"sm"}>
-          <Link to="/pendapatan/misa">
-            <SkipBackIcon />
-            Kembali
-          </Link>
-        </Button>
-        <Button asChild size={"sm"}>
-          <Link to={`/pendapatan/misa/${misa.id}/create`}>
-            <LucideFilePlus />
-            Tambah
-          </Link>
-        </Button>
-        <ConfirmDialog
-          title="Apakah anda yakin?"
-          description="Aksi ini tidak dapat di batalkan!"
-          onDelete={onDelete}
-          loading={deleting}
-        >
-          <div>
-            <p>
-              Apakah anda yakin ingin menghapus data misa berikut:
-              <br />
-              <span className="text-red-500 font-bold">{misa.perayaan}</span>
-            </p>
-          </div>
-        </ConfirmDialog>
+        <RemoveButton onDelete={onDelete} policy="Bendahara" />
+        <CreateButton
+          createUrl={`/pendapatan/misa/${misa.id}/create`}
+          policy="Bendahara"
+        />
+        <BackButton to="/pendapatan/misa" label="Kembali" />
       </CardFooter>
     </Card>
   );

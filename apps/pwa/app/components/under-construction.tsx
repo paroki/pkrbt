@@ -19,7 +19,7 @@ export default function UnderConstruction() {
           Layanan ini masih dalam tahap pengembangan.
         </span>
         <Button asChild variant={"default"}>
-          <Link to="/dashboard/layanan">
+          <Link to="/">
             <SkipBackIcon />
             Kembali
           </Link>

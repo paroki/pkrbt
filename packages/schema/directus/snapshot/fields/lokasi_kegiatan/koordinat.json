@@ -1,0 +1,54 @@
+{
+  "collection": "lokasi_kegiatan",
+  "field": "koordinat",
+  "type": "geometry.Point",
+  "meta": {
+    "collection": "lokasi_kegiatan",
+    "conditions": null,
+    "display": null,
+    "display_options": null,
+    "field": "koordinat",
+    "group": null,
+    "hidden": false,
+    "interface": "map",
+    "note": null,
+    "options": {
+      "defaultView": {
+        "bearing": 0,
+        "center": {
+          "lat": -29.785779943066885,
+          "lng": 18.868351022429465
+        },
+        "pitch": 0,
+        "zoom": 1.396518411179577
+      },
+      "geometryType": "Point"
+    },
+    "readonly": false,
+    "required": false,
+    "sort": 8,
+    "special": null,
+    "translations": null,
+    "validation": null,
+    "validation_message": null,
+    "width": "full"
+  },
+  "schema": {
+    "name": "koordinat",
+    "table": "lokasi_kegiatan",
+    "data_type": "POINT",
+    "default_value": null,
+    "max_length": null,
+    "numeric_precision": null,
+    "numeric_scale": null,
+    "is_nullable": true,
+    "is_unique": false,
+    "is_indexed": false,
+    "is_primary_key": false,
+    "is_generated": false,
+    "generation_expression": null,
+    "has_auto_increment": false,
+    "foreign_key_table": null,
+    "foreign_key_column": null
+  }
+}

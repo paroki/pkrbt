@@ -144,6 +144,7 @@ export async function updatePendapatan(request: Request) {
 
   if ("update" === intent) {
     const { item, error } = await directus.pendapatan.update(id, {
+      tanggal,
       uraian,
       sumber,
       jumlah: realValue,

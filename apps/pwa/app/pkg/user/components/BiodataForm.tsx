@@ -13,13 +13,12 @@ import {
 import { Button } from "~/components/shadcn/button";
 import { HomeIcon, LucideLoader2, LucideSave } from "lucide-react";
 import { Checkbox } from "~/components/shadcn/checkbox";
-import { FormEvent, useEffect, useState } from "react";
-import { toast } from "~/hooks/shadcn/use-toast";
-import { cn } from "~/common/utils";
+import { useEffect, useState } from "react";
+import { toastUpdated } from "~/common/toaster";
 
 export const BiodataFormSchema = z.object({
-  nama: z.string().min(3),
-  tempatLahir: z.string().min(3),
+  nama: z.string().min(3, "nama harus diisi"),
+  tempatLahir: z.string().min(3, "tempat lahir harus diisi"),
   tanggalLahir: z.string().nullable(),
   organisasi: z.array(z.string()),
 });
@@ -54,10 +53,6 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
       },
     });
 
-  async function doSubmit(e?: FormEvent<HTMLFormElement>) {
-    await handleSubmit(e);
-  }
-
   useEffect(() => {
     if (formState.isSubmitting) {
       setLoading(true);
@@ -69,17 +64,17 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
 
   useEffect(() => {
     if (showToast && !loading) {
-      toast({
-        title: "Perubahan Data",
-        description: "Perubahan profil telah disimpan",
-        className: cn("fixed top-[48px] right-0 max-w-sm mr-2"),
-      });
+      toastUpdated();
       setShowToast(false);
     }
   }, [showToast, loading]);
 
   return (
-    <Form method="POST" onSubmit={doSubmit} className="flex flex-col gap-y-4">
+    <Form
+      method="POST"
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-y-4 w-full h-full"
+    >
       <FormItem>
         <FormLabel htmlFor="nama">Nama Lengkap</FormLabel>
         <Input id="nama" type="text" {...register("nama")} />
@@ -141,7 +136,7 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
           Simpan
         </Button>
         <Button asChild>
-          <Link to="/dashboard/layanan">
+          <Link to="/">
             <HomeIcon />
             Kembali
           </Link>

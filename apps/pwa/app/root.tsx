@@ -1,4 +1,5 @@
 import {
+  ClientLoaderFunctionArgs,
   isRouteErrorResponse,
   Links,
   Meta,
@@ -18,8 +19,12 @@ import { verifyUser } from "./services/auth.server";
 import { Toaster } from "./components/shadcn/toaster";
 import { Dispatch, SetStateAction, useState } from "react";
 import { ImageType } from "@pkrbt/directus";
-import { DIRECTUS_URL, policies } from "./services/config.server";
+import { DIRECTUS_URL } from "./services/config.server";
 import ErrorLayout from "./components/layout/error";
+import DefaultLayout from "./components/layout/DefaultLayout";
+import localforage from "localforage";
+import Forbidden from "./components/page/Forbidden";
+import { UserPolicy, UserRole } from "./pkg/auth/types";
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -46,7 +51,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        {children}
+        <div>
+          <div className="relative flex min-h-screen flex-col bg-slate-100">
+            {children}
+          </div>
+        </div>
         <ScrollRestoration />
         <Scripts />
         <Toaster />
@@ -64,7 +73,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   if (!location.includes("login")) {
     const { authUser, headers } = await verifyUser(request);
     const { nama, avatar, foto } = authUser.profile;
-    const { id, policies, token } = authUser;
+    const { id, policies, token, role } = authUser;
     h = headers;
     directusToken = token;
     user = {
@@ -73,15 +82,28 @@ export async function loader({ request }: LoaderFunctionArgs) {
       avatar,
       foto,
       policies,
+      role,
     };
   }
 
-  const userPolicies: UserPolicies = policies;
-
   return json(
-    { user, directusUrl: DIRECTUS_URL, directusToken, userPolicies },
+    {
+      user,
+      directusUrl: DIRECTUS_URL,
+      directusToken,
+    },
     { headers: h ? h : {} },
   );
+}
+
+export async function clientLoader({ serverLoader }: ClientLoaderFunctionArgs) {
+  const serverData = await serverLoader<typeof loader>();
+  const permissions = serverData.permissions;
+  await localforage.setItem("permissions", permissions);
+
+  return {
+    ...serverData,
+  };
 }
 
 export type UserContext = {
@@ -89,23 +111,17 @@ export type UserContext = {
   nama: string;
   avatar?: ImageType;
   foto?: ImageType;
-  policies: string[];
-};
-
-export type UserPolicies = {
-  administrator: string;
-  bendaharaDPP: string;
-  pengurusHarianDPP: string;
+  policies: UserPolicy[];
+  role: UserRole;
 };
 
 export type RootOutletContext = {
   user: UserContext;
-  setUser: Dispatch<SetStateAction<UserContext>>;
+  setUser: Dispatch<SetStateAction<UserContext | undefined>>;
   directusUrl: string;
   directusToken: string;
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
-  userPolicies: UserPolicies;
 };
 
 export default function App() {
@@ -114,9 +130,8 @@ export default function App() {
     user: initialUser,
     directusUrl,
     directusToken,
-    userPolicies,
   } = useLoaderData<typeof loader>();
-  const [user, setUser] = useState(initialUser as UserContext);
+  const [user, setUser] = useState(initialUser);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
 
@@ -125,24 +140,31 @@ export default function App() {
   }
 
   return (
-    <Outlet
-      context={
-        {
-          user,
-          setUser,
-          directusUrl,
-          directusToken,
-          loading,
-          setLoading,
-          userPolicies,
-        } satisfies RootOutletContext
-      }
-    />
+    <DefaultLayout user={user}>
+      <Outlet
+        context={
+          {
+            user,
+            setUser,
+            directusUrl,
+            directusToken,
+            loading,
+            setLoading,
+          } satisfies RootOutletContext
+        }
+      />
+    </DefaultLayout>
   );
 }
 
 export function ErrorBoundary() {
   const error = useRouteError();
+
+  if (isRouteErrorResponse(error) && 403 === error.status) {
+    return <Forbidden />;
+  }
+
+  if (process.env.NODE_ENV === "development") throw error;
 
   if (isRouteErrorResponse(error)) {
     return (

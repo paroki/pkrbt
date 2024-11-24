@@ -14,6 +14,9 @@ export type StrukturOrganisasi = Omit<
 > &
   Pick<Required<schema["ItemsOrganisasiStruktur"]>, "nama" | "organisasi">;
 
+export type StrukturOrganisasiR = Omit<StrukturOrganisasi, "id" | "nama"> &
+  Pick<Required<StrukturOrganisasi>, "id" | "nama">;
+
 export type PeriodeJabatan = Omit<schema["ItemsOrganisasiPeriode"], "periode"> &
   Pick<Required<schema["ItemsOrganisasiPeriode"]>, "periode" | "dimulaiPada">;
 

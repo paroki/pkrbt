@@ -1,4 +1,9 @@
-import { Directus } from "@pkrbt/directus";
+import {
+  createDirectus as baseCreateDirectus,
+  rest,
+  staticToken,
+} from "@directus/sdk";
+import { Directus, Schema } from "@pkrbt/directus";
 import { getAuthenticatedUser } from "~/services/auth.server";
 import { DIRECTUS_URL } from "~/services/config.server";
 
@@ -9,6 +14,13 @@ export class DirectusError extends Error {
   }
 }
 
+export async function sdkCreateClient(request: Request) {
+  const user = await getAuthenticatedUser(request);
+  const directus = baseCreateDirectus<Schema>(DIRECTUS_URL)
+    .with(staticToken(user.token))
+    .with(rest());
+  return directus;
+}
 export default async function createDirectus(request: Request) {
   const user = await getAuthenticatedUser(request);
   const directus = new Directus({

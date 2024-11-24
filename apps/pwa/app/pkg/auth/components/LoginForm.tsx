@@ -1,6 +1,7 @@
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from "~/components/shadcn/card";
@@ -24,8 +25,12 @@ export default function LoginForm({ directusUrl, development = true }: Props) {
         <CardHeader>
           <CardTitle className="text-2xl flex flex-row items-center justify-center w-full gap-x-4">
             <img src="/192x192.png" alt="@pkrbt" className="w-12 h-12" />
-            <span>Aplikasi PKRBT</span>
+            <span>PKRBT</span>
           </CardTitle>
+          <CardDescription>
+            Aplikasi layanan informasi Paroki Kristus Raja Barong Tongkok
+            Keuskupan Agung Samarinda
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Separator className="mb-4" />

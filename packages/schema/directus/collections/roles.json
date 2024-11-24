@@ -7,17 +7,24 @@
     "_syncId": "_sync_default_admin_role"
   },
   {
-    "name": "Organisasi Admin",
+    "name": "Organisator",
     "icon": "supervised_user_circle",
-    "description": "Administrator Organisasi",
-    "parent": null,
+    "description": "Memiliki hak akses untuk administrasi organisasi",
+    "parent": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51",
     "_syncId": "431273d0-0d71-4ed8-ba75-dc342804598e"
   },
   {
-    "name": "Author",
+    "name": "Admin",
     "icon": "supervised_user_circle",
-    "description": "Pengarang Artikel",
-    "parent": null,
+    "description": "Memiliki hak akses untuk mengatur organisasi dan user",
+    "parent": "431273d0-0d71-4ed8-ba75-dc342804598e",
+    "_syncId": "6abf3dcb-e194-4c15-8f14-624490de8370"
+  },
+  {
+    "name": "Pengarang",
+    "icon": "supervised_user_circle",
+    "description": "Memiliki hak akses untuk membuat artikel",
+    "parent": "a084b012-6f4c-4481-9062-1f817eb454ef",
     "_syncId": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51"
   },
   {
@@ -28,10 +35,17 @@
     "_syncId": "8fc9d95a-746a-44d9-a1ad-b14b5056b0e9"
   },
   {
-    "name": "Registered",
+    "name": "User",
     "icon": "supervised_user_circle",
-    "description": "Registered Users",
+    "description": "Memiliki hak akses sebagai user terdaftar",
     "parent": null,
     "_syncId": "a084b012-6f4c-4481-9062-1f817eb454ef"
+  },
+  {
+    "name": "Penerbit",
+    "icon": "supervised_user_circle",
+    "description": "Memiliki hak akses untuk membuat, mengedit, dan menerbitkan artikel",
+    "parent": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51",
+    "_syncId": "ecdb67ef-79fa-4a32-a2ad-f3e13b182147"
   }
 ]

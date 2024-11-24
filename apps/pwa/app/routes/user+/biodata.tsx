@@ -12,8 +12,8 @@ import {
   CardTitle,
 } from "~/components/shadcn/card";
 import { Separator } from "~/components/shadcn/separator";
-import { fetchLists } from "~/pkg/organisasi/actions.server";
-import { getUserProfile, updateBiodata } from "~/pkg/user/actions.server";
+import { listOrganisasi } from "~/pkg/organisasi/actions.server";
+import { getUserProfile, updateBiodata } from "~/pkg/user/users.server";
 import AvatarFoto from "~/pkg/user/components/AvatarFoto";
 import BiodataForm from "~/pkg/user/components/BiodataForm";
 import BiodataSkeleton from "~/pkg/user/components/BiodataSkeleton";
@@ -24,7 +24,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
 async function biodataLoader(request: Request) {
   const profil = await getUserProfile(request);
-  const organisasi = await fetchLists(request);
+  const organisasi = await listOrganisasi(request);
   return { profil, organisasi };
 }
 
@@ -44,7 +44,7 @@ export default function UserBiodata() {
   const { result } = useLoaderData<Loader>();
 
   return (
-    <Container>
+    <Container className="md:w-fit lg:w-fit">
       <Card>
         <CardHeader>
           <CardTitle>Biodata</CardTitle>
@@ -55,9 +55,11 @@ export default function UserBiodata() {
           <Suspense fallback={<BiodataSkeleton />}>
             <Await resolve={result}>
               {(result) => (
-                <div className="flex flex-wrap gap-8">
-                  <div className="flex items-start justify-center">
-                    <AvatarFoto />
+                <div className="flex flex-wrap items-start justify-center gap-8">
+                  <div className="flex items-start">
+                    <div className="flex flex-row w-full items-center justify-center">
+                      <AvatarFoto />
+                    </div>
                   </div>
                   <div className="flex">
                     <BiodataForm

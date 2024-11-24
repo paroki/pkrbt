@@ -1,25 +1,27 @@
 import { PropsWithChildren, useEffect, useState } from "react";
 import Header from "./Header";
-import { useNavigation, useOutletContext } from "@remix-run/react";
 import { Progress } from "../shadcn/progress";
-import { RootOutletContext } from "~/root";
 import { cn } from "~/common/utils";
+import { useNavigation } from "@remix-run/react";
+import { UserContext } from "~/root";
 
-type Props = PropsWithChildren;
-
-export default function DefaultLayout({ children }: Props) {
-  const { loading } = useOutletContext<RootOutletContext>();
-  const navigation = useNavigation();
-  const [progress, setProgress] = useState(1);
+export default function DefaultLayout({
+  children,
+  user,
+}: {
+  user: UserContext;
+} & PropsWithChildren) {
   const [showProgress, setShowProgress] = useState(false);
+  const nav = useNavigation();
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (navigation.state === "idle" && !loading) {
-      setShowProgress(false);
-    } else {
+    if (nav.state === "submitting" || nav.state === "loading") {
       setShowProgress(true);
+    } else if (nav.state === "idle" && progress) {
+      setShowProgress(false);
     }
-  }, [navigation, loading]);
+  }, [nav.state, progress, showProgress]);
 
   useEffect(() => {
     if (!showProgress) {
@@ -32,20 +34,20 @@ export default function DefaultLayout({ children }: Props) {
   }, [progress, showProgress]);
 
   return (
-    <div className="w-full min-h-screen bg-slate-100">
-      <Header />
-      {showProgress && progress >= 3 && (
-        <div className="min-w-full absolute h-1">
-          <Progress value={progress} className="w-[100%] h-1" />
-        </div>
-      )}
-      <main
-        className={cn(
-          "flex flex-col mx-2 md:mx-4 lg:mx-4 items-center justify-center mt-4 min-h-full",
+    <div data-wrapper="" className="border-border/40 dark:border-border">
+      <div className="mx-auto w-full border-border/40 dark:border-border min-[1800px]:max-w-[1536px] min-[1800px]:border-x">
+        <Header user={user} />
+        {showProgress && progress >= 3 && (
+          <div className="min-w-full absolute z-50">
+            <Progress
+              value={progress}
+              className="absolute w-[100%] h-1 bg-blue-500"
+            />
+          </div>
         )}
-      >
-        {children}
-      </main>
+
+        <main className={cn("flex-1 px-2 mt-2 md:p-0")}>{children}</main>
+      </div>
     </div>
   );
 }

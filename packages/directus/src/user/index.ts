@@ -1,6 +1,12 @@
 import { Directus } from "@pkrbt/directus-core";
 import { restMethods, Schema, User, UserR, UserP } from "..";
-import { DirectusUser, Query, readUser, updateUser } from "@directus/sdk";
+import {
+  DirectusUser,
+  Query,
+  readItems,
+  readUser,
+  updateUser,
+} from "@directus/sdk";
 
 export * from "./types";
 
@@ -12,7 +18,6 @@ export function user(directus: Directus<Schema>) {
   return {
     user: {
       ...restMethods(directus, "user"),
-      /*
       async search(query: Query<Schema, User>) {
         let error;
         let items;
@@ -22,9 +27,8 @@ export function user(directus: Directus<Schema>) {
           error = e as Error;
         }
 
-        return { error, items };
+        return { error, items: items as unknown as UserR[] };
       },
-      */
       async update(
         id: string,
         item: Partial<UserP>,

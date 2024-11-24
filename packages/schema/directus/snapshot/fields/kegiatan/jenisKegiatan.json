@@ -17,7 +17,7 @@
     },
     "readonly": false,
     "required": true,
-    "sort": 10,
+    "sort": 9,
     "special": [
       "m2o"
     ],

@@ -17,10 +17,12 @@ import {
 } from "~/components/shadcn/card";
 import { Separator } from "~/components/shadcn/separator";
 import { useRootOutletContext } from "~/hooks/outlets";
+import { useAuth } from "~/pkg/auth/hooks";
 
 function PendapatanList({ items }: { items: PendapatanR[] }) {
   moment.locale("id");
   const { directusUrl } = useRootOutletContext();
+  const { hasPolicy } = useAuth();
   return (
     <div className="flex flex-col items-center w-full">
       <div
@@ -98,21 +100,25 @@ function PendapatanList({ items }: { items: PendapatanR[] }) {
               </div>
             )}
             <Separator className="my-2" />
-            <div className="flex flex-row">
-              <Button asChild size={"sm"} className="text-xs">
-                <Link to={`/pendapatan/${item.id}`}>
-                  <LucidePencil />
-                  Edit
-                </Link>
-              </Button>
-            </div>
+            {hasPolicy("Bendahara") && (
+              <div className="flex flex-row">
+                <Button asChild size={"sm"} className="text-xs">
+                  <Link to={`/pendapatan/${item.id}`}>
+                    <LucidePencil />
+                    Edit
+                  </Link>
+                </Button>
+              </div>
+            )}
           </div>
         ))}
       </div>
     </div>
   );
 }
+
 export default function HarianList({ items }: { items: PendapatanR[] }) {
+  const { hasPolicy } = useAuth();
   return (
     <div className="flex flex-col w-full mb-16">
       {items.length > 0 ? (
@@ -128,21 +134,23 @@ export default function HarianList({ items }: { items: PendapatanR[] }) {
         </Card>
       )}
 
-      <div
-        className={cn(
-          "fixed bottom-0 left-0 z-50 bg-white flex w-full mt-4",
-          "items-center justify-center",
-          "border",
-        )}
-      >
-        <div className="flex flex-row px-4 py-2 gap-x-2">
-          <Button asChild size={"icon"}>
-            <Link to="/pendapatan/harian/create">
-              <LucidePlusCircle />
-            </Link>
-          </Button>
+      {hasPolicy("Bendahara") && (
+        <div
+          className={cn(
+            "fixed bottom-0 left-0 z-50 bg-white flex w-full mt-4",
+            "items-center justify-center",
+            "border",
+          )}
+        >
+          <div className="flex flex-row px-4 py-2 gap-x-2">
+            <Button asChild size={"icon"}>
+              <Link to="/pendapatan/harian/create">
+                <LucidePlusCircle />
+              </Link>
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

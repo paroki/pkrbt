@@ -10,7 +10,7 @@
     "one_collection": "kegiatan",
     "one_collection_field": null,
     "one_deselect_action": "nullify",
-    "one_field": "subPelaksana",
+    "one_field": null,
     "sort_field": "sort"
   },
   "schema": {

@@ -17,6 +17,7 @@ import {
   OrganisasiUser,
 } from "..";
 import { JenisKegiatan, Kegiatan } from "../kegiatan/types";
+import { Lingkungan, Wilayah } from "../referensi";
 
 export type Schema = {
   page: Page[];
@@ -39,4 +40,7 @@ export type Schema = {
   // kegiatan
   jenis_kegiatan: JenisKegiatan[];
   kegiatan: Kegiatan[];
+
+  wilayah: Wilayah[];
+  lingkungan: Lingkungan[];
 };

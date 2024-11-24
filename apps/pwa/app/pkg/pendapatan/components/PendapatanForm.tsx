@@ -19,7 +19,7 @@ import ConfirmDialog from "~/components/confirm";
 import { toastCreated, toastRemoved, toastUpdated } from "~/common/toaster";
 import { cn } from "~/common/utils";
 import SaveButton from "~/components/buttons/SaveButton";
-import NavButton from "~/components/buttons/NavButton";
+import BackButton from "~/components/buttons/BackButton";
 
 export type Intent = "update" | "create" | "delete";
 
@@ -203,7 +203,7 @@ export default function PendapatanForm({
         </FormItem>
         <div className="flex flex-row gap-x-2">
           <SaveButton />
-          <NavButton to={refLink} label="Kembali" />
+          <BackButton to={refLink} label="Kembali" />
           {intent !== "create" && (
             <ConfirmDialog
               title="Aksi ini tidak dapat di batalkan!"

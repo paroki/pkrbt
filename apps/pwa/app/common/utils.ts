@@ -16,19 +16,6 @@ export function stringToDate(dateStr: string) {
   return new Date(dateStr);
 }
 
-export function isGranted(userPolicies: string[], requiredPolicies?: string[]) {
-  if (undefined === requiredPolicies) return true;
-
-  for (let i = 0; i < requiredPolicies.length; i++) {
-    const policy = requiredPolicies[i];
-    if (userPolicies.includes(policy)) {
-      return true;
-    }
-  }
-
-  return false;
-}
-
 export function toMoney(num: number): string {
   const format = Intl.NumberFormat("id-ID", {
     style: "decimal",
@@ -50,10 +37,20 @@ export function toLocalDate(str: string | null, format = "DD-MM") {
   return date.format(format);
 }
 
+export function toHuman(str: string | null | undefined) {
+  if (!str || null === str) {
+    return "N/A";
+  }
+  const date = moment(str).fromNow();
+
+  return date;
+}
+
 export function getMonthName(num: number) {
   const { months } = moment;
   return months(num);
 }
+
 export function getMonths() {
   const { months } = moment;
   return months();

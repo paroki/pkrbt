@@ -9,7 +9,7 @@
     "collection": "user_organisasi",
     "color": null,
     "display_template": null,
-    "group": "organisasi_anggota",
+    "group": "users",
     "hidden": true,
     "icon": "import_export",
     "item_duplication_fields": null,

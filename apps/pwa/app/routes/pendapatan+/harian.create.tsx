@@ -1,9 +1,11 @@
 import { ActionFunctionArgs } from "@remix-run/node";
 import { useActionData } from "@remix-run/react";
+import { ensureUserPolicy } from "~/pkg/auth/auth.server";
 import HarianCreateForm from "~/pkg/pendapatan/components/HarianCreateForm";
 import { updatePendapatan } from "~/pkg/pendapatan/pendapatan.server";
 
 export async function action({ request }: ActionFunctionArgs) {
+  await ensureUserPolicy(request, "Bendahara");
   try {
     return await updatePendapatan(request);
   } catch (e) {

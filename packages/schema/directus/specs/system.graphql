@@ -269,8 +269,8 @@ type Subscription {
   hero_images_mutated(event: EventEnum): hero_images_mutated
   imam_mutated(event: EventEnum): imam_mutated
   imam_riwayat_mutated(event: EventEnum): imam_riwayat_mutated
-  directus_webhooks_mutated(event: EventEnum): directus_webhooks_mutated
   misa_mutated(event: EventEnum): misa_mutated
+  directus_webhooks_mutated(event: EventEnum): directus_webhooks_mutated
   misa_dokumentasi_mutated(event: EventEnum): misa_dokumentasi_mutated
   directus_versions_mutated(event: EventEnum): directus_versions_mutated
   organisasi_anggota_organisasi_mutated(event: EventEnum): organisasi_anggota_organisasi_mutated
@@ -283,7 +283,6 @@ type Subscription {
   post_blocks_mutated(event: EventEnum): post_blocks_mutated
   post_images_mutated(event: EventEnum): post_images_mutated
   post_mutated(event: EventEnum): post_mutated
-  user_organisasi_mutated(event: EventEnum): user_organisasi_mutated
   timeline_mutated(event: EventEnum): timeline_mutated
   page_mutated(event: EventEnum): page_mutated
   category_mutated(event: EventEnum): category_mutated
@@ -296,10 +295,14 @@ type Subscription {
   organisasi_periode_foto_mutated(event: EventEnum): organisasi_periode_foto_mutated
   organisasi_periode_mutated(event: EventEnum): organisasi_periode_mutated
   organisasi_periode_dokumen_mutated(event: EventEnum): organisasi_periode_dokumen_mutated
+  kegiatan_mutated(event: EventEnum): kegiatan_mutated
   jenis_kegiatan_mutated(event: EventEnum): jenis_kegiatan_mutated
   kegiatan_files_mutated(event: EventEnum): kegiatan_files_mutated
   kegiatan_dokumen_mutated(event: EventEnum): kegiatan_dokumen_mutated
-  kegiatan_mutated(event: EventEnum): kegiatan_mutated
+  lokasi_kegiatan_mutated(event: EventEnum): lokasi_kegiatan_mutated
+  wilayah_mutated(event: EventEnum): wilayah_mutated
+  lingkungan_mutated(event: EventEnum): lingkungan_mutated
+  user_organisasi_mutated(event: EventEnum): user_organisasi_mutated
 }
 
 """The `Boolean` scalar type represents `true` or `false`."""
@@ -315,6 +318,9 @@ scalar Float
 
 """BigInt value"""
 scalar GraphQLBigInt
+
+"""GeoJSON value"""
+scalar GraphQLGeoJSON
 
 """A Float or a String"""
 scalar GraphQLStringOrFloat
@@ -1861,7 +1867,6 @@ type kegiatan {
   namaKegiatan: String
   jenisKegiatan(filter: jenis_kegiatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): jenis_kegiatan
   keterangan: String
-  pelaksana(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
   tanggal: Date
   tanggal_func: date_functions
   dimulaiPada: Date
@@ -1869,8 +1874,14 @@ type kegiatan {
   berakhirPada: Date
   berakhirPada_func: time_functions
   tempat: String
-  subPelaksana(filter: organisasi_struktur_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_struktur]
-  subPelaksana_func: count_functions
+  koordinat: GraphQLGeoJSON
+  cover(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  lingkup: String
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
+  organisasiStruktur(filter: organisasi_struktur_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi_struktur
+  wilayah(filter: wilayah_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): wilayah
+  lingkungan(filter: lingkungan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): lingkungan
+  jenisPelaksana: String
   foto(filter: kegiatan_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [kegiatan_files]
   foto_func: count_functions
   dokumen(filter: kegiatan_dokumen_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [kegiatan_dokumen]
@@ -1907,6 +1918,44 @@ type kegiatan_mutated {
   data: kegiatan
 }
 
+type lingkungan {
+  id: ID!
+  sort: Int
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  nama: String
+  wilayah(filter: wilayah_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): wilayah
+}
+
+type lingkungan_mutated {
+  key: ID!
+  event: EventEnum
+  data: lingkungan
+}
+
+type lokasi_kegiatan {
+  id: ID!
+  sort: Int
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  createdAt: Date
+  createdAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  nama: String
+  koordinat: GraphQLGeoJSON
+}
+
+type lokasi_kegiatan_mutated {
+  key: ID!
+  event: EventEnum
+  data: lokasi_kegiatan
+}
+
 type misa {
   id: ID!
   sort: Int
@@ -1919,6 +1968,7 @@ type misa {
   tanggal: Date
   tanggal_func: date_functions
   perayaan: String
+  tempat: String
   pendapatan(filter: pendapatan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [pendapatan]
   pendapatan_func: count_functions
   dokumentasi(filter: misa_dokumentasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [misa_dokumentasi]
@@ -2355,7 +2405,6 @@ type user_organisasi {
   id: ID!
   user(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
   organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): organisasi
-  persetujuan: Boolean
 }
 
 type user_organisasi_mutated {
@@ -2367,6 +2416,26 @@ type user_organisasi_mutated {
 type users_me_tfa_generate_data {
   secret: String
   otpauth_url: String
+}
+
+type wilayah {
+  id: ID!
+  sort: Int
+  createdBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  cratedAt: Date
+  cratedAt_func: datetime_functions
+  updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  updatedAt: Date
+  updatedAt_func: datetime_functions
+  nama: String
+  gereja: String
+  lokasiGereja: GraphQLGeoJSON
+}
+
+type wilayah_mutated {
+  key: ID!
+  event: EventEnum
+  data: wilayah
 }
 
 input big_int_filter_operators {
@@ -2792,7 +2861,6 @@ input create_user_organisasi_input {
   id: ID
   user: create_directus_users_input
   organisasi: create_organisasi_input
-  persetujuan: Boolean
 }
 
 input date_filter_operators {
@@ -3299,6 +3367,17 @@ input directus_webhooks_filter {
   _or: [directus_webhooks_filter]
 }
 
+input geometry_filter_operators {
+  _eq: GraphQLGeoJSON
+  _neq: GraphQLGeoJSON
+  _intersects: GraphQLGeoJSON
+  _nintersects: GraphQLGeoJSON
+  _intersects_bbox: GraphQLGeoJSON
+  _nintersects_bbox: GraphQLGeoJSON
+  _null: Boolean
+  _nnull: Boolean
+}
+
 input hash_filter_operators {
   _null: Boolean
   _nnull: Boolean
@@ -3400,7 +3479,6 @@ input kegiatan_filter {
   namaKegiatan: string_filter_operators
   jenisKegiatan: jenis_kegiatan_filter
   keterangan: string_filter_operators
-  pelaksana: organisasi_filter
   tanggal: date_filter_operators
   tanggal_func: date_function_filter_operators
   dimulaiPada: date_filter_operators
@@ -3408,14 +3486,35 @@ input kegiatan_filter {
   berakhirPada: date_filter_operators
   berakhirPada_func: time_function_filter_operators
   tempat: string_filter_operators
-  subPelaksana: organisasi_struktur_filter
-  subPelaksana_func: count_function_filter_operators
+  koordinat: geometry_filter_operators
+  cover: directus_files_filter
+  lingkup: string_filter_operators
+  organisasi: organisasi_filter
+  organisasiStruktur: organisasi_struktur_filter
+  wilayah: wilayah_filter
+  lingkungan: lingkungan_filter
+  jenisPelaksana: string_filter_operators
   foto: kegiatan_files_filter
   foto_func: count_function_filter_operators
   dokumen: kegiatan_dokumen_filter
   dokumen_func: count_function_filter_operators
   _and: [kegiatan_filter]
   _or: [kegiatan_filter]
+}
+
+input lingkungan_filter {
+  id: string_filter_operators
+  sort: number_filter_operators
+  createdBy: directus_users_filter
+  createdAt: date_filter_operators
+  createdAt_func: datetime_function_filter_operators
+  updatedBy: directus_users_filter
+  updatedAt: date_filter_operators
+  updatedAt_func: datetime_function_filter_operators
+  nama: string_filter_operators
+  wilayah: wilayah_filter
+  _and: [lingkungan_filter]
+  _or: [lingkungan_filter]
 }
 
 input misa_dokumentasi_filter {
@@ -3438,6 +3537,7 @@ input misa_filter {
   tanggal: date_filter_operators
   tanggal_func: date_function_filter_operators
   perayaan: string_filter_operators
+  tempat: string_filter_operators
   pendapatan: pendapatan_filter
   pendapatan_func: count_function_filter_operators
   dokumentasi: misa_dokumentasi_filter
@@ -4125,14 +4225,28 @@ input update_user_organisasi_input {
   id: ID
   user: update_directus_users_input
   organisasi: update_organisasi_input
-  persetujuan: Boolean
 }
 
 input user_organisasi_filter {
   id: number_filter_operators
   user: directus_users_filter
   organisasi: organisasi_filter
-  persetujuan: boolean_filter_operators
   _and: [user_organisasi_filter]
   _or: [user_organisasi_filter]
+}
+
+input wilayah_filter {
+  id: string_filter_operators
+  sort: number_filter_operators
+  createdBy: directus_users_filter
+  cratedAt: date_filter_operators
+  cratedAt_func: datetime_function_filter_operators
+  updatedBy: directus_users_filter
+  updatedAt: date_filter_operators
+  updatedAt_func: datetime_function_filter_operators
+  nama: string_filter_operators
+  gereja: string_filter_operators
+  lokasiGereja: geometry_filter_operators
+  _and: [wilayah_filter]
+  _or: [wilayah_filter]
 }

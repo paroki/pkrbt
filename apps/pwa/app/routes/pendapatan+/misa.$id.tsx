@@ -2,6 +2,7 @@ import { MisaR, SumberPendapatanR } from "@pkrbt/directus";
 import { defer } from "@remix-pwa/sw";
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { ensureUserPolicy } from "~/pkg/auth/auth.server";
 import MisaDetail from "~/pkg/pendapatan/components/MisaDetail";
 import {
   readMisaById,
@@ -14,6 +15,7 @@ export type LoaderType = {
 };
 
 export async function action({ request }: ActionFunctionArgs) {
+  await ensureUserPolicy(request, "Bendahara");
   try {
     return await updatePendapatan(request);
   } catch (e) {
@@ -26,6 +28,7 @@ export async function action({ request }: ActionFunctionArgs) {
 }
 
 export async function loader({ params, request }: LoaderFunctionArgs) {
+  await ensureUserPolicy(request, "PengurusHarian");
   const misa = readMisaById(request, params);
   return defer({ misa });
 }

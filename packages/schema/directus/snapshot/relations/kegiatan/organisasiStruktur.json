@@ -1,0 +1,25 @@
+{
+  "collection": "kegiatan",
+  "field": "organisasiStruktur",
+  "related_collection": "organisasi_struktur",
+  "meta": {
+    "junction_field": null,
+    "many_collection": "kegiatan",
+    "many_field": "organisasiStruktur",
+    "one_allowed_collections": null,
+    "one_collection": "organisasi_struktur",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": null,
+    "sort_field": null
+  },
+  "schema": {
+    "table": "kegiatan",
+    "column": "organisasiStruktur",
+    "foreign_key_table": "organisasi_struktur",
+    "foreign_key_column": "id",
+    "constraint_name": "kegiatan_organisasistruktur_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "SET NULL"
+  }
+}
