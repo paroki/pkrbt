@@ -17,11 +17,15 @@ export async function getUserProfile(request: Request) {
       "first_name",
       "last_name",
       "nama",
+      "handphone",
+      "jenisKelamin",
       "tempatLahir",
       "tanggalLahir",
       // @ts-expect-error 2353
       { organisasi: [{ organisasi: ["id"] }] },
       { avatar: ["id", "title"] },
+      { wilayah: ["id", "nama"] },
+      { lingkungan: ["id", "nama"] },
     ],
   });
 
@@ -52,19 +56,18 @@ export async function updateBiodata(request: Request) {
   const user = await getAuthenticatedUser(request);
   const directus = await createDirectus(request);
 
-  const { nama, tempatLahir, tanggalLahir, organisasi } = data;
+  const { organisasi } = data;
   const userOrganisasi: OrganisasiUser[] = [];
   organisasi.map((item) => {
     userOrganisasi.push({ organisasi: { id: item }, persetujuan: false });
   });
 
   const payload = {
-    nama,
-    tempatLahir,
-    tanggalLahir,
+    ...data,
     organisasi: userOrganisasi,
   } as UserP;
 
+  console.log(payload);
   await directus.user.update(user.id, payload);
 
   return json(data);
@@ -77,7 +80,6 @@ export async function listUsers(request: Request) {
   const user = await getAuthenticatedUser(request);
   const { searchParams } = new URL(request.url);
   const page = searchParams.has("page") ? Number(searchParams.get("page")) : 1;
-
   let items = undefined;
   try {
     items = (await directus.request(
@@ -104,12 +106,7 @@ export async function listUsers(request: Request) {
         ],
         limit: 5,
         page,
-        sort: [
-          // @ts-expect-error 2353
-          "nama",
-          "-first_name",
-          "-last_name",
-        ],
+        sort: ["-last_access"],
         filter: {
           id: {
             _neq: user.id,

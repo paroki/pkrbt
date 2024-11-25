@@ -9,7 +9,7 @@ import { useAuth } from "~/pkg/auth/hooks";
 type Props = ComponentPropsWithRef<typeof Button> &
   PropsWithAuth & {
     to: string;
-    label: string;
+    label?: string;
   };
 
 export default function BackButton({

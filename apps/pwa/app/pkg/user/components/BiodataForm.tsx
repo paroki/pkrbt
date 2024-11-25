@@ -1,4 +1,4 @@
-import { Form, Link } from "@remix-run/react";
+import { Form } from "@remix-run/react";
 import { useRemixForm } from "remix-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,16 +10,24 @@ import {
   FormLabel,
   FormMessage,
 } from "~/components/form";
-import { Button } from "~/components/shadcn/button";
-import { HomeIcon, LucideLoader2, LucideSave } from "lucide-react";
 import { Checkbox } from "~/components/shadcn/checkbox";
 import { useEffect, useState } from "react";
 import { toastUpdated } from "~/common/toaster";
+import SaveButton from "~/components/buttons/SaveButton";
+import BackButton from "~/components/buttons/BackButton";
+import LingkunganSelect from "~/pkg/referensi/components/LingkunganSelect";
+import WilayahSelect from "~/pkg/referensi/components/WilayahSelect";
+import { useWilayah } from "~/pkg/referensi/hooks";
+import JenisKelaminRadio from "~/components/form/JenisKelaminRadio";
 
 export const BiodataFormSchema = z.object({
   nama: z.string().min(3, "nama harus diisi"),
+  handphone: z.string().min(8, "nomor handphone harus diisi"),
+  jenisKelamin: z.string().min(1, "jenis kelamin harus dipilih"),
   tempatLahir: z.string().min(3, "tempat lahir harus diisi"),
   tanggalLahir: z.string().nullable(),
+  wilayah: z.string().nullable(),
+  lingkungan: z.string().nullable(),
   organisasi: z.array(z.string()),
 });
 
@@ -31,8 +39,8 @@ type Props = {
 export default function BiodataForm({ profil, organisasiList }: Props) {
   const resolver = zodResolver(BiodataFormSchema);
   const userOrganisasi: string[] = [];
-  const [loading, setLoading] = useState(false);
-  const [showToast, setShowToast] = useState(false);
+  const { getNamaWilayah } = useWilayah();
+  const [namaWilayah, setNamaWilayah] = useState("");
 
   if (profil.organisasi && profil.organisasi.length > 0) {
     profil.organisasi.map((item) => {
@@ -47,28 +55,27 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
       submitData: { intent: "update" },
       defaultValues: {
         nama: profil.nama ?? undefined,
+        jenisKelamin: profil.jenisKelamin ?? "",
+        handphone: profil.handphone ?? undefined,
         tempatLahir: profil.tempatLahir ?? undefined,
         tanggalLahir: profil.tanggalLahir ?? undefined,
+        wilayah: profil.wilayah?.id ?? undefined,
+        lingkungan: profil.lingkungan?.id ?? undefined,
         organisasi: userOrganisasi,
       },
     });
 
   useEffect(() => {
-    if (formState.isSubmitting) {
-      setLoading(true);
-      setShowToast(true);
-    } else {
-      setLoading(false);
+    if (formState.isSubmitSuccessful) {
+      toastUpdated("perubahan biodata berhasil disimpan");
     }
-  }, [formState]);
+  }, [formState.isSubmitSuccessful]);
 
   useEffect(() => {
-    if (showToast && !loading) {
-      toastUpdated();
-      setShowToast(false);
+    if (formState.isDirty) {
+      console.log(formState.errors);
     }
-  }, [showToast, loading]);
-
+  }, [formState.errors, formState.isDirty]);
   return (
     <Form
       method="POST"
@@ -85,6 +92,19 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
         </FormDescription>
       </FormItem>
       <FormItem>
+        <FormLabel htmlFor="nama">Jenis Kelamin</FormLabel>
+        <JenisKelaminRadio
+          {...register("jenisKelamin")}
+          onValueChange={(v) => setValue("jenisKelamin", v)}
+        />
+        <FormMessage error={formState.errors.jenisKelamin} />
+      </FormItem>
+      <FormItem>
+        <FormLabel htmlFor="handphone">Nomor Handphone</FormLabel>
+        <Input id="handphone" type="text" {...register("handphone")} />
+        <FormMessage error={formState.errors.handphone} />
+      </FormItem>
+      <FormItem>
         <FormLabel htmlFor="tempatLahir">Tempat Lahir</FormLabel>
         <Input id="tempatLahir" type="text" {...register("tempatLahir")} />
         <FormMessage error={formState.errors.tempatLahir} />
@@ -99,6 +119,32 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
         />
         <FormMessage error={formState.errors.tanggalLahir} />
       </FormItem>
+      <FormItem>
+        <FormLabel>Pilih Wilayah</FormLabel>
+        <WilayahSelect
+          {...register("wilayah")}
+          onValueChange={(value) => {
+            setValue("wilayah", value);
+            const nama = getNamaWilayah(value);
+            if (nama) {
+              setNamaWilayah(nama);
+            }
+          }}
+        />
+      </FormItem>
+      {namaWilayah === "Pusat Paroki" ||
+        (profil.lingkungan && (
+          <FormItem>
+            <FormLabel>Pilih Lingkungan</FormLabel>
+            <LingkunganSelect
+              {...register("lingkungan")}
+              onValueChange={(value) => {
+                setValue("lingkungan", value);
+              }}
+            />
+          </FormItem>
+        ))}
+
       <FormItem>
         <FormLabel>Tandai organisasi yang diikuti di PKRBT:</FormLabel>
         {organisasiList.map((item) => (
@@ -126,21 +172,9 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
         ))}
       </FormItem>
 
-      <div className="flex gap-x-4">
-        <Button type="submit">
-          {loading ? (
-            <LucideLoader2 className="animate-spin" />
-          ) : (
-            <LucideSave />
-          )}
-          Simpan
-        </Button>
-        <Button asChild>
-          <Link to="/">
-            <HomeIcon />
-            Kembali
-          </Link>
-        </Button>
+      <div className="flex gap-x-2">
+        <BackButton to="/" />
+        <SaveButton />
       </div>
     </Form>
   );

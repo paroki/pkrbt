@@ -1263,6 +1263,10 @@ type directus_users {
   tanggalLahir: Date
   tanggalLahir_func: date_functions
   foto(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+  wilayah(filter: wilayah_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): wilayah
+  lingkungan(filter: lingkungan_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): lingkungan
+  handphone: String
+  jenisKelamin: String
   organisasi(filter: user_organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [user_organisasi]
   organisasi_func: count_functions
   policies(filter: directus_access_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [directus_access]
@@ -3521,6 +3525,10 @@ input create_directus_users_input {
   tempatLahir: String
   tanggalLahir: Date
   foto: create_directus_files_input
+  wilayah: create_wilayah_input
+  lingkungan: create_lingkungan_input
+  handphone: String
+  jenisKelamin: String
   organisasi: [create_user_organisasi_input]
   policies: [create_directus_access_input]
 }
@@ -4175,6 +4183,10 @@ input directus_users_filter {
   tanggalLahir: date_filter_operators
   tanggalLahir_func: date_function_filter_operators
   foto: directus_files_filter
+  wilayah: wilayah_filter
+  lingkungan: lingkungan_filter
+  handphone: string_filter_operators
+  jenisKelamin: string_filter_operators
   organisasi: user_organisasi_filter
   organisasi_func: count_function_filter_operators
   policies: directus_access_filter
@@ -4886,6 +4898,10 @@ input update_directus_users_input {
   tempatLahir: String
   tanggalLahir: Date
   foto: update_directus_files_input
+  wilayah: update_wilayah_input
+  lingkungan: update_lingkungan_input
+  handphone: String
+  jenisKelamin: String
   organisasi: [update_user_organisasi_input]
   policies: [update_directus_access_input]
 }

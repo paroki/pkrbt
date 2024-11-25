@@ -1,38 +1,33 @@
 {
   "collection": "directus_users",
-  "field": "foto",
-  "type": "uuid",
+  "field": "handphone",
+  "type": "string",
   "meta": {
     "collection": "directus_users",
     "conditions": null,
     "display": null,
     "display_options": null,
-    "field": "foto",
+    "field": "handphone",
     "group": null,
     "hidden": false,
-    "interface": "file-image",
+    "interface": "input",
     "note": null,
-    "options": {
-      "crop": false,
-      "folder": "56f14165-2e5a-459f-93e2-c3c56513c088"
-    },
+    "options": null,
     "readonly": false,
     "required": false,
-    "sort": 6,
-    "special": [
-      "file"
-    ],
+    "sort": 5,
+    "special": null,
     "translations": null,
     "validation": null,
     "validation_message": null,
     "width": "full"
   },
   "schema": {
-    "name": "foto",
+    "name": "handphone",
     "table": "directus_users",
-    "data_type": "uuid",
+    "data_type": "character varying",
     "default_value": null,
-    "max_length": null,
+    "max_length": 255,
     "numeric_precision": null,
     "numeric_scale": null,
     "is_nullable": true,
@@ -42,7 +37,7 @@
     "is_generated": false,
     "generation_expression": null,
     "has_auto_increment": false,
-    "foreign_key_table": "directus_files",
-    "foreign_key_column": "id"
+    "foreign_key_table": null,
+    "foreign_key_column": null
   }
 }

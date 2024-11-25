@@ -1,4 +1,11 @@
-import { components, ImageType, Organisasi, OrganisasiR } from "..";
+import {
+  components,
+  ImageType,
+  LingkunganR,
+  Organisasi,
+  OrganisasiR,
+  WilayahR,
+} from "..";
 
 type schema = components["schemas"];
 
@@ -21,6 +28,9 @@ export type UserRole = Omit<schema["Roles"], "policies" | "users"> & {
   policies: UserPolicy[];
 };
 
+export type UserRoleR = Omit<UserRole, "id" | "name"> &
+  Pick<Required<UserRole>, "id" | "name">;
+
 export type UserPolicy = {
   id: string;
   policy: {
@@ -31,7 +41,14 @@ export type UserPolicy = {
 
 export type User = Omit<
   schema["Users"],
-  "avatar" | "foto" | "role" | "tanggalLahir" | "policies" | "organisasi"
+  | "avatar"
+  | "foto"
+  | "role"
+  | "tanggalLahir"
+  | "policies"
+  | "organisasi"
+  | "wilayah"
+  | "lingkungan"
 > & {
   avatar?: ImageType;
   foto?: ImageType;
@@ -39,6 +56,8 @@ export type User = Omit<
   tanggalLahir?: string;
   organisasi?: Partial<OrganisasiUser>[];
   policies: UserPolicy[];
+  wilayah?: WilayahR;
+  lingkungan?: LingkunganR;
 };
 
 export type UserR = Omit<User, "id" | "organisasi"> &
@@ -46,7 +65,12 @@ export type UserR = Omit<User, "id" | "organisasi"> &
     organisasi?: OrganisasiUserR[];
   };
 
-export type UserP = Omit<Partial<User>, "foto" | "avatar"> & {
+export type UserP = Omit<
+  Partial<User>,
+  "foto" | "avatar" | "wilayah" | "lingkungan"
+> & {
   avatar: string;
   foto: string;
+  wilayah: string;
+  lingkungan: string;
 };

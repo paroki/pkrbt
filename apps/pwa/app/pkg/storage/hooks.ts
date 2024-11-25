@@ -7,5 +7,8 @@ export function useStorage() {
     return `${directusUrl}/assets/${id}`;
   }
 
-  return { assetUrl };
+  function thumbsUrl(id: string) {
+    return `${directusUrl}/assets/${id}?key=thumbnail`;
+  }
+  return { assetUrl, thumbsUrl };
 }

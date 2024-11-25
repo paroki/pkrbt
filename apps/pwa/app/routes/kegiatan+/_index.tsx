@@ -10,6 +10,6 @@ export function loader({ request }: LoaderFunctionArgs) {
 }
 
 export default function Page() {
-  const { kegiatan } = useLoaderData();
+  const { kegiatan } = useLoaderData<typeof loader>();
   return <List data={kegiatan} />;
 }

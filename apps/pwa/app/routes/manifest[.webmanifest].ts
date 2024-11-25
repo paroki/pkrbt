@@ -25,6 +25,21 @@ export const loader = () => {
           type: "image/png",
         },
       ],
+      screenshots: [
+        {
+          src: "screenshot-1.jpg",
+          sizes: "720x1544",
+          type: "image/jpg",
+          label: "Daftar user",
+        },
+        {
+          src: "screenshot-2.png",
+          sizes: "1920x1080",
+          type: "image/png",
+          form_factor: "wide",
+          label: "Daftar kegiatan",
+        },
+      ],
     } as WebAppManifest,
     {
       headers: {

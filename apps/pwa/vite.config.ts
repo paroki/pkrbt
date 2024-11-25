@@ -12,7 +12,7 @@ declare module "@remix-run/node" {
 
 export default defineConfig({
   ssr: {
-    noExternal: ["react-image-crop"],
+    noExternal: ["react-image-crop", "react-markdown"],
   },
   plugins: [
     remix({

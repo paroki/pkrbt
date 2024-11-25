@@ -1,4 +1,4 @@
-import { UserR, UserRole } from "@pkrbt/directus";
+import { UserR, UserRoleR } from "@pkrbt/directus";
 import { useFetcher } from "@remix-run/react";
 import { LoaderCircleIcon, UserCircle2Icon } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ export default function RoleDropdown({
   roles,
   user,
 }: {
-  roles: UserRole[];
+  roles: UserRoleR[];
   user: UserR;
 }) {
   const [items, setItems] = useState(roles);

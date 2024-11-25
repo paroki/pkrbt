@@ -1,26 +1,25 @@
 {
   "collection": "directus_users",
-  "field": "foto",
+  "field": "lingkungan",
   "type": "uuid",
   "meta": {
     "collection": "directus_users",
     "conditions": null,
     "display": null,
     "display_options": null,
-    "field": "foto",
+    "field": "lingkungan",
     "group": null,
     "hidden": false,
-    "interface": "file-image",
+    "interface": "select-dropdown-m2o",
     "note": null,
     "options": {
-      "crop": false,
-      "folder": "56f14165-2e5a-459f-93e2-c3c56513c088"
+      "template": "{{nama}}"
     },
     "readonly": false,
     "required": false,
-    "sort": 6,
+    "sort": 9,
     "special": [
-      "file"
+      "m2o"
     ],
     "translations": null,
     "validation": null,
@@ -28,7 +27,7 @@
     "width": "full"
   },
   "schema": {
-    "name": "foto",
+    "name": "lingkungan",
     "table": "directus_users",
     "data_type": "uuid",
     "default_value": null,
@@ -42,7 +41,7 @@
     "is_generated": false,
     "generation_expression": null,
     "has_auto_increment": false,
-    "foreign_key_table": "directus_files",
+    "foreign_key_table": "lingkungan",
     "foreign_key_column": "id"
   }
 }

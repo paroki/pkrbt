@@ -29,6 +29,11 @@ export function toMoney(num: number): string {
   });
 }
 
+export function toTime(time?: string | null) {
+  if (!time) return "";
+  return moment(time, "HH:mm:ss").format("HH:mm");
+}
+
 export function toLocalDate(str: string | null, format = "DD-MM") {
   if (null === str) {
     return "N/A";

@@ -8,7 +8,6 @@ import { jwtDecode } from "jwt-decode";
 import { AuthenticatedUser } from "./auth.server";
 import { sdkCreateClient } from "./directus.server";
 import { readPolicies, readUserPermissions } from "@directus/sdk";
-import { Permissions } from "~/common/types";
 import { UserRole } from "~/pkg/auth/types";
 
 export type DecodedJWT = {

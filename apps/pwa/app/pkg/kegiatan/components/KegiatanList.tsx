@@ -8,14 +8,8 @@ import CreateFloat from "~/components/buttons/CreateFloat";
 
 function KegiatanItems({ items }: { items: KegiatanR[] }) {
   return (
-    <div className="flex flex-col">
-      <div
-        className={cn(
-          "flex flex-row flex-wrap w-full h-full grow basis-1 gap-4",
-          "items-center",
-          "justify-center",
-        )}
-      >
+    <div className="flex flex-col w-full h-full">
+      <div className={cn("flex flex-row flex-wrap", "items-stretch gap-2")}>
         {items.map((item) => (
           <Stacked key={item.id} kegiatan={item} />
         ))}

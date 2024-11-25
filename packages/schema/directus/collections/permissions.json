@@ -1796,6 +1796,18 @@
   },
   {
     "collection": "user_organisasi",
+    "action": "create",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "746c0fab-f7f8-4ba5-b633-17f6a095a437"
+  },
+  {
+    "collection": "user_organisasi",
     "action": "read",
     "permissions": null,
     "validation": null,
@@ -1805,6 +1817,26 @@
     ],
     "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
     "_syncId": "9edc0567-0704-483c-9370-bd02341bdd1b"
+  },
+  {
+    "collection": "user_organisasi",
+    "action": "update",
+    "permissions": {
+      "_and": [
+        {
+          "user": {
+            "id": {
+              "_eq": "$CURRENT_USER"
+            }
+          }
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": null,
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "39540769-0497-43a7-9b17-49953a817f10"
   },
   {
     "collection": "directus_access",

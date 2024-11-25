@@ -1,6 +1,6 @@
 [
   {
-    "name": "Administrator",
+    "name": "Developer",
     "icon": "verified",
     "description": "$t:admin_description",
     "parent": null,
@@ -21,7 +21,7 @@
     "_syncId": "6abf3dcb-e194-4c15-8f14-624490de8370"
   },
   {
-    "name": "Pengarang",
+    "name": "Penulis",
     "icon": "supervised_user_circle",
     "description": "Memiliki hak akses untuk membuat artikel",
     "parent": "a084b012-6f4c-4481-9062-1f817eb454ef",

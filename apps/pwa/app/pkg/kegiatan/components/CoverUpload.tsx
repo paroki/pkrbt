@@ -55,10 +55,16 @@ export default function CoverUpload({ kegiatan }: { kegiatan: KegiatanR }) {
     setLoading(false);
   }
   return (
-    <div className="flex flex-col max-w-sm">
-      <h1 className="text-2xl">Cover Kegiatan</h1>
-      <div className="flex flex-row pt-4">
-        {cover && <img src={cover} alt="@testing" />}
+    <div className="flex flex-col max-w-sm gap-y-2">
+      <div className="flex flex-row pt-4 max-h-[200px]">
+        {cover && (
+          <img
+            src={cover}
+            alt="@testing"
+            className="rounded-sm drop-shadow-sm"
+            style={{ objectFit: "contain" }}
+          />
+        )}
       </div>
       <div className="flex flex-row">
         <Button asChild size={"sm"}>
@@ -68,7 +74,7 @@ export default function CoverUpload({ kegiatan }: { kegiatan: KegiatanR }) {
             ) : (
               <Image className="flex h-6 w-6" />
             )}
-            Ganti Cover
+            Cover
             <Input
               id="uploadFoto"
               type="file"

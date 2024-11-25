@@ -27,6 +27,8 @@ const kegiatanDefaultFields = [
   "tanggal",
   "dimulaiPada",
   "berakhirPada",
+  "keterangan",
+  { createdBy: ["id", "nama", { avatar: ["id", "width", "height"] }] },
 ] satisfies KegiatanQuery["fields"];
 
 export async function listKegiatanByUser(
@@ -34,17 +36,7 @@ export async function listKegiatanByUser(
 ): Promise<KegiatanR[]> {
   const directus = await createDirectus(request);
   const { items, error } = await directus.kegiatan.search({
-    fields: [
-      "id",
-      "namaKegiatan",
-      "tanggal",
-      "dimulaiPada",
-      "berakhirPada",
-      { pelaksana: ["id", "nama", "singkatan"] },
-      {
-        jenisKegiatan: ["jenisKegiatan"],
-      },
-    ],
+    fields: kegiatanDefaultFields,
   });
 
   if (error) {
@@ -58,24 +50,8 @@ export async function listKegiatan(request: Request) {
   const directus = await createDirectus(request);
 
   const { items, error } = await directus.kegiatan.search({
-    fields: [
-      "id",
-      "namaKegiatan",
-      "tanggal",
-      "dimulaiPada",
-      "berakhirPada",
-      "jenisPelaksana",
-      { cover: ["id", "title"] },
-      { organisasi: ["id", "nama"] },
-      { organisasiStruktur: ["id", "nama"] },
-      {
-        jenisKegiatan: ["jenisKegiatan"],
-      },
-      {
-        createdBy: ["id", "nama", { role: ["name"] }, { avatar: ["id"] }],
-      },
-      "createdAt",
-    ],
+    fields: kegiatanDefaultFields,
+    sort: ["-tanggal"],
   });
 
   if (error) {
@@ -88,7 +64,7 @@ export async function listKegiatan(request: Request) {
 export async function readKegiatan(request: Request, id: string) {
   const directus = await createDirectus(request);
   const query = {
-    fields: kegiatanDefaultFields,
+    fields: [...kegiatanDefaultFields],
   } satisfies Query<Schema, Kegiatan>;
 
   const { item, error } = await directus.kegiatan.read(id, query);
@@ -147,7 +123,6 @@ export async function createJenisKegiatan(request: Request) {
     request,
     JenisKegiatanResolver,
   );
-  console.log(errors);
   if (errors) return json({ errors, defaultValues });
 
   const directus = await createDirectus(request);

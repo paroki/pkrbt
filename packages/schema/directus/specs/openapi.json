@@ -3,7 +3,7 @@
   "info": {
     "title": "Dynamic API Specification",
     "description": "This is a dynamically generated API specification for all endpoints existing on the current project.",
-    "version": "11.2.1"
+    "version": "11.2.2"
   },
   "servers": [
     {
@@ -23048,6 +23048,38 @@
                 "$ref": "#/components/schemas/Files"
               }
             ]
+          },
+          "wilayah": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsWilayah"
+              }
+            ]
+          },
+          "lingkungan": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "uuid"
+              },
+              {
+                "$ref": "#/components/schemas/ItemsLingkungan"
+              }
+            ]
+          },
+          "handphone": {
+            "nullable": true,
+            "type": "string"
+          },
+          "jenisKelamin": {
+            "nullable": true,
+            "type": "string"
           },
           "organisasi": {
             "nullable": true,

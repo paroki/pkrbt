@@ -1,6 +1,6 @@
 [
   {
-    "name": "Administrator",
+    "name": "Developer",
     "icon": "verified",
     "description": "$t:admin_description",
     "ip_access": null,
@@ -25,10 +25,6 @@
     "app_access": false,
     "roles": [
       {
-        "role": null,
-        "sort": 1
-      },
-      {
         "role": "431273d0-0d71-4ed8-ba75-dc342804598e",
         "sort": 5
       }
@@ -36,9 +32,9 @@
     "_syncId": "05cd0d39-3c1c-4d2c-a5f5-eb1f0dacb8dc"
   },
   {
-    "name": "Pengarang",
+    "name": "Penulis",
     "icon": "badge",
-    "description": "Pengarang Artikel",
+    "description": "Hak akses untuk mebuat artikel",
     "ip_access": null,
     "enforce_tfa": false,
     "admin_access": false,

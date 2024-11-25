@@ -1,9 +1,6 @@
 import { readRoles } from "@directus/sdk";
 import { json } from "@remix-pwa/sw";
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { ClientLoaderFunctionArgs } from "@remix-run/react";
-import localforage from "localforage";
-import { CacheConfig } from "~/common/config";
 import { sdkCreateClient } from "~/services/directus.server";
 
 export async function loader({ request }: LoaderFunctionArgs) {
@@ -15,7 +12,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
         _and: [
           {
             name: {
-              _neq: "Administrator",
+              _neq: "Developer",
             },
           },
           {
@@ -30,15 +27,4 @@ export async function loader({ request }: LoaderFunctionArgs) {
   );
 
   return json(roles);
-}
-
-export async function clientLoader({ serverLoader }: ClientLoaderFunctionArgs) {
-  let roles = await localforage.getItem(CacheConfig.keys.roles);
-
-  if (null === roles) {
-    roles = await serverLoader();
-    localforage.setItem(CacheConfig.keys.roles, roles);
-  }
-
-  return roles;
 }

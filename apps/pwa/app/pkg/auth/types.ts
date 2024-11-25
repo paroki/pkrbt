@@ -1,9 +1,9 @@
 export const UserRoles = {
-  administrator: 6,
+  developer: 6,
   admin: 5,
   organisator: 4,
   penerbit: 3,
-  pengarang: 2,
+  penulis: 2,
   user: 1,
 };
 

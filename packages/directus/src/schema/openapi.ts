@@ -4162,6 +4162,10 @@ export interface components {
             /** Format: date */
             tanggalLahir?: string | null;
             foto?: (string | components["schemas"]["Files"]) | null;
+            wilayah?: (string | components["schemas"]["ItemsWilayah"]) | null;
+            lingkungan?: (string | components["schemas"]["ItemsLingkungan"]) | null;
+            handphone?: string | null;
+            jenisKelamin?: string | null;
             organisasi?: (number | components["schemas"]["ItemsUserOrganisasi"])[] | null;
             policies?: unknown;
         };
