@@ -42,7 +42,7 @@
     "_syncId": "a084b012-6f4c-4481-9062-1f817eb454ef"
   },
   {
-    "name": "Penerbit",
+    "name": "Editor",
     "icon": "supervised_user_circle",
     "description": "Memiliki hak akses untuk membuat, mengedit, dan menerbitkan artikel",
     "parent": "8f3465f0-5e47-4996-9bf7-dc213c4cdc51",

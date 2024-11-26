@@ -6,7 +6,18 @@
     "auth_login_attempts": 25,
     "auth_password_policy": null,
     "storage_asset_transform": "all",
-    "storage_asset_presets": null,
+    "storage_asset_presets": [
+      {
+        "key": "thumbnail",
+        "fit": "cover",
+        "width": 300,
+        "height": 300,
+        "quality": 100,
+        "withoutEnlargement": false,
+        "format": "avif",
+        "transforms": []
+      }
+    ],
     "custom_css": null,
     "storage_default_folder": null,
     "basemaps": null,

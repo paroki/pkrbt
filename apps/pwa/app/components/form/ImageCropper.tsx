@@ -165,12 +165,12 @@ export default function ImageCropper({
           {!dialogOpen && <AvatarImage src={croppedImage} />}
         </Avatar>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-w-[90vw] max-h-[90vh] overflow-auto">
         <DialogHeader>
           <DialogTitle>Foto</DialogTitle>
           <DialogDescription>Crop Foto</DialogDescription>
         </DialogHeader>
-        <div className="App">
+        <div className="flex flex-row items-center justify-center w-full">
           {!!imageSrc && (
             <ReactCrop
               crop={crop}
@@ -185,7 +185,9 @@ export default function ImageCropper({
                 ref={imgRef}
                 alt="Crop me"
                 src={imageSrc}
-                style={{ transform: `scale(${scale}) rotate(${rotate}deg)` }}
+                style={{
+                  transform: `scale(${scale}) rotate(${rotate}deg)`,
+                }}
                 onLoad={onImageLoad}
                 crossOrigin="anonymous"
               />
@@ -193,10 +195,12 @@ export default function ImageCropper({
           )}
         </div>
         <DialogFooter>
-          <Button onClick={onCrop}>
-            <CropIcon />
-            Crop
-          </Button>
+          <div className="flex flex-row w-full items-center justify-center">
+            <Button onClick={onCrop} type="button">
+              <CropIcon />
+              Set Foto Profil
+            </Button>
+          </div>
         </DialogFooter>
       </DialogContent>
     </Dialog>

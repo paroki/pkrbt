@@ -27,7 +27,7 @@ export const BiodataFormSchema = z.object({
   tempatLahir: z.string().min(3, "tempat lahir harus diisi"),
   tanggalLahir: z.string().nullable(),
   wilayah: z.string().nullable(),
-  lingkungan: z.string().nullable(),
+  lingkungan: z.string().nullable().default(null),
   organisasi: z.array(z.string()),
 });
 
@@ -48,7 +48,7 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
     });
   }
 
-  const { register, handleSubmit, formState, getValues, setValue } =
+  const { register, handleSubmit, formState, getValues, setValue, watch } =
     useRemixForm<z.infer<typeof BiodataFormSchema>>({
       mode: "onSubmit",
       resolver,
@@ -76,6 +76,9 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
       console.log(formState.errors);
     }
   }, [formState.errors, formState.isDirty]);
+
+  const lingkungan = watch("lingkungan");
+
   return (
     <Form
       method="POST"
@@ -129,21 +132,21 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
             if (nama) {
               setNamaWilayah(nama);
             }
+            if (nama !== "Pusat Paroki") setValue("lingkungan", null);
           }}
         />
       </FormItem>
-      {namaWilayah === "Pusat Paroki" ||
-        (profil.lingkungan && (
-          <FormItem>
-            <FormLabel>Pilih Lingkungan</FormLabel>
-            <LingkunganSelect
-              {...register("lingkungan")}
-              onValueChange={(value) => {
-                setValue("lingkungan", value);
-              }}
-            />
-          </FormItem>
-        ))}
+      {(namaWilayah === "Pusat Paroki" || lingkungan) && (
+        <FormItem>
+          <FormLabel>Pilih Lingkungan</FormLabel>
+          <LingkunganSelect
+            {...register("lingkungan")}
+            onValueChange={(value) => {
+              setValue("lingkungan", value);
+            }}
+          />
+        </FormItem>
+      )}
 
       <FormItem>
         <FormLabel>Tandai organisasi yang diikuti di PKRBT:</FormLabel>

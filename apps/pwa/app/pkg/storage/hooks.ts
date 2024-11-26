@@ -10,5 +10,15 @@ export function useStorage() {
   function thumbsUrl(id: string) {
     return `${directusUrl}/assets/${id}?key=thumbnail`;
   }
-  return { assetUrl, thumbsUrl };
+  return { assetUrl, thumbsUrl, directusUrl };
+}
+
+export function useStorageImage() {
+  const { directusUrl, assetUrl, thumbsUrl } = useStorage();
+
+  return {
+    directusUrl,
+    assetUrl,
+    thumbsUrl,
+  };
 }

@@ -1,0 +1,25 @@
+{
+  "collection": "organisasi",
+  "field": "coverFolder",
+  "related_collection": "directus_folders",
+  "meta": {
+    "junction_field": null,
+    "many_collection": "organisasi",
+    "many_field": "coverFolder",
+    "one_allowed_collections": null,
+    "one_collection": "directus_folders",
+    "one_collection_field": null,
+    "one_deselect_action": "nullify",
+    "one_field": null,
+    "sort_field": null
+  },
+  "schema": {
+    "table": "organisasi",
+    "column": "coverFolder",
+    "foreign_key_table": "directus_folders",
+    "foreign_key_column": "id",
+    "constraint_name": "organisasi_coverfolder_foreign",
+    "on_update": "NO ACTION",
+    "on_delete": "SET NULL"
+  }
+}

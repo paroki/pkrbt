@@ -89,14 +89,14 @@ type Query {
   seo_by_id(id: ID!, version: String): seo
   seo_aggregated(groupBy: [String], filter: seo_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [seo_aggregated!]!
   seo_by_version(version: String!, id: ID!): version_seo
-  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi!]!
-  organisasi_by_id(id: ID!, version: String): organisasi
-  organisasi_aggregated(groupBy: [String], filter: organisasi_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_aggregated!]!
-  organisasi_by_version(version: String!, id: ID!): version_organisasi
   page_blocks(filter: page_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [page_blocks!]!
   page_blocks_by_id(id: ID!, version: String): page_blocks
   page_blocks_aggregated(groupBy: [String], filter: page_blocks_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [page_blocks_aggregated!]!
   page_blocks_by_version(version: String!, id: ID!): version_page_blocks
+  organisasi(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi!]!
+  organisasi_by_id(id: ID!, version: String): organisasi
+  organisasi_aggregated(groupBy: [String], filter: organisasi_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_aggregated!]!
+  organisasi_by_version(version: String!, id: ID!): version_organisasi
   organisasi_foto(filter: organisasi_foto_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_foto!]!
   organisasi_foto_by_id(id: ID!, version: String): organisasi_foto
   organisasi_foto_aggregated(groupBy: [String], filter: organisasi_foto_filter, limit: Int, offset: Int, page: Int, search: String, sort: [String]): [organisasi_foto_aggregated!]!
@@ -196,10 +196,10 @@ type Mutation {
   create_category_item(data: create_category_input!): category
   create_seo_items(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_seo_input!]): [seo!]!
   create_seo_item(data: create_seo_input!): seo
-  create_organisasi_items(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_input!]): [organisasi!]!
-  create_organisasi_item(data: create_organisasi_input!): organisasi
   create_page_blocks_items(filter: page_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_page_blocks_input!]): [page_blocks!]!
   create_page_blocks_item(data: create_page_blocks_input!): page_blocks
+  create_organisasi_items(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_input!]): [organisasi!]!
+  create_organisasi_item(data: create_organisasi_input!): organisasi
   create_organisasi_foto_items(filter: organisasi_foto_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_organisasi_foto_input!]): [organisasi_foto!]!
   create_organisasi_foto_item(data: create_organisasi_foto_input!): organisasi_foto
   create_directus_sync_id_map_items(filter: directus_sync_id_map_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [create_directus_sync_id_map_input!]): [directus_sync_id_map!]!
@@ -293,12 +293,12 @@ type Mutation {
   update_seo_items(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_seo_input!): [seo!]!
   update_seo_batch(filter: seo_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_seo_input!]): [seo!]!
   update_seo_item(id: ID!, data: update_seo_input!): seo
-  update_organisasi_items(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_input!): [organisasi!]!
-  update_organisasi_batch(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_input!]): [organisasi!]!
-  update_organisasi_item(id: ID!, data: update_organisasi_input!): organisasi
   update_page_blocks_items(filter: page_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_page_blocks_input!): [page_blocks!]!
   update_page_blocks_batch(filter: page_blocks_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_page_blocks_input!]): [page_blocks!]!
   update_page_blocks_item(id: ID!, data: update_page_blocks_input!): page_blocks
+  update_organisasi_items(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_input!): [organisasi!]!
+  update_organisasi_batch(filter: organisasi_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_input!]): [organisasi!]!
+  update_organisasi_item(id: ID!, data: update_organisasi_input!): organisasi
   update_organisasi_foto_items(filter: organisasi_foto_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, ids: [ID]!, data: update_organisasi_foto_input!): [organisasi_foto!]!
   update_organisasi_foto_batch(filter: organisasi_foto_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String, data: [update_organisasi_foto_input!]): [organisasi_foto!]!
   update_organisasi_foto_item(id: ID!, data: update_organisasi_foto_input!): organisasi_foto
@@ -382,10 +382,10 @@ type Mutation {
   delete_category_item(id: ID!): delete_one
   delete_seo_items(ids: [ID]!): delete_many
   delete_seo_item(id: ID!): delete_one
-  delete_organisasi_items(ids: [ID]!): delete_many
-  delete_organisasi_item(id: ID!): delete_one
   delete_page_blocks_items(ids: [ID]!): delete_many
   delete_page_blocks_item(id: ID!): delete_one
+  delete_organisasi_items(ids: [ID]!): delete_many
+  delete_organisasi_item(id: ID!): delete_one
   delete_organisasi_foto_items(ids: [ID]!): delete_many
   delete_organisasi_foto_item(id: ID!): delete_one
   delete_directus_sync_id_map_items(ids: [ID]!): delete_many
@@ -458,8 +458,8 @@ type Subscription {
   page_mutated(event: EventEnum): page_mutated
   category_mutated(event: EventEnum): category_mutated
   seo_mutated(event: EventEnum): seo_mutated
-  organisasi_mutated(event: EventEnum): organisasi_mutated
   page_blocks_mutated(event: EventEnum): page_blocks_mutated
+  organisasi_mutated(event: EventEnum): organisasi_mutated
   organisasi_foto_mutated(event: EventEnum): organisasi_foto_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
   directus_comments_mutated(event: EventEnum): directus_comments_mutated
@@ -1879,6 +1879,8 @@ type organisasi {
   updatedAt: Date
   updatedAt_func: datetime_functions
   updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  coverFolder(filter: directus_folders_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_folders
+  aktif: Boolean
   foto(filter: organisasi_foto_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_foto]
   foto_func: count_functions
   dokumen(filter: organisasi_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_files]
@@ -1907,6 +1909,8 @@ type organisasi_aggregated_count {
   sort: Int
   updatedAt: Int
   updatedBy: Int
+  coverFolder: Int
+  aktif: Int
   foto: Int
   dokumen: Int
 }
@@ -2985,6 +2989,8 @@ type version_organisasi {
   sort: Int
   updatedAt: Date
   updatedBy: JSON
+  coverFolder: JSON
+  aktif: Boolean
   foto: JSON
   dokumen: JSON
 }
@@ -3706,6 +3712,8 @@ input create_organisasi_input {
   sort: Int
   updatedAt: Date
   updatedBy: create_directus_users_input
+  coverFolder: create_directus_folders_input
+  aktif: Boolean
   foto: [create_organisasi_foto_input]
   dokumen: [create_organisasi_files_input]
 }
@@ -4473,6 +4481,8 @@ input organisasi_filter {
   updatedAt: date_filter_operators
   updatedAt_func: datetime_function_filter_operators
   updatedBy: directus_users_filter
+  coverFolder: directus_folders_filter
+  aktif: boolean_filter_operators
   foto: organisasi_foto_filter
   foto_func: count_function_filter_operators
   dokumen: organisasi_files_filter
@@ -5091,6 +5101,8 @@ input update_organisasi_input {
   sort: Int
   updatedAt: Date
   updatedBy: update_directus_users_input
+  coverFolder: update_directus_folders_input
+  aktif: Boolean
   foto: [update_organisasi_foto_input]
   dokumen: [update_organisasi_files_input]
 }

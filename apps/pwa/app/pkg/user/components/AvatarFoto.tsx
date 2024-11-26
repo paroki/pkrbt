@@ -1,38 +1,49 @@
 import { deleteFile, uploadFiles } from "@directus/sdk";
-import { PictureInPicture2Icon } from "lucide-react";
+import { ImageUpIcon, LoaderCircleIcon } from "lucide-react";
 import { Button } from "~/components/shadcn/button";
 import { Input } from "~/components/shadcn/input";
 import { Label } from "~/components/shadcn/label";
 import { RootOutletContext } from "~/root";
 import { useDirectus } from "~/hooks/directus";
 import ImageCropper from "~/components/form/ImageCropper";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from "~/components/shadcn/avatar";
 
-import { useFetcher, useOutletContext } from "@remix-run/react";
+import { useFetcher, useNavigation, useOutletContext } from "@remix-run/react";
+import { resizeImage } from "~/pkg/storage/utils";
 
 export default function AvatarFoto() {
-  const { directusUrl, user, setLoading } =
-    useOutletContext<RootOutletContext>();
+  const { directusUrl, user } = useOutletContext<RootOutletContext>();
   const fetcher = useFetcher();
   const directus = useDirectus();
   const folderAvatar = "56f14165-2e5a-459f-93e2-c3c56513c088";
   const [dialogOpen, setDialogOpen] = useState(false);
   const [imageSrc, setImageSrc] = useState<string | undefined>(undefined);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigation();
+
+  useEffect(() => {
+    if (navigate.state !== "idle") {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [navigate.state]);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async function handleChange(e: any) {
     setLoading(true);
     const file = e.target.files[0];
     const data = new FormData();
+    const resized = await resizeImage(file);
 
     data.append("folder", folderAvatar);
     data.append("title", `${user.nama} foto`);
-    data.append("file", file, `${user.id}-foto`);
+    data.append("file", resized, `${user.id}-foto`);
 
     if (user.foto) {
       await directus.rest.request(deleteFile(user.foto.id));
@@ -128,7 +139,11 @@ export default function AvatarFoto() {
 
       <Button asChild>
         <Label htmlFor="uploadFoto" style={{ whiteSpace: "nowrap" }}>
-          <PictureInPicture2Icon className="flex h-6 w-6" />
+          {loading ? (
+            <LoaderCircleIcon className="animate-spin" />
+          ) : (
+            <ImageUpIcon className="flex h-6 w-6" />
+          )}
           Ganti Foto
           <Input
             id="uploadFoto"

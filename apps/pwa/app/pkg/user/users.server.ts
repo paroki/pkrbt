@@ -67,7 +67,6 @@ export async function updateBiodata(request: Request) {
     organisasi: userOrganisasi,
   } as UserP;
 
-  console.log(payload);
   await directus.user.update(user.id, payload);
 
   return json(data);

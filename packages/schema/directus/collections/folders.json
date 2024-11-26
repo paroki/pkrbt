@@ -50,6 +50,11 @@
     "_syncId": "87393a03-ad66-4c7a-b223-5f44a22c0ec9"
   },
   {
+    "name": "cover",
+    "parent": "d6c18e19-acb5-4b38-83de-b30e66c4d43c",
+    "_syncId": "8b00a517-db83-4ca3-9d88-af6af7cc1439"
+  },
+  {
     "name": "komsos",
     "parent": "3446f998-96c1-4560-9259-f63730dfad75",
     "_syncId": "8fde748e-b6cb-4b75-83ce-424a668ac14a"

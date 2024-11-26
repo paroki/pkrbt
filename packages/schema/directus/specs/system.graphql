@@ -287,8 +287,8 @@ type Subscription {
   page_mutated(event: EventEnum): page_mutated
   category_mutated(event: EventEnum): category_mutated
   seo_mutated(event: EventEnum): seo_mutated
-  organisasi_mutated(event: EventEnum): organisasi_mutated
   page_blocks_mutated(event: EventEnum): page_blocks_mutated
+  organisasi_mutated(event: EventEnum): organisasi_mutated
   organisasi_foto_mutated(event: EventEnum): organisasi_foto_mutated
   directus_sync_id_map_mutated(event: EventEnum): directus_sync_id_map_mutated
   directus_comments_mutated(event: EventEnum): directus_comments_mutated
@@ -2012,6 +2012,8 @@ type organisasi {
   updatedAt: Date
   updatedAt_func: datetime_functions
   updatedBy(filter: directus_users_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_users
+  coverFolder(filter: directus_folders_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_folders
+  aktif: Boolean
   foto(filter: organisasi_foto_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_foto]
   foto_func: count_functions
   dokumen(filter: organisasi_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [organisasi_files]
@@ -2876,6 +2878,8 @@ input create_organisasi_input {
   sort: Int
   updatedAt: Date
   updatedBy: create_directus_users_input
+  coverFolder: create_directus_folders_input
+  aktif: Boolean
   foto: [create_organisasi_foto_input]
   dokumen: [create_organisasi_files_input]
 }
@@ -3650,6 +3654,8 @@ input organisasi_filter {
   updatedAt: date_filter_operators
   updatedAt_func: datetime_function_filter_operators
   updatedBy: directus_users_filter
+  coverFolder: directus_folders_filter
+  aktif: boolean_filter_operators
   foto: organisasi_foto_filter
   foto_func: count_function_filter_operators
   dokumen: organisasi_files_filter
@@ -4271,6 +4277,8 @@ input update_organisasi_input {
   sort: Int
   updatedAt: Date
   updatedBy: update_directus_users_input
+  coverFolder: update_directus_folders_input
+  aktif: Boolean
   foto: [update_organisasi_foto_input]
   dokumen: [update_organisasi_files_input]
 }

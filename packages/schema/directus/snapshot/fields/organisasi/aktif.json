@@ -1,47 +1,40 @@
 {
-  "collection": "kegiatan",
-  "field": "lingkup",
-  "type": "string",
+  "collection": "organisasi",
+  "field": "aktif",
+  "type": "boolean",
   "meta": {
-    "collection": "kegiatan",
+    "collection": "organisasi",
     "conditions": null,
     "display": null,
     "display_options": null,
-    "field": "lingkup",
+    "field": "aktif",
     "group": null,
     "hidden": false,
-    "interface": "select-radio",
+    "interface": "boolean",
     "note": null,
     "options": {
-      "choices": [
-        {
-          "text": "Terbuka",
-          "value": "terbuka"
-        },
-        {
-          "text": "Terbatas",
-          "value": "terbatas"
-        }
-      ]
+      "label": "Aktif"
     },
     "readonly": false,
     "required": true,
-    "sort": 7,
-    "special": null,
+    "sort": 13,
+    "special": [
+      "cast-boolean"
+    ],
     "translations": null,
     "validation": null,
     "validation_message": null,
     "width": "full"
   },
   "schema": {
-    "name": "lingkup",
-    "table": "kegiatan",
-    "data_type": "character varying",
-    "default_value": "paroki",
-    "max_length": 255,
+    "name": "aktif",
+    "table": "organisasi",
+    "data_type": "boolean",
+    "default_value": true,
+    "max_length": null,
     "numeric_precision": null,
     "numeric_scale": null,
-    "is_nullable": true,
+    "is_nullable": false,
     "is_unique": false,
     "is_indexed": false,
     "is_primary_key": false,

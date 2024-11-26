@@ -1,7 +1,6 @@
 import { createCookieSessionStorage } from "@remix-run/node";
 import invariant from "tiny-invariant";
 import { DEVELOPMENT } from "./config.server";
-import { Permissions } from "~/common/types";
 
 invariant(
   process.env.AUTH_SECRET,
@@ -9,6 +8,8 @@ invariant(
 );
 
 const AUTH_SECRET = process.env.AUTH_SECRET;
+
+const maxAge = 60 * 60 * 24 * 6;
 
 export const sessionStorage = createCookieSessionStorage({
   cookie: {
@@ -18,18 +19,8 @@ export const sessionStorage = createCookieSessionStorage({
     httpOnly: true,
     secrets: [AUTH_SECRET],
     secure: !DEVELOPMENT,
+    maxAge: maxAge,
   },
 });
 
 export const { getSession, commitSession, destroySession } = sessionStorage;
-
-export const permissions = createCookieSessionStorage<Permissions>({
-  cookie: {
-    name: "pkrbt_permissions",
-    sameSite: "lax",
-    path: "/",
-    httpOnly: true,
-    secrets: [AUTH_SECRET],
-    secure: !DEVELOPMENT,
-  },
-});

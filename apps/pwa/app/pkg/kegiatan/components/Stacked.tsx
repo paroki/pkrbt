@@ -11,8 +11,7 @@ import { useStorage } from "~/pkg/storage/hooks";
 export default function Stacked({ kegiatan }: { kegiatan: KegiatanR }) {
   const { assetUrl, thumbsUrl } = useStorage();
   return (
-    <Link
-      to={`/kegiatan/${kegiatan.id}`}
+    <div
       className={cn(
         "flex flex-row p-2 w-full h-full max-w-sm",
         "gap-x-2",
@@ -29,7 +28,10 @@ export default function Stacked({ kegiatan }: { kegiatan: KegiatanR }) {
         </div>
       )}
 
-      <div className="flex flex-col items-start gap-y-1">
+      <Link
+        to={`/kegiatan/${kegiatan.id}`}
+        className="flex flex-col items-start gap-y-1"
+      >
         <div className="flex flex-col">
           <span className="font-bold text-blue-800">
             {kegiatan.namaKegiatan}
@@ -62,7 +64,7 @@ export default function Stacked({ kegiatan }: { kegiatan: KegiatanR }) {
             {toHuman(kegiatan.createdAt)}
           </span>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 }

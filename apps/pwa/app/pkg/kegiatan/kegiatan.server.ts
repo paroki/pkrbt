@@ -17,7 +17,7 @@ const kegiatanDefaultFields = [
     jenisKegiatan: ["id", "jenisKegiatan"],
   },
   "jenisPelaksana",
-  { organisasi: ["id", "nama"] },
+  { organisasi: ["id", "nama", "coverFolder"] },
   { organisasiStruktur: ["id", "nama"] },
   { wilayah: ["id", "nama"] },
   { lingkungan: ["id", "nama"] },
@@ -29,6 +29,8 @@ const kegiatanDefaultFields = [
   "berakhirPada",
   "keterangan",
   { createdBy: ["id", "nama", { avatar: ["id", "width", "height"] }] },
+  "createdAt",
+  "updatedAt",
 ] satisfies KegiatanQuery["fields"];
 
 export async function listKegiatanByUser(

@@ -41,8 +41,17 @@ export default function CoverUpload({ kegiatan }: { kegiatan: KegiatanR }) {
     const resized = (await resizeFile(file)) as string;
     const r = await fetch(resized);
     const resizedData = await r.blob();
-
     const data = new FormData();
+
+    let coverFolder = undefined;
+
+    if (kegiatan.organisasi && kegiatan.organisasi.coverFolder) {
+      coverFolder = kegiatan.organisasi.coverFolder as string;
+    }
+
+    if (coverFolder) {
+      data.append("folder", coverFolder);
+    }
     data.append("title", `${kegiatan.namaKegiatan} cover`);
     data.append("file", resizedData, `${kegiatan.cover}-cover.jpeg`);
 
