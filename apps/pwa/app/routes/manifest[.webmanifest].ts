@@ -1,10 +1,11 @@
 import type { WebAppManifest } from "@remix-pwa/dev";
 import { json } from "@remix-run/node";
+import { PUBLIC_URL } from "~/services/config.server";
 
 export const loader = () => {
   return json(
     {
-      id: "/",
+      id: PUBLIC_URL,
       short_name: "PKRBT",
       name: "PKRBT",
       description:
