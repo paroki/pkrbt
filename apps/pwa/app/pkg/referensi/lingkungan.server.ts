@@ -29,7 +29,7 @@ export async function createLingkungan(request: Request) {
 export async function readLingkungan(request: Request, id: string) {
   const directus = await createDirectus(request);
   const { item } = await directus.lingkungan.read(id, {
-    fields: ["id", "nama"],
+    fields: ["id", "nama", { wilayah: ["id", "nama"] }],
   });
   return json(item);
 }

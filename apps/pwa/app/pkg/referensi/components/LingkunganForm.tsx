@@ -16,6 +16,7 @@ import {
 } from "~/components/shadcn/card";
 import { Input } from "~/components/shadcn/input";
 import { useWilayah } from "../hooks";
+import { useEffect, useState } from "react";
 
 export const LingkunganSchema = z.object({
   nama: z.string().min(1, "nama lingkungan harus diisi"),
@@ -29,20 +30,28 @@ export default function LingkunganForm({
   lingkungan?: LingkunganR;
 }) {
   const { pusatParoki } = useWilayah();
+  const [wilayah, setWilayah] = useState("");
 
-  const { handleSubmit, watch, register } = useRemixForm<
+  const { handleSubmit, watch, register, setValue } = useRemixForm<
     z.infer<typeof LingkunganSchema>
   >({
     mode: "onSubmit",
     resolver: LingkunganResolver,
     defaultValues: {
       nama: lingkungan?.nama ?? undefined,
-      wilayah: pusatParoki.id,
+      wilayah: lingkungan?.wilayah?.id ?? wilayah,
     },
   });
 
   const nav = useNavigate();
   const nama = watch("nama");
+
+  useEffect(() => {
+    if (pusatParoki) {
+      setWilayah(pusatParoki.id);
+      setValue("wilayah", pusatParoki.id);
+    }
+  }, [pusatParoki, setValue]);
 
   return (
     <Form method="POST" onSubmit={handleSubmit}>
