@@ -93,8 +93,8 @@ importers:
         specifier: ^1.2.2
         version: 1.2.2(@types/react-dom@18.3.0)(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@react-input/mask':
-        specifier: ^1.2.15
-        version: 1.2.15(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: ^2.0.0
+        version: 2.0.3(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@remix-pwa/push':
         specifier: ^2.10.3
         version: 2.10.3
@@ -2956,8 +2956,8 @@ packages:
     peerDependencies:
       react: '>=16.8'
 
-  '@react-input/core@1.0.19':
-    resolution: {integrity: sha512-mMbPwOwIsjyXiTm5WuKSIfjLHMfdtIo2BKYIcrtoFm+w1weJcj44nZcIs1UGLMZWMtmXvFiN5vNQuAGuCI0Gag==}
+  '@react-input/core@2.0.1':
+    resolution: {integrity: sha512-pFsov523ffW8kofNaSq+rnUzocoyel0tl/dVDHtxDAJc2JbK0X+J/6hTyXB+uYT5eWUSUUN+lvFM95cjAeGTHA==}
     peerDependencies:
       '@types/react': '>=16.8'
       react: '>=16.8 || ^19.0.0-rc'
@@ -2966,8 +2966,8 @@ packages:
       '@types/react':
         optional: true
 
-  '@react-input/mask@1.2.15':
-    resolution: {integrity: sha512-GjvknLuaNw10/HLMQ5/naz6wd3qHPAAVelW2H5LrWAQD1jjUmJtmN9iMwx0HLK/0tpj66X9zfq8TM4ygFaQtGA==}
+  '@react-input/mask@2.0.3':
+    resolution: {integrity: sha512-Q64y+ElKk4UJW5pTjXwIsBy8ShCYW8iLYT3P8qrBlIq0Lj1iVDa5aDWZ3JemegHIpiSsO4xhViCvBLZ529VilQ==}
     peerDependencies:
       '@types/react': '>=16.8'
       react: '>=16.8 || ^19.0.0-rc'
@@ -11635,16 +11635,16 @@ snapshots:
     dependencies:
       react: 18.3.1
 
-  '@react-input/core@1.0.19(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@react-input/core@2.0.1(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
       '@types/react': 18.3.8
 
-  '@react-input/mask@1.2.15(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+  '@react-input/mask@2.0.3(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
     dependencies:
-      '@react-input/core': 1.0.19(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@react-input/core': 2.0.1(@types/react@18.3.8)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     optionalDependencies:
@@ -12809,7 +12809,7 @@ snapshots:
       std-env: 3.7.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.1(@types/node@22.7.4)(@vitest/ui@2.1.1)(jsdom@25.0.0)(msw@2.4.9(typescript@5.6.3))(terser@5.36.0)
+      vitest: 2.1.1(@types/node@20.16.5)(@vitest/ui@2.1.1)(jsdom@25.0.0)(msw@2.4.9(typescript@5.6.2))(terser@5.36.0)
     transitivePeerDependencies:
       - supports-color
 
