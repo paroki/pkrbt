@@ -69,6 +69,15 @@ export async function getSessionUser(request: Request) {
         role: ["id", "name", { policies: ["id", { policy: ["id", "name"] }] }],
       },
       {
+        lingkungan: ["id", "nama"],
+      },
+      {
+        wilayah: ["id", "nama"],
+      },
+      {
+        organisasi: [{ organisasi: ["id", "nama"] }],
+      },
+      {
         policies: [
           "id",
           {
@@ -87,7 +96,7 @@ export async function getSessionUser(request: Request) {
     }
 
     const policies = extractPolicy(item);
-    const { nama, foto, avatar } = item;
+    const { nama, foto, avatar, lingkungan, wilayah, organisasi } = item;
     const role: UserRole =
       (item.role?.name?.toLocaleLowerCase() as UserRole) ?? "user";
     user = {
@@ -96,6 +105,9 @@ export async function getSessionUser(request: Request) {
         nama,
         foto,
         avatar,
+        lingkungan,
+        wilayah,
+        organisasi,
       },
       expiredAt: jwt.exp,
       role: role,

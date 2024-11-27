@@ -60,4 +60,7 @@ const FormMessage = React.forwardRef<
 });
 FormMessage.displayName = "FormMessage";
 
+export default function FormAction({ children }: React.PropsWithChildren) {
+  return <div className="flex form-row gap-2">{children}</div>;
+}
 export { FormItem, FormLabel, FormDescription, FormMessage };

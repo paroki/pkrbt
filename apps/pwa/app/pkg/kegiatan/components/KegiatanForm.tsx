@@ -1,18 +1,20 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { KegiatanR } from "@pkrbt/directus";
-import { Form, useNavigate } from "@remix-run/react";
+import { Form, Link, useNavigate } from "@remix-run/react";
 import { useRemixForm } from "remix-hook-form";
 import { z } from "zod";
 import { cn } from "~/common/utils";
-import { FormItem, FormLabel, FormMessage } from "~/components/form";
+import {
+  FormDescription,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "~/components/form";
 import { Input } from "~/components/shadcn/input";
 import JenisKegiatanSelect from "./JenisKegiatanSelect";
 import LingkupKegiatan from "./LingkupKegiatan";
 import SaveButton from "~/components/buttons/SaveButton";
-import { useEffect, useState } from "react";
-import WilayahSelect from "~/pkg/referensi/components/WilayahSelect";
-import { useWilayah } from "~/pkg/referensi/hooks";
-import LingkunganSelect from "~/pkg/referensi/components/LingkunganSelect";
+import { useEffect } from "react";
 import JenisPelaksanaRadio from "./JenisPelaksanaRadio";
 import OrganisasiSelect from "~/pkg/organisasi/components/OrganisasiSelect";
 import { toastCreated, toastUpdated } from "~/common/toaster";
@@ -20,6 +22,7 @@ import BackButton from "~/components/buttons/BackButton";
 import RemoveButton from "~/components/buttons/RemoveButton";
 import CoverUpload from "./CoverUpload";
 import MarkdownInput from "~/components/form/MarkdownInput";
+import { useRootOutletContext } from "~/hooks/outlets";
 
 export const KegiatanSchema = z.object({
   jenisPelaksana: z.string({ message: "pelaksana kegiatan harus dipilih" }),
@@ -61,11 +64,9 @@ export default function KegiatanForm({ kegiatan }: { kegiatan?: KegiatanR }) {
       keterangan: kegiatan?.keterangan ?? null,
     },
   });
+  const { user } = useRootOutletContext();
   const navigate = useNavigate();
   const intent = kegiatan ? "update" : "create";
-
-  const { getNamaWilayah } = useWilayah();
-  const [namaWilayah, setNamaWilayah] = useState("");
 
   const jenisPelaksana = watch("jenisPelaksana");
 
@@ -98,42 +99,23 @@ export default function KegiatanForm({ kegiatan }: { kegiatan?: KegiatanR }) {
             {...register("jenisPelaksana")}
             onValueChange={(value) => {
               setValue("jenisPelaksana", value);
+              if (jenisPelaksana === "wilayah") {
+                setValue("organisasi", null);
+                setValue("organisasiStruktur", null);
+                if (user.wilayah) {
+                  setValue("wilayah", user.wilayah.id);
+                }
+                if (user.lingkungan) {
+                  setValue("lingkungan", user.lingkungan.id);
+                }
+              } else if (jenisPelaksana == "organisasi") {
+                setValue("wilayah", null);
+                setValue("lingkungan", null);
+              }
             }}
           />
           <FormMessage error={formState.errors.jenisPelaksana} />
         </FormItem>
-        {jenisPelaksana === "wilayah" && (
-          <FormItem>
-            <FormLabel>Pilih Wilayah/Stasi</FormLabel>
-            <WilayahSelect
-              {...register("wilayah")}
-              onValueChange={(value) => {
-                const nama = getNamaWilayah(value);
-                if (nama) {
-                  setNamaWilayah(nama);
-                }
-                setValue("wilayah", value);
-                setValue("lingkungan", null);
-                setValue("organisasi", null);
-                setValue("organisasiStruktur", null);
-              }}
-            />
-            <FormMessage error={formState.errors.wilayah} />
-          </FormItem>
-        )}
-
-        {jenisPelaksana === "wilayah" && namaWilayah === "Pusat Paroki" && (
-          <FormItem>
-            <FormLabel>Pilih Lingkungan</FormLabel>
-            <LingkunganSelect
-              {...register("lingkungan")}
-              onValueChange={(value) => {
-                setValue("lingkungan", value);
-              }}
-            />
-            <FormMessage error={formState.errors.lingkungan} />
-          </FormItem>
-        )}
 
         {jenisPelaksana === "organisasi" && (
           <FormItem>
@@ -147,6 +129,14 @@ export default function KegiatanForm({ kegiatan }: { kegiatan?: KegiatanR }) {
               }}
             />
             <FormMessage error={formState.errors.organisasi} />
+            <FormDescription className="text-xs">
+              <strong>
+                Pilihan organisasi disesuaikan dengan Biodata anda!
+              </strong>{" "}
+              Jika organisasi tidak tercantum dalam pilihan, maka anda harus
+              menambah pilihan organisasi pada{" "}
+              <Link to="/user/biodata">Biodata</Link> anda
+            </FormDescription>
           </FormItem>
         )}
 

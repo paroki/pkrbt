@@ -1,28 +1,37 @@
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
+import { UserR } from "@pkrbt/directus";
 import _ from "lodash";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import { ComponentPropsWithoutRef, forwardRef, LegacyRef } from "react";
 import { cn } from "~/common/utils";
 import { Label } from "~/components/shadcn/label";
 import { RadioGroup, RadioGroupItem } from "~/components/shadcn/radio-group";
+import { useRootOutletContext } from "~/hooks/outlets";
 
-const options = [
-  {
-    label: "Lingkungan / Stasi",
-    value: "wilayah",
-    description: "Kegiatan dilaksanakan oleh lingkungan dan stasi",
-  },
-  {
-    label: "Organisasi",
-    value: "organisasi",
-    description: "Kegiatan dilaksanakan oleh organisasi paroki",
-  },
-];
+type Props = ComponentPropsWithoutRef<typeof RadioGroup> & {
+  user?: UserR;
+};
 
-const JenisPelaksanaRadio = forwardRef<
-  ElementRef<typeof RadioGroupPrimitive.Root>,
-  ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
->(({ ...props }, ref) => {
+function Component(
+  { ...props }: Props,
+  ref: LegacyRef<HTMLDivElement> | undefined,
+) {
+  const { user } = useRootOutletContext();
+  const namaWilayah = user.lingkungan
+    ? user.lingkungan.nama
+    : user.wilayah?.nama;
+  const fullNamaWilayah = `${user.lingkungan ? "Lingkungan" : "Stasi"} ${namaWilayah}`;
+  const options = [
+    {
+      label: fullNamaWilayah,
+      value: "wilayah",
+      description: `Kegiatan dilaksanakan oleh ${fullNamaWilayah}`,
+    },
+    {
+      label: "Organisasi",
+      value: "organisasi",
+      description: "Kegiatan dilaksanakan oleh organisasi paroki",
+    },
+  ];
+
   return (
     <RadioGroup {...props} ref={ref}>
       {options.map((item, index) => (
@@ -42,7 +51,7 @@ const JenisPelaksanaRadio = forwardRef<
       ))}
     </RadioGroup>
   );
-});
-JenisPelaksanaRadio.displayName = "JenisPelaksanaRadio";
+}
 
+const JenisPelaksanaRadio = forwardRef(Component);
 export default JenisPelaksanaRadio;

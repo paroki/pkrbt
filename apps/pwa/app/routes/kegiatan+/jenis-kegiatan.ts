@@ -1,8 +1,5 @@
-import { JenisKegiatan } from "@pkrbt/directus";
 import { json } from "@remix-pwa/sw";
 import { LoaderFunctionArgs } from "@remix-run/node";
-import { ClientLoaderFunctionArgs } from "@remix-run/react";
-import localforage from "localforage";
 import createDirectus from "~/services/directus.server";
 
 export async function loader({ request }: LoaderFunctionArgs) {
@@ -18,6 +15,7 @@ export async function loader({ request }: LoaderFunctionArgs) {
   return json(items ?? []);
 }
 
+/*
 export async function clientLoader({ serverLoader }: ClientLoaderFunctionArgs) {
   let cached = await localforage.getItem<JenisKegiatan[]>("jenis-kegiatan");
 
@@ -28,3 +26,4 @@ export async function clientLoader({ serverLoader }: ClientLoaderFunctionArgs) {
 
   return json(cached);
 }
+*/

@@ -28,7 +28,7 @@ const WilayahSelect = React.forwardRef<
       ) : (
         <Select {...props} defaultValue={defaultValue}>
           <SelectTrigger ref={ref}>
-            <SelectValue placeholder="Pilih Wilayah / Stasi" />
+            <SelectValue placeholder="Pilih Stasi" />
           </SelectTrigger>
           <SelectContent>
             {wilayah.map((item) => (

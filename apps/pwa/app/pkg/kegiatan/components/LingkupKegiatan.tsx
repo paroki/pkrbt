@@ -1,29 +1,31 @@
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
 import _ from "lodash";
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
+import { ComponentProps, forwardRef, LegacyRef } from "react";
 import { cn } from "~/common/utils";
 import { Label } from "~/components/shadcn/label";
 import { RadioGroup, RadioGroupItem } from "~/components/shadcn/radio-group";
+import { useRootOutletContext } from "~/hooks/outlets";
 
-const options = [
-  {
-    label: "Terbuka",
-    value: "terbuka",
-    description: "Kegiatan untuk semua umat di paroki/lingkungan/stasi",
-  },
-  {
-    label: "Terbatas",
-    value: "terbatas",
-    description:
-      "Kegiatan yang diperuntukan hanya bagi para pengurus organisasi/lingkungan/stasi",
-  },
-];
-
-const LingkupKegiatan = forwardRef<
-  ElementRef<typeof RadioGroupPrimitive.Root>,
-  ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root>
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
->(({ ...props }, ref) => {
+type Props = ComponentProps<typeof RadioGroup>;
+function LingkupKegiatanComponent(
+  { ...props }: Props,
+  ref: LegacyRef<HTMLDivElement> | undefined,
+) {
+  const { user } = useRootOutletContext();
+  const fullNamaWilayah = user.lingkungan
+    ? `Lingkungan ${user.lingkungan.nama}`
+    : `Stasi ${user.wilayah?.nama}`;
+  const options = [
+    {
+      label: "Terbuka",
+      value: "terbuka",
+      description: `Kegiatan untuk semua umat di paroki atau ${fullNamaWilayah}`,
+    },
+    {
+      label: "Terbatas",
+      value: "terbatas",
+      description: `Kegiatan yang diperuntukan hanya bagi para pengurus organisasi atau pengurus ${fullNamaWilayah}`,
+    },
+  ];
   return (
     <RadioGroup ref={ref} {...props}>
       {options.map((item, index) => (
@@ -43,7 +45,6 @@ const LingkupKegiatan = forwardRef<
       ))}
     </RadioGroup>
   );
-});
-LingkupKegiatan.displayName = "LingkupKegiatan";
+}
 
-export default LingkupKegiatan;
+export default forwardRef(LingkupKegiatanComponent);

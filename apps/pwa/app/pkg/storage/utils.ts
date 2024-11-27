@@ -5,7 +5,7 @@ export function doResize(file: Blob) {
     Resizer.imageFileResizer(
       file,
       1980,
-      1080,
+      720,
       "JPEG",
       100,
       0,
@@ -20,5 +20,6 @@ export function doResize(file: Blob) {
 export async function resizeImage(file: Blob) {
   const resized = await doResize(file);
   const r = await fetch(resized);
-  return r.blob();
+  const blob = await r.blob();
+  return blob;
 }

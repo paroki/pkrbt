@@ -38,6 +38,8 @@ export default function AvatarFoto() {
   async function handleChange(e: any) {
     setLoading(true);
     const file = e.target.files[0];
+    if (!file) return;
+
     const data = new FormData();
     const resized = await resizeImage(file);
 
@@ -46,10 +48,10 @@ export default function AvatarFoto() {
     data.append("file", resized, `${user.id}-foto`);
 
     if (user.foto) {
-      await directus.rest.request(deleteFile(user.foto.id));
+      await directus.request(deleteFile(user.foto.id));
     }
     try {
-      const result = await directus.rest.request(uploadFiles(data));
+      const result = await directus.request(uploadFiles(data));
       fetcher.submit(
         {
           userId: user.id,
@@ -82,9 +84,9 @@ export default function AvatarFoto() {
     formData.append("file", file, `${user.id}-avatar.jpeg`);
 
     try {
-      const result = await directus.rest.request(uploadFiles(formData));
+      const result = await directus.request(uploadFiles(formData));
       if (user.avatar) {
-        await directus.rest.request(deleteFile(user.avatar.id));
+        await directus.request(deleteFile(user.avatar.id));
       }
 
       fetcher.submit(

@@ -6,6 +6,7 @@ export function useWilayah() {
   const [loaded, setLoaded] = useState(false);
   const [wilayah, setWilayah] = useState<WilayahR[]>([]);
   const [loading, setLoading] = useState(false);
+  const [pusatParoki, setPusatParoki] = useState<WilayahR>();
   const fetcher = useFetcher<WilayahR[]>();
 
   useEffect(() => {
@@ -19,6 +20,12 @@ export function useWilayah() {
   useEffect(() => {
     if (fetcher.data) {
       setWilayah(fetcher.data);
+      for (let i = 0; i < fetcher.data.length; i++) {
+        const item = fetcher.data[i];
+        if (item.nama === "Pusat Paroki") {
+          setPusatParoki(item);
+        }
+      }
     }
   }, [fetcher.data]);
 
@@ -45,7 +52,14 @@ export function useWilayah() {
     }
   }
 
-  return { wilayah, loading, loaded, reload, getNamaWilayah };
+  return {
+    wilayah,
+    loading,
+    loaded,
+    reload,
+    getNamaWilayah,
+    pusatParoki: pusatParoki as WilayahR,
+  };
 }
 
 export function useLingkungan() {

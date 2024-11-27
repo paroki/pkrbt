@@ -1,13 +1,16 @@
 import { Authenticator } from "remix-auth";
 import { commitSession, getSession, sessionStorage } from "./session.server";
-import { User } from "@pkrbt/directus";
+import { UserR } from "@pkrbt/directus";
 import { getSessionToken } from "./user.server";
 import { redirect } from "@remix-run/react";
 import { UserRole as AuthUserRole } from "~/pkg/auth/types";
 
 export type AuthenticatedUser = {
   id: string;
-  profile: Pick<Partial<User>, "avatar" | "foto"> & { nama: string };
+  profile: Pick<
+    Partial<UserR>,
+    "avatar" | "foto" | "lingkungan" | "wilayah" | "organisasi"
+  > & { nama: string };
   role: AuthUserRole;
   expiredAt: number;
   policies: string[];

@@ -39,8 +39,8 @@ type Props = {
 export default function BiodataForm({ profil, organisasiList }: Props) {
   const resolver = zodResolver(BiodataFormSchema);
   const userOrganisasi: string[] = [];
-  const { getNamaWilayah } = useWilayah();
-  const [namaWilayah, setNamaWilayah] = useState("");
+  const { pusatParoki } = useWilayah();
+  const [lingkungan] = useState(profil.lingkungan?.id);
 
   if (profil.organisasi && profil.organisasi.length > 0) {
     profil.organisasi.map((item) => {
@@ -60,7 +60,7 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
         tempatLahir: profil.tempatLahir ?? undefined,
         tanggalLahir: profil.tanggalLahir ?? undefined,
         wilayah: profil.wilayah?.id ?? undefined,
-        lingkungan: profil.lingkungan?.id ?? undefined,
+        lingkungan,
         organisasi: userOrganisasi,
       },
     });
@@ -71,14 +71,7 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
     }
   }, [formState.isSubmitSuccessful]);
 
-  useEffect(() => {
-    if (formState.isDirty) {
-      console.log(formState.errors);
-    }
-  }, [formState.errors, formState.isDirty]);
-
-  const lingkungan = watch("lingkungan");
-
+  const wilayah = watch("wilayah");
   return (
     <Form
       method="POST"
@@ -123,26 +116,27 @@ export default function BiodataForm({ profil, organisasiList }: Props) {
         <FormMessage error={formState.errors.tanggalLahir} />
       </FormItem>
       <FormItem>
-        <FormLabel>Pilih Wilayah</FormLabel>
+        <FormLabel>Stasi tempat tinggal anda</FormLabel>
         <WilayahSelect
           {...register("wilayah")}
           onValueChange={(value) => {
             setValue("wilayah", value);
-            const nama = getNamaWilayah(value);
-            if (nama) {
-              setNamaWilayah(nama);
-            }
-            if (nama !== "Pusat Paroki") setValue("lingkungan", null);
+            setValue("lingkungan", null);
           }}
         />
+        <FormDescription>
+          Pilih pusat paroki jika anda adalah umat lingkungan PKRBT
+        </FormDescription>
       </FormItem>
-      {(namaWilayah === "Pusat Paroki" || lingkungan) && (
+      {pusatParoki && wilayah === pusatParoki.id && (
         <FormItem>
           <FormLabel>Pilih Lingkungan</FormLabel>
           <LingkunganSelect
             {...register("lingkungan")}
+            defaultValue={lingkungan}
             onValueChange={(value) => {
               setValue("lingkungan", value);
+              setValue("wilayah", pusatParoki.id);
             }}
           />
         </FormItem>

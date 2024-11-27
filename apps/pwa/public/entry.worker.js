@@ -28,6 +28,20 @@ self.addEventListener("activate", (event) => {
 const entryWorker = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null
 }, Symbol.toStringTag, { value: "Module" }));
+var __getOwnPropNames$P = Object.getOwnPropertyNames;
+var __commonJS$P = (cb, mod) => function __require() {
+  return mod || (0, cb[__getOwnPropNames$P(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
+var require_worker_runtime$P = __commonJS$P({
+  "@remix-pwa/worker-runtime"(exports, module) {
+    module.exports = {};
+  }
+});
+var worker_runtime_default$P = require_worker_runtime$P();
+const route0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: worker_runtime_default$P
+}, Symbol.toStringTag, { value: "Module" }));
 var __getOwnPropNames$O = Object.getOwnPropertyNames;
 var __commonJS$O = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames$O(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
@@ -38,7 +52,7 @@ var require_worker_runtime$O = __commonJS$O({
   }
 });
 var worker_runtime_default$O = require_worker_runtime$O();
-const route0 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$O
 }, Symbol.toStringTag, { value: "Module" }));
@@ -52,7 +66,7 @@ var require_worker_runtime$N = __commonJS$N({
   }
 });
 var worker_runtime_default$N = require_worker_runtime$N();
-const route1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$N
 }, Symbol.toStringTag, { value: "Module" }));
@@ -66,7 +80,7 @@ var require_worker_runtime$M = __commonJS$M({
   }
 });
 var worker_runtime_default$M = require_worker_runtime$M();
-const route2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$M
 }, Symbol.toStringTag, { value: "Module" }));
@@ -80,7 +94,7 @@ var require_worker_runtime$L = __commonJS$L({
   }
 });
 var worker_runtime_default$L = require_worker_runtime$L();
-const route3 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$L
 }, Symbol.toStringTag, { value: "Module" }));
@@ -94,7 +108,7 @@ var require_worker_runtime$K = __commonJS$K({
   }
 });
 var worker_runtime_default$K = require_worker_runtime$K();
-const route4 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$K
 }, Symbol.toStringTag, { value: "Module" }));
@@ -108,7 +122,7 @@ var require_worker_runtime$J = __commonJS$J({
   }
 });
 var worker_runtime_default$J = require_worker_runtime$J();
-const route5 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$J
 }, Symbol.toStringTag, { value: "Module" }));
@@ -122,7 +136,7 @@ var require_worker_runtime$I = __commonJS$I({
   }
 });
 var worker_runtime_default$I = require_worker_runtime$I();
-const route6 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$I
 }, Symbol.toStringTag, { value: "Module" }));
@@ -136,7 +150,7 @@ var require_worker_runtime$H = __commonJS$H({
   }
 });
 var worker_runtime_default$H = require_worker_runtime$H();
-const route7 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$H
 }, Symbol.toStringTag, { value: "Module" }));
@@ -150,7 +164,7 @@ var require_worker_runtime$G = __commonJS$G({
   }
 });
 var worker_runtime_default$G = require_worker_runtime$G();
-const route8 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$G
 }, Symbol.toStringTag, { value: "Module" }));
@@ -164,7 +178,7 @@ var require_worker_runtime$F = __commonJS$F({
   }
 });
 var worker_runtime_default$F = require_worker_runtime$F();
-const route9 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$F
 }, Symbol.toStringTag, { value: "Module" }));
@@ -178,7 +192,7 @@ var require_worker_runtime$E = __commonJS$E({
   }
 });
 var worker_runtime_default$E = require_worker_runtime$E();
-const route10 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$E
 }, Symbol.toStringTag, { value: "Module" }));
@@ -192,7 +206,7 @@ var require_worker_runtime$D = __commonJS$D({
   }
 });
 var worker_runtime_default$D = require_worker_runtime$D();
-const route11 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$D
 }, Symbol.toStringTag, { value: "Module" }));
@@ -206,7 +220,7 @@ var require_worker_runtime$C = __commonJS$C({
   }
 });
 var worker_runtime_default$C = require_worker_runtime$C();
-const route12 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$C
 }, Symbol.toStringTag, { value: "Module" }));
@@ -220,7 +234,7 @@ var require_worker_runtime$B = __commonJS$B({
   }
 });
 var worker_runtime_default$B = require_worker_runtime$B();
-const route13 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$B
 }, Symbol.toStringTag, { value: "Module" }));
@@ -234,7 +248,7 @@ var require_worker_runtime$A = __commonJS$A({
   }
 });
 var worker_runtime_default$A = require_worker_runtime$A();
-const route14 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$A
 }, Symbol.toStringTag, { value: "Module" }));
@@ -248,7 +262,7 @@ var require_worker_runtime$z = __commonJS$z({
   }
 });
 var worker_runtime_default$z = require_worker_runtime$z();
-const route15 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$z
 }, Symbol.toStringTag, { value: "Module" }));
@@ -262,7 +276,7 @@ var require_worker_runtime$y = __commonJS$y({
   }
 });
 var worker_runtime_default$y = require_worker_runtime$y();
-const route16 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$y
 }, Symbol.toStringTag, { value: "Module" }));
@@ -276,7 +290,7 @@ var require_worker_runtime$x = __commonJS$x({
   }
 });
 var worker_runtime_default$x = require_worker_runtime$x();
-const route17 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$x
 }, Symbol.toStringTag, { value: "Module" }));
@@ -290,7 +304,7 @@ var require_worker_runtime$w = __commonJS$w({
   }
 });
 var worker_runtime_default$w = require_worker_runtime$w();
-const route18 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$w
 }, Symbol.toStringTag, { value: "Module" }));
@@ -304,7 +318,7 @@ var require_worker_runtime$v = __commonJS$v({
   }
 });
 var worker_runtime_default$v = require_worker_runtime$v();
-const route19 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route20 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$v
 }, Symbol.toStringTag, { value: "Module" }));
@@ -318,7 +332,7 @@ var require_worker_runtime$u = __commonJS$u({
   }
 });
 var worker_runtime_default$u = require_worker_runtime$u();
-const route20 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route21 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$u
 }, Symbol.toStringTag, { value: "Module" }));
@@ -332,7 +346,7 @@ var require_worker_runtime$t = __commonJS$t({
   }
 });
 var worker_runtime_default$t = require_worker_runtime$t();
-const route21 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route22 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$t
 }, Symbol.toStringTag, { value: "Module" }));
@@ -346,7 +360,7 @@ var require_worker_runtime$s = __commonJS$s({
   }
 });
 var worker_runtime_default$s = require_worker_runtime$s();
-const route22 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route23 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$s
 }, Symbol.toStringTag, { value: "Module" }));
@@ -360,7 +374,7 @@ var require_worker_runtime$r = __commonJS$r({
   }
 });
 var worker_runtime_default$r = require_worker_runtime$r();
-const route23 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route24 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$r
 }, Symbol.toStringTag, { value: "Module" }));
@@ -374,7 +388,7 @@ var require_worker_runtime$q = __commonJS$q({
   }
 });
 var worker_runtime_default$q = require_worker_runtime$q();
-const route24 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route25 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$q
 }, Symbol.toStringTag, { value: "Module" }));
@@ -388,7 +402,7 @@ var require_worker_runtime$p = __commonJS$p({
   }
 });
 var worker_runtime_default$p = require_worker_runtime$p();
-const route25 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route26 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$p
 }, Symbol.toStringTag, { value: "Module" }));
@@ -402,7 +416,7 @@ var require_worker_runtime$o = __commonJS$o({
   }
 });
 var worker_runtime_default$o = require_worker_runtime$o();
-const route26 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route27 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$o
 }, Symbol.toStringTag, { value: "Module" }));
@@ -416,7 +430,7 @@ var require_worker_runtime$n = __commonJS$n({
   }
 });
 var worker_runtime_default$n = require_worker_runtime$n();
-const route27 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route28 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$n
 }, Symbol.toStringTag, { value: "Module" }));
@@ -430,7 +444,7 @@ var require_worker_runtime$m = __commonJS$m({
   }
 });
 var worker_runtime_default$m = require_worker_runtime$m();
-const route28 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route29 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$m
 }, Symbol.toStringTag, { value: "Module" }));
@@ -444,7 +458,7 @@ var require_worker_runtime$l = __commonJS$l({
   }
 });
 var worker_runtime_default$l = require_worker_runtime$l();
-const route29 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route30 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$l
 }, Symbol.toStringTag, { value: "Module" }));
@@ -458,7 +472,7 @@ var require_worker_runtime$k = __commonJS$k({
   }
 });
 var worker_runtime_default$k = require_worker_runtime$k();
-const route30 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route31 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$k
 }, Symbol.toStringTag, { value: "Module" }));
@@ -472,7 +486,7 @@ var require_worker_runtime$j = __commonJS$j({
   }
 });
 var worker_runtime_default$j = require_worker_runtime$j();
-const route31 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route32 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$j
 }, Symbol.toStringTag, { value: "Module" }));
@@ -486,7 +500,7 @@ var require_worker_runtime$i = __commonJS$i({
   }
 });
 var worker_runtime_default$i = require_worker_runtime$i();
-const route32 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route33 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$i
 }, Symbol.toStringTag, { value: "Module" }));
@@ -500,7 +514,7 @@ var require_worker_runtime$h = __commonJS$h({
   }
 });
 var worker_runtime_default$h = require_worker_runtime$h();
-const route33 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route34 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$h
 }, Symbol.toStringTag, { value: "Module" }));
@@ -514,7 +528,7 @@ var require_worker_runtime$g = __commonJS$g({
   }
 });
 var worker_runtime_default$g = require_worker_runtime$g();
-const route34 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route35 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$g
 }, Symbol.toStringTag, { value: "Module" }));
@@ -528,7 +542,7 @@ var require_worker_runtime$f = __commonJS$f({
   }
 });
 var worker_runtime_default$f = require_worker_runtime$f();
-const route35 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route36 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$f
 }, Symbol.toStringTag, { value: "Module" }));
@@ -542,7 +556,7 @@ var require_worker_runtime$e = __commonJS$e({
   }
 });
 var worker_runtime_default$e = require_worker_runtime$e();
-const route36 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route37 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$e
 }, Symbol.toStringTag, { value: "Module" }));
@@ -556,7 +570,7 @@ var require_worker_runtime$d = __commonJS$d({
   }
 });
 var worker_runtime_default$d = require_worker_runtime$d();
-const route37 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route38 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$d
 }, Symbol.toStringTag, { value: "Module" }));
@@ -570,7 +584,7 @@ var require_worker_runtime$c = __commonJS$c({
   }
 });
 var worker_runtime_default$c = require_worker_runtime$c();
-const route38 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route39 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$c
 }, Symbol.toStringTag, { value: "Module" }));
@@ -584,7 +598,7 @@ var require_worker_runtime$b = __commonJS$b({
   }
 });
 var worker_runtime_default$b = require_worker_runtime$b();
-const route39 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route40 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$b
 }, Symbol.toStringTag, { value: "Module" }));
@@ -598,7 +612,7 @@ var require_worker_runtime$a = __commonJS$a({
   }
 });
 var worker_runtime_default$a = require_worker_runtime$a();
-const route40 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route41 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$a
 }, Symbol.toStringTag, { value: "Module" }));
@@ -612,7 +626,7 @@ var require_worker_runtime$9 = __commonJS$9({
   }
 });
 var worker_runtime_default$9 = require_worker_runtime$9();
-const route41 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route42 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$9
 }, Symbol.toStringTag, { value: "Module" }));
@@ -626,7 +640,7 @@ var require_worker_runtime$8 = __commonJS$8({
   }
 });
 var worker_runtime_default$8 = require_worker_runtime$8();
-const route42 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route43 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$8
 }, Symbol.toStringTag, { value: "Module" }));
@@ -640,7 +654,7 @@ var require_worker_runtime$7 = __commonJS$7({
   }
 });
 var worker_runtime_default$7 = require_worker_runtime$7();
-const route43 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route44 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$7
 }, Symbol.toStringTag, { value: "Module" }));
@@ -654,7 +668,7 @@ var require_worker_runtime$6 = __commonJS$6({
   }
 });
 var worker_runtime_default$6 = require_worker_runtime$6();
-const route44 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route45 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$6
 }, Symbol.toStringTag, { value: "Module" }));
@@ -668,7 +682,7 @@ var require_worker_runtime$5 = __commonJS$5({
   }
 });
 var worker_runtime_default$5 = require_worker_runtime$5();
-const route45 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route46 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$5
 }, Symbol.toStringTag, { value: "Module" }));
@@ -682,7 +696,7 @@ var require_worker_runtime$4 = __commonJS$4({
   }
 });
 var worker_runtime_default$4 = require_worker_runtime$4();
-const route46 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route47 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$4
 }, Symbol.toStringTag, { value: "Module" }));
@@ -696,7 +710,7 @@ var require_worker_runtime$3 = __commonJS$3({
   }
 });
 var worker_runtime_default$3 = require_worker_runtime$3();
-const route47 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route48 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$3
 }, Symbol.toStringTag, { value: "Module" }));
@@ -710,7 +724,7 @@ var require_worker_runtime$2 = __commonJS$2({
   }
 });
 var worker_runtime_default$2 = require_worker_runtime$2();
-const route48 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route49 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$2
 }, Symbol.toStringTag, { value: "Module" }));
@@ -724,7 +738,7 @@ var require_worker_runtime$1 = __commonJS$1({
   }
 });
 var worker_runtime_default$1 = require_worker_runtime$1();
-const route49 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route50 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default$1
 }, Symbol.toStringTag, { value: "Module" }));
@@ -738,7 +752,7 @@ var require_worker_runtime = __commonJS({
   }
 });
 var worker_runtime_default = require_worker_runtime();
-const route50 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const route51 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: worker_runtime_default
 }, Symbol.toStringTag, { value: "Module" }));
@@ -1269,6 +1283,18 @@ const routes = {
     hasWorkerAction: false,
     module: route42
   },
+  "routes/storage+/folders.$id": {
+    id: "routes/storage+/folders.$id",
+    parentId: "routes/storage+/folders",
+    path: ":id",
+    index: void 0,
+    caseSensitive: void 0,
+    hasLoader: true,
+    hasAction: false,
+    hasWorkerLoader: false,
+    hasWorkerAction: false,
+    module: route43
+  },
   "routes/user+/_layout": {
     id: "routes/user+/_layout",
     parentId: "root",
@@ -1279,7 +1305,7 @@ const routes = {
     hasAction: false,
     hasWorkerLoader: false,
     hasWorkerAction: false,
-    module: route43
+    module: route44
   },
   "routes/user+/_index": {
     id: "routes/user+/_index",
@@ -1291,7 +1317,7 @@ const routes = {
     hasAction: false,
     hasWorkerLoader: false,
     hasWorkerAction: false,
-    module: route44
+    module: route45
   },
   "routes/user+/biodata": {
     id: "routes/user+/biodata",
@@ -1303,7 +1329,7 @@ const routes = {
     hasAction: true,
     hasWorkerLoader: false,
     hasWorkerAction: false,
-    module: route45
+    module: route46
   },
   "routes/user+/boot+/_index": {
     id: "routes/user+/boot+/_index",
@@ -1315,7 +1341,7 @@ const routes = {
     hasAction: false,
     hasWorkerLoader: false,
     hasWorkerAction: false,
-    module: route46
+    module: route47
   },
   "routes/user+/boot+/permissions": {
     id: "routes/user+/boot+/permissions",
@@ -1327,7 +1353,7 @@ const routes = {
     hasAction: false,
     hasWorkerLoader: false,
     hasWorkerAction: false,
-    module: route47
+    module: route48
   },
   "routes/user+/boot+/policies": {
     id: "routes/user+/boot+/policies",
@@ -1339,7 +1365,7 @@ const routes = {
     hasAction: false,
     hasWorkerLoader: false,
     hasWorkerAction: false,
-    module: route48
+    module: route49
   },
   "routes/user+/permissions": {
     id: "routes/user+/permissions",
@@ -1351,7 +1377,7 @@ const routes = {
     hasAction: false,
     hasWorkerLoader: false,
     hasWorkerAction: false,
-    module: route49
+    module: route50
   },
   "routes/user+/update": {
     id: "routes/user+/update",
@@ -1363,7 +1389,7 @@ const routes = {
     hasAction: true,
     hasWorkerLoader: false,
     hasWorkerAction: false,
-    module: route50
+    module: route51
   }
 };
 const entry = { module: entryWorker };

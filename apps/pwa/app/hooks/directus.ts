@@ -1,4 +1,5 @@
-import { createDirectus } from "@pkrbt/directus";
+import { createDirectus, rest, staticToken } from "@directus/sdk";
+import { Schema } from "@pkrbt/directus";
 import { useRootOutletContext } from "~/hooks/outlets";
 
 export class ClientDirectusError extends Error {
@@ -9,8 +10,10 @@ export class ClientDirectusError extends Error {
 
 export function useDirectus() {
   const { directusUrl, directusToken } = useRootOutletContext();
-  return createDirectus({
-    baseUrl: directusUrl,
-    token: directusToken,
-  });
+  return (
+    createDirectus<Schema>(directusUrl)
+      //.with(authentication("session", { credentials: "include" }))
+      .with(staticToken(directusToken))
+      .with(rest())
+  );
 }

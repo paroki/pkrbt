@@ -23,17 +23,19 @@ export default function LoginForm({ directusUrl, development = true }: Props) {
     <div className="flex flex-wrap w-full min-h-screen items-center justify-center p-2 lg:p-4 bg-primary-foreground">
       <Card className="max-w-sm lg:min-w-[400px] lg:w-auto drop-shadow-md">
         <CardHeader>
-          <CardTitle className="text-2xl flex flex-row items-center justify-center w-full gap-x-4">
-            <img src="/192x192.png" alt="@pkrbt" className="w-12 h-12" />
-            <span>PKRBT</span>
+          <CardTitle className="text-2xl flex flex-row items-start w-full gap-x-4">
+            <div className="flex w-full h-full items-center gap-x-2">
+              <img src="/192x192.png" alt="@pkrbt" className="w-12 h-12" />
+              <span>PKRBT</span>
+            </div>
           </CardTitle>
           <CardDescription>
             Aplikasi layanan informasi Paroki Kristus Raja Barong Tongkok
             Keuskupan Agung Samarinda
           </CardDescription>
+          <Separator className="mb-4" />
         </CardHeader>
         <CardContent>
-          <Separator className="mb-4" />
           <form>
             <div className="flex flex-col flex-wrap gap-4">
               {development && (

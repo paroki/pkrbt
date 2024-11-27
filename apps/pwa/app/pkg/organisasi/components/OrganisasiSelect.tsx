@@ -9,26 +9,28 @@ import {
   SelectValue,
 } from "~/components/shadcn/select";
 import { useOrganisasi } from "../hooks";
+import { useRootOutletContext } from "~/hooks/outlets";
 
 const OrganisasiSelect = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof Select>
   // eslint-disable-next-line react/prop-types
 >(({ children, defaultValue, ...props }, ref) => {
-  const { items, loading } = useOrganisasi();
+  //const { items, loading } = useOrganisasi()
+  const { user } = useRootOutletContext();
   return (
     <Select {...props} defaultValue={defaultValue}>
       <SelectTrigger ref={ref}>
         <SelectValue placeholder="Pilih Organisasi" />
       </SelectTrigger>
       <SelectContent>
-        {items.map((item) => (
+        {user.organisasi?.map((item) => (
           <SelectItem
-            key={item.id}
-            value={item.id}
+            key={`organisasi-${item.organisasi.id}`}
+            value={item.organisasi.id}
             defaultChecked={item.id === defaultValue}
           >
-            {item.nama}
+            {item.organisasi.nama}
           </SelectItem>
         ))}
       </SelectContent>

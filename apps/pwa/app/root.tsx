@@ -18,7 +18,12 @@ import styles from "./tailwind.css?url";
 import { verifyUser } from "./services/auth.server";
 import { Toaster } from "./components/shadcn/toaster";
 import { Dispatch, SetStateAction, useState } from "react";
-import { ImageType } from "@pkrbt/directus";
+import {
+  ImageType,
+  LingkunganR,
+  OrganisasiUserR,
+  WilayahR,
+} from "@pkrbt/directus";
 import { DIRECTUS_URL } from "./services/config.server";
 import ErrorLayout from "./components/layout/error";
 import DefaultLayout from "./components/layout/DefaultLayout";
@@ -72,7 +77,8 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   if (!location.includes("login")) {
     const { authUser, headers } = await verifyUser(request);
-    const { nama, avatar, foto } = authUser.profile;
+    const { nama, avatar, foto, wilayah, organisasi, lingkungan } =
+      authUser.profile;
     const { id, policies, token, role } = authUser;
     h = headers;
     directusToken = token;
@@ -83,6 +89,9 @@ export async function loader({ request }: LoaderFunctionArgs) {
       foto,
       policies,
       role,
+      organisasi,
+      wilayah,
+      lingkungan,
     };
   }
 
@@ -113,6 +122,9 @@ export type UserContext = {
   foto?: ImageType;
   policies: UserPolicy[];
   role: UserRole;
+  organisasi?: OrganisasiUserR[];
+  wilayah?: WilayahR;
+  lingkungan?: LingkunganR;
 };
 
 export type RootOutletContext = {

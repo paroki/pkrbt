@@ -1585,20 +1585,12 @@
   {
     "collection": "directus_files",
     "action": "read",
-    "permissions": {
-      "_and": [
-        {
-          "folder": {
-            "name": {
-              "_ncontains": "\"dpp\""
-            }
-          }
-        }
-      ]
-    },
+    "permissions": null,
     "validation": null,
     "presets": null,
-    "fields": null,
+    "fields": [
+      "*"
+    ],
     "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
     "_syncId": "feed062a-d88d-4d63-af25-171dfde488d1"
   },
@@ -1625,6 +1617,18 @@
     ],
     "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
     "_syncId": "c56650b4-0732-4e88-a1b5-bfb6581d3b64"
+  },
+  {
+    "collection": "directus_folders",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "179ca6c8-51cb-4bba-8962-148c4218c8d4"
   },
   {
     "collection": "directus_policies",
@@ -1684,7 +1688,14 @@
       "last_name",
       "first_name",
       "avatar",
-      "foto"
+      "foto",
+      "jenisKelamin",
+      "handphone",
+      "location",
+      "title",
+      "description",
+      "wilayah",
+      "lingkungan"
     ],
     "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
     "_syncId": "3037d940-5deb-457e-9977-9ca57f45e306"
@@ -1712,6 +1723,18 @@
     ],
     "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
     "_syncId": "28da21bf-a2cd-4081-ae52-ac9357355fc3"
+  },
+  {
+    "collection": "lingkungan",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "122e49d5-25a0-44b5-8121-33f97a052a37"
   },
   {
     "collection": "misa_dokumentasi",
@@ -1808,6 +1831,26 @@
   },
   {
     "collection": "user_organisasi",
+    "action": "delete",
+    "permissions": {
+      "_and": [
+        {
+          "user": {
+            "id": {
+              "_eq": "$CURRENT_USER"
+            }
+          }
+        }
+      ]
+    },
+    "validation": null,
+    "presets": null,
+    "fields": null,
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "83ac8ad4-8000-4df2-9e2b-dd7f6a9807d5"
+  },
+  {
+    "collection": "user_organisasi",
     "action": "read",
     "permissions": null,
     "validation": null,
@@ -1834,9 +1877,24 @@
     },
     "validation": null,
     "presets": null,
-    "fields": null,
+    "fields": [
+      "user",
+      "organisasi"
+    ],
     "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
     "_syncId": "39540769-0497-43a7-9b17-49953a817f10"
+  },
+  {
+    "collection": "wilayah",
+    "action": "read",
+    "permissions": null,
+    "validation": null,
+    "presets": null,
+    "fields": [
+      "*"
+    ],
+    "policy": "a3e83f08-942a-46d4-a8b0-3906736315f8",
+    "_syncId": "d60bde48-5f87-43a8-ae41-1c2f098b5a8a"
   },
   {
     "collection": "directus_access",

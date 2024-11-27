@@ -1,4 +1,4 @@
-import { NavLink } from "@remix-run/react";
+import { NavLink, useNavigate } from "@remix-run/react";
 import { Button } from "../shadcn/button";
 import {
   Sheet,
@@ -8,7 +8,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../shadcn/sheet";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { cn } from "~/common/utils";
 import { MenuType } from "~/components/types";
 import { menu } from "~/config/menu";
@@ -18,12 +18,16 @@ import { UserContext } from "~/root";
 function LayananLink({
   item,
   setOpen,
-  user,
+  user: initial,
 }: {
   item: MenuType;
   setOpen: Dispatch<SetStateAction<boolean>>;
   user: UserContext;
 }) {
+  const [role] = useState(initial.role);
+  const [granted, setGranted] = useState(true);
+
+  const nav = useNavigate();
   const variants = {
     red: "bg-red-600 hover:bg-red-700",
     green: "bg-green-600 hover:bg-green-700",
@@ -31,19 +35,21 @@ function LayananLink({
     orange: "bg-orange-400 hover:bg-orange-500",
   };
 
-  let granted = true;
-  if (item.role && !isGranted(user.role, item.role)) {
-    granted = false;
-  }
+  useEffect(() => {
+    if (item.role && !isGranted(role, item.role)) {
+      setGranted(false);
+    }
 
-  if (item.policy && user) {
-    const pols = typeof item.policy === "string" ? [item.policy] : item.policy;
-    pols.map((item) => {
-      if (!hasPolicy(user.policies, item)) {
-        granted = false;
-      }
-    });
-  }
+    if (item.policy && initial.policies) {
+      const pols =
+        typeof item.policy === "string" ? [item.policy] : item.policy;
+      pols.map((item) => {
+        if (!hasPolicy(initial.policies, item)) {
+          setGranted(false);
+        }
+      });
+    }
+  }, [role, item, initial]);
 
   if (!granted) {
     return null;
@@ -53,9 +59,24 @@ function LayananLink({
     <Button
       asChild
       className={cn("grow basis-1 h-auto max-w-[116px]", variants[item.color])}
-      onClick={() => setOpen(false)}
+      onClick={() => {
+        setOpen(false);
+      }}
     >
-      <NavLink to={item.to} className="flex flex-col">
+      <NavLink
+        to={item.to}
+        className="flex flex-col"
+        replace={true}
+        onClick={(e) => {
+          if (item.label !== "Refresh") return true;
+          e.preventDefault();
+          nav(item.to);
+          setTimeout(() => {
+            nav("/");
+            window.location.reload();
+          }, 1000);
+        }}
+      >
         <item.icon style={{ width: "24px", height: "24px" }} />
         <span className="text-xs">{item.label}</span>
       </NavLink>
