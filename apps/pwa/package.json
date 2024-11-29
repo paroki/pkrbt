@@ -63,7 +63,7 @@
     "react-photo-album": "^3.0.2",
     "remix-auth": "^3.7.0",
     "remix-auth-form": "^1.5.0",
-    "remix-hook-form": "^5.1.1",
+    "remix-hook-form": "^6.0.0",
     "remix-utils": "^7.7.0",
     "sonner": "^1.7.0",
     "tailwind-merge": "^2.5.4",
