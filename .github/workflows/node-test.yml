@@ -40,7 +40,7 @@ jobs:
           pnpm coverage
 
       - name: upload directus coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           flags: directus # optional
           name: directus # optional
@@ -50,7 +50,7 @@ jobs:
           directory: ./packages/directus/coverage
 
       - name: upload directus-core coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           flags: directus-core # optional
           name: directus-core # optional
@@ -60,7 +60,7 @@ jobs:
           directory: ./packages/directus-core/coverage
 
       - name: upload web coverage
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5
         with:
           flags: web # optional
           name: web # optional
