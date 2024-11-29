@@ -32,7 +32,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.1",
     "@radix-ui/react-toast": "^1.2.2",
-    "@react-input/mask": "^1.2.15",
+    "@react-input/mask": "^2.0.0",
     "@remix-pwa/push": "^2.10.3",
     "@remix-pwa/sw": "^3.0.10",
     "@remix-pwa/worker-runtime": "^2.1.4",
