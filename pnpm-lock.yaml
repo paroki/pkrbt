@@ -283,8 +283,8 @@ importers:
   apps/web:
     dependencies:
       '@next/third-parties':
-        specifier: 14.2.17
-        version: 14.2.17(next@14.2.17(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.47.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
+        specifier: 14.2.20
+        version: 14.2.20(next@14.2.17(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.47.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@pkrbt/directus':
         specifier: workspace:*
         version: link:../../packages/directus
@@ -1850,8 +1850,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@next/third-parties@14.2.17':
-    resolution: {integrity: sha512-XiFNJhPMz8fCiHgKsYOY0HNSpfbvn8W7SwlKLufzQmXgROD8tJVMv+84JgvVn8BMl35MV56/NCMCLPwh/pd5sw==}
+  '@next/third-parties@14.2.20':
+    resolution: {integrity: sha512-Fpoq6DK/IcblMri0PzLT4x/b8lljgm0D+FVcdbvqaV+JuUT1qJsFvo+2+a4adiabQsTOWP0h8Pq4IivBLUCJOQ==}
     peerDependencies:
       next: ^13.0.0 || ^14.0.0
       react: ^18.2.0
@@ -10004,7 +10004,7 @@ snapshots:
   '@next/swc-win32-x64-msvc@14.2.17':
     optional: true
 
-  '@next/third-parties@14.2.17(next@14.2.17(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.47.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+  '@next/third-parties@14.2.20(next@14.2.17(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.47.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
     dependencies:
       next: 14.2.17(@babel/core@7.25.2)(@opentelemetry/api@1.9.0)(@playwright/test@1.47.2)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
@@ -12809,7 +12809,7 @@ snapshots:
       std-env: 3.7.0
       test-exclude: 7.0.1
       tinyrainbow: 1.2.0
-      vitest: 2.1.1(@types/node@22.7.4)(@vitest/ui@2.1.1)(jsdom@25.0.0)(msw@2.4.9(typescript@5.6.3))(terser@5.36.0)
+      vitest: 2.1.1(@types/node@20.16.5)(@vitest/ui@2.1.1)(jsdom@25.0.0)(msw@2.4.9(typescript@5.6.2))(terser@5.36.0)
     transitivePeerDependencies:
       - supports-color
 
