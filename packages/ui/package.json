@@ -37,7 +37,7 @@
     "cmdk": "1.0.4",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.456.0",
-    "react-day-picker": "9.3.0",
+    "react-day-picker": "9.4.2",
     "react-hook-form": "^7.53.1",
     "react-image-crop": "^11.0.7",
     "tailwind-merge": "^2.3.0",
