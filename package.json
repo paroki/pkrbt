@@ -10,8 +10,11 @@
     "prepare": "husky"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
     "@pkrbt/eslint-config": "workspace:*",
     "@pkrbt/typescript-config": "workspace:*",
+    "conventional-changelog-atom": "^5.0.0",
     "husky": "^9.1.7",
     "prettier": "^3.5.1",
     "turbo": "^2.5.5",
@@ -28,5 +31,8 @@
       "esbuild",
       "sharp"
     ]
+  },
+  "dependencies": {
+    "@commitlint/types": "^19.8.1"
   }
 }
