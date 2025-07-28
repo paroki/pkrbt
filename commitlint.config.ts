@@ -2,14 +2,26 @@ import type { UserConfig } from "@commitlint/types";
 import { RuleConfigSeverity } from "@commitlint/types";
 
 const Configuration: UserConfig = {
+  defaultIgnores: true,
   extends: ["@commitlint/config-conventional"],
-  parserPreset: "conventional-changelog-atom",
+  // parserPreset: "conventional-changelog-atom",
   formatter: "@commitlint/format",
   rules: {
+    "body-leading-blank": [RuleConfigSeverity.Warning, "always"],
     "scope-enum": [
       RuleConfigSeverity.Error,
       "always",
-      ["core", "ci", "ui", "docs", "tests", "build", "project"],
+      [
+        "core",
+        "ci",
+        "ui",
+        "docs",
+        "tests",
+        "build",
+        "web",
+        "dashboard",
+        "project",
+      ],
     ],
     "type-enum": [
       RuleConfigSeverity.Error,
@@ -17,7 +29,6 @@ const Configuration: UserConfig = {
       [
         "build",
         "chore",
-        "ci",
         "docs",
         "feat",
         "fix",
