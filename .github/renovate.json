@@ -1,0 +1,21 @@
+{
+  "labels": ["dependencies"],
+  "rangeStrategy": "replace",
+  "semanticCommitType": "build",
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["*"],
+      "semanticCommitType": "chore"
+    },
+    {
+      "depTypeList": ["dependencies", "peerDependencies"],
+      "semanticCommitType": "fix"
+    },
+    {
+      "depTypeList": ["action"],
+      "semanticCommitType": "ci",
+      "semanticCommitScope": "action"
+    }
+  ],
+  "postUpdateOptions": ["npmDedupe"]
+}
