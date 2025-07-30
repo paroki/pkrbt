@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  workflow_dispatch: ~
+  push:
+    branches:
+      - next
+      - main
+
+  schedule:
+    - cron: 0 2 * * 0
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    name: Collect Changes
+    runs-on: ubuntu-latest
+    outputs:
+      web: ${{ steps.vars.outputs.web }}
+      dashboard: ${{ steps.vars.outputs.dashboard }}
+      node_test: ${{ steps.vars.outputs.node_test }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Collect changes
+        uses: ./.github/actions/collect-changes
+        id: vars
+
+  test:
+    name: NodeJS
+    needs: ["changes"]
+    uses: paroki/pkrbt/.github/workflows/node-test.yml
+    secrets: inherit
+    with:
+      node_test: ${{ needs.changes.outputs.node_test }}

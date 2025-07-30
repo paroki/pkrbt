@@ -1,6 +1,6 @@
 {
   "name": "@pkrbt/eslint-config",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "type": "module",
   "private": true,
   "exports": {
