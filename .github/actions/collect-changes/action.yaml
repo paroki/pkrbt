@@ -1,0 +1,34 @@
+name: Collect Changes
+description: Collect changes from commit
+
+outputs:
+  web:
+    description: Website code changed
+    value: ${{ steps.filter.outputs.web }}
+  dashboard:
+    description: Dashboard code changed
+    value: ${{ steps.filter.outputs.dashboard }}
+  node_test:
+    description: Require node tests
+    value: ${{ steps.filter.outputs.node_test }}
+  environment:
+    description: Environment
+    value: ${{ steps.vars.outputs.environment }}
+
+runs:
+  using: composite
+  steps:
+    - name: Collect changed files
+      uses: dorny/paths-filter@v3
+      id: filter
+      with:
+        filters: |
+          dashboard:
+            - "apps/dashboard/**"
+          web:
+            - "apps/web/**"
+          node_test:
+            - ".github/workflows/node-test.yml"
+            - ".github/actions/setup-node/**"
+            - "apps/web/**"
+            - "apps/dashboard/**"

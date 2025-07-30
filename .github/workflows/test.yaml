@@ -1,0 +1,50 @@
+name: Test
+
+on:
+  workflow_call:
+    inputs:
+      node_test:
+        type: string
+        description: Runs node test
+        default: "false"
+
+jobs:
+  vitest:
+    name: Vitest
+    if: inputs.node_test == 'true'
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      TURBO_REMOTE_ONLY: true
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: ./.github/actions/setup-node
+
+      - name: test with coverage
+        shell: bash
+        run: |
+          pnpm coverage
+
+      - name: upload directus coverage
+        uses: codecov/codecov-action@v5
+        with:
+          flags: dashboard # optional
+          name: dashboard # optional
+          files: ./clover.xml
+          token: ${{ secrets.CODECOV_TOKEN }} # required
+          verbose: true
+          directory: ./apps/dashboard/coverage
+
+      - name: upload web coverage
+        uses: codecov/codecov-action@v5
+        with:
+          flags: web # optional
+          name: web # optional
+          files: ./clover.xml
+          token: ${{ secrets.CODECOV_TOKEN }} # required
+          verbose: true
+          directory: ./apps/web/coverage
