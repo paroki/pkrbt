@@ -34,4 +34,5 @@ runs:
             - ".github/actions/collect-changes/**"
             - "apps/web/**"
             - "apps/dashboard/**"
+            - "packages/**/**"
             - "package.json"
