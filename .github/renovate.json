@@ -2,6 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "labels": ["dependencies"],
   "rangeStrategy": "replace",
+  "dependencyDashboard": true,
   "semanticCommitType": "fix",
   "automergeStrategy": "rebase",
   "automergeSchedule": ["* 23 * * *"],
