@@ -221,8 +221,8 @@ importers:
         specifier: ^1.2.4
         version: 1.2.4
       zod:
-        specifier: ^3.24.2
-        version: 3.24.2
+        specifier: ^4.0.0
+        version: 4.0.14
     devDependencies:
       '@pkrbt/eslint-config':
         specifier: workspace:*
@@ -4835,6 +4835,9 @@ packages:
 
   zod@3.24.2:
     resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
+
+  zod@4.0.14:
+    resolution: {integrity: sha512-nGFJTnJN6cM2v9kXL+SOBq3AtjQby3Mv5ySGFof5UGRHrRioSJ5iG680cYNjE/yWk671nROcpPj4hAS8nyLhSw==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -10214,5 +10217,7 @@ snapshots:
       zod: 3.24.2
 
   zod@3.24.2: {}
+
+  zod@4.0.14: {}
 
   zwitch@2.0.4: {}
