@@ -1,11 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["schedule:automergeDaily", ":dependencyDashboard"],
   "labels": ["dependencies"],
   "rangeStrategy": "replace",
   "dependencyDashboard": true,
   "semanticCommitType": "fix",
   "automergeStrategy": "rebase",
-  "automergeSchedule": ["* 23 * * *"],
   "automergeType": "branch",
   "packageRules": [
     {
@@ -29,7 +29,6 @@
   "postUpdateOptions": ["npmDedupe"],
   "lockFileMaintenance": {
     "enabled": true,
-    "schedule": ["* 23 * * *"],
     "automerge": true,
     "ignoreTests": true
   }
