@@ -1,49 +1,35 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "schedule:automergeDaily",
-    ":dependencyDashboard"
-  ],
-  "labels": [
-    "dependencies"
-  ],
+  "extends": ["schedule:automergeEarlyMondays", ":dependencyDashboard"],
+  "labels": ["dependencies"],
   "rangeStrategy": "replace",
   "dependencyDashboard": true,
   "semanticCommitType": "fix",
   "automergeStrategy": "rebase",
   "automergeType": "branch",
+  "constraints": {
+    "node": "^22.0.0"
+  },
   "packageRules": [
     {
       "semanticCommitType": "chore",
-      "matchPackageNames": [
-        "*"
-      ]
+      "matchPackageNames": ["*"]
     },
     {
-      "matchDepTypes": [
-        "dependencies",
-        "peerDependencies"
-      ],
+      "matchDepTypes": ["dependencies", "peerDependencies"],
       "semanticCommitType": "fix"
     },
     {
-      "matchDepTypes": [
-        "action"
-      ],
+      "matchDepTypes": ["action"],
       "semanticCommitType": "ci",
       "semanticCommitScope": "action"
     },
     {
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ],
+      "matchUpdateTypes": ["minor", "patch"],
       "automerge": true
     }
   ],
-  "postUpdateOptions": [
-    "npmDedupe"
-  ],
+  "postUpdateOptions": ["npmDedupe"],
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true,

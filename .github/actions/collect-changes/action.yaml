@@ -28,7 +28,9 @@ runs:
           web:
             - "apps/web/**"
           node_test:
-            - ".github/workflows/node-test.yml"
+            - ".github/workflows/ci.yaml"
+            - ".github/workflows/test.yaml"
             - ".github/actions/setup-node/**"
+            - ".github/actions/collect-changes/**"
             - "apps/web/**"
             - "apps/dashboard/**"
