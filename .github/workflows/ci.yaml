@@ -6,7 +6,11 @@ on:
     branches:
       - next
       - main
-
+      - "renovate/**"
+  pull_request:
+    branches:
+      - next
+      - main
   schedule:
     - cron: 0 2 * * 0
 
@@ -31,9 +35,9 @@ jobs:
         id: vars
 
   test:
-    name: NodeJS
+    name: Test
     needs: ["changes"]
-    uses: paroki/pkrbt/.github/workflows/node-test.yml
+    uses: paroki/pkrbt/.github/workflows/test.yaml@main
     secrets: inherit
     with:
       node_test: ${{ needs.changes.outputs.node_test }}
