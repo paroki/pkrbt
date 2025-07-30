@@ -28,11 +28,11 @@ runs:
           web:
             - "apps/web/**"
           node_test:
-            - ".github/workflows/ci.yaml"
-            - ".github/workflows/test.yaml"
+            - ".github/workflows/**"
             - ".github/actions/setup-node/**"
             - ".github/actions/collect-changes/**"
             - "apps/web/**"
             - "apps/dashboard/**"
             - "packages/**/**"
             - "package.json"
+            - "pnpm-lock.yaml"

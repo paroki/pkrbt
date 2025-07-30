@@ -1,0 +1,85 @@
+name: Deploy
+
+on:
+  workflow_call:
+    inputs:
+      environment:
+        type: string
+        description: Release Environment
+        default: "development"
+      ref_name:
+        type: string
+        description: Version to deploy
+        default: ${{ github.ref_name }}
+      project:
+        type: string
+        description: Vercel project name
+        required: true
+      project_id:
+        type: string
+        description: Vercel project id
+        required: true
+
+permissions:
+  contents: read
+  deployments: write
+  statuses: write
+  pull-requests: write
+
+jobs:
+  project:
+    name: Project ${{ inputs.project }}
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
+    env:
+      VERCEL_PROJECT_ID: ${{ inputs.project }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_TEAM_ID }}
+    steps:
+      - name: setup vars
+        id: vars
+        shell: bash
+        run: |
+          vercel_deploy="vercel deploy --prebuilt"
+          vercel_build="vercel build"
+          vercel_env="development"
+          env="${{ inputs.environment }}"
+          version="${{ inputs.ref_name }}@${{ github.sha }}"
+          if [[ $env == "production" ]]; then
+            vercel_deploy="vercel deploy --prod --prebuilt"
+            vercel_build="vercel build --prod"
+            vercel_env="production"
+            version="${{ inputs.ref_name }}"
+          fi
+
+          echo "vercel_deploy=${vercel_deploy}" >> $GITHUB_OUTPUT
+          echo "vercel_build=${vercel_build}" >> $GITHUB_OUTPUT
+          echo "vercel_env=${vercel_env}" >> $GITHUB_OUTPUT
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: ./.github/actions/setup-node
+
+      - name: Install Vercel CLI
+        run: |
+          npm install --global vercel@latest
+          npm install -g turbo
+
+      - name: Pull Vercel Environment Information
+        run: |
+          vercel pull \
+            --yes \
+            --environment=${{ steps.vars.outputs.vercel_env }} \
+            --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+        run: |
+          pnpm build --filter=@pkrbt/${{ inputs.project }}
+          ${{ steps.vars.outputs.vercel_build }} --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: |
+          ${{ steps.vars.outputs.vercel_deploy }} --token=${{ secrets.VERCEL_TOKEN }}

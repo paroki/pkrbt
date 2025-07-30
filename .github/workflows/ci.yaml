@@ -18,6 +18,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
+# env:
+#   WEB_PROJECT_ID: ${{ secrets.VERCEL_WEB_PROJECT_ID }}
+#   DASHBOARD_PROJECT_ID: ${{ secrets.VERCEL_DASHBOARD_PROJECT_ID }}
+
 jobs:
   changes:
     name: Collect Changes
@@ -26,6 +30,8 @@ jobs:
       web: ${{ steps.vars.outputs.web }}
       dashboard: ${{ steps.vars.outputs.dashboard }}
       node_test: ${{ steps.vars.outputs.node_test }}
+      WEB_PROJECT_ID: ${{ secrets.VERCEL_WEB_PROJECT_ID }}
+      DASHBOARD_PROJECT_ID: ${{ secrets.VERCEL_DASHBOARD_PROJECT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,7 +43,27 @@ jobs:
   test:
     name: Test
     needs: ["changes"]
-    uses: paroki/pkrbt/.github/workflows/test.yaml@main
+    uses: paroki/pkrbt/.github/workflows/test.yaml@next
     secrets: inherit
     with:
       node_test: ${{ needs.changes.outputs.node_test }}
+
+  deploy_web:
+    name: Deploy Web
+    if: ${{ github.event_name == 'push' && !contains(github.ref_name, 'renovate') }}
+    needs: ["changes", "test"]
+    uses: paroki/pkrbt/.github/workflows/deploy.yaml@next
+    secrets: inherit
+    with:
+      project: "web"
+      project_id: ${{ needs.changes.outputs.WEB_PROJECT_ID }}
+
+  deploy_dashboard:
+    name: Deploy Dashboard
+    if: ${{ github.event_name == 'push' && !contains(github.ref_name, 'renovate') }}
+    needs: ["changes", "test"]
+    uses: paroki/pkrbt/.github/workflows/deploy.yaml@next
+    secrets: inherit
+    with:
+      project: "dashboard"
+      project_id: ${{ needs.changes.outputs.DASHBOARD_PROJECT_ID }}
