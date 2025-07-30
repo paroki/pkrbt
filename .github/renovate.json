@@ -7,6 +7,7 @@
   "semanticCommitType": "fix",
   "automergeStrategy": "rebase",
   "automergeType": "branch",
+  "baseBranches": ["next"],
   "constraints": {
     "node": "^22.0.0"
   },
