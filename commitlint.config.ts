@@ -21,6 +21,7 @@ const Configuration: UserConfig = {
         "web",
         "dashboard",
         "project",
+        "blogger",
       ],
     ],
     "type-enum": [

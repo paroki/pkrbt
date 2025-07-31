@@ -1,0 +1,26 @@
+{
+  "name": "@pkrbt/blogger",
+  "version": "0.0.0-development",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo 'Add dev script here'",
+    "build": "echo 'Add build script here'",
+    "test": "vitest run",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint .",
+    "lint:fix": "next lint --fix"
+  },
+  "devDependencies": {
+    "@pkrbt/eslint-config": "workspace:*",
+    "@pkrbt/typescript-config": "workspace:*",
+    "@vitest/coverage-v8": "^3.2.4",
+    "vitest": "^3.2.4",
+    "vitest-mock-extended": "^3.1.0"
+  },
+  "dependencies": {
+    "@googleapis/blogger": "^3.0.1",
+    "google-auth-library": "^10.2.0"
+  }
+}
