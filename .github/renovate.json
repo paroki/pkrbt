@@ -6,7 +6,7 @@
   "dependencyDashboard": true,
   "semanticCommitType": "fix",
   "automergeStrategy": "rebase",
-  "automergeType": "branch",
+  "automergeType": "pr",
   "dependencyDashboardApproval": true,
   "constraints": {
     "node": "^22.0.0"
@@ -49,6 +49,7 @@
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true,
-    "ignoreTests": true
+    "ignoreTests": true,
+    "automergeType": "pr"
   }
 }
