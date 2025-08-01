@@ -39,17 +39,10 @@ jobs:
     needs: ["changes"]
     uses: paroki/pkrbt/.github/workflows/test.yaml@next
     secrets: inherit
-    with:
-      node_test: ${{ needs.changes.outputs.node_test }}
 
-  e2e:
+  deploy:
+    name: Deploy
     needs: ["test"]
-    uses: paroki/pkrbt/.github/workflows/e2e.yaml@next
-    secrets: inherit
-
-  deploy-development:
-    needs: ["e2e"]
-    name: Deploy Development Site
-    if: ${{ github.event_name == 'push' && contains(github.ref_name, 'next') }}
-    uses: paroki/pkrbt/.github/workflows/deploy.yaml@next
+    if: ${{ !contains(github.ref_name, 'renovate') && github.event_name == 'push'  }}
+    uses: paroki/pkrbt/.github/workflows/release.yaml@next
     secrets: inherit

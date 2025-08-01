@@ -2,20 +2,14 @@ name: Test
 
 on:
   workflow_call:
-    inputs:
-      node_test:
-        type: string
-        description: Runs node test
-        default: "false"
 
 jobs:
   lint:
     name: Lint
-    if: inputs.node_test == 'true'
     runs-on: ubuntu-latest
     env:
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      TURBO_TEAM: ${{ secrets.VERCEL_TEAM_ID }}
       TURBO_CACHE: remote:rw
     steps:
       - name: Checkout code
@@ -36,11 +30,10 @@ jobs:
 
   vitest:
     name: Vitest
-    if: inputs.node_test == 'true'
     runs-on: ubuntu-latest
     env:
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+      TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      TURBO_TEAM: ${{ secrets.VERCEL_TEAM_ID }}
       TURBO_CACHE: remote:rw
     steps:
       - name: Checkout code
@@ -73,3 +66,42 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }} # required
           verbose: true
           directory: ./apps/web/coverage
+
+  e2e:
+    name: E2E Tests
+    needs: ["lint", "vitest"]
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      TURBO_TEAM: ${{ secrets.VERCEL_TEAM_ID }}
+      TURBO_CACHE: remote:rw
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: ./.github/actions/setup-node
+
+      - name: Load Playwright Browsers Cache
+        uses: actions/cache@v4
+        id: playwright-browsers-cache
+        with:
+          path: ~/.cache/ms-playwright # Adjust path based on OS if needed
+          key: ${{ runner.os }}-playwright-browsers-${{ hashFiles('**/pnpm-lock.yaml') }} }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-browsers-
+
+      - name: Install Playwright Browsers
+        if: steps.playwright-browsers-cache.outputs.cache-hit != 'true'
+        run: pnpx playwright install --with-deps
+        working-directory: apps/web
+
+      - name: Run Playwright tests
+        run: pnpm e2e
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: e2e
+          path: playwright-report/
+          retention-days: 30

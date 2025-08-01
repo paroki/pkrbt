@@ -7,7 +7,7 @@ runs:
     - name: Install Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: 22
 
     - uses: pnpm/action-setup@v4
       name: Install pnpm
@@ -30,4 +30,5 @@ runs:
 
     - name: Install
       shell: bash
-      run: pnpm install
+      run: |
+        pnpm install
