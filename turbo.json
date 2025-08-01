@@ -26,6 +26,9 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "e2e": {
+      "dependsOn": ["^e2e"]
     }
   }
 }

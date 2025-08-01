@@ -11,7 +11,8 @@
     "coverage": "turbo coverage",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky",
-    "clint": "commitlint --edit"
+    "clint": "commitlint --edit",
+    "e2e": "turbo e2e"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
