@@ -40,8 +40,8 @@ jobs:
     uses: paroki/pkrbt/.github/workflows/test.yaml@next
     secrets: inherit
 
-  deploy:
-    name: Deploy
+  release:
+    name: Release
     needs: ["test"]
     if: ${{ !contains(github.ref_name, 'renovate') && github.event_name == 'push'  }}
     uses: paroki/pkrbt/.github/workflows/release.yaml@next
