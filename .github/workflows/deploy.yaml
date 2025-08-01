@@ -4,21 +4,9 @@ on:
   workflow_call:
     inputs:
       environment:
+        description: "The environment to deploy to (e.g., 'development', 'production')"
         type: string
-        description: Release Environment
         default: "development"
-      ref_name:
-        type: string
-        description: Version to deploy
-        default: ${{ github.ref_name }}
-      project:
-        type: string
-        description: Vercel project name
-        required: true
-      project_id:
-        type: string
-        description: Vercel project id
-        required: true
 
 permissions:
   contents: read
@@ -27,13 +15,18 @@ permissions:
   pull-requests: write
 
 jobs:
-  project:
-    name: Project ${{ inputs.project }}
+  deploy:
+    name: ${{ matrix.name }}
     runs-on: ubuntu-latest
-    environment: ${{ inputs.environment }}
-    env:
-      VERCEL_PROJECT_ID: ${{ inputs.project }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_TEAM_ID }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - path: web
+            name: Website
+          - path: dashboard
+            name: Dashboard
+
     steps:
       - name: setup vars
         id: vars
@@ -41,19 +34,24 @@ jobs:
         run: |
           vercel_deploy="vercel deploy --prebuilt"
           vercel_build="vercel build"
-          vercel_env="development"
-          env="${{ inputs.environment }}"
-          version="${{ inputs.ref_name }}@${{ github.sha }}"
-          if [[ $env == "production" ]]; then
+          vercel_env="${{ inputs.environment }}"
+          version="${{ github.ref_name }}@${{ github.sha }}"
+          project_id="${{ secrets.VERCEL_WEB_PROJECT_ID }}"
+
+          if [[ $vercel_env == "production" ]]; then
             vercel_deploy="vercel deploy --prod --prebuilt"
             vercel_build="vercel build --prod"
-            vercel_env="production"
-            version="${{ inputs.ref_name }}"
+            version="${{ github.ref_name }}"
+          fi
+
+          if [[ ${{ matrix.path }} == "dashboard" ]]; then
+            project_id="${{ secrets.VERCEL_DASHBOARD_PROJECT_ID }}"
           fi
 
           echo "vercel_deploy=${vercel_deploy}" >> $GITHUB_OUTPUT
           echo "vercel_build=${vercel_build}" >> $GITHUB_OUTPUT
           echo "vercel_env=${vercel_env}" >> $GITHUB_OUTPUT
+          echo "project_id=${project_id}" >> $GITHUB_OUTPUT
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -63,8 +61,8 @@ jobs:
 
       - name: Install Vercel CLI
         run: |
-          npm install --global vercel@latest
-          npm install -g turbo
+          pnpm add -g vercel@latest
+          pnpm add -g turbo
 
       - name: Pull Vercel Environment Information
         run: |
@@ -72,14 +70,9 @@ jobs:
             --yes \
             --environment=${{ steps.vars.outputs.vercel_env }} \
             --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Build Project Artifacts
-        env:
-          NEXT_TELEMETRY_DISABLED: 1
-        run: |
-          pnpm build --filter=@pkrbt/${{ inputs.project }}
+          pnpm build --filter=@pkrbt/${{ matrix.path }}
           ${{ steps.vars.outputs.vercel_build }} --token=${{ secrets.VERCEL_TOKEN }}
-
-      - name: Deploy Project Artifacts to Vercel
-        run: |
           ${{ steps.vars.outputs.vercel_deploy }} --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_PROJECT_ID: ${{ steps.vars.outputs.project_id }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_TEAM_ID }}
