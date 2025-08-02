@@ -4,6 +4,8 @@ packages:
 
 onlyBuiltDependencies:
   - '@prisma/client'
+  - '@prisma/engines'
   - '@tailwindcss/oxide'
   - esbuild
+  - prisma
   - sharp

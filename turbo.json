@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/turbo/schema.json",
-  "globalEnv": [".env", "DATABASE_URL"],
+  "globalEnv": ["USER_DATABASE_URL"],
+  "globalDependencies": [".env"],
   "tasks": {
     "build": {
       "dependsOn": ["^build", "^db:generate"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"],
-      "env": ["DATABASE_URL"]
+      "outputs": [".next/**", "!.next/cache/**"]
     },
     "check-types": {
       "dependsOn": ["^check-types"]

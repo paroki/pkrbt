@@ -14,7 +14,8 @@
     "ui": "pnpm --filter @omed/ui ui",
     "check-types": "turbo run check-types",
     "test": "turbo run test",
-    "web": "pnpm --filter=@omed/website dev"
+    "web": "pnpm --filter=@omed/website dev",
+    "migrate:dev": "turbo run db:migrate:dev"
   },
   "keywords": [],
   "license": "MIT",
