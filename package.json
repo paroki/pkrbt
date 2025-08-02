@@ -1,0 +1,26 @@
+{
+  "name": "omed",
+  "version": "0.0.0-development",
+  "authors": [
+    {
+      "name": "Anthonius Munthi",
+      "homepage": "http://itstoni.com"
+    }
+  ],
+  "private": true,
+  "type": "module",
+  "description": "Omed - More than a demo application",
+  "scripts": {
+    "ui": "pnpm --filter @omed/ui ui",
+    "check-types": "turbo run check-types",
+    "test": "turbo run test",
+    "web": "pnpm --filter=@omed/website dev"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "packageManager": "pnpm@10.14.0",
+  "devDependencies": {
+    "turbo": "^2.5.5",
+    "typescript": "^5.9.2"
+  }
+}
