@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": "apps/dash",
+    },
+    {
+      "path": "packages/database",
+    },
+    {
+      "path": ".github",
+    },
+  ],
+}

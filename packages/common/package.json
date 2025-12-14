@@ -1,0 +1,12 @@
+{
+  "name": "@pkrbt/common",
+  "module": "src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5"
+  }
+}

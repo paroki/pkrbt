@@ -1,0 +1,30 @@
+import Home from "~/modules/homepage/Home";
+import type { Route } from "./+types/home";
+import { auth } from "~/lib/auth.server";
+import { redirect } from "react-router";
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: "New React Router App" },
+    { name: "description", content: "Welcome to React Router!" },
+  ];
+}
+
+export async function loader({ request }: Route.LoaderArgs) {
+  const session = await auth.api.getSession({
+    headers: request.headers,
+  });
+  if (!session?.user) {
+    return redirect("/login");
+  }
+  return { ...session };
+}
+
+export default function HomePage({ loaderData }: Route.ComponentProps) {
+  const { user } = loaderData;
+  return (
+    <div>
+      <Home user={user} />
+    </div>
+  );
+}

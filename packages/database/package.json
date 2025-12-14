@@ -1,0 +1,27 @@
+{
+  "name": "@pkrbt/database",
+  "version": "0.0.0",
+  "module": "src/index.ts",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/pg": "^8.16.0",
+    "@pkrbt/typescript-config": "workspace:*",
+    "prisma": "^7.1.0",
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.1.0",
+    "@prisma/client": "^7.1.0",
+    "@pkrbt/common": "workspace:*",
+    "dotenv": "^17.2.3",
+    "pg": "^8.16.3"
+  }
+}
