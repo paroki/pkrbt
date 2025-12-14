@@ -1,5 +1,10 @@
-import Login from "~/modules/user/Login";
+import Container from "~/components/layouts/Container";
+import Login from "~/pkg/user/Login";
 
 export default function LoginPage() {
-  return <Login />;
+  return (
+    <Container className="flex items-center place-content-center">
+      <Login />
+    </Container>
+  );
 }

@@ -3,23 +3,23 @@ import {
   Links,
   Meta,
   Outlet,
+  redirect,
   Scripts,
   ScrollRestoration,
 } from "react-router";
 
 import type { Route } from "./+types/root";
-import "./app.css";
+import DefaultLayout from "./components/layouts/DefaultLayout";
+import { auth } from "./lib/auth.server";
+import type { User } from "@pkrbt/database";
+import type { RootOutletContext } from "./types";
+
+import styles from "./app.css?url";
 
 export const links: Route.LinksFunction = () => [
-  { rel: "preconnect", href: "https://fonts.googleapis.com" },
-  {
-    rel: "preconnect",
-    href: "https://fonts.gstatic.com",
-    crossOrigin: "anonymous",
-  },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: styles,
   },
 ];
 
@@ -28,7 +28,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1"
+        />
         <Meta />
         <Links />
       </head>
@@ -41,8 +44,26 @@ export function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
-  return <Outlet />;
+export async function loader({ request }: Route.LoaderArgs) {
+  const session = await auth.api.getSession({
+    headers: request.headers,
+  });
+
+  return { user: session?.user as User };
+}
+
+export default function App({ loaderData }: Route.ComponentProps) {
+  const { user } = loaderData;
+
+  if (!user) {
+    redirect("/login");
+  }
+
+  return (
+    <DefaultLayout user={user}>
+      <Outlet context={{ user } satisfies RootOutletContext} />
+    </DefaultLayout>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

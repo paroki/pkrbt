@@ -1,7 +1,8 @@
-import Home from "~/modules/homepage/Home";
+import Home from "~/pkg/homepage/Home";
 import type { Route } from "./+types/home";
 import { auth } from "~/lib/auth.server";
 import { redirect } from "react-router";
+import Container from "~/components/layouts/Container";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -23,8 +24,10 @@ export async function loader({ request }: Route.LoaderArgs) {
 export default function HomePage({ loaderData }: Route.ComponentProps) {
   const { user } = loaderData;
   return (
-    <div>
-      <Home user={user} />
-    </div>
+    <Container>
+      <div className="flex items-center place-content-center">
+        <Home user={user} />
+      </div>
+    </Container>
   );
 }
