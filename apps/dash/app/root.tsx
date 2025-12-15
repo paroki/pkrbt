@@ -17,7 +17,7 @@ import type { RootOutletContext } from "./types";
 import styles from "./app.css?url";
 
 export const links: Route.LinksFunction = () => [
-  {
+  {l
     rel: "stylesheet",
     href: styles,
   },
