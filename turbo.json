@@ -26,7 +26,6 @@
     },
     "db:deploy": {
       "cache": false,
-      "persistent": true,
       "env": ["DATABASE_URL"]
     },
     "db:generate": {
