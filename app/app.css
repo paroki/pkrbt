@@ -125,4 +125,7 @@
   [role="button"]:not(:disabled) {
     cursor: pointer;
   }
+  a {
+    @apply hover:font-bold;
+  }
 }

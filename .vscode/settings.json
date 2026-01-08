@@ -1,0 +1,16 @@
+{
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "exportall.config.folderListener": [
+    "/shared/utils",
+    "/shared/pendapatan",
+    "/shared/model",
+    "/pages",
+    "/shared/service/user",
+    "/shared",
+    "/pages/user",
+    "/shared/ui"
+  ],
+  "exportall.config.relExclusion": ["/shared"]
+}
