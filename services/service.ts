@@ -1,7 +1,5 @@
 import { user } from "./user";
 
-const service = {
+export const service = {
   user,
 };
-
-export default service;

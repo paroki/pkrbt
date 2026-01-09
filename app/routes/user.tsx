@@ -1,3 +1,3 @@
-import { UserLayout } from "pages/user/UserLayout";
+import { UserLayout } from "pages/user/ui";
 
 export default UserLayout;

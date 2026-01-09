@@ -1,5 +1,6 @@
-import { userListLoader } from "pages/user/api/list";
-import { UserListPage } from "pages/user/UserListPage";
+import { userListAction } from "pages/user/api";
+import { UserListPage } from "pages/user";
 
-export { userListLoader as loader };
+export { userListAction as action };
+
 export default UserListPage;

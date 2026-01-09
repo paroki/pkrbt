@@ -1,5 +1,5 @@
-import type { User } from "better-auth";
 import { useNavigate } from "react-router";
+import type { User } from "shared/types";
 import { EditButton } from "shared/ui";
 import {
   Table,
@@ -24,6 +24,7 @@ export default function UserList({ users }: { users: User[] }) {
             <TableHead></TableHead>
             <TableHead>Nama</TableHead>
             <TableHead>Email</TableHead>
+            <TableHead>Role</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -36,13 +37,11 @@ export default function UserList({ users }: { users: User[] }) {
               }}
             >
               <TableCell>
-                <EditButton
-                  url={`/user/${user.id}`}
-                  cellMode={true}
-                />
+                <EditButton url={`/user/${user.id}`} cellMode={true} />
               </TableCell>
               <TableCell>{user.name}</TableCell>
               <TableCell>{user.email}</TableCell>
+              <TableCell>{user.role}</TableCell>
             </TableRow>
           ))}
         </TableBody>

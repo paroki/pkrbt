@@ -8,9 +8,13 @@
     "/shared/model",
     "/pages",
     "/shared/service/user",
-    "/shared",
     "/pages/user",
-    "/shared/ui"
+    "/shared/ui",
+    "/service"
   ],
-  "exportall.config.relExclusion": ["/shared"]
+  "exportall.config.relExclusion": [
+    "/shared/service",
+    "/shared/generated",
+    "/pages/user/api"
+  ]
 }

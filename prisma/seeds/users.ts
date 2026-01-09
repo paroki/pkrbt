@@ -1,4 +1,4 @@
-import { user } from "shared/model/user";
+import { service } from "services";
 import { faker } from "shared/utils";
 import invariant from "tiny-invariant";
 import { auth } from "~/lib/auth.server";
@@ -11,7 +11,8 @@ export async function genAdminUsers() {
   invariant(ADMIN_EMAIL, "ADMIN_EMAIL unconfigured");
   invariant(ADMIN_PASSWORD, "ADMIN_PASSWORD unconfigured");
 
-  if (!user.findByEmail) {
+  const existing = await service.user.findByEmail(ADMIN_EMAIL);
+  if (!existing) {
     await auth.api.createUser({
       body: {
         name: ADMIN_NAME,
