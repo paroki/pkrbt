@@ -1,0 +1,11 @@
+model Pendapatan {
+  id         String   @id @default(uuid(7)) @db.Uuid
+  tanggal    DateTime
+  sumber     String
+  keterangan String
+  catatan    String?
+  jumlah     Int
+
+  @@index([tanggal, sumber, keterangan])
+  @@map("pendapatan")
+}

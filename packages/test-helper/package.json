@@ -1,0 +1,19 @@
+{
+  "name": "@pkrbt/test-helper",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "private": true,
+  "dependencies": {
+    "@pkrbt/db": "workspace:*",
+    "@pkrbt/auth": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@pkrbt/typescript-config": "workspace:*"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

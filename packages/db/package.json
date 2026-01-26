@@ -1,0 +1,27 @@
+{
+  "name": "@pkrbt/db",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "private": true,
+  "scripts": {
+    "db:generate": "prisma generate",
+    "db:push": "prisma db:push"
+  },
+  "devDependencies": {
+    "@pkrbt/typescript-config": "workspace:*",
+    "@types/bun": "latest",
+    "@types/pg": "^8.16.0",
+    "dotenv": "^17.2.3",
+    "prisma": "^7.3.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^7.3.0",
+    "pg": "^8.17.2"
+  }
+}

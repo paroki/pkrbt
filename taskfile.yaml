@@ -1,0 +1,29 @@
+---
+version: 3
+
+dotenv: [".env"]
+tasks:
+  e2e:
+    desc: runs e2e tests
+    dir: apps/dash
+    cmd: bun playwright test
+  db:format:
+    desc: format prisma files
+    dir: packages/db
+    cmd: bun prisma format
+  db:gen:
+    desc: generates prisma client
+    dir: ./packages/db
+    cmd: bunx --bun prisma generate
+  db:push:
+    desc: push prisma schema
+    dir: "./packages/db"
+    cmd: bunx --bun prisma db push
+  auth:gen:
+    desc: generates auth schema
+    dir: ./packages/auth
+    cmd: bunx @better-auth/cli@latest generate --output ../db/prisma/schema/user.prisma
+  dev:
+    dir: "."
+    desc: start dev server
+    cmd: "bun dev"

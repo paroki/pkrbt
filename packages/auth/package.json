@@ -1,0 +1,21 @@
+{
+  "name": "@pkrbt/auth",
+  "type": "module",
+  "exports": {
+    "./server": "./src/auth.ts",
+    "./client": "./src/client.ts",
+    "./types": "./src/types.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@pkrbt/typescript-config": "workspace:*"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "better-auth": "^1.4.17",
+    "@pkrbt/utils": "workspace:*",
+    "@pkrbt/db": "workspace:*"
+  }
+}

@@ -1,0 +1,3 @@
+{
+  "extends": "@pkrbt/typescript-config/library.json"
+}

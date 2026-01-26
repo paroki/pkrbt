@@ -1,0 +1,25 @@
+{
+  "folders": [
+    {
+      "path": "apps/dash",
+    },
+    {
+      "path": "apps/api",
+    },
+    {
+      "path": "packages/auth",
+    },
+    {
+      "path": "packages/db",
+    },
+    {
+      "path": "packages/utils",
+    },
+    {
+      "path": "packages/core",
+    },
+  ],
+  "settings": {
+    "prisma.schemaPath": "${workspaceDir}/packages/db/prisma/schema",
+  },
+}

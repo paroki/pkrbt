@@ -1,0 +1,19 @@
+enum Action {
+  CREATE
+  UPDATE
+  DELETE
+}
+
+model AuditLog {
+  id         String   @id @default(uuid(7)) @db.Uuid
+  entityName String
+  entityId   String
+  action     Action
+  oldData    Json?
+  newData    Json?
+  userId     String
+  timestamp  DateTime @default(now())
+
+  @@index([entityName, entityId])
+  @@map("audit_log")
+}

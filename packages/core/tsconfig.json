@@ -1,0 +1,11 @@
+{
+  "extends": "@pkrbt/typescript-config/library.json",
+  "compilerOptions": {
+    "rootDirs": ["./src"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src", "test"],
+  "exclude": ["node_modules", "dist"]
+}
