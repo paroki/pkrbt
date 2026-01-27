@@ -1,19 +1,22 @@
-import { RepositoryError } from "@/error";
 import { Pendapatan, PendapatanSearchRequest } from "@/model";
-import { repository } from "@/repository";
-import { singleton } from "@pkrbt/utils";
+import { UserUpdateInput } from "@pkrbt/db";
 
 type SearchPromise = {
   data: Pendapatan[];
   total: number;
 };
-export class PendapatanService {
-  async search(payload: PendapatanSearchRequest): Promise<SearchPromise> {
-    return await repository.pendapatan.search(payload);
-  }
+
+export interface PendapatanRepositoryInterface {
+  search(payload: PendapatanSearchRequest): Promise<SearchPromise>;
 }
 
-export const pendapatan = singleton(
-  "service.pendapatan",
-  () => new PendapatanService(),
-);
+export class PendapatanService {
+  pendapatan: PendapatanRepositoryInterface;
+  constructor(repo: PendapatanRepositoryInterface) {
+    this.pendapatan = repo;
+  }
+
+  async search(payload: PendapatanSearchRequest) {
+    return await this.pendapatan.search(payload);
+  }
+}

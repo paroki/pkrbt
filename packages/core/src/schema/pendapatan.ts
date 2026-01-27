@@ -4,7 +4,13 @@ import { pager } from "./api";
 const model = z.object({
   id: z.string(),
   tanggal: z.date(),
-  sumber: z.enum(["kolekte1", "kolekte2", "kolekte3", "teks-misa", "parkir"]),
+  sumber: z.enum({
+    Kolekte1: "kolekte1",
+    Kolekte2: "kolekte2",
+    Kolekte3: "kolekte3",
+    TeksMisa: "teks-misa",
+    Parkir: "parkir",
+  }),
   keterangan: z.string(),
   catatan: z.string().optional(),
   jumlah: z.number(),
@@ -31,6 +37,12 @@ export const pendapatan = {
         ref: "PendapatanSearchResponse",
       }),
   },
-  searchResponse: {},
-  model,
+  update: {
+    request: model.omit({ id: true }),
+    response: model,
+  },
+  create: {
+    request: model.omit({ id: true }),
+    response: model,
+  },
 };

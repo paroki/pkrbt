@@ -1,27 +1,37 @@
-import { singleton } from "@pkrbt/utils";
-import { Prisma, prisma } from "@pkrbt/db";
-import { Pendapatan, PendapatanSearchRequest } from "@/model";
-import { CoreError, RepositoryError } from "@/error";
+import { Prisma, PrismaClient } from "@pkrbt/db";
+import {
+  Pendapatan,
+  PendapatanCreateRequest,
+  PendapatanSearchRequest,
+} from "@/model";
 
 export class PendapatanRepository {
+  protected prisma: PrismaClient;
+
+  constructor(prisma: PrismaClient) {
+    this.prisma = prisma;
+  }
+
   async search(payload: PendapatanSearchRequest) {
-    const where: Prisma.UserFindManyArgs["where"] = undefined;
     let total = 0;
     let data: Pendapatan[] = [];
-    [data, total] = await prisma.$transaction([
-      prisma.pendapatan.findMany({
-        where,
-        skip: payload.page - 1,
-        take: payload.size,
-      }),
-      prisma.pendapatan.count({ where }),
+    const findArgs: Prisma.PendapatanFindManyArgs = {
+      skip: payload.page - 1,
+      take: payload.size,
+      where: {},
+    };
+
+    [data, total] = await this.prisma.$transaction([
+      this.prisma.pendapatan.findMany(findArgs),
+      this.prisma.pendapatan.count({ where: findArgs.where }),
     ]);
 
     return { data, total };
   }
-}
 
-export const pendapatan = singleton(
-  "repository.pendapatan",
-  () => new PendapatanRepository(),
-);
+  async create(payload: PendapatanCreateRequest) {
+    return await this.prisma.pendapatan.create({
+      data: payload,
+    });
+  }
+}
