@@ -1,0 +1,19 @@
+{
+  "folders": [
+    {
+      "path": "packages/core",
+    },
+    {
+      "path": "packages/prisma",
+    },
+    {
+      "path": "packages/util",
+    },
+    {
+      "path": "packages/better-auth",
+    },
+  ],
+  "settings": {
+    "postman.settings.dotenv-detection-notification-visibility": false,
+  },
+}

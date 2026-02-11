@@ -1,0 +1,46 @@
+{
+  "name": "@pkrbt/prisma",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "dev-source": "./src/index.ts",
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/index.d.mts"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest",
+    "db:gen": "prisma generate",
+    "db:push": "prisma db push"
+  },
+  "devDependencies": {
+    "@pkrbt/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "@types/pg": "^8.16.0",
+    "@vitest/coverage-istanbul": "catalog:",
+    "prisma": "^7.3.0",
+    "tsdown": "catalog:",
+    "tsx": "^4.21.0",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
+    "vitest-mock-extended": "catalog:"
+  },
+  "dependencies": {
+    "@pkrbt/util": "workspace:*",
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^7.3.0",
+    "pg": "^8.18.0"
+  }
+}

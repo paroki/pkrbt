@@ -1,0 +1,20 @@
+enum EnumSumberPendapatan {
+  Kolekte1 @map("kolekte-1")
+  Kolekte2 @map("kolekte-2")
+  Kolekte3 @map("kolekte-3")
+  Donasi @map("donasi")
+  Parkir @map("parkir")
+  UsahaDana @map("usaha-dana")
+  Pemerintah @map("pemerintah")
+  LainLain @map("lain-lain")
+}
+
+model Pendapatan {
+  id String @id @default(uuid(7)) @db.Uuid()
+  tanggal DateTime @default(now())
+  sumber EnumSumberPendapatan
+  uraian String
+  catatan String?
+  jumlah BigInt
+  deletedAt DateTime?
+}

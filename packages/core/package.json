@@ -1,0 +1,43 @@
+{
+  "name": "@package/core",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "dev-source": "./src/index.ts",
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/index.d.mts"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@pkrbt/tsconfig": "workspace:*",
+    "@types/node": "catalog:",
+    "@vitest/coverage-istanbul": "catalog:",
+    "@vitest/ui": "catalog:",
+    "tsdown": "catalog:",
+    "typescript": "catalog:",
+    "vitest": "catalog:",
+    "vitest-mock-extended": "catalog:"
+  },
+  "dependencies": {
+    "@hono/zod-openapi": "^1.2.1",
+    "@pkrbt/better-auth": "workspace:*",
+    "@pkrbt/prisma": "workspace:*",
+    "@pkrbt/util": "workspace:*",
+    "dotenv": "^17.2.4",
+    "pg": "^8.18.0",
+    "zod": "^4.3.6"
+  }
+}

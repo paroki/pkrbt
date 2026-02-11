@@ -1,0 +1,24 @@
+---
+version: "3"
+services:
+  postgres:
+    container_name: "pkrbt-postgres"
+    image: postgres:18-alpine
+    restart: "no"
+    # set shared memory limit when using docker compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    #volumes:
+    #  - type: tmpfs
+    #    target: /dev/shm
+    #    tmpfs:
+    #      size: 134217728 # 128*2^20 bytes = 128Mb
+    volumes:
+      - "./data/postgres:/data:rw"
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: pkrbt
+      POSTGRES_USER: pkrbt
+      POSTGRES_DB: pkrbt
+      PGDATA: "/data"

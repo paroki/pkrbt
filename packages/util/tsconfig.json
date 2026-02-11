@@ -1,0 +1,6 @@
+{
+  "extends": "@pkrbt/tsconfig/base.json",
+  "compilerOptions": {
+    "types": ["node"]
+  }
+}

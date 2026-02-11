@@ -1,0 +1,29 @@
+---
+version: 3
+
+dotenv:
+  - .env
+  - .env.local
+
+tasks:
+  dev:
+    desc: runs dev task
+    cmd: pnpm dev
+  test:
+    desc: runs all tests
+    cmd: pnpm test
+  db:gen:
+    desc: generates prisma model
+    cmd: pnpm db:gen
+    dir: packages/prisma
+  db:push:
+    desc: push current prisma schema into database
+    cmd: pnpm db:push
+    dir: packages/prisma
+  db:seed:
+    desc: runs all seed command
+    cmd: pnpm db:seed
+  auth:gen:
+    desc: generates better auth prisma schema
+    cmd: bunx @better-auth/cli generate --output ../prisma/prisma/schema/user.prisma --yes
+    dir: packages/better-auth
