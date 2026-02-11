@@ -58,7 +58,7 @@ describe("create()", () => {
 
   it("should throw error repository returns an error", async () => {
     repoMock.create.mockResolvedValue([null, new BaseError("unknown")]);
-    expect(async () => {
+    await expect(async () => {
       await service.create(testData);
     }).rejects.toThrow(BaseError);
   });
