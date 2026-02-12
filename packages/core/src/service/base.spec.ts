@@ -2,13 +2,13 @@ import { uuid } from "@pkrbt/util";
 import { beforeEach, describe, expect, it } from "vitest";
 import { mockDeep, mockReset } from "vitest-mock-extended";
 import type { IDispatcher } from "../contracts/dispatcher";
+import type { IRepository } from "../contracts/repository";
 import { BaseError } from "../error";
 import type { EventMap } from "../events/event";
 import { Events } from "../events/event";
 import { PrismaError } from "../infra/prisma/error";
 import type { SearchRequest } from "../model";
 import { BaseService } from "./base";
-import type { IRepository } from "./interfaces";
 
 export type TestModel = {
   id: string;
@@ -132,21 +132,19 @@ describe("delete()", () => {
     expect(result).toEqual(after);
   });
 
-  it("should throws when repository find throws an error", async() => {
-    repoMock.find.mockResolvedValue([null, new BaseError("testing")])
-    await expect(async() => await service.delete(resolved.id))
-      .rejects
-      .toThrow(BaseError)
-  })
+  it("should throws when repository find throws an error", async () => {
+    repoMock.find.mockResolvedValue([null, new BaseError("testing")]);
+    await expect(async () => await service.delete(resolved.id)).rejects.toThrow(
+      BaseError,
+    );
+  });
 
   it("should throws when repository delete returns an error", async () => {
-    repoMock.find.mockResolvedValue([resolved, null])
+    repoMock.find.mockResolvedValue([resolved, null]);
     repoMock.delete.mockResolvedValue([null, new BaseError("testing")]);
-    await expect(async () => await service.delete(resolved.id))
-      .rejects
-      .toThrow(
-        BaseError,
-      );
+    await expect(async () => await service.delete(resolved.id)).rejects.toThrow(
+      BaseError,
+    );
   });
 });
 

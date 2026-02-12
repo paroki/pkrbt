@@ -1,17 +1,20 @@
 {
   "folders": [
     {
-      "path": "packages/core",
+      "path": "packages/core"
     },
     {
-      "path": "packages/prisma",
+      "path": "packages/prisma"
     },
     {
-      "path": "packages/util",
+      "path": "packages/util"
     },
     {
-      "path": "packages/better-auth",
+      "path": "packages/better-auth"
     },
+    {
+      "path": "packages/hono"
+    }
   ],
   "settings": {
     "postman.settings.dotenv-detection-notification-visibility": false,

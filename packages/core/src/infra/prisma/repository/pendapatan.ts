@@ -21,6 +21,7 @@ export class PendapatanRepository implements IPendapatanRepository {
     if (hasFilter) {
       where = {};
     }
+
     if (request.keyword) {
       where = {
         OR: [

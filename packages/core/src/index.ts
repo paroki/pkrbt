@@ -1,29 +1,28 @@
-import { singleton } from "@pkrbt/util"
-import { dispatcher } from "./events/dispatcher"
-import { PendapatanRepository } from "./infra/prisma/repository/pendapatan"
-import { PendapatanService } from "./service"
+import { singleton } from "@pkrbt/util";
+import type { IPendapatanService } from "./contracts";
+import type { IDispatcher } from "./contracts/dispatcher";
+import { Dispatcher } from "./events/dispatcher";
+import type { EventMap } from "./events/event";
+import { PendapatanRepository } from "./infra/prisma";
+import { PendapatanService } from "./service";
 
-export * from "./entity"
-export * from "./model"
-export * from './service'
+export const dispatcher = singleton<IDispatcher<EventMap>>("dispatcher", () => {
+  return new Dispatcher();
+});
 
+export const pendapatan = singleton<IPendapatanService>(
+  "service.pendapatan",
+  () => {
+    return new PendapatanService(dispatcher, new PendapatanRepository());
+  },
+);
 
-/**
- * repository implementation
- */
-const repository = {
-  pendapatan: singleton<PendapatanRepository>("repository.pendapatan", () => {
-    return new PendapatanRepository()
-  })
-}
+export * from "./context";
+export * from "./contracts";
+export * from "./entity";
+export { BaseError, ErrNotFound, isNotFound} from "./error";
+export * from "./model";
+export * from "./schema";
+export * from "./service";
 
-/**
- * simple dependency injection (DI)
- */
-export const service = {
-  dispatcher,
-  pendapatan: singleton<PendapatanService>("service.pendapatan", () => {
-    return new PendapatanService(dispatcher, repository.pendapatan)
-  })
-}
-
+export { z } from "./util";

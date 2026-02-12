@@ -1,5 +1,5 @@
 {
-  "name": "@pkrbt/core",
+  "name": "@pkrbt/hono",
   "type": "module",
   "main": "./dist/index.mjs",
   "module": "./dist/index.mjs",
@@ -23,11 +23,17 @@
     "dev": "tsdown --watch",
     "test": "vitest"
   },
+  "peerDependencies": {
+    "@hono/zod-openapi": "^1.2.1",
+    "@pkrbt/better-auth": "workspace:*",
+    "@pkrbt/core": "workspace:*",
+    "hono": "^4.11.9",
+    "zod": "^4.3.6"
+  },
   "devDependencies": {
     "@pkrbt/tsconfig": "workspace:*",
-    "@types/node": "catalog:",
+    "@pkrbt/util": "workspace:*",
     "@vitest/coverage-istanbul": "catalog:",
-    "@vitest/ui": "catalog:",
     "tsdown": "catalog:",
     "typescript": "catalog:",
     "vitest": "catalog:",
@@ -36,10 +42,8 @@
   "dependencies": {
     "@hono/zod-openapi": "^1.2.1",
     "@pkrbt/better-auth": "workspace:*",
-    "@pkrbt/prisma": "workspace:*",
-    "@pkrbt/util": "workspace:*",
-    "dotenv": "^17.2.4",
-    "pg": "^8.18.0",
+    "@pkrbt/core": "workspace:*",
+    "hono": "^4.11.9",
     "zod": "^4.3.6"
   }
 }

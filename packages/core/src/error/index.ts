@@ -15,3 +15,7 @@ export class NotFoundError extends BaseError {
 }
 
 export const ErrNotFound = new NotFoundError()
+
+export function isNotFound(err: unknown){
+  return err instanceof BaseError && err.name == "NotFound"
+}

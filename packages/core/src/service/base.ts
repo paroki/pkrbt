@@ -1,13 +1,9 @@
 import type { IDispatcher } from "../contracts/dispatcher";
+import type { IRepository } from "../contracts/repository";
 import type { EntityType } from "../entity";
-import type {
-  EventDeleted,
-  EventMap,
-  EventUpdated,
-} from "../events/event";
+import type { EventDeleted, EventMap, EventUpdated } from "../events/event";
 import { Events } from "../events/event";
 import type { CreateRequest, SearchRequest, UpdateRequest } from "../model";
-import type { IRepository } from "./interfaces";
 
 export abstract class BaseService<T extends EntityType> {
   protected dispatcher: IDispatcher<EventMap>;
@@ -54,8 +50,8 @@ export abstract class BaseService<T extends EntityType> {
     const evt = {
       entity: this.entity,
       after,
-      before
-    } satisfies EventUpdated
+      before,
+    } satisfies EventUpdated;
     await this.dispatcher.dispatch(Events.Updated, evt);
 
     return after;
